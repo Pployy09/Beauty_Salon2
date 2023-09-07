@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/validation.css">
 
      <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,30 +53,25 @@
           <i class="fa-solid fa-registered fa-4x" style="color: #f19b9d;"></i>
         </div>
       <form action="/user/register" method="POST">
-
-        <% if(errors != null && errors.length > 0) { %>
-          <% for(let i = 0; i < errors.length; i++) { %>
-              <p class="alert alert-danger">
-                  <%= errors[i] %>
-              </p>
-          <% } %>
-      <% } %>
       
         <div class="conto">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="text" 
+                    <input 
+                    type="text" 
                     class="form-control" 
-                    name="firstname" 
-                    value="<%= firstname %>"
-                    placeholder="ชื่อ">
+                    name="firstname"
+                    placeholder="ชื่อ"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อ')" 
+                      oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group col-md-6">
                     <input type="text" 
                     class="form-control" 
                     name="lastname"
-                    value="<%= lastname %>"
-                    placeholder="นามสกุล">
+                    placeholder="นามสกุล"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกนามสกุล')"
+                      oninput="this.setCustomValidity('')">
                 </div>
             </div>
 
@@ -84,15 +80,17 @@
                     <input type="text" 
                     class="form-control" 
                     name="nickname"
-                    value="<%= nickname %>"
-                    placeholder="ชื่อเล่น">
+                    placeholder="ชื่อเล่น"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อเล่น')"
+                      oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group col-md-6">
                     <input type="text" 
                     class="form-control" 
                     name="phonenum"
-                    value="<%= phonenum %>"
-                    placeholder="เบอร์โทรศัพท์">
+                    placeholder="เบอร์โทรศัพท์"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกเบอร์โทรศัพท์')"
+                      oninput="this.setCustomValidity('')">
                 </div>
             </div>
 
@@ -101,16 +99,18 @@
                     <input type="text" 
                     class="form-control" 
                     name="username"
-                    value="<%= username %>"
-                    placeholder="ชื่อผู้ใช้">
+                    placeholder="ชื่อผู้ใช้"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อผู้ใช้')"
+                      oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group col-md-6">
                     <input type="password" 
                     class="form-control"
-                    name= "password"
-                    value= "<%= password %>" 
+                    name= "password" 
                     id= "password" 
-                    placeholder="รหัสผ่าน">
+                    placeholder="รหัสผ่าน"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกรหัสผ่าน')"
+                      oninput="this.setCustomValidity('')">
                 </div>
             </div>
 

@@ -15,6 +15,7 @@ exports.addUser = (req, res) => {
             req.flash('data', req.body)
             return res.redirect('/register')
         }
+
     })
 }
 //เช็ก login user

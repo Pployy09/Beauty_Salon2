@@ -54,7 +54,9 @@
                 <input type="text"
                 class="form-control" 
                 name="username" 
-                placeholder="ชื่อผู้ใช้">
+                placeholder="ชื่อผู้ใช้"
+                required oninvalid="this.setCustomValidity('กรุณากรอกชื่อผู้ใช้')"
+                  oninput="this.setCustomValidity('')">
             </div>
 
             <div class="contrainer">
@@ -62,7 +64,9 @@
                 class="form-control"
                 name="password" 
                 id="password" 
-                placeholder="รหัสผ่าน">
+                placeholder="รหัสผ่าน"
+                required oninvalid="this.setCustomValidity('กรุณากรอกรหัสผ่าน')"
+                  oninput="this.setCustomValidity('')">
             </div>
         </div>
         <div class="conto">

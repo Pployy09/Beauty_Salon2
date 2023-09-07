@@ -52,7 +52,7 @@
   
         <% if (loggedIn) { %>
           <div class="nav me-3 text-end">
-            <div><a href="./employee-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
+            <div><a href="./employeeEdit-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
             <div><a href="./logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
           </div>
           <% } %>
@@ -73,6 +73,7 @@
             <i class="fa-solid fa-magnifying-glass fa-beat" style="color: #d9d9d9;"></i>
             </button>
         </form>
+
         <!-- Button trigger modal -->
         <div id="create-service">
           <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">เพิ่มสินค้าใหม่</a>
@@ -80,41 +81,7 @@
 
         <div class="textst">ทั้งหมด</div>
         <div class="line-1"></div>
-
-        <div id="infoTable">
-          <div class="container">
-            <table >
-              <tr class="sectionTable">
-                <td class="fontAll ">#</td>
-                <td class="fontAll ">รหัส</td>
-                <td class="fontAll ">ชื่อสินค้า</td>
-                <td class="fontAll ">ราคาซื้อ</td>
-                <td class="fontAll ">คงเหลือ</td>
-                <td></td>
-              </tr>
-
-              <% stockList.forEach(stock =>{ %>
-              <tr class="infoTable">
-                <td class="fontAll ">1</td>
-                <td class="fontAll "><%=stock.idproduct%></td>
-                <td class="fontAll "><%=stock.name_product%></td>
-                <td class="fontAll "><%=stock.price_product%></td>
-                <td class="fontAll ">30</td>
-                <td>
-                  <a href="./editStock-admin/<%= stock._id %>" class="nav-link " data-bs-toggle="modal" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                    </svg>
-                    </a>
-                </td>
-              </tr>
-              <%}) %>  
-            </table>
-          </div>
-      </div>
-          
-      <!-- Modal -->
+        <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -166,6 +133,41 @@
         </div>
       </div>
     </div>
+
+        <div id="infoTable">
+          <div class="container">
+            <table >
+              <tr class="sectionTable">
+                <td class="fontAll ">#</td>
+                <td class="fontAll ">รหัส</td>
+                <td class="fontAll ">ชื่อสินค้า</td>
+                <td class="fontAll ">ราคาซื้อ</td>
+                <td class="fontAll ">คงเหลือ</td>
+                <td></td>
+              </tr>
+
+              <% stockList.forEach(stock =>{ %>
+              <tr class="infoTable">
+                <td class="fontAll ">1</td>
+                <td class="fontAll "><%=stock.idproduct%></td>
+                <td class="fontAll "><%=stock.name_product%></td>
+                <td class="fontAll "><%=stock.price_product%></td>
+                <td class="fontAll ">30</td>
+                <td>
+                  <a href="./editStock-admin/<%= stock._id %>" class="nav-link " data-bs-toggle="modal" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+                    </a>
+                </td>
+              </tr>
+              <%}) %>  
+            </table>
+          </div>
+      </div>
+          
+      
         
       <!-- JavaScript-->
       <script 

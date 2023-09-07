@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: [true, 'Please provide username'],
-         unique: true
+        unique: true
     },
     password: {
         type: String,
