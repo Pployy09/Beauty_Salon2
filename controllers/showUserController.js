@@ -50,7 +50,3 @@ exports.showService = async(req, res) => {
     res.render('service-admin',{UserData})
 }
 
-exports.showStock = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('stock-admin',{UserData})
-}
