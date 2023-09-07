@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/stock.css">
+    <link rel="stylesheet" href="./css/admin.css">
+
+     <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+</head>
+<body class="b1">
+    
+  <!-- Header หลัก-->
+  <section id="header-employee">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
+        <div class="col-md-3 mb-2 mb-md-0 ">
+        </div>
+  
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
+          <li><a href="./home-admin" id="homeHeaderEmployee" class=" nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
+          <li><a href="./service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
+          <li><a href="#" id="userHeaderEmployee" class="nav-link px-3 text-header fontAll ">ลูกค้า</a> 
+            <ul class="sub">
+              <li><a href="./queuebooking-admin" style="text-decoration:none" >ตารางการจองคิว</a></li>
+              <li><a href="./pay-admin" style="text-decoration:none">การชำระเงิน</a></li>
+            </ul>
+          </li>
+          <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll ">พนักงาน</a>
+            <ul class="sub">
+              <li><a href="./employeetable-admin" style="text-decoration:none ">ตารางพนักงาน</a></li>
+              <li><a href="./employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
+            </ul>
+          </li>
+          <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll active">stock</a></li>
+        </ul>
+  
+        <div class="nav me-3 text-end">
+          <div><a href="./employeeEdit-admin" class=" nav-link fontAll text-header">Admin, </a></div>
+          <div><a href="./logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
+        </div>
+          
+      </header>
+    </section>
+    
+    <div class="grid-container">
+      <div class="item1">
+        <div>Stock</div>
+        <div>สินค้า</div>
+      </div>
+      
+      <div class="item2">
+        <form class="form1">
+          <input type="text" class="input1" placeholder="ค้นหา">
+            <button type="button" class="button2">
+            <i class="fa-solid fa-magnifying-glass fa-beat" style="color: #d9d9d9;"></i>
+            </button>
+        </form>
+        <!-- Button trigger modal -->
+        <div id="create-service">
+          <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">เพิ่มสินค้าใหม่</a>
+        </div>
+
+        <div class="textst">ทั้งหมด</div>
+        <div class="line-1"></div>
+
+        <div id="infoTable">
+          <div class="container">
+            <table >
+              <tr class="sectionTable">
+                <td class="fontAll ">#</td>
+                <td class="fontAll ">รหัส</td>
+                <td class="fontAll ">ชื่อสินค้า</td>
+                <td class="fontAll ">ราคาซื้อ</td>
+                <td class="fontAll ">คงเหลือ</td>
+                <td></td>
+              </tr>
+
+              <% stockList.forEach(stocks =>{ %>
+              <tr class="infoTable">
+                <td class="fontAll ">1</td>
+                <td class="fontAll "><%=stocks.idproduct%></td>
+                <td class="fontAll "><%=stocks.name_product%></td>
+                <td class="fontAll "><%=stocks.price_product%></td>
+                <td class="fontAll ">30</td>
+                <td>
+                    <a href="#" class="nav-link button" >
+                      <i class="fa-solid fa-ellipsis-vertical" style="color: #5f3112; margin-right: 10px;"></i>
+                    </a>
+                </td>
+              </tr>
+              <%}) %>  
+            </table>
+          </div>
+      </div>
+          
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">รายละเอียดสินค้า</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+              <form action="" method="POST">
+                <div class="modal-body">
+                  <div class="inbody">
+                    <div class='row'>
+                      <label class="textque">รหัสสินค้า</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      name="idproduct" 
+                      required>
+                    </div>
+
+                    <div class='row'>
+                      <label class="textque">ชื่อสินค้า</label>
+                      <input 
+                      type="text" 
+                      placeholder="ชื่อสินค้า" 
+                      class="form-control" 
+                      name="name_product" 
+                      required>
+                    </div>
+
+                    <div class='row'>
+                      <label class="textque">ราคาซื้อ</label>
+                      <input 
+                      type="number" 
+                      placeholder="ราคา" 
+                      class="form-control" 
+                      name="price_product" 
+                      required>
+                    </div>
+
+                  </div>
+                </div>
+
+                  <div class="modal-footer">
+                    <button type="submit" class="buttonbt">บันทึก</button>
+                    <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+      <!-- JavaScript-->
+      <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+        crossorigin="anonymous">
+      </script>
+      <script 
+        src="./js/service-emp.js" 
+        charset="utf-8">
+      </script> 
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/admin.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  </head>
+<body>
+    
+    <!-- Header หลัก-->
+    <section id="header-employee">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
+          <div class="col-md-3 mb-2 mb-md-0 ">
+          </div>
+    
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
+            <li><a href="./home-admin" id="homeHeaderEmployee" class="active nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
+            <li><a href="./service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
+            <li><a href="#" id="userHeaderEmployee" class="nav-link px-3 text-header fontAll ">ลูกค้า</a> 
+              <ul class="sub">
+                <li><a href="./queuebooking-admin" style="text-decoration:none ">ตารางการจองคิว</a></li>
+                <li><a href="./pay-admin" style="text-decoration:none ">การชำระเงิน</a></li>
+              </ul>
+            </li>
+            <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll ">พนักงาน</a>
+              <ul class="sub">
+                <li><a href="./employeetable-admin" style="text-decoration:none ">ตารางพนักงาน</a></li>
+                <li><a href="./employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
+              </ul>
+            </li>
+            <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">stock</a></li>
+          </ul>
+    
+          <% if (loggedIn) { %>
+            <div class="nav me-3 text-end">
+              <div><a href="./employeeEdit-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
+              <div><a href="./logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
+            </div>
+            <% } %>
+            
+        </header>
+      </section>
+
+      <!--Header แก้ไขหน้าติดต่อของลูกค้า--> 
+      <section id="part-emp-cus">
+        <div id="frame-emp-cus">
+        <div id="frame-in-customer" >
+          <form action="">
+            <div class="container">
+              
+              <section id="header-emp-cus">
+                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
+                  <div class="col-md-3 mb-2 mb-md-0 ">
+                    <div id="logo-header" class="fontlogo logomore "> <b></b></div> 
+                  </div>
+    
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
+                  <li><a href="./home-admin" id="homeHeader" class="nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
+                  <li><a href="./homeContact-admin" id="contactHeader" class="active nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
+                </ul>
+    
+                </header>
+              </section>
+
+                <!--ภาพจอง แก้ไขหน้าของลูกค้า-->
+              <section id="imgBooking-emp-cus">
+                <div class="imgBooking bg fontAll">
+                    <h3 class="text fontAll">ติดต่อ</h3>
+                    
+                    <div class="map">
+
+                    </div>
+
+                    <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                    <div class="inputre">
+                        <input type="text" 
+                        class="form-control" 
+                        name="adress"
+                        placeholder="พิมพ์ที่อยู่">
+                    </div>
+                
+                    <div class="textad">เบอร์โทรติดต่อ</div>
+                    <div class="inputre">
+                          <input type="text" 
+                          class="form-control" 
+                          name="phoneadd"
+                          placeholder="พิมพ์เบอร์โทรศัพท์">
+                    </div>
+                </div>
+              </section>
+            </div>
+            
+            <div id="frame-emp-cus">
+              <div id="background-submit">
+                <div id="button-submit">
+                  <button class="fontAll " type="submit">บันทึกข้อมูล</button>
+                  
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        </div>
+      </section>
+    
+    <!-- JavaScript-->
+    <script 
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
+    </script>
+    <script 
+      src="./js/index.js" 
+      charset="utf-8">
+    </script> 
+</body>
+</html>
