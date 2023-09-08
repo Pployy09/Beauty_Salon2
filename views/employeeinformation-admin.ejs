@@ -51,7 +51,7 @@
             <div><a href="./employeeEdit-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
             <div><a href="./logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
           </div>
-          <% } %>
+        <% } %>
           
       </header>
     </section>
@@ -59,9 +59,10 @@
         <!-- Button trigger modal -->
         <div><h1 class=" headtext headtext1">ข้อมูลของพนักงาน</h1></div>
         <div class="line-4"></div>
-
+        
         <div id="infoTable">
           <div class="container">
+            
             <table >
               <tr class="sectionTable">
                 <td class="fontAll ">ลำดับ</td>
@@ -71,35 +72,32 @@
                 <td class="fontAll ">เบอร์โทรศัพท์</td>
                 <td></td>
               </tr> 
-              <tr class="infoTable">
-                <td class="fontAll ">1</td>
-                <td class="fontAll ">พนักงาน A</td>
-                <td class="fontAll ">AAA</td>
-                <td class="fontAll ">A</td>
-                <td class="fontAll ">09x-xxx-xxxx</td>
-                <td>
-                  <a href="#" class="nav-link button" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                    </svg>
-                    </a>
-                </td>
-              </tr>
-              <tr class="infoTable">
-                <td class="fontAll ">2</td>
-                <td class="fontAll ">พนักงาน B</td>
-                <td class="fontAll ">BBB</td>
-                <td class="fontAll ">B</td>
-                <td class="fontAll ">09x-xxx-xxxx</td>
-                <td>
-                  <a href="#" class="nav-link button text-center" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                    </svg>
-                    </a>
-                </td>
-              </tr>
-            </table>
+              <% empList.forEach((emp,element) =>{ %>
+                        <tr class="infoTable">
+                          
+                          <td class="fontAll "><%= element+1 %></td>
+                          <td class="fontAll "><%= emp.firstname  %></td>
+                          <td class="fontAll "><%= emp.lastname %></td>
+                          <td class="fontAll "><%= emp.nickname %></td>
+                          <td class="fontAll "><%= emp.phonenum %></td>
+                          <td>
+                            <a href="#" class="nav-link button" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                              </svg>
+                              </a>
+                          </td>
+                         
+                        </tr>
+                        
+                   
+                <% }) %>  
+                
+             
+              </table>
+              
+              
+       
     
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

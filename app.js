@@ -11,6 +11,7 @@ const stockController = require('./controllers/stockController');
 const registerController = require('./controllers/registerController');
 const loginUserController = require('./controllers/loginUserController');
 const showUserController = require('./controllers/showUserController')
+const employeeinformationAdmin = require('./controllers/employeeInfoController');
 
 mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true})
@@ -53,7 +54,7 @@ app.get('/homeContact-admin',showUserController.showHomeContact);
 app.get('/queuebooking-admin',showUserController.showQueuebook);
 app.get('/pay-admin',showUserController.showPay);
 app.get('/employeetable-admin',showUserController.showEmpTable);
-app.get('/employeeinformation-admin',showUserController.showEmpInfo);
+
 app.get('/employeeEdit-admin',showUserController.showEmpEdit);
 
 app.get('/stock-admin',stockController.showStock);
@@ -61,6 +62,8 @@ app.get('/editStock-admin/:id',stockController.editStock);
 
 app.get('/service-admin',serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
+
+app.get('/employeeinformation-admin',employeeinformationAdmin.showInfoEmployee);
 
 app.post('/user/login',loginUserController.loginUser);
 app.post('/admin/login',loginUserController.loginAdmin);

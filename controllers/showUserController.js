@@ -15,10 +15,7 @@ exports.showEmpEdit = async(req, res) => {
     res.render('employeeEdit-admin',{UserData})
 }
 
-exports.showEmpInfo = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('employeeinformation-admin',{UserData})
-}
+
 
 exports.showEmpTable = async(req, res) => {
     let UserData = await User.findById(req.session.userId)
