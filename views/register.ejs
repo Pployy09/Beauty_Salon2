@@ -9,10 +9,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/validation.css">
 
      <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,77 +48,76 @@
     </header>
   <body style="background-color: #FBE1C5;">
 
-    <div class="d-flex vh-100"> 
-        <div class="login1" >
-          <div class="icon">
-            <i class="fa-solid fa-registered fa-4x"></i>
-          </div>
-          <form action="/user/register" method="POST">
-
-              <% if(errors != null && errors.length > 0) { %>
-                <% for(let i = 0; i < errors.length; i++) { %>
-                    <p class="alert alert-danger">
-                        <%= errors[i] %>
-                    </p>
-                <% } %>
-            <% } %>
-
-                <div class="inputre">
-                  <input type="text" 
-                  class="form-control" 
-                  name="phonenum"
-                  value="<%= phonenum %>"
-                  placeholder="เบอร์โทรศัพท์">
+    <div class="edit container">
+        <div style="text-align: center; margin-bottom: 40px; ">
+          <i class="fa-solid fa-registered fa-4x" style="color: #f19b9d;"></i>
+        </div>
+      <form action="/user/register" method="POST">
+      
+        <div class="conto">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="firstname"
+                    placeholder="ชื่อ"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อ')" 
+                      oninput="this.setCustomValidity('')">
                 </div>
-
-                <div class="inputre">
-                  <input type="text" 
-                  class="form-control" 
-                  name="firstname" 
-                  value="<%= firstname %>"
-                  placeholder="ชื่อ">
+                <div class="form-group col-md-6">
+                    <input type="text" 
+                    class="form-control" 
+                    name="lastname"
+                    placeholder="นามสกุล"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกนามสกุล')"
+                      oninput="this.setCustomValidity('')">
                 </div>
+            </div>
 
-                 <div class="inputre">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" 
+                    class="form-control" 
+                    name="nickname"
+                    placeholder="ชื่อเล่น"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อเล่น')"
+                      oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" 
+                    class="form-control" 
+                    name="phonenum"
+                    placeholder="เบอร์โทรศัพท์"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกเบอร์โทรศัพท์')"
+                      oninput="this.setCustomValidity('')">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
                     <input type="text" 
                     class="form-control" 
                     name="username"
-                    value="<%= username %>"
-                    placeholder="ชื่อผู้ใช้">
+                    placeholder="ชื่อผู้ใช้"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อผู้ใช้')"
+                      oninput="this.setCustomValidity('')">
                 </div>
+                <div class="form-group col-md-6">
+                    <input type="password" 
+                    class="form-control"
+                    name= "password" 
+                    id= "password" 
+                    placeholder="รหัสผ่าน"
+                    required oninvalid="this.setCustomValidity('กรุณากรอกรหัสผ่าน')"
+                      oninput="this.setCustomValidity('')">
+                </div>
+            </div>
 
-                <div class="inputre">
-                  <input type="text" 
-                  class="form-control" 
-                  name="lastname"
-                  value="<%= lastname %>"
-                  placeholder="นามสกุล">
-                </div>
-
-               <div class="inputre">
-                  <input type="password" 
-                  class="form-control"
-                  name= "password"
-                  value= "<%= password %>" 
-                  id= "password" 
-                  placeholder="รหัสผ่าน">
-                </div>
-
-                <div class="inputre">
-                  <input type="text" 
-                  class="form-control" 
-                  name="nickname"
-                  value="<%= nickname %>"
-                  placeholder="ชื่อเล่น">
-                </div>
-
-                <div class="text-center">
-                  <button type="submit"class="buttonre">สมัครสมาชิก</button>
-                </div>
-                
-              </form>
+              <button type="submit"class="buttonre">สมัครสมาชิก</button>
+            
+          </form>
         </div>
-    </div>
 
     <!-- JavaScript-->
     <script 

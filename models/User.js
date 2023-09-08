@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: [true, 'Please provide username'],
-         unique: true
+        unique: true
     },
     password: {
         type: String,
@@ -42,6 +42,7 @@ UserSchema.pre('save', function(next) {
     }).catch(error => {
         console.error(error)
     })
+    
 })
 
 const User = mongoose.model('User', UserSchema)

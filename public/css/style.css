@@ -49,7 +49,6 @@ b{
     background-color: #E9A8A1;
     margin-left: 140px;
     margin-top: 20px;
-    
 }
 
 .bookingNow:hover{
@@ -62,17 +61,14 @@ b{
     padding: .5rem 1.5rem;
     border-radius: .5rem;
     margin-right: 5px;
-   
 }
 
 .nav .heaDer:hover{
     color: white;
     background-color: #FBE1C5;  
-   
 }
 .nav .heaDer.active{
     background-color: #FBE1C5;
-   
 }
 
 .promotion {
@@ -202,7 +198,6 @@ b{
  #booking .container form .bookingNow2{
     display: flex;
     justify-content: center;
-   
  }
 
  #booking .container form button{
@@ -212,9 +207,7 @@ b{
     margin-top: 40px;
     width: 150px;
     border-radius: .5rem;
-   
 }
-
 
 /* footer */
 #footer-store {
@@ -224,13 +217,11 @@ b{
 
 #footer-store .container{
     height: 300px;
-     
 }
 
 #footer-store .container .logoFooter{
     display: flex;
     justify-content: center;
-     
 }
 
 #footer-store .container .logoFooter .logo-footer{
@@ -241,13 +232,9 @@ b{
 
 #footer-store .container .text-footer p{
     font-size: 20px;
-   
 }
 
-
-
 /*Ploy*/
-
 body{
     font-family: 'Noto Sans Thai', sans-serif;
 }
@@ -295,6 +282,7 @@ body{
     text-align: center;
     font-size: 16px;
     margin: 7px 5px;
+    margin-left: 36%;
     opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
@@ -322,14 +310,11 @@ body{
 
   .forrgetpass{
     text-align: right;
-    margin-right: 200;
+    margin-right: 245;
   }
 
   .regis{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-left: 38%;
     margin-bottom: 10;
     margin-top: 10;
   }
@@ -337,3 +322,103 @@ body{
   .textsystem{
     margin-top: 25;
   }
+
+  /* สมัคร */
+.edit{
+    margin-top: 75px;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    border-radius: 70px;
+    width: 1000px;
+    height: 500px;
+    background-color: #FBF2E9;
+  }
+
+.conto {
+    margin-left: 100px;
+}
+
+.icon {
+    float: right;
+}
+
+.inputedit {
+    width: 50%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-left: 100px;
+    padding-left: 30px;
+    background-color: #ffff;
+    color: #5F3122;
+  }
+
+.coinput {
+    margin-bottom: 19px;
+  }
+
+.line-4-1 {
+    margin-left: 43px;
+    height: 5px;
+    width: 300px;
+    border: 0;
+    background: #5F3122;
+  }
+
+.textedit{
+    margin-left: 110px;
+    color: #5F3122;
+    font-size: 28px;
+  }
+
+.histo {
+    margin-left: 220px;
+    background-color: #FBF2E9;
+    width: 70%;
+    height: 110px;
+    margin-bottom: 20px;
+  }
+
+ .chang-services-emp-cuss{
+    display: flex;
+    justify-content: left;
+}
+
+.textinfo{
+    margin-left: 70px;
+    color: #5F3122;
+    font-size: 24px;
+}
+.flex-container {
+    margin-left: 70px;
+    display: flex;
+  }
+  
+.flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+    width: 70px;
+    height: 40px;
+}
+
+.form-control {
+    border-radius: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding: auto;
+    margin-bottom: 10px;
+    width: 310px;
+    height: 50px;
+}
+
+.textUser {
+    font-size: 20px;
+    font-weight: bold; 
+    color: #F19B9D;
+    text-align: center;
+    margin: 20px;
+    font-size: 24px;
+}
+  

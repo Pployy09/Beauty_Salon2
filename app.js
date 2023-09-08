@@ -55,19 +55,25 @@ app.get('/pay-admin',showUserController.showPay);
 app.get('/employeetable-admin',showUserController.showEmpTable);
 app.get('/employeeinformation-admin',showUserController.showEmpInfo);
 app.get('/employeeEdit-admin',showUserController.showEmpEdit);
+
 app.get('/stock-admin',stockController.showStock);
+app.get('/editStock-admin/:id',stockController.editStock);
+
 app.get('/service-admin',serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
 
 app.post('/user/login',loginUserController.loginUser);
 app.post('/admin/login',loginUserController.loginAdmin);
+
 app.post('/user/register',loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 
 app.put('/editService-admin/:id',serviceController.editPutService);
+app.put('/editStock-admin/:id',stockController.editPutStock);
 
 app.delete('/editService-admin/:id',serviceController.deleteService);
+app.delete('/editStock-admin/:id',stockController.deleteStock);
 
 
 app.listen(4000, () => {
