@@ -45,10 +45,6 @@ exports.showQueuebook = async(req, res) => {
     res.render('queuebooking-admin',{UserData})
 }
 
-exports.showService = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('service-admin',{UserData})
-}
 
 exports.showStock = async(req, res) => {
     let UserData = await User.findById(req.session.userId)

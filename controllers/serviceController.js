@@ -1,9 +1,14 @@
 const Service = require('../models/Service');
+const User = require('../models/User')
 
 //show service
 exports.showService = async (req,res) =>{
+    const UserData = await User.findById(req.session.userId)
     await Service.find().then(function(services){
-         res.render("service-admin",{ serviceList:services});
+         res.render("service-admin",{ 
+            serviceList:services,
+            UserData : UserData,
+        });
      })
 };
 
