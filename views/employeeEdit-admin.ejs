@@ -62,106 +62,43 @@
     </section>
     
     <div class="edit container">
-      <div style="text-align: center;">
-        <i class="fa-solid fa-user-astronaut fa-4x" style="color: #f19b9d;"></i>
-      </div>
-      
-      <div class="textUser"> <%=UserData.username%> 
-        <a href="#exampleModal" data-bs-toggle="modal"> 
-          <i class="fa-solid fa-pen-to-square " style="color: #f19b9d;"></i>
-        </a>
-      </div>
+        <div style="text-align: center;">
+          <i class="fa-solid fa-user-astronaut fa-4x" style="color: #f19b9d;"></i>
+        </div>
+        
+        <div class="textUser"> <%=UserData.username%> 
+          <a href="./editInformation-admin"> 
+            <i class="fa-solid fa-pen-to-square " style="color: #f19b9d;"></i>
+          </a>
+        </div>
 
       <div class="conto">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label class="textque"> ชื่อ </label>
-          <div class="form-control"> <%=UserData.firstname%> </div>
-        </div>
-        <div class="form-group col-md-6">
-          <label class="textque"> นามสกุล </label>
-          <div class="form-control"> <%=UserData.lastname%> </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label class="textque"> ชื่อเล่น </label>
-          <div class="form-control"> <%=UserData.nickname%> </div>
-        </div>
-        <div class="form-group col-md-6">
-          <label class="textque"> โทรศัพท์ </label>
-          <div class="form-control"> <%=UserData.phonenum%> </div>
-        </div>
-      </div>
-    </div>
-        
-        
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">แก้ไขข้อมูล</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="textque"> ชื่อ </label>
+              <div class="form-control"> <%=UserData.firstname%> </div>
             </div>
 
-            <div class="modal-body">
-              <form action="" method="POST">
-                <div class="inbody">
-                  <div class='row'>
-                    <label class="textque">ชื่อ</label>
-                    <input 
-                    type="text"  
-                    class="form-control" 
-                    name="firstname"
-                    placeholder="<%=UserData.firstname%>" 
-                    required>
-                  </div>
-
-                  <div class='row'>
-                    <label class="textque">นามสกุล</label>
-                    <input 
-                    type="text"
-                    class="form-control" 
-                    name="lastname"
-                    placeholder="<%=UserData.lastname%>" 
-                    required>
-                  </div>
-
-                  <div class='row'>
-                    <label class="textque">ชื่อเล่น</label>
-                    <input 
-                    type="text"
-                    class="form-control" 
-                    name="nickname" 
-                    placeholder="<%=UserData.nickname%>"
-                    required>
-                  </div>
-
-                  <div class='row'>
-                    <label class="textque">เบอร์โทรศัพท์</label>
-                    <input 
-                    type="tel" 
-                    class="form-control" 
-                    name="phonenum" 
-                    placeholder="<%=UserData.phonenum%>"
-                    required>
-                  </div>
-
-                </div>
+            <div class="form-group col-md-6">
+              <label class="textque"> นามสกุล </label>
+              <div class="form-control"> <%=UserData.lastname%> </div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="buttonbt">บันทึก</button>
-              <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
-            </form>
-            </div>
-
           </div>
-        </div>
-      </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="textque"> ชื่อเล่น </label>
+              <div class="form-control"> <%=UserData.nickname%> </div>
+            </div>
 
-        </div>
+            <div class="form-group col-md-6">
+              <label class="textque"> โทรศัพท์ </label>
+              <div class="form-control"> <%=UserData.phonenum%> </div>
+            </div>
+          </div>
+
+      </div>
     </div>
 
         <div class="container">
@@ -186,6 +123,6 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
         crossorigin="anonymous">
       </script>
-
+      
 </body>
 </html>

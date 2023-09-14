@@ -32,8 +32,9 @@ exports.addService = async (req,res) =>{
 //edit service 
 exports.editService = async (req,res) =>{
     try{
+        UserData = await User.findById(req.session.userId)
         const  service = await  Service.findOne({ _id : req.params.id});
-        res.render('editService-admin',{ service : service });
+        res.render('editService-admin',{ service : service ,UserData});
     }catch(error){
         console.log(error);
     }

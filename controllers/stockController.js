@@ -1,7 +1,7 @@
 const Stock = require('../models/Stock');
 const User = require('../models/User')
 
-//show service
+//show stock
 exports.showStock = async (req,res) =>{
     const  UserData = await User.findById(req.session.userId)
     await   Stock.find().then(function(stocks){
@@ -12,7 +12,7 @@ exports.showStock = async (req,res) =>{
      })
 };
 
-//add service 
+//add stock 
 exports.addStock = async (req,res) =>{ 
     try{
        const stocks = await new Stock({
@@ -29,23 +29,24 @@ exports.addStock = async (req,res) =>{
     }
 };
 
-//edit service 
+//edit stock
 exports.editStock = async (req,res) =>{
     try{
+        UserData = await User.findById(req.session.userId)
         const  stock = await  Stock.findOne({ _id : req.params.id});
-        res.render('editStock-admin',{ stock : stock });
+        res.render('editStock-admin',{ stock : stock ,UserData});
     }catch(error){
         console.log(error);
     }
 };
 
-//update service 
+//update stock 
 exports.editPutStock = async (req,res) =>{
     try{
         await Stock.findByIdAndUpdate(req.params.id,{
-            idproduct : req.body.idproduct,
-            name_product : req.body.name_product,
-            price_product :  req.body.price_product,
+            idproduct     : req.body.idproduct,
+            name_product  : req.body.name_product,
+            price_product : req.body.price_product,
         })
     
         res.redirect('/stock-admin');
@@ -55,7 +56,7 @@ exports.editPutStock = async (req,res) =>{
     }
 };
 
-//delete service
+//delete stock
 exports.deleteStock = async (req,res) =>{
     try{
         await Stock.deleteOne({ _id:req.params.id});

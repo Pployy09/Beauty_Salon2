@@ -360,7 +360,15 @@ body{
 .line-4-1 {
     margin-left: 43px;
     height: 5px;
-    width: 300px;
+    width: 360px;
+    border: 0;
+    background: #5F3122;
+  }
+
+  .line-4-2 {
+    margin-left: 135px;
+    height: 5px;
+    width: 360px;
     border: 0;
     background: #5F3122;
   }
@@ -371,6 +379,11 @@ body{
     font-size: 28px;
   }
 
+  .textedit2{
+    margin-left: 190px;
+    color: #5F3122;
+    font-size: 28px;
+  }
 .histo {
     margin-left: 220px;
     background-color: #FBF2E9;
@@ -422,3 +435,62 @@ body{
     font-size: 24px;
 }
   
+/*แก้ไขข้อมูลลูกค้า*/
+.edituser{
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    border-radius: 70px;
+    width: 1000px;
+    height: 450px;
+    background-color: #FBF2E9;
+  }
+
+  .conto {
+    margin-left: 100px;
+}
+
+.form-control {
+    border-radius: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: 350px;
+    height: 50px;
+}
+
+.ebuttoncan {
+    border:5px solid #f19b9d;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 11px 27px;
+    font-size: 16px;
+    margin: 7px 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.ebuttonbt {
+    background-color: #f19b9d;
+    border: none; 
+    border-radius: 15px;
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 7px 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .ebuttonre:hover {opacity: 1}
+
+  .eco {
+    margin-left: 30%;
+    margin-top: 2%;
+}
