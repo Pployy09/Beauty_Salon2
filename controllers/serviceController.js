@@ -32,8 +32,12 @@ exports.addService = async (req,res) =>{
 //edit service 
 exports.editService = async (req,res) =>{
     try{
+        const UserData = await User.findById(req.session.userId)
         const  service = await  Service.findOne({ _id : req.params.id});
-        res.render('editService-admin',{ service : service });
+        res.render('editService-admin',{ 
+            service : service,
+            UserData : UserData,
+        });
     }catch(error){
         console.log(error);
     }
@@ -47,7 +51,6 @@ exports.editPutService = async (req,res) =>{
             service_price : req.body.service_price,
             service_time :  req.body.service_time,
         })
-    
         res.redirect('/service-admin');
 
     }catch(error){

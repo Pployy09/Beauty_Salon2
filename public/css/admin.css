@@ -790,7 +790,9 @@ ul.primary li a {
 #infoTable .container .infoTable a{
     color: #F19B9D;
 }
-
+#infoTable .container .infoTable button{
+    color: #F19B9D;
+}
 /*หน้า pay ejs */
 
 /*หน้า editService ejs */
@@ -830,6 +832,7 @@ ul.primary li a {
 .editSe label{
     font-size: 20px;
 }
+
 
 .modal-footer .container{
     display: flex;
@@ -873,6 +876,26 @@ ul.primary li a {
 }
 .colorDeleteService{
     color: #F19B9D;
+}
+
+/*หน้า view-employeeinfo-adim ejs */
+.showInfoEmp{
+    display: flex;
+    justify-content:center;
+}
+
+.showInfoEmp .showEmp .fontInfoEmpTitle{
+    text-align: left;
+    font-size: 30px;
+    color: #5F3122;
+    
+}
+
+.showInfoEmp .showEmp .fontInfoEmp{
+    font-size: 30px;
+    color: #F19B9D;
+    text-align: left;
+    
 }
 
 

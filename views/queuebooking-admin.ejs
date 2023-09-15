@@ -147,8 +147,8 @@
 
                   <div class='row'>
                     <label class="textque">เลือกวันที่</label>
-                    <input 
-                    type="date" 
+                    <input id="dateBooking"
+                    type="date" min="0000-00-00" max="0000-00-00"
                     placeholder="วว/ดด/ปปปป" 
                     class="form-control" 
                     name="date_service" 
@@ -157,12 +157,12 @@
 
                   <div class='row'>
                     <label class="textque">เลือกบริการ</label>
-                    <input 
-                    type="text" 
-                    placeholder="บริการ" 
-                    class="form-control" 
-                    name="name_service" 
-                    required>
+                    <select name="chooseServiceAdmin" id="">
+                      <option value="" selected disabled hidden></option>
+                      <% ServiceDataList.forEach(serviceData =>{ %> 
+                        <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> </option>
+                      <% }) %> 
+                  </select>
                   </div>
 
                   <div class='row'>
@@ -177,12 +177,12 @@
 
                   <div class='row'>
                     <label class="textque"">เลือกพนักงาน</label>
-                    <input 
-                    type="text" 
-                    placeholder="พนักงาน" 
-                    class="form-control" 
-                    name="name-epy" 
-                    required>
+                    <select name="edu" id="">
+                      <option value="" selected disabled hidden></option>
+                      <% empList.forEach(emp =>{ %> 
+                        <option value= "<%= emp.firstname %>" <%= emp.lastname %>> <%= emp.firstname %>  <%= emp.lastname %></option>
+                      <% }) %> 
+                  </select>
                   </div>
 
                 </div>
@@ -204,7 +204,7 @@
         crossorigin="anonymous">
       </script>
       <script 
-        src="./js/service-emp.js" 
+        src="./js/queuebooking-admin.js" 
         charset="utf-8">
       </script> 
 

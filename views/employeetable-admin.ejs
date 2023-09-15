@@ -58,7 +58,7 @@
     
         <!-- Button trigger modal -->
         <div id="create-service">
-          <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">เพิ่มตารางพนักงาน</a>
+          <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">xxxx</a>
         </div>
 
         <div><h1 class="headtext">ตารางการของพนักงาน</h1></div>
@@ -117,46 +117,47 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มตารางพนักงาน</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">xxxxx</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <form action="" method="POST">
               <div class="modal-body">
                 <div class="inbody">
                   <div class='row'>
                     <label class="textque">ชื่อพนักงาน</label>
-                    <input 
-                    type="text" 
-                    placeholder="ชื่อลูกค้า" 
-                    class="form-control" 
-                    name="firstname" 
-                    required>
-                  </div>
 
+                      <select name="edu" id="">
+                          <% empList.forEach(emp =>{ %> 
+                            <option value= "<%= emp.firstname %>" <%= emp.lastname %>> <%= emp.firstname %>  <%= emp.lastname %></option>
+                          <% }) %> 
+                      </select>
+                   
+                  </div>
                   <div class='row'>
                     <label class="textque">เลือกวันที่</label>
-                    <input 
-                    type="date" 
+                    <input id="dateEmpTable"
+                    type="date" min="0000-00-00" max="0000-00-00"
                     placeholder="วว/ดด/ปปปป" 
                     class="form-control" 
                     name="date_service" 
-                    required>
+                    required >
                   </div>
 
                   <div class='row'>
                     <label class="textque">เลือกบริการ</label>
-                    <input 
-                    type="text" 
-                    placeholder="บริการ" 
-                    class="form-control" 
-                    name="name_service" 
-                    required>
+
+                    <select name="edu" id="">
+                      <% ServiceDataList.forEach(serviceData =>{ %> 
+                        <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> </option>
+                      <% }) %> 
+                  </select>
                   </div>
 
                   <div class='row'>
                     <label class="textque">เลือกเวลา</label>
                     <input 
-                    type="time" 
+                    type="time" min="10:00" max="22:00"
                     placeholder="เวลา" 
                     class="form-control" 
                     name="time_service" 
@@ -167,7 +168,7 @@
               </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="buttonbt">บันทึก</button>
+                    <button type="submit" class="buttonbt">บันทึก</button>
                     <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
                   </div>
             </form>
@@ -182,7 +183,7 @@
         crossorigin="anonymous">
       </script>
       <script 
-        src="./js/service-emp.js" 
+        src="/js/employeetable-admin.js" 
         charset="utf-8">
       </script> 
 

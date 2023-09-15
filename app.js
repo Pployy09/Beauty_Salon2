@@ -12,6 +12,10 @@ const registerController = require('./controllers/registerController');
 const loginUserController = require('./controllers/loginUserController');
 const showUserController = require('./controllers/showUserController')
 const employeeinformationAdmin = require('./controllers/employeeInfoController');
+const employeeTableController = require('./controllers/employeeTableController');
+const HomeAdminController = require('./controllers/HomeAdminController');
+const QueuebookingAdminController = require('./controllers/QueuebookingAdminController');
+const BookingUserController = require('./controllers/booking-userController');
 
 mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true})
@@ -46,14 +50,14 @@ app.get('/logout',(req,res) => {
 //user
 app.get('/register',registerController);
 app.get('/home-user',showUserController.showHome);
-app.get('/booking-user',showUserController.showBook);
+app.get('/booking-user',BookingUserController.showBookingUser);
 //admin
-app.get('/home-admin',showUserController.showHomeAdmin);
+app.get('/home-admin',HomeAdminController.showData);
 app.get('/homeContact-admin',showUserController.showHomeContact);
 
-app.get('/queuebooking-admin',showUserController.showQueuebook);
+app.get('/queuebooking-admin',QueuebookingAdminController.showQueuebook);
 app.get('/pay-admin',showUserController.showPay);
-app.get('/employeetable-admin',showUserController.showEmpTable);
+app.get('/employeetable-admin',employeeTableController.showInfoEmpTable);
 
 app.get('/employeeEdit-admin',showUserController.showEmpEdit);
 
@@ -64,18 +68,24 @@ app.get('/service-admin',serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
 
 app.get('/employeeinformation-admin',employeeinformationAdmin.showInfoEmployee);
+app.get('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 
 app.post('/user/login',loginUserController.loginUser);
 app.post('/admin/login',loginUserController.loginAdmin);
+
+app.post('/home-admin',HomeAdminController.addData);
 
 app.post('/user/register',loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 
+
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
+app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 
 app.delete('/editService-admin/:id',serviceController.deleteService);
+app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);
 app.delete('/editStock-admin/:id',stockController.deleteStock);
 
 

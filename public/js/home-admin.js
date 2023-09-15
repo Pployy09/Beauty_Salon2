@@ -84,7 +84,7 @@ inputDescri4.oninput = (event) =>{
 }
 
 var Description5 = document.getElementById("Description5");
-var inputDescri5 = document.getElementById("input-descri5");
+var inputDescri5 = document.getElementById("input-time-open");
 inputDescri5.oninput = (event) =>{
     Description5.textContent = event.target.value;
 }
