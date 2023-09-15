@@ -561,7 +561,7 @@ ul.primary li a {
     position: absolute;
     z-index: 200;
     box-shadow: 2px 2px 0 #BEBEBE;
-    width: 20%;
+    width: auto;
     display:none;
   }
   
@@ -877,7 +877,6 @@ ul.primary li a {
 .colorDeleteService{
     color: #F19B9D;
 }
-
 /*หน้า view-employeeinfo-adim ejs */
 .showInfoEmp{
     display: flex;
@@ -898,8 +897,51 @@ ul.primary li a {
     
 }
 
+/*edit information*/
+.ebuttoncan {
+    border:5px solid #f19b9d;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 11px 27px;
+    font-size: 16px;
+    margin: 7px 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
+.ebuttonbt {
+    background-color: #f19b9d;
+    border: none; 
+    border-radius: 15px;
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 7px 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .ebuttonre:hover {opacity: 1}
 
+.eco {
+    margin-left: 30%;
+    margin-top: 2%;
+}
 
+.eedit{
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    border-radius: 70px;
+    width: 1000px;
+    height: 530px;
+    background-color: #FBF2E9;
+  }
 
 

@@ -12,6 +12,8 @@ const registerController = require('./controllers/registerController');
 const loginUserController = require('./controllers/loginUserController');
 const showUserController = require('./controllers/showUserController')
 const employeeinformationAdmin = require('./controllers/employeeInfoController');
+const editinformationController = require('./controllers/editinformationController')
+const editinformationUserController = require('./controllers/editinformationUserController')
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
 const QueuebookingAdminController = require('./controllers/QueuebookingAdminController');
@@ -42,15 +44,25 @@ app.get('/login-user',(req,res) => {
 app.get('/login-admin',(req,res) => {
     res.render('login-admin')
 })
+
 app.get('/logout',(req,res) => {
     req.session.destroy (() => {
         res.redirect('/')
     })
 })
+
 //user
 app.get('/register',registerController);
 app.get('/home-user',showUserController.showHome);
+
+app.get('/information-user',showUserController.showEdits);
 app.get('/booking-user',BookingUserController.showBookingUser);
+
+app.get('/editInformation-user',showUserController.showEditUser);
+app.get('/editInformation-user/:id',editinformationUserController.editUser);
+
+app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
+
 //admin
 app.get('/home-admin',HomeAdminController.showData);
 app.get('/homeContact-admin',showUserController.showHomeContact);
@@ -60,6 +72,8 @@ app.get('/pay-admin',showUserController.showPay);
 app.get('/employeetable-admin',employeeTableController.showInfoEmpTable);
 
 app.get('/employeeEdit-admin',showUserController.showEmpEdit);
+app.get('/editInformation-admin',showUserController.showEdit);
+app.get('/editInformation-admin/:id',editinformationController.editAdmin);
 
 app.get('/stock-admin',stockController.showStock);
 app.get('/editStock-admin/:id',stockController.editStock);
@@ -82,6 +96,7 @@ app.post('/service-admin',serviceController.addService);
 
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
+app.put('/editInformation-admin/:id',editinformationController.editPutAdmin);
 app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 
 app.delete('/editService-admin/:id',serviceController.deleteService);

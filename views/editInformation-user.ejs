@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit information User</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+   
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Raleway:wght@200&display=swap" rel="stylesheet">
+      
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="imgBooking">
+<section>
+  <!-- Header -->
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
+    <div class="col-md-3 mb-2 mb-md-0 ">
+      <div class="fontlogo logomore">Beauty Salon .</b></div>
+    </div>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
+      <li><a href="./home-user" id="homeHeader" class=" nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
+      <li><a href="./booking-user" id="bookingHeader"  class="nav-link px-3 heaDer fontAll ">การจองคิว</a></li>
+      <li><a href="#" id="servicesHeader" class="nav-link px-3 heaDer fontAll ">บริการของร้าน</a></li>
+      <li><a href="#" id="contactHeader" class="nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
+    </ul>
+
+    <% if (loggedIn) { %>
+      <div class=" nav me-3 text-end">
+        <div> <a href="./information-user" class=" active nav-link px-3 heaDer fontAll">Hi, <%=UserData.username%></a></div>
+        <div><a href="./logout" class=" btn btn-danger">ออกจากระบบ</a></div>
+      </div>
+      <% } %>
+    
+    </header>
+  </section>
+
+    <div class="edit container">
+        <div style="text-align: center;">
+          <i class="fa-solid fa-user-astronaut fa-4x" style="color: #f19b9d;"></i>
+        </div>
+        
+          <div class="textUser"> แก้ไขข้อมูล : <%=UserData.username%> </div>
+              <form class="form-row" action="/editInformation-user/<%= UserData._id %>?_method=PUT" method="POST">
+              <div class="conto">
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label class="textque"> ชื่อ </label>
+                          <input 
+                          type="text"
+                          class="form-control" 
+                          name="firstname"
+                          placeholder="<%=UserData.firstname%>" 
+                          value="<%=UserData.firstname%>"
+                          required>
+                      </div>
+  
+                      <div class="form-group col-md-6">
+                          <label class="textque">นามสกุล</label>
+                          <input 
+                          type="text"
+                          class="form-control" 
+                          name="lastname"
+                          placeholder="<%=UserData.lastname%>" 
+                          value="<%=UserData.lastname%>"
+                          required>
+                      </div>
+  
+                      <div class="form-group col-md-6">
+                          <label class="textque"> ชื่อเล่น </label>
+                          <input 
+                          type="text"
+                          class="form-control" 
+                          name="nickname"
+                          placeholder="<%=UserData.nickname%>" 
+                          value="<%=UserData.nickname%>"
+                          required>
+                      </div>
+                      
+                      <div class="form-group col-md-6">
+                          <label class="textque"> โทรศัพท์ </label>
+                          <input 
+                          type="text"
+                          class="form-control" 
+                          name="phonenum"
+                          placeholder="<%=UserData.phonenum%>" 
+                          value="<%=UserData.phonenum%>"
+                          required>
+                      </div>
+  
+                  </div>
+  
+                      <div class="eco">
+                          <button type="submit" class="ebuttonbt">บันทึก</button>
+                          <button type="button" class="ebuttoncan" onclick="window.history.go(-1); return false;">ยกเลิก</button> 
+                      </div>
+              </div>
+              </form>
+      </div>
+          
+          <div class="container">
+            <div class="chang-services-emp-cuss">
+              <div id="chang-services">
+                <h1 class="textedit">ตารางการจองคิวของฉัน</h1>
+                <div class="line-4-1"></div>
+              </div>
+  
+              <div id="chang-services">
+                <h1 class="textedit">ประวัติการจองคิว</h1>
+              </div>
+            </div>
+          </div>
+  
+          <div class="histo"></div>
+
+  <!-- JavaScript-->
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
+    crossorigin="anonymous">
+  </script>
+
+</body>
+</html>
