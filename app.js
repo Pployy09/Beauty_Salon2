@@ -67,7 +67,7 @@ app.get('/register',registerController);
 app.get('/home-user',showUserController.showHome);
 
 app.get('/information-user',showUserController.showEdits);
-app.get('/booking-user',showUserController.showBookingUser);
+app.get('/booking-user',BookingUserController.showBookingUser);
 
 app.get('/service-user',serviceUserController.showServiceUser);
 app.get('/contact-user',contactUserController.showContacts);
