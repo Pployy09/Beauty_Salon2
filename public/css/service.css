@@ -1,0 +1,27 @@
+.containers {
+    display: flex;
+    justify-content: center;
+    height: 800px;
+}
+
+.textservice {
+    color: #5F3122;
+    font-size: 50px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.infoTable {
+    font-size: 32px;
+    color: #5F3122;
+    background-color: #FBE1C5;
+    margin: 20px;
+    height:20vh;
+}
+
+hr {
+    border: 2px solid black;
+    margin: 40px 40px;
+    width: 1000px;
+  }

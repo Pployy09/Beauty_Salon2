@@ -10,6 +10,15 @@ const StockSchema = new Schema({
     },
     price_product: {
         type: String,
+    },
+    unit_product: {
+        type: String,
+    },
+    brand_product: {
+        type: String,
+    },
+    detail_product: {
+        type: String,
     }
 })
 

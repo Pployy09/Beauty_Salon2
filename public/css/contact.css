@@ -1,0 +1,63 @@
+.containers {
+    display: flex;
+    justify-content: center;
+    height: 1200px;
+}
+
+.form-controls {
+    border-radius: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: 550px;
+    height: 50px;
+    border: 0;
+}
+.inputre {
+    float:left;
+    width: 50%;
+    border-radius: 2rem;
+    padding-left: 20;
+    margin-top: 40px;
+    margin-left: 50px; 
+}
+
+.textad {
+    float:left;
+    margin-top: 50px ;
+    margin-left: 220px;
+    color: #5F3122;
+    font-size: 25px;
+}
+
+/*+map*/
+.mapform {
+    border-radius: 20px;
+    border: 0;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: 50%;
+    height: 50px;
+    padding: auto;
+    margin-left: 25%;
+    margin-bottom: 45px;
+    margin-top: 10px;
+}
+.formmap {
+    margin-left: 70px;
+}
+ 
+ #map {
+    height: 50%;
+    width: 1000px;
+    margin-left: 15%;
+  }
+ 
+  .textservice {
+    color: #5F3122;
+    font-size: 50px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+}

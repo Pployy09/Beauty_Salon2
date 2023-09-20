@@ -16,9 +16,12 @@ exports.showStock = async (req,res) =>{
 exports.addStock = async (req,res) =>{ 
     try{
        const stocks = await new Stock({
-        idproduct : req.body.idproduct,
-        name_product : req.body.name_product,
-        price_product :  req.body.price_product,
+        idproduct     : req.body.idproduct,
+        name_product  : req.body.name_product,
+        price_product : req.body.price_product,
+        unit_product  : req.body.unit_product,
+        brand_product : req.body.brand_product,
+        detail_product: req.body.detail_product,
         }); 
 
        stocks.save();
@@ -47,6 +50,9 @@ exports.editPutStock = async (req,res) =>{
             idproduct     : req.body.idproduct,
             name_product  : req.body.name_product,
             price_product : req.body.price_product,
+            unit_product  : req.body.unit_product,
+            brand_product : req.body.brand_product,
+            detail_product: req.body.detail_product,
         })
     
         res.redirect('/stock-admin');

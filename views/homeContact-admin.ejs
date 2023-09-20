@@ -59,13 +59,13 @@
       <section id="part-emp-cus">
         <div id="frame-emp-cus">
         <div id="frame-in-customer" >
-          <form action="">
+          <form action="/homeContact-admin/<%=  %>?_method=PUT" method="POST">
             <div class="container">
               
               <section id="header-emp-cus">
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
                   <div class="col-md-3 mb-2 mb-md-0 ">
-                    <div id="logo-header" class="fontlogo logomore "> <b></b></div> 
+                    <div id="logo-header" class="fontlogo logomore "> </div> 
                   </div>
     
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -76,31 +76,69 @@
                 </header>
               </section>
 
-                <!--ภาพจอง แก้ไขหน้าของลูกค้า-->
+                <!--ภาพจอง แก้ไขหน้าcontactของลูกค้า-->
               <section id="imgBooking-emp-cus">
+                
                 <div class="imgBooking bg fontAll">
                     <h3 class="text fontAll">ติดต่อ</h3>
                     
-                    <div class="map">
+                    <input type="text" id="place_input"  name="address" class="mapform" placeholder="ค้นหาร้านของคุณ">
+                    <div id="map"></div>
+                      <script async
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE8IdT5ZCJ2gwwVUP-SSE-_X8_aR_h5LY&libraries=places&callback=initMap">
+                      </script>
 
-                    </div>
+                      <script>
+                        const argCoords = { lat: 13.72917, lng: 100.52389 }
+                        const mapDiv = document.getElementById("map");
+                        const input = document.getElementById("place_input");
+                        let map;
+                        let marker;
+                        let autocomplete;
+                           function initMap() {
+                             map = new google.maps.Map(mapDiv, {
+                              center: argCoords,
+                              zoom: 15,
+                             });
+                             marker = new google.maps.Marker({
+                              position: argCoords,
+                              map:map,
+                             })
+                             initAutocomplete();
+                          }
+                          function initAutocomplete(){
+                            autocomplete = new google.maps.places.Autocomplete(input)
+                            autocomplete.addListener('place_changed',function(){
+                             const place = autocomplete.getPlace();
+                             map.setCenter(place.geometry.location);
+                             marker.setPosition(place.geometry.location);
+                            });
 
+                          }
+                         
+                      </script>
+
+                  <div class="formmap">
                     <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputre">
                         <input type="text" 
-                        class="form-control" 
-                        name="adress"
-                        placeholder="พิมพ์ที่อยู่">
+                        class="form-controls" 
+                        name="address2"
+                        placeholder="พิมพ์ที่อยู่"
+                        required>
                     </div>
                 
                     <div class="textad">เบอร์โทรติดต่อ</div>
                     <div class="inputre">
                           <input type="text" 
-                          class="form-control" 
-                          name="phoneadd"
-                          placeholder="พิมพ์เบอร์โทรศัพท์">
+                          class="form-controls" 
+                          name="phoneaddress"
+                          placeholder="พิมพ์เบอร์โทรศัพท์"
+                          required>
                     </div>
+                  </div>
                 </div>
+              
               </section>
             </div>
             
@@ -108,12 +146,10 @@
               <div id="background-submit">
                 <div id="button-submit">
                   <button class="fontAll " type="submit">บันทึกข้อมูล</button>
-                  
                 </div>
               </div>
             </div>
-
-          </form>
+        </form>
         </div>
         </div>
       </section>
@@ -122,9 +158,6 @@
     <script 
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
     </script>
-    <script 
-      src="./js/index.js" 
-      charset="utf-8">
-    </script> 
+  
 </body>
 </html>

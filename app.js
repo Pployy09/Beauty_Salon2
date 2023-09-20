@@ -14,6 +14,10 @@ const showUserController = require('./controllers/showUserController')
 const employeeinformationAdmin = require('./controllers/employeeInfoController');
 const editinformationController = require('./controllers/editinformationController')
 const editinformationUserController = require('./controllers/editinformationUserController')
+const reportController = require('./controllers/reportController')
+const contactController = require('./controllers/contactController')
+const serviceUserController = require('./controllers/serviceUserController')
+const contactUserController = require('./controllers/contactUserController')
 
 mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true})
@@ -41,6 +45,10 @@ app.get('/login-admin',(req,res) => {
     res.render('login-admin')
 })
 
+app.get('/contact-user',(req,res) => {
+    res.render('contact-user')
+})
+
 app.get('/logout',(req,res) => {
     req.session.destroy (() => {
         res.redirect('/')
@@ -52,6 +60,8 @@ app.get('/register',registerController);
 app.get('/home-user',showUserController.showHome);
 app.get('/booking-user',showUserController.showBook);
 app.get('/information-user',showUserController.showEdits);
+
+app.get('/service-user',serviceUserController.showServiceUser);
 
 app.get('/editInformation-user',showUserController.showEditUser);
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
@@ -76,7 +86,13 @@ app.get('/editStock-admin/:id',stockController.editStock);
 app.get('/service-admin',serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
 
+app.get('/report',reportController.showStocks)
+
+app.get('/homeContact-admin/:id',contactController.showContact)
+
 app.get('/employeeinformation-admin',employeeinformationAdmin.showInfoEmployee);
+
+app.post('/homeContact-admin',contactController.addContact)
 
 app.post('/user/login',loginUserController.loginUser);
 app.post('/admin/login',loginUserController.loginAdmin);
