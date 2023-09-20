@@ -70,6 +70,7 @@ app.get('/information-user',showUserController.showEdits);
 app.get('/booking-user',showUserController.showBookingUser);
 
 app.get('/service-user',serviceUserController.showServiceUser);
+app.get('/contact-user',contactUserController.showContacts);
 
 app.get('/editInformation-user',showUserController.showEditUser);
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
