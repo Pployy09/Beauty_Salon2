@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div id="edit_service">
+        <div id="edit_stock">
             <div class="container">
                 <div class="text_edit">
                     <h2 class="fontAll">
@@ -98,6 +98,28 @@
                           value="<%= stock.name_product %>" 
                           required>
                         </div> 
+
+                        <div class='editSe'>
+                          <label class="textque">ยี่ห้อสินค้า</label>
+                          <input 
+                          type="text" 
+                          placeholder="<%= stock.brand_product %>" 
+                          class="form-control" 
+                          name="brand_product" 
+                          value="<%= stock.brand_product %>"
+                          required>
+                        </div>
+
+                        <div class='editSe'>
+                          <label class="textque">รายละเอียดเพิ่มเติม</label>
+                          <input 
+                          type="text" 
+                          placeholder="<%= stock.detail_product %>" 
+                          class="form-control" 
+                          name="detail_product" 
+                          value="<%= stock.detail_product %>"
+                          required>
+                        </div>
                         
                         <div class='editSe'>
                           <label class="textque">ราคาซื้อ</label>
@@ -107,6 +129,17 @@
                           class="form-control" 
                           name="price_product" 
                           value="<%= stock.price_product %>"
+                          required>
+                        </div>
+
+                        <div class='editSe'>
+                          <label class="textque">จำนวน</label>
+                          <input 
+                          type="number" 
+                          placeholder="<%= stock.unit_product %>" 
+                          class="form-control" 
+                          name="unit_product" 
+                          value="<%= stock.unit_product %>"
                           required>
                         </div>
                         

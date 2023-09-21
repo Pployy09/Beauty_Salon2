@@ -1,0 +1,31 @@
+body{
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+  hr {
+    border: 1px solid black;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    text-align: center;
+    padding: 5px 5px;
+  }
+
+  td {
+    text-align: center;
+    padding: 5px 5px;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  b {
+    margin-left: 20px;
+  }

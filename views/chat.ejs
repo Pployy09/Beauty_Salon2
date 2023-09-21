@@ -1,0 +1,24 @@
+<!-- CSS -->
+<link rel="stylesheet" href="./css/chat.css">
+
+<!--chat-->
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+
+    <div class="chat"> <iframe src="https://web.powerva.microsoft.com/environments/Default-8c1832ea-a96d-413e-bf7d-9fe4d608e00b/bots/cr145_botBeautySalon/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%;"></iframe></div>
+
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
