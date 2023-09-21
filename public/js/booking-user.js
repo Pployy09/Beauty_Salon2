@@ -1,3 +1,4 @@
+
 var date1 = new Date();
 var dayNow =  date1.getDay();
 var dateNow =  date1.getDate();
