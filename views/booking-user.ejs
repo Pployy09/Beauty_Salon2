@@ -81,29 +81,32 @@
                 <label for="chooseServiceUser" 
                 class="form-label fontAll textBooking">เลือกบริการ</label>
 
-                <select name="chooseServiceUser" id="" required>
-                  <option value="" selected disabled hidden></option>
+                <select name="custom-select" id="" class="custom-select" required>
+                  
                   <% ServiceDataList.forEach(serviceData =>{ %> 
                     <option  value= "<%= serviceData.service_name  %>" class="fontAll"  > <%= serviceData.service_name %> ( <%= serviceData.service_price  %> บาท ) </option>
-                   
+                     
                     <% }) %> 
-              </select>
+                </select>
+               
+                 
+                   <!--   <div class="select">
+                    <% ServiceDataList.forEach(serviceData =>{ %> 
+                      <div class="item"><%= serviceData.service_name %> ( <%= serviceData.service_price  %> บาท )</div>
+                    <% }) %> 
+                   </div>
+                  -->
               </div>
 
-            
-
+          
               <div class="mt-3 choose-time">
                 <label for="timeBooking" 
-                class="form-label fontAll textBooking">เลือกเวลา
-                
-                </label>
+                class="form-label fontAll textBooking">เลือกเวลา</label>
 
-                    
-                    
-                     <select name="chooseTime[]"  class="chooseTime"  id="multiple-select" multiple="2"  aria-hidden ="true" required> 
-                       
-                      <option value="" selected disabled hidden></option>
-                          
+                
+               
+                     <select name="custom-select[]"  class="custom-select "  id=""  multiple required> 
+                         
                            <%  HomeData.forEach(homeData => { %>
                            
                             <%  let timeOpen = parseInt(homeData.time_open); %>
@@ -126,14 +129,7 @@
                     </select> 
 
                     
-                    
-                    <!--
-                      <div class="select-time">
-                        <span class="select--time">
-                          <i class="fa-solid fa-chevron-down fa-xs"></i>
-                        </span>
-                      </div>
-                   -->
+                  
                 
                   
               </div>
