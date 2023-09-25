@@ -1,3 +1,4 @@
+
 var date1 = new Date();
 var dayNow =  date1.getDay();
 var dateNow =  date1.getDate();
@@ -120,6 +121,59 @@ function max(){
 };
 min();
 max();
+
+class CustomSelect{
+   constructor(originalSelect){
+      this.originalSelect = originalSelect;
+      this.customSelect = document.createElement("div");
+      this.customSelect.classList.add("select");
+
+      this.originalSelect.querySelectorAll("option").forEach(optionElement =>{
+         const itemElement = document.createElement("div");
+
+         itemElement.classList.add("item");
+         itemElement.textContent = optionElement.textContent;
+         this.customSelect.appendChild(itemElement);
+
+         itemElement.addEventListener("click", () =>{
+            if(itemElement.classList.contains("item--selected")){
+               this.deselect(itemElement);
+            }else{
+               this.select(itemElement);
+            }
+         });
+      });
+      
+      this.originalSelect.insertAdjacentElement("afterend", this.customSelect);
+      this.originalSelect.style.display = "none";
+   }
+
+   select(itemElement){
+      const index = Array.from(this.customSelect.children).indexOf(itemElement);
+
+      if(!this.originalSelect.multiple){
+         this.customSelect.querySelectorAll(".item").forEach(it =>{
+            it.classList.remove("item--selected")
+         })
+      }
+      this.originalSelect.querySelectorAll("option")[index].selected = true; //เพิ่มแอดทริบิวให้กับ css
+      itemElement.classList.add("item--selected");
+      
+      
+   }
+
+   deselect(itemElement){
+      const index = Array.from(this.customSelect.children).indexOf(itemElement);
+      this.originalSelect.querySelectorAll("option")[index].selected = false; //เพิ่มแอดทริบิวให้กับ css
+      itemElement.classList.remove("item--selected");
+   }
+
+};
+
+document.querySelectorAll(".custom-select").forEach(selectElement => {
+   new CustomSelect(selectElement);
+  
+});
 
 
 

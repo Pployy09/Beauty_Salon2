@@ -25,9 +25,9 @@ exports.addData = async (req,res) =>{
             description2 : req.body.description2,
             img_services3 : req.body.img_services3,
             description3 : req.body.description3,
-            description4 : req.body.description4,
-            description5 : req.body.description5,
-            description6 : req.body.description6,
+            time_open : req.body.time_open,
+            time_close : req.body.time_close,
+            
         });
 
         homes.save();

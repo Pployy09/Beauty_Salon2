@@ -155,7 +155,7 @@ b{
 }
 
 #booking .container{
-    height: 1200px;
+    
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -202,20 +202,35 @@ b{
     background-color: #E9A8A1;
     color: #5F3122;
     font-size: 20px ;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 150px;
     border-radius: .5rem;
 }
 
-#booking .container form .choose-service select{
-    display: flex;
-    width: 310px;
-    height: 50px;
-    border-radius: 3rem;
-    border-color: #ffff;
-    font-size: 20px ;
-    text-indent: 15px;
+.select{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    gap: 10px;
+    justify-items: center;
+
 }
+ .item{
+    background-color: white;
+    color: #5F3122;
+    padding: 10px 10px 10px 10px;
+    border-radius: 3rem;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+ .item--selected{
+    background-color: #E9A8A1;
+    
+}
+
+
 
 
 
