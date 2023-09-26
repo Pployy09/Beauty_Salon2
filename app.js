@@ -52,9 +52,7 @@ app.get('/login-admin',(req,res) => {
     res.render('login-admin')
 })
 
-app.get('/contact-user',(req,res) => {
-    res.render('contact-user')
-})
+
 
 app.get('/logout',(req,res) => {
     req.session.destroy (() => {

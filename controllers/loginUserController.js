@@ -42,7 +42,7 @@ exports.loginUser = (req, res) => {
     })
 }
 
-//เช็ก login Admin
+//เช็ก login Admin & Employee
 exports.loginAdmin = (req, res) => {
     const { username, password } = req.body 
 
@@ -52,7 +52,7 @@ exports.loginAdmin = (req, res) => {
         if (user) {
             let cmp = bcrypt.compare(password, user.password).then((match) => {
                 if (match) {
-                    if (user.role=='admin'){
+                    if (user.role=='admin'||'emp'){
                     req.session.userId = user._id
                     res.redirect('/home-admin')
                 }
@@ -65,3 +65,4 @@ exports.loginAdmin = (req, res) => {
         }
     })
 }
+
