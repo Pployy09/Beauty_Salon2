@@ -5,8 +5,6 @@ exports.showHome = async(req, res) => {
     res.render('home-user',{UserData})
 }
 
-
-
 exports.showEmpEdit = async(req, res) => {
     let UserData = await User.findById(req.session.userId)
     res.render('employeeEdit-admin',{UserData})
@@ -25,12 +23,6 @@ exports.showEditUser = async(req, res) => {
 exports.showEdit = async(req, res) => {
     let UserData = await User.findById(req.session.userId)
     res.render('editInformation-admin',{UserData})
-}
-
-
-exports.showHomeContact = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('homeContact-admin',{UserData})
 }
 
 exports.showPay = async(req, res) => {

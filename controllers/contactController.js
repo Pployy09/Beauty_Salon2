@@ -1,12 +1,12 @@
 const Contact = require('../models/Contact')
+const User = require('../models/User')
 
 //show Contact
 exports.showContact = async (req,res) =>{
-    await   Contact.find().then(function(contacts){
-            res.render("homeContact-admin",{
-                contacts:contacts,
-        });
-     })
+    const {id} = req.params;
+    const UserData = await User.findById(req.session.userId)
+    const contact = await Contact.findOne({id})
+    res.render('homeContact-admin',{contact,UserData})
 };
 
 //add contact 
@@ -14,7 +14,8 @@ exports.addContact = async (req,res) =>{
     try{
        const contacts = await new Contact({
         address      : req.body.address,
-        address2     : req.body.address2,
+        lat          : req.body.lat,
+        lng          : req.body.lng,
         phoneaddress : req.body.phoneaddress,
         }); 
 

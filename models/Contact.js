@@ -1,11 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const ContactSchema = new Schema({
     address: {
         type: String,
     },
-    address2: {
+    lat: {
+        type: String,
+    },
+    lng: {
         type: String,
     },
     phoneaddress: {

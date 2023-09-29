@@ -52,8 +52,6 @@ app.get('/login-admin',(req,res) => {
     res.render('login-admin')
 })
 
-
-
 app.get('/logout',(req,res) => {
     req.session.destroy (() => {
         res.redirect('/')
@@ -77,7 +75,7 @@ app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 
 //admin
 app.get('/home-admin',HomeAdminController.showData);
-app.get('/homeContact-admin',showUserController.showHomeContact);
+app.get('/home-admin/:id',HomeAdminController.editData);
 
 app.get('/queuebooking-admin',QueuebookingAdminController.showQueuebook);
 app.get('/pay-admin',showUserController.showPay);
@@ -95,7 +93,8 @@ app.get('/editService-admin/:id',serviceController.editService);
 
 app.get('/report',reportController.showStocks)
 
-app.get('/homeContact-admin/:id',contactController.showContact)
+app.get('/homeContact-admin',contactController.showContact)
+app.get('/homeContact-admin/:id',contactController.editContact);
 
 app.get('/employeeinformation-admin',employeeinformationAdmin.showInfoEmployee);
 app.get('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
@@ -116,6 +115,9 @@ app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
 app.put('/editInformation-admin/:id',editinformationController.editPutAdmin);
 app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
+
+app.put('/homeContact-admin/:id',contactController.editPutContact);
+app.put('/home-admin/:id',HomeAdminController.editPutData);
 
 app.delete('/editService-admin/:id',serviceController.deleteService);
 app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);

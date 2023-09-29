@@ -3,14 +3,14 @@ const User = require('../models/User')
 
 //show data
 exports.showData = async (req,res) =>{
+    const {id} = req.params;
     const UserData = await User.findById(req.session.userId)
+    const home = await Home.findOne({id})
          res.render("home-admin",{  
-            UserData : UserData,
+            home,UserData,
         });
     
 };
-
-
 
 //add data  
 exports.addData = async (req,res) =>{
@@ -37,3 +37,21 @@ exports.addData = async (req,res) =>{
         console.log(error)
     }
 };
+
+//edit data
+exports.editData = async (req,res) =>{
+    try{
+        const {id} = req.params;
+        const HomeAdmin = await Home.findById(id)
+        res.render('home-admin',{HomeAdmin})
+    }catch(error){
+        console.log(error);
+    }
+};
+
+//update data 
+exports.editPutData = async (req,res) =>{
+    const {id} = req.params;
+    await Home.findByIdAndUpdate(id,req.body,{runValidators:true});
+    res.redirect('/home-admin');
+}

@@ -11,12 +11,16 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/contact.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   </head>
 <body>
@@ -59,13 +63,13 @@
       <section id="part-emp-cus">
         <div id="frame-emp-cus">
         <div id="frame-in-customer" >
-          <form action="/homeContact-admin/<%=  %>?_method=PUT" method="POST">
+          <form action="/homeContact-admin/<%= contact._id %>?_method=PUT" method="POST">
             <div class="container">
               
               <section id="header-emp-cus">
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
                   <div class="col-md-3 mb-2 mb-md-0 ">
-                    <div id="logo-header" class="fontlogo logomore "> </div> 
+                    <div id="logo-header" class="fontlogo logomore "></div> 
                   </div>
     
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -79,76 +83,150 @@
                 <!--ภาพจอง แก้ไขหน้าcontactของลูกค้า-->
               <section id="imgBooking-emp-cus">
                 
-                <div class="imgBooking bg fontAll">
-                    <h3 class="text fontAll">ติดต่อ</h3>
-                    
-                    <input type="text" id="place_input" name="address" class="mapform" placeholder="ค้นหาร้านของคุณ">
-                    <div id="map"></div>
-                      <script async
+                <div class="bgg fontAll">
+                  <h3 class="text fontAll">ติดต่อ</h3>
+
+                    <!--ส่วนของ Element ที่ใช้ในการแสดงผล-->
+                <input id="searchInput" class="mapform" name="address" value="<%=contact.address%>"  type="text" placeholder="ค้นหาที่อยู่ร้าน" required>
+                <div id="map"></div>
+                      <script async 
                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE8IdT5ZCJ2gwwVUP-SSE-_X8_aR_h5LY&libraries=places&callback=initMap">
                       </script>
 
                       <script>
-                        const argCoords = { lat: 13.72917, lng: 100.52389 }
-                        const mapDiv = document.getElementById("map");
-                        const input = document.getElementById("place_input");
-                        let map;
-                        let marker;
-                        let autocomplete;
-                           function initMap() {
-                             map = new google.maps.Map(mapDiv, {
-                              center: argCoords,
-                              zoom: 15,
-                             });
-                             marker = new google.maps.Marker({
-                              position: argCoords,
-                              map:map,
-                             })
-                             initAutocomplete();
+                        /***** function ในการประกาศค่าเริ่มต้นให้กับแผนที่*****/
+                          function initMap() {
+                        
+                        /***** กำหนดรายละเอียดคุณสมบัติของแผนที่*****/
+                          var map = new google.maps.Map(document.getElementById('map'), 
+                        {
+                          center: {lat: 15.870032, lng: 100.992541},
+                          zoom: 13
+                        });
+                        
+                        /***** กำหนดตำแหน่งที่ตั้งของ control ที่จะวางในแผนที่*****/
+                          var input = document.getElementById('searchInput');
+                        /*****  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);*****/
+                        
+                        /***** เพิ่ม Feature ให้กับ textbox ให้สามารถพิมพ์ค้นหาสถานที่ได้*****/
+                          var autocomplete = new google.maps.places.Autocomplete(input);
+                          autocomplete.bindTo('bounds', map);
+                        
+                          var infowindow = new google.maps.InfoWindow();
+                        
+                        /***** กำหนดคุณสมบัติให้กับตัวพิกัดจุดหรือ marker *****/
+                          var marker = new google.maps.Marker
+                          ({
+                            map: map,
+                            anchorPoint: new google.maps.Point(0, -29)
+                          });
+                        
+                        /***** ทำงานกับ event place_changed หรือเมื่อมีการเปลี่ยนแปลงค่าสถานที่ที่ค้นหา*****/
+                          autocomplete.addListener('place_changed', function() {
+                          infowindow.close();
+                          marker.setVisible(false);
+                          var place = autocomplete.getPlace();
+                            if (!place.geometry) 
+                          {
+                            window.alert("ไม่ค้นพบพิกัดจากสถานที่ดังกล่าว");
+                            return;
                           }
-                          function initAutocomplete(){
-                            autocomplete = new google.maps.places.Autocomplete(input)
-                            autocomplete.addListener('place_changed',function(){
-                             const place = autocomplete.getPlace();
-                             map.setCenter(place.geometry.location);
-                             marker.setPosition(place.geometry.location);
+                        
+                        /***** แสดงผลบนแผนที่เมื่อพบข้อมูลที่ต้องการค้นหา *****/
+                            if (place.geometry.viewport) {
+                            map.fitBounds(place.geometry.viewport);
+                          } else {
+                          map.setCenter(place.geometry.location);
+                          map.setZoom(17);
+                          }
+                          marker.setIcon
+                          (({
+                            url: place.icon,
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(35, 35)
+                          }));
+                          marker.setPosition(place.geometry.location);
+                          marker.setVisible(true);
+                        
+                        /***** แสดงรายละเอียดผลลัพธ์การค้นหา *****/
+                          var address = '';
+                            if (place.address_components) {
+                              address = [
+                              (place.address_components[0] && place.address_components[0].short_name || ''),
+                              (place.address_components[1] && place.address_components[1].short_name || ''),
+                              (place.address_components[2] && place.address_components[2].short_name || '')
+                              ].join(' ');
+                            }
+                        /***** แสดงรายละเอียดผลลัพธ์การค้นหาเป็น popup โดยมีชื่อและสถานที่ดังกล่าว *****/
+                          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                          infowindow.open(map, marker);
+                        
+                        /***** แสดงรายละเอียดผลลัพธ์การค้นหา ซึ่งประกอบด้วย ที่อยู่ รหัสไปรษณีย์ ประเทศ ละติจูดและลองจิจูด *****/
+                          
+                            document.getElementById('location').innerHTML = place.formatted_address;
+                            document.getElementById('lat').innerHTML = place.geometry.location.lat();
+                            document.getElementById('lng').innerHTML = place.geometry.location.lng();
                             });
+                        }
+                        </script>
 
-                          }
-                         
-                      </script>
-
-                  <div class="formmap">
-                    <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-                    <div class="inputre">
-                        <input type="text" 
-                        class="form-controls" 
-                        name="address2"
-                        placeholder="พิมพ์ที่อยู่"
-                        required>
-                    </div>
+                <!--ส่วนของการแสดงรายละเอียดผลลัพธ์ที่ได้-->
+              <div class="formmap">
                 
-                    <div class="textad">เบอร์โทรติดต่อ</div>
-                    <div class="inputre">
-                          <input type="text" 
-                          class="form-controls" 
-                          name="phoneaddress"
-                          placeholder="พิมพ์เบอร์โทรศัพท์"
-                          required>
+                  <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                    <div class="inputres"> 
+                      <div  id="location" class="form-controls"> <%=contact.address%> </div>
                     </div>
-                  </div>
-                </div>
-              
+                  
+                  <div class="textad">ละติจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                    <div class="inputres"> 
+                     <span id="lat" ></span>
+                     <button class="copy" onclick="copyToClipboard('#lat')">คัดลอกละติจูด</button>  
+                     <input type="text"  class="form-controls" name="lat" placeholder="<%=contact.lat%>" required>
+                    </div>
+
+                  <div class="textad">ลองจิจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                    <div class="inputres"> 
+                      <span id="lng" ></span>
+                      <button class="copy" onclick="copyToClipboard('#lng')">คัดลอกลองจิจูด</button>  
+                      <input type="text"  class="form-controls" name="lng" placeholder="<%=contact.lng%>" required>
+                    </div>
+
+                  <div class="textad">เบอร์โทรติดต่อ &nbsp;</div>
+                    <div class="inputres">
+                      <input type="text" class="form-controls" name="phoneaddress" placeholder="<%=contact.phoneaddress%>" required>
+                    </div>
+                    
+                    <!--copy-->
+                    <script>
+                      function copyToClipboard(element) {
+                        var $temp = $("<input>");
+                        $("body").append($temp);
+                        $temp.val($(element).text()).select();
+                        document.execCommand("copy");
+                        $temp.remove();
+                      }
+                  </script>
+              </div>
+
+              </div>
               </section>
+              
             </div>
             
+          
             <div id="frame-emp-cus">
               <div id="background-submit">
+
                 <div id="button-submit">
                   <button class="fontAll " type="submit">บันทึกข้อมูล</button>
                 </div>
+                
               </div>
             </div>
+            
         </form>
         </div>
         </div>

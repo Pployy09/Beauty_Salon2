@@ -151,6 +151,7 @@ body{
 
 #button-submit button{
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 
@@ -597,33 +598,6 @@ ul.primary li a {
     color: #000;
   } 
   
- /* contact */
- .form-controls {
-    border-radius: 20px;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-top: 10px;
-    width: 550px;
-    height: 50px;
-    border: 0;
-}
-/*+map*/
-.mapform {
-    border-radius: 20px;
-    border: 0;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-top: 10px;
-    width: 50%;
-    height: 50px;
-    padding: auto;
-    margin-left: 25%;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-.formmap {
-    margin-left: 70px;
-}
  .bg {
     background-color:#FBE1C5 ;
     width: 100%;
@@ -637,15 +611,8 @@ ul.primary li a {
     color: #5F3122;
     padding-top: 50px;
  }
- #map {
-    height: 55%;
-    width: 90%;
-    margin-left: 5%;
-    
-  }
  
-
- .inputre {
+ .inputres {
     float:left;
     width: 50%;
     border-radius: 2rem;
@@ -657,7 +624,7 @@ ul.primary li a {
 .textad {
     float:left;
     margin-top: 50px ;
-    margin-left: 220px;
+    margin-left: 180px;
     color: #5F3122;
     font-size: 25px;
 }
