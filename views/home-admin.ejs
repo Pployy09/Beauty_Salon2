@@ -58,8 +58,98 @@
       <!--Header แก้ไขหน้าแรกของลูกค้า--> 
       <section id="part-emp-cus">
         <div id="frame-emp-cus">
+          <!-- add image1 -->
+      <section>
+        <div class="row img1 ">
+          <div class="col-md-6">
+              <form method="POST" action="/upload-image1/<%= img1._id %>?_method=PUT" enctype="multipart/form-data"> 
+              <div class="row g-2 group">
+                <div class="col-6">
+                  <input type="file" name="image1" class="form-in" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
+                </div>
+                <div class="col-6">
+                  <button type="submit" class="upload" for="inputGroupFile02"> Upload </button>
+                </div>
+              </div>
+              </form>
+          </div>
+        </div>
+        </section>
+     
+        <!-- add image2 --> 
+        <section>
+        <div class="row img2">
+          <div class="col-md-6">
+              <form method="POST" action="/upload-image2/<%= img2._id %>?_method=PUT" enctype="multipart/form-data"> 
+                <div class="row g-2 group">
+                  <div class="col-6">
+                    <input type="file" name="image2" class="form-in" id="inputGroupFile02" accept="image/*" onchange="renderFile2(event)" required >
+                  </div>
+                  <div class="col-6">
+                    <button type="submit" class="upload" for="inputGroupFile02"> Upload </button>
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+        </section>
+  
+        <!-- add image3 --> 
+          <section>
+          <div class="row img3">
+            <div class="col-md-6">
+                <form method="POST" action="/upload-image3/<%= img3._id %>?_method=PUT" enctype="multipart/form-data"> 
+                  <div class="row g-2 group2">
+                    <div class="col-6">
+                      <input type="file" name="image3" class="form-in" id="inputGroupFile02" accept="image/*" onchange="renderFile3(event)" required>
+                    </div>
+                    <div class="col-6">
+                      <button type="submit" class="upload2" for="inputGroupFile02"> Upload </button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+          </section>
+  
+          <!-- add image4 --> 
+          <section>
+            <div class="row img4">
+              <div class="col-md-6">
+                  <form method="POST" action="/upload-image4/<%= img4._id %>?_method=PUT" enctype="multipart/form-data"> 
+                    <div class="row g-2 group2">
+                      <div class="col-6">
+                        <input type="file" name="image4" class="form-in" id="inputGroupFile02" accept="image/*" onchange="renderFile4(event)" required>
+                      </div>
+                      <div class="col-6">
+                        <button type="submit" class="upload2" for="inputGroupFile02"> Upload </button>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+            </section>
+  
+          <!-- add image5 --> 
+          <section>
+          <div class="row img5">
+            <div class="col-md-6">
+                <form method="POST" action="/upload-image5/<%= img5._id %>?_method=PUT" enctype="multipart/form-data"> 
+                  <div class="row g-2 group2">
+                    <div class="col-6">
+                      <input type="file" name="image5" class="form-in" id="inputGroupFile02" accept="image/*" onchange="renderFile5(event)" required>
+                    </div>
+                    <div class="col-6">
+                      <button type="submit" class="upload2" for="inputGroupFile02"> Upload </button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+          </section>
+          
         <div id="frame-in-customer" >
-          <form action="" method="POST">
+          <form action="/home-admin/<%= home._id %>?_method=PUT" method="POST">
 
             <div class="container">
               
@@ -68,13 +158,13 @@
                   <div class="col-md-3 mb-2 mb-md-0 ">
                     <div id="logo-header" class="fontlogo logomore "><%=home.inputLogo%></div> 
                     <div class="change-logo">
-                      <input  id="input-logo" type="text" value="<%=home.inputLogo%>" placeholder="พิมพ์ชื่อร้านเป็นภาษาอังกฤษ" class="input-logo fontAll" name="inputLogo">
+                      <input  id="input-logo" type="text" placeholder="<%=home.inputLogo%>" class="input-logo fontAll" name="inputLogo">
                       
                     </div>
                   </div>
                
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
-                  <li><a href="./home-admin" id="homeHeader" class="active nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
+                  <li><a href="#" id="homeHeader" class="active nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
                   <li><a href="./homeContact-admin" id="contactHeader" class="nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
             
                 </ul>
@@ -87,9 +177,8 @@
                 <div class="imgBooking">
                   <div class="container col-xxl-8 px-4 pt-5 ">
                     <div class="row flex-lg-row-reverse align-items-center g-5  pt-5 ">
-                      <div class="col-10 col-sm-8 col-lg-6  ">
-                        <img id="img-booking" src="../img/pngegg (6).png" class="d-block mx-lg-auto img-fluid mt-5 " alt="imgBooking" height="100%" loading="lazy">
-                        <input id="input-img-booking" class="input-img-booking fontAll" type="file" name="img_booking">
+                      <div class="col-10 col-sm-8 col-lg-6" >
+                        <img id="images1" src="<%=img1.image1%>" class="img-booking d-block mx-lg-auto img-fluid mt-5 "  height="100%" loading="lazy">
                       </div>
                       
                       <div class="col-lg-6 " >
@@ -106,14 +195,8 @@
               <section id="promotion-emp-cus">
                 <div class="promotion py-5 " >
                   <div class="imgPro">
-                    <img id="img-promotion" class="pro1" src="../img/pngegg (6).png" alt="promotion1" height="400px" >  
-                    
+                    <img id="images2" class="pro1" src="<%=img2.image2%>"  height="400px" >  
                   </div>
-
-                  <div id="inputPromotion">
-                    <input id="input-promotion" class="input-promotion fontAll" type="file" name="promotion">
-                  </div>
-                    
                 </div>
               </section>
 
@@ -122,35 +205,32 @@
                 <div class="container">
                   <div class="img-services">
                     <div class="hair">
-                      <img id="imgServices1" class="color Hair" src="../img/pngegg (6).png" alt="hair color">
-                       <h3 id="Description1" class="fontAll text-hair"></h3>
+                      <img id="images3" class="color Hair" src="<%=img3.image3%>" >
+                       <h3 id="Description1" class="fontAll text-hair"><%=home. description1%></h3>
                     </div>
               
                     <div class="hair">
-                      <img id="imgServices2" class="cut Hair" src="../img/pngegg (6).png" alt="hair cut" >
-                      <h3 id="Description2" class="fontAll text-hair"></h3>
+                      <img id="images4" class="cut Hair" src="<%=img4.image4%>" >
+                      <h3 id="Description2" class="fontAll text-hair"><%=home. description2%></h3>
                     </div>
               
                     <div class="hair">
-                      <img id="imgServices3" class="dryer Hair" src="../img/pngegg (6).png" alt=" hair dryer" >
-                      <h3 id="Description3" class="fontAll text-hair"></h3>
+                      <img id="images5" class="dryer Hair" src="<%=img5.image5%>" >
+                      <h3 id="Description3" class="fontAll text-hair"><%=home. description3%></h3>
                     </div>
                   </div>
                   
-                  <div class="chang-services-emp-cus">
+                  <div class="chang-services-emp-cuss">
                     <div id="chang-services">
-                      <input id="input-img-services1" class="input-img-services fontAll changServices1" type="file" placeholder="เลือกรูปใส่ช่อง 1" name="img_services1">
-                      <input id="input-descri1" type="text" placeholder="พิมพ์ชื่อบริการ" class="input-descri fontAll" value="<%=home.description1%>" name="description1">
+                      <input  id="input-descri1" type="text" placeholder="<%=home. description1%>" class="input-descri fontAll" name="description1">
                     </div>
 
                     <div id="chang-services">
-                      <input id="input-img-services2" class="input-img-services fontAll changServices2" type="file" placeholder="เลือกรูปใส่ช่อง 2" name="img_services2">
-                      <input id="input-descri2" type="text" placeholder="พิมพ์ชื่อบริการ" class="input-descri fontAll" value="<%=home.description2%>" name="description2">
+                      <input  id="input-descri2" type="text" placeholder="<%=home. description2%>" class="input-descri2 fontAll" name="description2">
                     </div>
 
                     <div id="chang-services">
-                      <input id="input-img-services3" class="input-img-services fontAll changServices3" type="file" placeholder="เลือกรูปใส่ช่อง 3" name="img_services3">
-                      <input id="input-descri3" type="text" placeholder="พิมพ์ชื่อบริการ" class="input-descri fontAll" value="<%=home.description3%>" name="description3">
+                      <input  id="input-descri3" type="text" placeholder="<%=home. description3%>" class="input-descri3 fontAll" name="description3">
                     </div>
 
                   </div>
@@ -168,11 +248,10 @@
                       <div class="text-footer">
                           <p id="Description5" class="text-center  fontAll">เวลาเปิดร้าน</p>
                           <p id="Description6" class="text-center  fontAll">เวลาปิดร้าน</p>
-                          
                       </div>
                       <div id="change-description-footer">
-                        <input  id="input-time-open" type="time" placeholder="เวลาเปิดร้าน" class="input-descri fontAll" value="<%=home.time_open%>" name="time_open">
-                        <input  id="input-time-close" type="time" placeholder="เวลาปิดร้าน" class="input-descri fontAll" value="<%=home.time_close%>" name="time_close">
+                        <input  id="input-time-open" type="time" placeholder="เวลาเปิดร้าน" class="input-descri fontAll" name="time_open">
+                        <input  id="input-time-close" type="time" placeholder="เวลาปิดร้าน" class="input-descri fontAll" name="time_close">
                       </div>
                     </div>
                   
@@ -205,3 +284,4 @@
 
 </body>
 </html>
+

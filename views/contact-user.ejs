@@ -66,11 +66,14 @@
           <script>
             /***** function ในการประกาศค่าเริ่มต้นให้กับแผนที่*****/
             function initMap() {
-              
+              // ดึงค่าละติจูดและลองจิจูดจากข้อมูล contact แล้วแปลงเป็นตัวแปร JavaScript
+              const lat = <%= (contact.lat) %>;
+              const lng = <%= (contact.lng) %>;
+
             const map = new google.maps.Map(document.getElementById('maps'), 
             {
-              center: {lat: 13.72917, lng: 100.52389},
-              zoom: 13
+              center: {lat: lat, lng: lng},
+              zoom: 20
             });
 
             /***** กำหนดตำแหน่งที่ตั้งของ control ที่จะวางในแผนที่*****/
@@ -85,10 +88,9 @@
               var infowindow = new google.maps.InfoWindow();
 
             /***** กำหนดคุณสมบัติให้กับตัวพิกัดจุดหรือ marker *****/
-              var marker = new google.maps.Marker
-              ({
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29)
+              const marker = new google.maps.Marker({
+                  position: { lat, lng },
+                  map: map,
               });
 
             /***** ทำงานกับ event place_changed หรือเมื่อมีการเปลี่ยนแปลงค่าสถานที่ที่ค้นหา*****/

@@ -6,7 +6,7 @@ exports.showContact = async (req,res) =>{
     const {id} = req.params;
     const UserData = await User.findById(req.session.userId)
     const contact = await Contact.findOne({id})
-    res.render('homeContact-admin',{contact,UserData})
+    res.render('homeContact-admin',{contact,UserData })
 };
 
 //add contact 

@@ -4,8 +4,15 @@ const ejs = require('ejs')
 const mongoose = require('mongoose')
 const expressSession = require('express-session')
 const flash = require('connect-flash')
-const methodOverride  = require('method-override');
+const methodOverride  = require('method-override')
+const multer = require('multer')
+const Upload1image = require('./models/uploadimg')
+const Upload2image = require('./models/uploadimg2')
+const Upload3image = require('./models/uploadimg3')
+const Upload4image = require('./models/uploadimg4')
+const Upload5image = require('./models/uploadimg5')
 
+//controller
 const serviceController = require('./controllers/serviceController');
 const stockController = require('./controllers/stockController');
 const registerController = require('./controllers/registerController');
@@ -25,13 +32,20 @@ const HomeAdminController = require('./controllers/HomeAdminController');
 const QueuebookingAdminController = require('./controllers/QueuebookingAdminController');
 const BookingUserController = require('./controllers/booking-userController');
 
+//middleware
+const authMiddleware = require('./Middleware/authMiddleware');
+const rediractifAuth = require('./Middleware/rediractifAuth');
 
 mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?retryWrites=true&w=majority',
-{useNewUrlParser:true})
+{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+})
 
 app.set('view engine','ejs')
 
 app.use(express.static('public'))
+app.use(express.static('uploads'))
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(methodOverride('_method'));
@@ -57,6 +71,7 @@ app.get('/logout',(req,res) => {
         res.redirect('/')
     })
 })
+
 
 //user
 app.get('/register',registerController);
@@ -115,13 +130,82 @@ app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
 app.put('/editInformation-admin/:id',editinformationController.editPutAdmin);
 app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
-
-app.put('/homeContact-admin/:id',contactController.editPutContact);
 app.put('/home-admin/:id',HomeAdminController.editPutData);
+app.put('/homeContact-admin/:id',contactController.editPutContact);
 
 app.delete('/editService-admin/:id',serviceController.deleteService);
 app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);
 app.delete('/editStock-admin/:id',stockController.deleteStock);
+
+//add image
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() +  "_" + file.originalname)
+    }
+});
+
+const upload1 = multer({ storage: storage }).single('image1');
+app.get('/upload-image1/:id',HomeAdminController.editData);
+app.put('/upload-image1/:id',upload1,HomeAdminController.editPutData);
+app.post('/upload-image1',upload1,(req,res) => {
+    const upload1images = new Upload1image ({
+        image1 : req.file.filename,
+    })
+    upload1images.save();
+    console.log("Save image1 successfully!")
+    res.redirect('/home-admin');
+});
+
+const upload2 = multer({ storage: storage }).single('image2');
+app.get('/upload-image2/:id',HomeAdminController.editData);
+app.put('/upload-image2/:id',upload2,HomeAdminController.editPutData);
+app.post('/upload-image2',upload2,(req,res) => {
+    const upload2images = new Upload2image ({
+        image2 : req.file.filename,
+    })
+    upload2images.save();
+    console.log("Save image2 successfully!")
+    res.redirect('/home-admin');
+});
+
+const upload3 = multer({ storage: storage }).single('image3');
+app.get('/upload-image3/:id',HomeAdminController.editData);
+app.put('/upload-image3/:id',upload3,HomeAdminController.editPutData);
+app.post('/upload-image3',upload3,(req,res) => {
+    const upload3images = new Upload3image ({
+        image3 : req.file.filename,
+    })
+    upload3images.save();
+    console.log("Save image3 successfully!")
+    res.redirect('/home-admin');
+});
+
+const upload4 = multer({ storage: storage }).single('image4');
+app.get('/upload-image4/:id',HomeAdminController.editData);
+app.put('/upload-image4/:id',upload4,HomeAdminController.editPutData);
+app.post('/upload-image4',upload4,(req,res) => {
+    const upload4images = new Upload4image ({
+        image4 : req.file.filename,
+    })
+    upload4images.save();
+    console.log("Save image4 successfully!")
+    res.redirect('/home-admin');
+});
+
+const upload5 = multer({ storage: storage }).single('image5');
+app.get('/upload-image5/:id',HomeAdminController.editData);
+app.put('/upload-image5/:id',upload5,HomeAdminController.editPutData);
+app.post('/upload-image5',upload5,(req,res) => {
+    const upload5images = new Upload5image ({
+        image5 : req.file.filename,
+    })
+    upload5images.save();
+    console.log("Save image5 successfully!")
+    res.redirect('/home-admin');
+});
 
 
 app.listen(4000, () => {
