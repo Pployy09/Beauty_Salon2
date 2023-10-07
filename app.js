@@ -124,7 +124,7 @@ app.post('/home-admin',HomeAdminController.addData);
 app.post('/user/register',loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
-
+app.post('/booking-user',BookingUserController.addBookingUser);
 
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
