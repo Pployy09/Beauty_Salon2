@@ -69,23 +69,29 @@
           <div class="container">
             <table >
               <tr class="sectionTable">
-                <td class="fontAll ">ลำดับ</td>
-                <td class="fontAll ">ชื่อผู้ใช้</td>
-                <td class="fontAll ">วันที่</td>
-                <td class="fontAll ">เวลา</td>
-                <td class="fontAll ">บริการ</td>
-                <td class="fontAll ">พนักงาน</td>
+                <td class="fontAll infoBooking order">ลำดับ</td>
+                <td class="fontAll infoBooking">ชื่อผู้ใช้</td>
+                <td class="fontAll infoBooking">ชื่อลูกค้า</td>
+                <td class="fontAll infoBooking">เบอร์โทรศัพท์</td>
+                <td class="fontAll infoBooking">วันที่</td>
+                <td class="fontAll infoBooking ">เวลา</td>
+                <td class="fontAll infoBooking">บริการ</td>
+                <td class="fontAll infoBooking">พนักงาน</td>
                 <td></td>
               </tr> 
+              
+              <% QueueBookingCustomerData.forEach((bookingCu,element)=>{ %>
               <tr class="infoTable">
-                <td class="fontAll ">1</td>
-                <td class="fontAll ">yamada</td>
-                <td class="fontAll ">10/07/65</td>
-                <td class="fontAll ">13.00-14.00</td>
-                <td class="fontAll ">ย้อมผม</td>
-                <td class="fontAll ">พนักงาน A</td>
+                <td class="fontAll "><%= element+1 %></td>
+                <td class="fontAll "><%= bookingCu.customerUsername %></td>
+                <td class="fontAll "><%= bookingCu.customerName %> </td>  <!--ชื่อลูกค้า -->
+                <td class="fontAll "><%= bookingCu.phonenum%> </td> <!--เบอร์โทรศัพท์ -->
+                <td class="fontAll "><%= bookingCu.booking_date_user %></td>
+                <td class="fontAll  "><%= bookingCu.booking_time_user %></td>
+                <td class="fontAll "><%= bookingCu.booking_service_user %></td>
+                <td class="fontAll "><%= bookingCu.employeeName  %></td> <!--พนักงาน -->
                 <td>
-                    <a href="#" class="nav-link button" >
+                    <a href="./edit-queuebooking/<%= bookingCu._id %>" class="nav-link button" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -93,22 +99,8 @@
                     </a>
                 </td>
               </tr>
-              <tr class="infoTable">
-                <td class="fontAll ">2</td>
-                <td class="fontAll ">Taara</td>
-                <td class="fontAll ">10/07/65</td>
-                <td class="fontAll ">15.00-16.00</td>
-                <td class="fontAll ">สระ-ไดร์-เซต</td>
-                <td class="fontAll ">พนักงาน B</td>
-                <td>
-                  <a href="#" class="nav-link button" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                  </svg>
-                  </a>
-                </td>
-              </tr>
+              <% }); %>
+              
             </table>
           </div>
       </div>
@@ -131,7 +123,7 @@
                     type="text" 
                     placeholder="ชื่อลูกค้า" 
                     class="form-control" 
-                    name="firstname" 
+                    name="customerName" 
                     required>
                   </div>
 
@@ -151,36 +143,55 @@
                     type="date" min="0000-00-00" max="0000-00-00"
                     placeholder="วว/ดด/ปปปป" 
                     class="form-control" 
-                    name="date_service" 
+                    name="booking_date_user" 
                     required>
                   </div>
 
                   <div class='row'>
                     <label class="textque">เลือกบริการ</label>
-                    <select name="chooseServiceAdmin" id="">
+                    <select name="booking_service_user" class="form-control">
                       <option value="" selected disabled hidden></option>
                       <% ServiceDataList.forEach(serviceData =>{ %> 
-                        <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> </option>
+                        <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
                       <% }) %> 
                   </select>
                   </div>
 
                   <div class='row'>
                     <label class="textque">เลือกเวลา</label>
-                    <input 
-                    type="time" 
-                    placeholder="เวลา" 
-                    class="form-control" 
-                    name="time_service" 
-                    required>
-                  </div>
+                    <select name="booking_time_user[]"  class="select-time "  id="select-time"  multiple="multiple" required > 
+                       
+                      <%  HomeData.forEach(homeData => { %>
+                      
+                       <%  let timeOpen = parseInt(homeData.time_open); %>
+                       <%  let timeForService1  = timeOpen+1;  %>
+                       <%  let timeClose = parseInt(homeData.time_close); %>
+                      
+                       
+                           <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
+                               <% if(timeOpen<=9) {%> 
+                                 <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                               <% timeForService1++ %> 
+                               <% }else{ %>   
+                                 <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                                 <% timeForService1++ %> 
+                               <% } %>
+                           
+                           <% } %>
+                          
+                        
+                   <% })  %> 
+                     
+                 
+                   
+               </select>
 
                   <div class='row'>
                     <label class="textque"">เลือกพนักงาน</label>
-                    <select name="edu" id="">
+                    <select name="employeeName" class="form-control">
                       <option value="" selected disabled hidden></option>
                       <% empList.forEach(emp =>{ %> 
-                        <option value= "<%= emp.firstname %>" <%= emp.lastname %>> <%= emp.firstname %>  <%= emp.lastname %></option>
+                        <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>
                       <% }) %> 
                   </select>
                   </div>
@@ -189,8 +200,8 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="buttonbt">บันทึก</button>
-                <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="submit" class="buttonbt">บันทึก</button>
+                
               </div>
             </form>
           </div>
@@ -204,9 +215,14 @@
         crossorigin="anonymous">
       </script>
       <script 
-        src="./js/queuebooking-admin.js" 
+        src="./js/dateBooking.js" 
         charset="utf-8">
       </script> 
+
+      <script 
+        src="./js/select-time.js" 
+        charset="utf-8">
+      </script>
 
 </body>
 </html>

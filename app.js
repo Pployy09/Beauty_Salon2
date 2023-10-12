@@ -22,7 +22,7 @@ const contactUserController = require('./controllers/contactUserController')
 
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
-const QueuebookingAdminController = require('./controllers/QueuebookingAdminController');
+const QueuebookingAdminController = require('./controllers/queuebookingAdminController');
 const BookingUserController = require('./controllers/booking-userController');
 
 
@@ -77,7 +77,9 @@ app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 app.get('/home-admin',HomeAdminController.showData);
 app.get('/home-admin/:id',HomeAdminController.editData);
 
-app.get('/queuebooking-admin',QueuebookingAdminController.showQueuebook);
+app.get('/queuebooking-admin',QueuebookingAdminController.showQueuebooking);
+app.get('/edit-queuebooking/:id',QueuebookingAdminController.editQueuebooking);
+
 app.get('/pay-admin',showUserController.showPay);
 app.get('/employeetable-admin',employeeTableController.showInfoEmpTable);
 
@@ -110,6 +112,7 @@ app.post('/user/register',loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
+app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);

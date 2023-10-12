@@ -7,16 +7,16 @@ var yearNow =  date1.getFullYear();
 function min(){
 if(monthNow <= 9 && dateNow <= 9){
    var t1 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
-   document.getElementById("dateBookingUser").setAttribute("min",t1);
+   document.getElementById("dateBooking").setAttribute("min",t1);
 }else if(monthNow <= 9 && dateNow > 9){
    var t2 = yearNow + '-0' + monthNow +'-'+ dateNow ;
-   document.getElementById("dateBookingUser").setAttribute("min",t2);
+   document.getElementById("dateBooking").setAttribute("min",t2);
 }else if(dateNow <= 9 && monthNow > 9 ){
    var t3 = yearNow + '-' + monthNow +'-0'+ dateNow ;
-   document.getElementById("dateBookingUser").setAttribute("min",t3);
+   document.getElementById("dateBooking").setAttribute("min",t3);
 }else if(monthNow > 9 && dateNow > 9){
    var t4 = yearNow + '-' + monthNow +'-'+ dateNow ;
-   document.getElementById("dateBookingUser").setAttribute("min",t4);
+   document.getElementById("dateBooking").setAttribute("min",t4);
 }
 };
 
@@ -35,7 +35,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t6 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }
-     document.getElementById("dateBookingUser").setAttribute("max",t6);
+     document.getElementById("dateBooking").setAttribute("max",t6);
 
 
   }else if(dayNow === 2){
@@ -49,7 +49,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t7 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t7);
+     document.getElementById("dateBooking").setAttribute("max",t7);
 
   }else if(dayNow === 3){
    dateNow = dateNow + 4 //วันอาทิตย์
@@ -62,7 +62,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9 ){
         t8 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t8);
+     document.getElementById("dateBooking").setAttribute("max",t8);
 
   }else if(dayNow === 4){
      dateNow = dateNow + 3
@@ -75,7 +75,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t9 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t9);
+     document.getElementById("dateBooking").setAttribute("max",t9);
 
   }else if(dayNow === 5){
      dateNow = dateNow + 2
@@ -88,7 +88,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t10 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t10);
+     document.getElementById("dateBooking").setAttribute("max",t10);
 
   }else if(dayNow === 6){
      dateNow = dateNow + 1
@@ -101,7 +101,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t11 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t11);
+     document.getElementById("dateBooking").setAttribute("max",t11);
 
   }else if(dayNow === 7){
      
@@ -114,7 +114,7 @@ function max(){
      }else if(monthNow > 9 && dateNow > 9){
         t12 = yearNow + '-' + monthNow +'-'+ dateNow ;
      }  
-     document.getElementById("dateBookingUser").setAttribute("max",t12);
+     document.getElementById("dateBooking").setAttribute("max",t12);
   }
 
 
