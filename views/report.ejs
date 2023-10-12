@@ -21,8 +21,9 @@
 
 </head>
 <body>
-    <h1>ร้าน........</h1>
-    <h1>รายงานสินค้าคงเหลือ</h1>
+    <h1><%=home.inputLogo%></h1>
+    <h1>รายงานสถานะสินค้าคงเหลือ</h1>
+    <p id="currentDate"></p>
     <hr>
     <table >
         <tr class="sectionTable">
@@ -32,25 +33,50 @@
           <th >รายละเอียดเพิ่มเติม</th>
           <th >ราคาซื้อ/ชิ้น</th>
           <th >คงเหลือ</th>
+          <th >รวมเป็นเงิน</th>
         </tr>
-       
+        <% let totalSum = 0; %>
         <% stockList.forEach((stock,element) =>{ %>
             <tr class="infoTable">
-              <td ><%=stock.idproduct%></td>
+              <td ><%=stock.code%></td>
               <td ><%=stock.name_product%></td>
               <td ><%=stock.brand_product%></td>
               <td ><%=stock.detail_product%></td>
               <td ><%=stock.price_product%></td>
               <td ><%=stock.unit_product%><td>
+              <p><%= (stock.price_product * stock.unit_product).toLocaleString('th-TH') %></p>
             </tr>
+
+            <% totalSum += stock.price_product * stock.unit_product; %>
+
             <%}) %> 
 
       </table>
     <hr>
-    <b>รวมทั้งหมด   รายการ</b>
+
+    <b>รวมสินค้าทั้งหมด <%= stockList.length %>  รายการ</b> 
+    <b class="total"> <%= totalSum.toLocaleString('th-TH') %> </b>
     <hr>
     <hr>
       
+  <script>
+        // เลือกข้อมูลที่จะแสดงวันที่
+      const currentDateElement = document.getElementById("currentDate");
+
+      // สร้างวัตถุ Date สำหรับวันที่ปัจจุบัน
+      const today = new Date();
+
+      // สร้างรูปแบบของวันที่ (เช่น "วันที่ เดือน ปี")
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+      // แปลงวันที่เป็นข้อความโดยใช้รูปแบบ
+      const formattedDate = today.toLocaleDateString('th-TH', options);
+
+      // แสดงวันที่ในองค์ประกอบ HTML
+      currentDateElement.innerHTML = 'ณ   ' + formattedDate;
+
+  </script>
 
 </body>
 </html>
+

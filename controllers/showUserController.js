@@ -1,10 +1,5 @@
 const User = require('../models/User')
 
-exports.showHome = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('home-user',{UserData})
-}
-
 exports.showEmpEdit = async(req, res) => {
     let UserData = await User.findById(req.session.userId)
     res.render('employeeEdit-admin',{UserData})

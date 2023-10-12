@@ -2,6 +2,20 @@ header {
     background-color: #F19B9D;
 }
 
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin-left: 250px;
+}
+
+.error-message2 {
+    color: red;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+
 .imgBooking{
     background-color: #FBE1C5;
 }
@@ -70,7 +84,7 @@ b{
 .nav .heaDer.active{
     background-color: #FBE1C5;
 }
-
+  
 .promotion {
     background-color: #FBF2E9;
 }
@@ -161,6 +175,13 @@ b{
     justify-content: center;
     align-items: center;
   
+}
+
+#booking .containers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #booking .container .Bookingg {
@@ -529,4 +550,9 @@ body{
   .eco {
     margin-left: 30%;
     margin-top: 2%;
+}
+
+#error-message3 {
+    margin-left: 20px;
+    margin-bottom: 0px;
 }

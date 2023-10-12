@@ -1,24 +1,32 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
-
+const flash = require('connect-flash')
 //สมัคร
-exports.addUser = (req, res) => {
-    User.create(req.body).then(() => {
-        console.log("User registered successfully!")
-        res.redirect('/')
-    }).catch((error) => {
-        // console.log(error.errors)
+exports.addUser = async (req, res) => {
+    const { username } = req.body;
 
-        if (error) {
-            const validationErrors = Object.keys(error.errors).map(key => error.errors[key].message)
-            req.flash('validationErrors', validationErrors)
-            req.flash('data', req.body)
-            return res.redirect('/register')
+    try {
+        const existingUser = await User.findOne({ username });
+
+        if (existingUser) {
+            console.log("Username already exists!");
+            // ส่งข้อความผิดพลาดไปยังหน้าเว็บ
+            req.flash('error', 'ชื่อผู้ใช้ซ้ำ');
+            req.session.formData = req.body;
+            res.redirect('/register')
         }
 
-    })
+        // หากไม่มีชื่อผู้ใช้ที่ซ้ำกันในฐานข้อมูล
+        await User.create(req.body);
+        console.log("User registered successfully!");
+        return res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        // ส่งข้อความผิดพลาดไปยังหน้าเว็บ
+    }
 }
-//เช็ก login user
+
+// ใน loginUser
 exports.loginUser = (req, res) => {
     const { username, password } = req.body 
 
@@ -29,20 +37,28 @@ exports.loginUser = (req, res) => {
             let cmp = bcrypt.compare(password, user.password).then((match) => {
                 if (match) {
                     if (user.role == 'user'){
-                    req.session.userId = user._id
-                    res.redirect('/home-user')
+                        req.session.userId = user._id
+                        res.redirect('/home-user')
+                    } else {
+                        // ถ้าไม่ใช่บทบาท 'user'
+                        req.flash('error', 'ไม่สามารถเข้าสู่ระบบได้')
+                        res.redirect('/login-user')
                     }
                 } else {
+                    // รหัสผ่านไม่ถูกต้อง
+                    req.flash('error', 'ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง')
                     res.redirect('/login-user')
                 }
             })
         } else {
+            // ไม่พบผู้ใช้
+            req.flash('error', 'ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง')
             res.redirect('/login-user')
         }
     })
 }
 
-//เช็ก login Admin & Employee
+// ใน loginAdmin
 exports.loginAdmin = (req, res) => {
     const { username, password } = req.body 
 
@@ -52,17 +68,28 @@ exports.loginAdmin = (req, res) => {
         if (user) {
             let cmp = bcrypt.compare(password, user.password).then((match) => {
                 if (match) {
-                    if (user.role=='admin'||'emp'){
-                    req.session.userId = user._id
-                    res.redirect('/home-admin')
-                }
+                    if (user.role == 'admin'){ // ตรวจสอบบทบาท 'admin' หรือ 'emp'
+                        req.session.userId = user._id
+                        res.redirect('/home-admin')
+                    } else if (user.role == 'emp') {
+                        req.session.userId = user._id
+                        res.redirect('/queuebooking-admin')
+                        
+                    } else {
+                        // ถ้าไม่ใช่บทบาท 'admin' หรือ 'emp'
+                        req.flash("error", 'ไม่สามารถเข้าสู่ระบบได้')
+                        res.redirect('/login-admin')
+                    }
                 } else {
+                    // รหัสผ่านไม่ถูกต้อง
+                    req.flash("error", 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
                     res.redirect('/login-admin')
                 }
             })
         } else {
+            // ไม่พบผู้ใช้
+            req.flash("error", 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
             res.redirect('/login-admin')
         }
     })
 }
-

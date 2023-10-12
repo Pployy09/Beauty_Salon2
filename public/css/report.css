@@ -29,3 +29,13 @@ body{
   b {
     margin-left: 20px;
   }
+
+  p {
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  .total {
+    float: right;
+    margin-right: 60px;
+  }

@@ -131,6 +131,24 @@ td {
   font-size: 20px;
 }
 
+#create-service1{
+  display: flex;
+  justify-content:flex-end;
+  padding-right: 100px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+#create-service1 a{
+ background-color: #E9A8A1;
+ font-size: 24px;
+ color: #fff;
+ border-radius: .5rem;
+ padding-left: 15px;
+ padding-right:15px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+
 #create-service{
   display: flex;
   justify-content:flex-end;
@@ -197,7 +215,6 @@ td {
   font-family: 'Pacifico', cursive;
   
 }
-
 
 .logomore{
   color: white;
@@ -579,30 +596,28 @@ ul.primary li:hover > a{
   background-color: #FBF2E9;
   height:10vh; 
   
-  
 }
 #infoTable .container .sectionTable td{
   color: #5F3122;
   font-size: 24px;
   background-color: #FBF2E9;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 #infoTable .container .infoTable{
   background-color: #fff;
-  height:10vh;   
+  height:10vh; 
   
 }
 #infoTable .container .infoTable td{
   color: #5F3122;
   font-size: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 #infoTable .container .infoTable a{
   color: #F19B9D;
 }
-
-
-
-
-
 
 
 /* stock */

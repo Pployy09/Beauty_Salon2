@@ -29,7 +29,7 @@
    <!-- Header -->
    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
-      <div class="fontlogo logomore">Beauty Salon .</b></div>
+      <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -59,14 +59,14 @@
     <div class="container col-xxl-8 px-4 pt-5 ">
       <div class="row flex-lg-row-reverse align-items-center g-5  pt-5 ">
         <div class="col-10 col-sm-8 col-lg-6  ">
-          <img src="./img/img1.png" class="d-block mx-lg-auto img-fluid mt-5" alt="woman"  height="100%" loading="lazy">
+          <img src="<%=img1.image1%>" class="d-block mx-lg-auto img-fluid mt-5" alt="woman"  height="100%" loading="lazy">
         </div>
         <div class="col-lg-6 " >
           <h1 class="display-5 fw-lighter  lh-1 mb-3  fontlogo colorWel">Welcome</h1>
           <h3 class="fB ">To a Full Beauty.</h3>
           
           <div class="d-grid gap-2  justify-content-evenly " >
-            <a href="./booking" role="button" class="btn btn-lg  me-md-2 text-white fontAll bookingNow ">จองคิวตอนนี้</a>
+            <a href="./booking-user" role="button" class="btn btn-lg  me-md-2 text-white fontAll bookingNow ">จองคิวตอนนี้</a>
 
           </div>
         </div>
@@ -78,7 +78,7 @@
   <!-- โปรโมชั่น -->
   <div class="promotion py-5 " >
     <div class="imgPro">
-      <img class="pro1" src="./img/img2.png" alt="promotion1" height="400px" >
+      <img class="pro1" src="<%=img2.image2%>" alt="promotion1" height="400px" >
     </div>
     
   </div>
@@ -88,47 +88,30 @@
   <div class="container">
     <div class="img-services">
       <div class="hair">
-        <img class="color Hair" src="./img/color-hair.jpg" alt="hair color">
-        <h3 class="fontAll text-hair">ทำสี</h3>
+        <img class="color Hair" src="<%=img3.image3%>" alt="hair color">
+        <h3 class="fontAll text-hair"><%=home. description1%></h3>
       </div>
 
       <div class="hair">
-        <img class="cut Hair" src="./img/cut-hair.jpg" alt="hair cut" >
-        <h3 class="fontAll text-hair">ตัดผม</h3>
+        <img class="cut Hair" src="<%=img4.image4%>" alt="hair cut" >
+        <h3 class="fontAll text-hair"><%=home. description2%></h3>
       </div>
 
       <div class="hair">
-        <img class="dryer Hair" src="./img/dryer-hair.jpg" alt=" hair dryer" >
-        <h3 class="fontAll text-hair">สระ-ไดร์</h3>
+        <img class="dryer Hair" src="<%=img5.image5%>" alt=" hair dryer" >
+        <h3 class="fontAll text-hair"><%=home. description3%></h3>
       </div>
     </div>
     
     <div class="more-services">
-      <a href="#" class="nav-link fontAll text-more-ser">ดูบริการเพิ่มเติม</a>
+      <a href="./service-user" class="nav-link fontAll text-more-ser">ดูบริการเพิ่มเติม</a>
     </div>
   
    
   </div>
  </section> 
 
- <!--footer-->
-  <section id="footer-store">
-    <div class="container">
-      <footer class="py-3 ">
-        <div  class="footerStore">
-          <div class="logoFooter">
-            <div class="fontlogo logo-footer">Beauty Salon .</b></div>
-          </div>
-          <div class="text-footer">
-              <p class="text-center fontAll  pt-3">Copyright © XXXXX</p>
-              <p class="text-center  fontAll">ร้านหยุดทุกวันจันทร์</p>
-              <p class="text-center  fontAll">เปิดเวลา 10.00 - 19.00 น<div class=""></div></p>
-          </div>
-        </div>
-      
-      </footer>
-    </div>
-  </section>
+  <%- include ('./footer') %>
 
   <%- include ('./chat') %>
 

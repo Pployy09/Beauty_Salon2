@@ -13,6 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/info.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +50,7 @@
             </ul>
           </li>
           <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">stock</a></li>
+          <li><a href="./chatbot-admin" id="chatbot" class=" nav-link px-3 text-header fontAll ">Chat Bot</a></li>
         </ul>
         
         <% if (loggedIn) { %>
@@ -101,21 +103,22 @@
       </div>
     </div>
 
-        <div class="container">
-          <div class="chang-services-emp-cuss">
-            <div id="chang-services">
-              <h1 class="textedit">ตารางการทำงาน</h1>
-              <div class="line-4-1"></div>
-            </div>
+    <div class="container">
 
-            <div id="chang-services">
-              <h1 class="textedit">ประวัติการทำงาน</h1>
-            </div>
-          </div>
-        </div>
+      <button class="tablink" onclick="openPage('Home', this, '#FBF2E9')"id="defaultOpen">ตารางการทำงานของฉัน</button>
+      <button class="tablink" onclick="openPage('News', this, '#FBF2E9')" >ประวัติการทำงานของฉัน</button>
 
-        <div class="histo"></div>
-      
+      <div id="Home" class="tabcontent">
+        <h3>ตารางการทำงานของฉัน</h3>
+        <p>Home is where the heart is..</p>
+      </div>
+
+      <div id="News" class="tabcontent">
+        <h3>ประวัติการทำงานของฉัน</h3>
+        <p>Some news this fine day!</p> 
+      </div>
+
+    </div>
 
       <!-- JavaScript-->
       <script 
@@ -123,6 +126,25 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
         crossorigin="anonymous">
       </script>
+
+<script>
+  function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
       
 </body>
 </html>

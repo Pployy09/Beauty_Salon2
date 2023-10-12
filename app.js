@@ -11,11 +11,13 @@ const Upload2image = require('./models/uploadimg2')
 const Upload3image = require('./models/uploadimg3')
 const Upload4image = require('./models/uploadimg4')
 const Upload5image = require('./models/uploadimg5')
+const Home = require('./models/Home-Admin');
 
 //controller
+const indexController = require('./controllers/indexController')
+const homeUserController = require('./controllers/homeUserController')
 const serviceController = require('./controllers/serviceController');
 const stockController = require('./controllers/stockController');
-const registerController = require('./controllers/registerController');
 const loginUserController = require('./controllers/loginUserController');
 const showUserController = require('./controllers/showUserController')
 const employeeinformationAdmin = require('./controllers/employeeInfoController');
@@ -26,6 +28,7 @@ const reportController = require('./controllers/reportController')
 const contactController = require('./controllers/contactController')
 const serviceUserController = require('./controllers/serviceUserController')
 const contactUserController = require('./controllers/contactUserController')
+const chatController = require('./controllers/chatController')
 
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
@@ -35,6 +38,7 @@ const BookingUserController = require('./controllers/booking-userController');
 //middleware
 const authMiddleware = require('./Middleware/authMiddleware');
 const rediractifAuth = require('./Middleware/rediractifAuth');
+const adminMiddleware = require('./Middleware/adminMiddleware')
 
 mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?retryWrites=true&w=majority',
 {
@@ -47,24 +51,76 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(express.static('uploads'))
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 app.use(flash())
-app.use(expressSession({secret:"node secret"}))
+app.use(expressSession({
+    secret: 'node key',
+    resave: false,
+    saveUninitialized: false,
+}))
 app.use("*", (req, res, next) => {
     loggedIn = req.session.userId
     next()
 })
 
-app.get('/',(req,res) => {
-    res.render('index')
+app.get('/login-user',rediractifAuth,async (req,res) => {
+    try {
+        const { id } = req.params;
+        const home = await Home.findOne({ id });
+            if (!home) {
+                req.flash('error', 'ไม่พบข้อมูล');
+                return res.redirect('/login-user');
+            }
+                res.render('login-user', {
+                home: home,
+                error: req.flash('error')
+             });
+    } catch (error) {
+    console.error(error);
+    req.flash('error', 'เกิดข้อผิดพลาดในการดึงข้อมูล');
+    res.redirect('/login-user');
+}
 })
-app.get('/login-user',(req,res) => {
-    res.render('login-user')
+
+app.get('/login-admin',rediractifAuth,async (req,res) => {
+    try {
+        const { id } = req.params;
+        const home = await Home.findOne({ id });
+            if (!home) {
+                req.flash('error', 'ไม่พบข้อมูล');
+                return res.redirect('/login-admin');
+            }
+                res.render('login-admin', {
+                home: home,
+                error: req.flash('error')
+             });
+    } catch (error) {
+    console.error(error);
+    req.flash('error', 'เกิดข้อผิดพลาดในการดึงข้อมูล');
+    res.redirect('/login-admin');
+}
 })
-app.get('/login-admin',(req,res) => {
-    res.render('login-admin')
-})
+
+app.get('/register',rediractifAuth,async (req,res) => {
+    try {
+        const { id } = req.params;
+        const home = await Home.findOne({ id });
+            if (!home) {
+                req.flash('error', 'ไม่พบข้อมูล');
+                return res.redirect('/register');
+            }
+                res.render('register', {
+                home: home,
+                error: req.flash('error'),
+                formData: req.session.formData || {} 
+             });
+    } catch (error) {
+    console.error(error);
+    req.flash('error', 'เกิดข้อผิดพลาดในการดึงข้อมูล');
+    res.redirect('/register');
+}
+});
 
 app.get('/logout',(req,res) => {
     req.session.destroy (() => {
@@ -72,56 +128,59 @@ app.get('/logout',(req,res) => {
     })
 })
 
+app.get('/no-access',(req,res) => {
+        res.render('no-access')
+})
 
 //user
-app.get('/register',registerController);
-app.get('/home-user',showUserController.showHome);
-
-app.get('/information-user',showUserController.showEdits);
+app.get('/',indexController.showDatas);
+app.get('/home-user',authMiddleware,homeUserController.showDatass);
+app.get('/information-user',authMiddleware,showUserController.showEdits);
 app.get('/booking-user',BookingUserController.showBookingUser);
 
 app.get('/service-user',serviceUserController.showServiceUser);
 app.get('/contact-user',contactUserController.showContacts);
 
-app.get('/editInformation-user',showUserController.showEditUser);
+app.get('/editInformation-user',authMiddleware,showUserController.showEditUser);
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
 
 app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 
 //admin
-app.get('/home-admin',HomeAdminController.showData);
+app.get('/chatbot-admin',authMiddleware,chatController.showChat)
+app.get('/home-admin',adminMiddleware,authMiddleware,HomeAdminController.showData);
 app.get('/home-admin/:id',HomeAdminController.editData);
 
-app.get('/queuebooking-admin',QueuebookingAdminController.showQueuebook);
-app.get('/pay-admin',showUserController.showPay);
-app.get('/employeetable-admin',employeeTableController.showInfoEmpTable);
+app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebook);
+app.get('/pay-admin',authMiddleware,showUserController.showPay);
+app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
 
-app.get('/employeeEdit-admin',showUserController.showEmpEdit);
-app.get('/editInformation-admin',showUserController.showEdit);
+app.get('/employeeEdit-admin',authMiddleware,showUserController.showEmpEdit);
+app.get('/editInformation-admin',authMiddleware,showUserController.showEdit);
 app.get('/editInformation-admin/:id',editinformationController.editAdmin);
 
-app.get('/stock-admin',stockController.showStock);
+app.get('/stock-admin',authMiddleware,stockController.showStock);
 app.get('/editStock-admin/:id',stockController.editStock);
 
-app.get('/service-admin',serviceController.showService);
+app.get('/service-admin',adminMiddleware,authMiddleware,serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
 
-app.get('/report',reportController.showStocks)
+app.get('/report',authMiddleware,reportController.showStocks)
 
-app.get('/homeContact-admin',contactController.showContact)
+app.get('/homeContact-admin',authMiddleware,contactController.showContact)
 app.get('/homeContact-admin/:id',contactController.editContact);
 
-app.get('/employeeinformation-admin',employeeinformationAdmin.showInfoEmployee);
+app.get('/employeeinformation-admin',adminMiddleware,authMiddleware,employeeinformationAdmin.showInfoEmployee);
 app.get('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 
 app.post('/homeContact-admin',contactController.addContact)
 
-app.post('/user/login',loginUserController.loginUser);
-app.post('/admin/login',loginUserController.loginAdmin);
+app.post('/user/login',rediractifAuth,loginUserController.loginUser);
+app.post('/admin/login',rediractifAuth,loginUserController.loginAdmin);
 
 app.post('/home-admin',HomeAdminController.addData);
 
-app.post('/user/register',loginUserController.addUser);
+app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);

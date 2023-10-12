@@ -4,12 +4,32 @@
     height: 1100px;
 }
 
+/* Booking */
+
+#bookings {
+    background-color: #FBE1C5;
+}
+
+#bookings .containers{
+    
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+#bookings .containers  {
+    color: #5F3122;
+    font-size: 50px;
+}
+
 
 .bgg {
     background-color:#FBE1C5 ;
     width: 100%;
     height: 1200px;
- }
+}
 
  .bgg .text{
     text-align:center;
@@ -60,12 +80,54 @@
     margin-top: 10px;
 }
 .formmap {
+    margin-top: 40px;
+}
+
+.div1{
+    
+    background-color:rgba(251, 242, 233, 0.6);
+    margin-left: 19%;
+    margin-top: 70px;
+    border-radius: 20px;
+    width: 900px;
+    height: 220px;
+}
+.div2{
+    position: absolute;
+    z-index: 2;
+    background-color:rgba(251, 242, 233);
+    margin-left: 18%;
+    margin-top: 50px;
+    border-radius: 20px;
+    width: 900px;
+    height: 220px;
+}
+
+.textad {
+    float:left;
+    margin-top: 50px ; 
+    margin-left: 110px;
+    color: #5F3122;
+    font-size: 25px;
+}
+ 
+.formmap1 {
     margin-left: 70px;
+    margin-top: 20px;
+}
+
+.textad1 {
+    float:left;
+    margin-top: 50px ;
+    margin-left: 180px;
+    color: #5F3122;
+    font-size: 25px;
 }
  
  #maps {
     height: 50%;
     width: 1000px;
+    margin-left: 225px;
   }
 
   #map {
@@ -81,14 +143,6 @@
     margin-bottom: 40px;
     text-align: center;
 } 
-
-.textad {
-    float:left;
-    margin-top: 50px ;
-    margin-left: 180px;
-    color: #5F3122;
-    font-size: 25px;
-}
 
 .copy {
     margin-bottom: 10px;

@@ -47,6 +47,7 @@
               </ul>
             </li>
             <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">stock</a></li>
+            <li><a href="./chatbot-admin" id="chatbot" class="nav-link px-3 text-header fontAll ">Chat Bot</a></li>
           </ul>
     
           <% if (loggedIn) { %>
@@ -156,31 +157,31 @@
                         });
                       }
 
-                        </script>
+                      </script>
 
                 <!--ส่วนของการแสดงรายละเอียดผลลัพธ์ที่ได้-->
-              <div class="formmap">
+              <div class="formmap1">
                 
-                  <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                  <div class="textad1">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
                       <div  id="location" class="form-controls"> <%=contact.address%> </div>
                     </div>
                   
-                  <div class="textad">ละติจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                  <div class="textad1">ละติจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
                      <span id="lat" ></span>
                      <button class="copy" onclick="copyToClipboard('#lat')">คัดลอกละติจูดใส่ช่องด้านล่าง</button>  
                      <input type="text"  class="form-controls" name="lat" placeholder="<%=contact.lat%>" required>
                     </div>
 
-                  <div class="textad">ลองจิจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                  <div class="textad1">ลองจิจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
                       <span id="lng" ></span>
                       <button class="copy" onclick="copyToClipboard('#lng')">คัดลอกลองจิจูดใส่ช่องด้านล่าง</button>  
                       <input type="text"  class="form-controls" name="lng" placeholder="<%=contact.lng%>" required>
                     </div>
 
-                  <div class="textad">เบอร์โทรติดต่อ &nbsp;</div>
+                  <div class="textad1">เบอร์โทรติดต่อ &nbsp;</div>
                     <div class="inputres">
                       <input type="text" class="form-controls" name="phoneaddress" placeholder="<%=contact.phoneaddress%>" required>
                     </div>

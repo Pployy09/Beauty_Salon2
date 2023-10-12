@@ -79,13 +79,9 @@
                       <div class="editS">
                         <div class='editSe'>
                           <label class="textque">รหัสสินค้า</label>
-                          <input 
-                          type="text" 
-                          placeholder="<%= stock.idproduct %>" 
-                          class="form-control" 
-                          name="idproduct"
-                          value="<%= stock.idproduct %>" 
-                          required>
+                          <div class="form-control">
+                              <%= stock.code %>
+                          </div>
                         </div> 
                        
                         <div class='editSe'>
