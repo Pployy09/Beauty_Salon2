@@ -32,7 +32,7 @@ const chatController = require('./controllers/chatController')
 
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
-const QueuebookingAdminController = require('./controllers/QueuebookingAdminController');
+const QueuebookingAdminController = require('./controllers/queuebookingAdminController');
 const BookingUserController = require('./controllers/booking-userController');
 
 //middleware
@@ -151,9 +151,12 @@ app.get('/chatbot-admin',authMiddleware,chatController.showChat)
 app.get('/home-admin',adminMiddleware,authMiddleware,HomeAdminController.showData);
 app.get('/home-admin/:id',HomeAdminController.editData);
 
-app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebook);
-app.get('/pay-admin',authMiddleware,showUserController.showPay);
+app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebooking);
+app.get('/edit-queuebooking/:id',authMiddleware,QueuebookingAdminController.editQueuebooking);
+
+app.get('/pay-admin',showUserController.showPay);
 app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
+
 
 app.get('/employeeEdit-admin',authMiddleware,showUserController.showEmpEdit);
 app.get('/editInformation-admin',authMiddleware,showUserController.showEdit);
@@ -184,6 +187,7 @@ app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
+app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);

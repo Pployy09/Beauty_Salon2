@@ -64,13 +64,11 @@
         
               
             <form action="/booking-user/" method="POST" >
-              <% if (loggedIn) { %>
-                <% UserData.username%>
-                <% } %>
+              
               <div class="mt-5 date-booking ">
                 <label for="dateBooking" 
                 class="form-label fontAll textBooking">เลือกวันที่</label>
-                <input id="dateBookingUser"
+                <input id="dateBooking"
                 type="date" min="0000-00-00" max="0000-00-00"
                 placeholder="วว/ดด/ปปปป" 
                 class="form-control" 
@@ -114,8 +112,8 @@
                      
                     
                
-                     <select name="booking_time_user[]"  class="custom-select-time"  id="select-time"  multiple="multiple" required > 
-                       
+                     <select name="booking_time_user[]"  class="select-time"  id="select-time"  multiple="multiple" required > 
+                            
                            <%  HomeData.forEach(homeData => { %>
                            
                             <%  let timeOpen = parseInt(homeData.time_open); %>
@@ -125,10 +123,12 @@
                             
                                 <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
                                     <% if(timeOpen<=9) {%> 
-                                      <option  value= "0<%= timeOpen %>.00 _ <%= timeForService1 %>.00" onclick = <%= serT  %> class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                                      
+                                      <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option>
+                                      
                                     <% timeForService1++ %> 
                                     <% }else{ %>   
-                                      <option  value= "<%= timeOpen %>.00 _ <%= timeForService1 %>.00" onclick = <%= serT  %> class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                                      <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
                                       <% timeForService1++ %> 
                                     <% } %>
                                 
@@ -137,6 +137,7 @@
                              
                         <% })  %> 
                           
+                        
                       
                         
                     </select> 
@@ -175,6 +176,10 @@
   </script>
   <script 
   src="/js/booking-user.js" 
+  charset="utf-8">
+  </script>
+  <script  
+  src="/js/select-time.js" 
   charset="utf-8">
   </script>
 

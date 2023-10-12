@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const Service = require('../models/Service');
 const Home = require('../models/Home-Admin');
-const QueueBookingUser = require('../models/Queuebooking-User');
+const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 
 exports.showBookingUser = async(req, res) => {
     const {id} = req.params;
@@ -25,12 +25,14 @@ exports.addBookingUser = async (req,res) =>{
     try{
         const user = await User.findById(req.session.userId);
         if(!user){
-            return res.status(404).json({error:'User not found'});
+            res.status(404);
+            res.send("กรุณาเข้าสู่ระบบเพื่อจองคิว");
+          
         }
         
         
-        const bookingCustomer =  new QueueBookingUser({
-        
+        const bookingCustomer =  new QueueBookingCustomer({
+        customerUsername: user.username,
         booking_date_user : req.body.booking_date_user,
         booking_service_user :  req.body.booking_service_user,
         booking_time_user :  req.body.booking_time_user,

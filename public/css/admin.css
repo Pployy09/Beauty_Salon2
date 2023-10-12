@@ -838,14 +838,11 @@ ul.primary li a {
   
 
 /*หน้า queuebooking pay ejs */
-#infoTable .container{
-    display: flex;
-    justify-content: center;
-    
-}
+
+
 #infoTable .container .sectionTable{
     background-color: #FBF2E9;
-    height:10vh; 
+    height:10vh;
     
     
 }
@@ -853,7 +850,11 @@ ul.primary li a {
     color: #5F3122;
     font-size: 24px;
     background-color: #FBF2E9;
+    padding-left: 10px;
+   
 }
+
+
 #infoTable .container .infoTable{
     background-color: #fff;
     height:10vh;   
@@ -861,14 +862,45 @@ ul.primary li a {
 }
 #infoTable .container .infoTable td{
     color: #5F3122;
-    font-size: 20px;
+    font-size: 18px;
+    text-align:center;
+    
 }
 #infoTable .container .infoTable a{
     color: #F19B9D;
+    
 }
 #infoTable .container .infoTable button{
     color: #F19B9D;
 }
+.select{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 10px;
+    justify-items: center;
+
+}
+
+
+.item-time{
+    background-color: white;
+    color: #5F3122;
+    padding: 10px 10px 10px 10px;
+    border-radius: 3rem;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.1s;
+    display: flex;
+    gap: 10px;
+}
+
+.item--selected{
+    background-color: #E9A8A1;
+    
+}
+
+
+
 /*หน้า pay ejs */
 
 /*หน้า editService ejs */
@@ -1032,3 +1064,4 @@ ul.primary li a {
     width: 800px;
     border-radius: 1rem;
  }
+
