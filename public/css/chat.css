@@ -72,3 +72,317 @@
   .form-container .btn:hover, .open-button:hover {
     opacity: 1;
   }
+
+  .bot {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+  }
+
+  .fa {
+    padding-top: 65px;
+    font-size: 50px;
+    width: 450px;
+    height: 250px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 30px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+      color: #FBF2E9;
+  }
+
+  .fa-reddit {
+    background: #E38888;
+    color: white;
+  }
+
+  .textchat {
+    letter-spacing: 2px;
+    margin-top: 25px;
+    font-size: 32px;
+    font-family: 'Noto Sans Thai', sans-serif;
+  }
+
+  .newspaper {
+    padding: 25px 80px 75px 80px;
+    text-align: center;
+    column-count: 2;
+    column-gap: 30px;
+    /*column-rule-style: solid;
+    column-rule-width: 1px;
+    column-rule-color: lightblue;*/
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .img {
+    width: 350px;
+    height: 350px;
+  }
+
+  #imgg{
+    text-align: center;
+  }
+  .img1 {
+    width: 650px;
+    height: 300px;
+  }
+
+  .img2 {
+    width: 750px;
+    height: 320px;
+    margin: 30px;
+  }
+
+  .img3 {
+    width: 800px;
+    height: 320px;
+    margin: 30px;
+  }
+
+  .img4 {
+    width: 820px;
+    height: 450px;
+    margin: 30px;
+  }
+
+  .img5 {
+    width: 360px;
+    height: 450px;
+    margin: 30px;
+  }
+
+  .img6 {
+    width: 700px;
+    height: 500px;
+    margin: 30px;
+  }
+
+  .img7 {
+    width: 750px;
+    height: 370px;
+    margin: 30px;
+  }
+
+  .img8 {
+    width: 550px;
+    height: 470px;
+    margin: 30px;
+  }
+
+  .img9 {
+    width: 350px;
+    height: 470px;
+    margin: 30px;
+  }
+
+  .img10 {
+    width: 500px;
+    height: 270px;
+    margin: 30px;
+  }
+
+  .img11 {
+    width: 720px;
+    height: 500px;
+    margin: 30px;
+  }
+
+  .img12 {
+    width: 500px;
+    height: 370px;
+    margin: 30px;
+  }
+
+  .item1 { 
+    grid-area: col1; 
+    background-color: #F19B9D;
+  }
+  .item2 { 
+    grid-area: col2;
+    background-color: #FBE1C5;
+  }
+  
+  .grid-container {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template:'col1 col2 col2 col2 col2 col2';
+  }
+  
+  .grid-container > div {
+    padding: 20px;
+    font-size: 25px;
+  }
+
+
+  div.scrollmenu {
+    overflow: auto;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: #777;
+  }
+
+
+  /*chat new*/
+  * {
+    box-sizing: border-box;
+  }
+  
+  input[type=text], select, textarea {
+    width: 400px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #E38888;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    width: 150px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #F19B9D;
+  }
+  
+  .containers {
+    border-radius: 5px;
+    background-color: #FBE1C5;
+    padding: 20px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 20%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 55%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  .add {
+    display: flex;
+    justify-content: center;
+  }
+
+  .block {
+    background-color: white;
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+
+  }
+
+  p {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+
+
+/*-------- Style the tab------- */
+.tab {
+  float: left;
+  background-color: #F19B9D;
+  width: 30%;
+  height: 644px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  height: 214.5px;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #FBF2E9;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #FBE1C5;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 70px;
+  width: 70%;
+  border-left: none;
+  height: 644px;
+}
+
+.tt {
+  font-size: 22px;
+}
+
+.far {
+  font-size: 28px;
+  margin-left: 20px;
+  letter-spacing: 1.5px;
+}
+
+svg {
+  color: #5f3122;
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/stock.css">
+    <link rel="stylesheet" href="./css/chat.css">
+    
+     <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+</head>
+<body class="b1">
+    
+  <!-- Header หลัก-->
+  <section id="header-employee">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
+        <div class="col-md-3 mb-2 mb-md-0 ">
+        </div>
+  
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
+          <li><a href="./home-admin" id="homeHeaderEmployee" class=" nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
+          <li><a href="./service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
+          <li><a href="#" id="userHeaderEmployee" class="nav-link px-3 text-header fontAll ">ลูกค้า</a> 
+            <ul class="sub">
+              <li><a href="./queuebooking-admin" style="text-decoration:none" >ตารางการจองคิว</a></li>
+              <li><a href="./pay-admin" style="text-decoration:none">การชำระเงิน</a></li>
+            </ul>
+          </li>
+          <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll ">พนักงาน</a>
+            <ul class="sub">
+              <li><a href="./employeetable-admin" style="text-decoration:none ">ตารางพนักงาน</a></li>
+              <li><a href="./employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
+            </ul>
+          </li>
+          <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">stock</a></li>
+          <li><a href="./chatbot-admin" id="chatbot" class="active nav-link px-3 text-header fontAll ">Chat Bot</a></li>
+        </ul>
+
+        <% if (loggedIn) { %>
+            <div class=" nav me-3 text-end">
+              <div> <a href="./employeeEdit-admin" class="nav-link px-3 heaDer fontAll">Admin, <%=UserData.username%></a></div>
+              <div><a href="./logout" class="btn btn-danger">ออกจากระบบ</a></div>
+            </div>
+            <% } %>
+
+      </header>
+    </section>
+
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
+        <i class="fa-solid fa-robot fa-2x"  style="color: #5f3122; margin-left: 70px;" ><span class="far">Chat Bot</span></i></button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')">
+        <i class="fa-solid fa-clipboard-list fa-2x" style="color: #5f3122; margin-left: 35px;" "><span class="far">วิธีการใช้ Chat Bot</span></i></button>
+      <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+        <i class="fa-solid fa-comments fa-2x" style="color: #5f3122; margin-left: 35px;" "><span class="far">วิธีการโต้ตอบกับลูกค้า</span></i></button>
+    </div>
+    
+    <!--tap1-->
+    <div id="London" class="tabcontent">
+
+      <div class="bot">
+            <a href="https://web.powerva.microsoft.com" target="_blank" class="fa fa-reddit fa-3x">
+                <p class="textchat">ไปยัง Chat Bot</p>
+            </a>
+      </div>
+
+    </div>
+    
+    <!--tap2-->
+    <div id="Paris" class="tabcontent scrollmenu">
+
+        <h2>วิธีการใช้ Chat Bot</h2>
+        <div id="imgg">
+            <img src="../img/0.png" class="img" height="100%" loading="lazy">
+        </div>
+        <p class="tt">ทำการเข้าสู่ระบบหรือสมัครสมาชิก</p>
+        <div id="imgg">
+            <img src="../img/1.png" class="img2" height="100%" loading="lazy">
+        </div>
+        <p class="tt">Power Virtual Agents มีโฮมเพจระดับแอปที่ไม่เจาะจงสำหรับบอทใดๆ ในหน้านี้ คุณสามารถสร้างบอทใหม่ ดูบอทล่าสุด และเข้าถึงแหล่งข้อมูลการเรียนรู้ เช่น วิดีโอ คู่มือ และเส้นทางการเรียนรู้</p>
+        <div id="imgg">
+            <img src="../img/2.png" class="img2" height="100%" loading="lazy">
+        </div>
+        <p class="tt">ในเมนูนำทาง เลือก แชทบอท ในบานหน้าต่างด้านข้างเพื่อเปิดหน้า แชทบอท และดูบอททั้งหมดที่คุณเข้าถึงได้ในสภาพแวดล้อมนี้ บนหน้า คุณสามารถดูเมตาดาต้าเกี่ยวกับบอทเหล่านี้ รวมถึงเจ้าของ เวลาที่เผยแพร่ครั้งล่าสุด และเวลาที่ปรับเปลี่ยนล่าสุด ใช้หน้านี้เพื่อไปยังบอทอื่นที่คุณสามารถเข้าถึงได้</p>
+        
+
+        <h2>วิธีการสร้าง Bot</h2>   
+        <ol>
+            <li class="tt">ไปที่ เว็บไซต์บทนำ Power Virtual Agents เบราว์เซอร์ที่รองรับ ได้แก่ Microsoft Edge, Chrome และ Firefox</li>
+            <li class="tt">บนเว็บไซต์ เลือก เริ่มการใช้ฟรี แล้วเข้าสู่ระบบด้วยที่อยู่อีเมลที่ทำงานของคุณ โปรดทราบว่าปัจจุบันยังไม่รองรับบัญชี Microsoft ส่วนบุคคล</li> 
+            <li class="tt">เมื่อคุณลงทะเบียนครั้งแรก สภาพแวดล้อม Power Apps เริ่มต้นถูกสร้างมาเพื่อคุณ สำหรับผู้ใช้ส่วนใหญ่ นี่เพียงพอแล้ว อย่างไรก็ตาม หากคุณต้องการระบุสภาพแวดล้อม Power Apps แบบกำหนดเอง ให้เลือกสภาพแวดล้อมอื่นจากตัวเลือกสภาพแวดล้อม</li>   
+        <div id="imgg">
+            <img src="../img/3.png" class="img3" height="100%" loading="lazy">
+        </div>
+            <li class="tt">เมื่อลงทะเบียนแล้ว คุณจะเข้าสู่โฮมเพจของแอป ในเมนูนำทางด้านซ้าย ให้เลือก หน้าแรก แล้วเลือก สร้างบอท</li>
+            <li class="tt">ตัวช่วยสร้างทั้งหน้าจะเริ่มต้นด้วยสองสามขั้นตอนเพื่อสร้างบอทของคุณอย่างรวดเร็ว มีชื่อบอทเริ่มต้นอยู่ คุณสามารถเปลี่ยนข้อมูลนี้เป็นเรื่องทั่วไปสำหรับบริษัทของคุณหรือเฉพาะเจาะจงสำหรับสถานการณ์ที่คุณกำลังปรับแต่งบอทของคุณ</li>
+            <li class="tt">สำหรับ คุณต้องการให้บอทของคุณพูดภาษาอะไร เลือกภาษาที่คุณต้องการให้บอทพูด เมนูดรอปดาวน์ของภาษาถูกเติมล่วงหน้าด้วยภาษาของเบราว์เซอร์</li>
+        <div id="imgg">
+            <img src="../img/4.png" class="img4" height="100%" loading="lazy">
+        </div>
+            <li class="tt">(ไม่บังคับ) คุณสามารถเลือกที่จะเพิ่มการสนทนาโดยระบุ URL เพื่อสร้างคำตอบจาก AI เมื่อเลือกชื่อบอทและภาษาแล้ว คุณสามารถเลือกสร้างและสร้างบอทของคุณได้</li>
+            <li class="tt">เลือก สร้าง ขั้นตอนการสร้างบอทตัวแรกในสภาพแวดล้อมใหม่อาจใช้เวลานานถึง 15 นาที บอทที่ตามมาจะถูกสร้างขึ้นเร็วขึ้นมาก</li>
+            <li class="tt">หลังจากนั้นไม่กี่นาที คุณจะถูกนำทางไปยังหน้าภาพรวมของบอท การดำเนินการบางอย่าง เช่น กำหนดค่าเผยแพร่และการรับรองความถูกต้องอาจใช้เวลาอีกสองสามนาทีเพื่อให้พร้อมสำหรับบอทของคุณ แต่คุณสามารถดำเนินการต่อและ:</li>
+        </ol>
+            <li class="tt">สำรวจอินเทอร์เฟสผู้ใช้โดยรวม</li>
+            <li class="tt">สำรวจหัวข้อและเริ่มสร้างและแก้ไขหัวข้อ</li>
+            <li class="tt">ทดลองกับหัวข้อผู้ใช้และหัวข้อของระบบที่โหลดไว้ล่วงหน้า</li>
+            <li class="tt">โต้ตอบกับบอทของคุณโดยใช้ Test Canvas</li>
+            <li class="tt">อ่าน คู่มือเพิ่มเติมเกี่ยวกับการสร้างหัวข้อ ในบอทของคุณ</li>
+        <div id="imgg">
+            <img src="../img/5.png" class="img2" height="100%" loading="lazy">
+        </div>
+
+
+        <h2>วิธีการสร้างหัวข้อ</h2>
+        <p class="tt">ตอนนี้คุณมีฟังก์ชันการทำงานเต็มรูปแบบในบอทของคุณแล้ว คุณสามารถสร้างหัวข้อของคุณเอง ซึ่งเป็นแผนผังกล่องโต้ตอบที่อธิบายว่าบอทของคุณตอบสนองต่อคำถามของผู้ใช้อย่างไร</p>
+        <ol>
+            <li class="tt">ในเมนูนำทาง ให้เลือก หัวข้อ แล้วเลือก หัวข้อใหม่ ที่ด้านบนของหน้า</li>
+        <div id="imgg">
+            <img src="../img/6.png" class="img2" height="100%" loading="lazy">
+        </div>
+            <li class="tt">ตั้งชื่อหัวข้อของคุณและรวมข้อความทริกเกอร์สำหรับหัวข้อนี้ด้วย ข้อความทริกเกอร์คือตัวอย่างชนิดคำถามหรือคำพูดของผู้ใช้ที่ช่วยสอนบอทว่าเมื่อใดควรตอบกลับด้วยกล่องโต้ตอบนี้
+
+                ตัวอย่างเช่น เรามาสร้างหัวข้อชื่อ 'hello world ส่วนตัว' และเพิ่ม 'hello world' เป็นข้อความทริกเกอร์</li> 
+        <div id="imgg">
+            <img src="../img/7.png" class="img2" height="100%" loading="lazy">
+        </div>    
+            <li class="tt">เลือก บันทึกหัวข้อ เพื่อเพิ่มหัวข้อในรายการหัวข้อ</li>   
+        
+            <li class="tt">เลือก ไปที่พื้นที่ทำงานการสร้าง นี่คือตัวแก้ไขลำดับชั้นกล่องโต้ตอบแบบกราฟิกที่ให้คุณกำหนดคำตอบของบอทและการสนทนาโดยรวมของบอท
+
+                ป้อน 'Hello! ฉันจะสร้างคำทักทายส่วนตัวให้คุณเอง' เป็นโหนด ข้อความ แรก</li>
+        <div id="imgg">
+            <img src="../img/8.png" class="img5" height="100%" loading="lazy">
+        </div>
+            <li class="tt">เลือก เพิ่มโหนด (+) ใต้โหนด และเพิ่มโหนด ถามคำถาม
+            ป้อนข้อความคำถาม 'คุณอาศัยอยู่ที่ไหน' ในกล่อง ถามคำถาม เพื่อให้ลูกค้ามีทางเลือกระหว่างคำตอบต่าง ๆ ให้เลือก ตัวเลือกปรนัย ภายใต้ ระบุ</li>
+        <div id="imgg">
+            <img src="../img/9.png" class="img6" height="100%" loading="lazy">
+        </div>
+            <li class="tt">เพิ่มสองตัวเลือกสำหรับผู้ใช้ โดยการเลือก + ตัวเลือกใหม่
+                ป้อน 'ซีแอตเทิล' และ 'เบลวิว' ในกล่องข้อความที่เรียกว่า 'ตัวเลือกสำหรับผู้ใช้' แต่ละตัวเลือกจะแสดงเป็นปุ่มปรนัยให้กับผู้ใช้
+                พื้นที่ทำงานการสร้างจะสร้างเส้นทางแยกในการสนทนา ขึ้นอยู่กับการตอบสนองของลูกค้า พาธการสนทนานำลูกค้าไปสู่การแก้ไขปัญหาที่เหมาะสมสำหรับการตอบสนองของผู้ใช้แต่ละราย
+            </li>
+        <div id="imgg">
+            <img src="../img/10.png" class="img7" height="100%" loading="lazy">
+        </div>
+            <li class="tt">ในเส้นทางการสนทนาที่แยกจากกัน แต่ละโหนดจะตรวจสอบ 'ซีแอตเทิล' ในเส้นทางหนึ่งโดยอัตโนมัติ และ 'เบลวิว' ในอีกเส้นทางหนึ่งเพื่อดำเนินการขั้นตอนต่อไปที่เหมาะสม</li>
+            <li class="tt">สุดท้าย เลือก เพิ่มโหนด (+) ใต้แต่ละโหนดเงื่อนไขเพื่อเพิ่มโหนด ข้อความ ในแต่ละสาขา
+                เพิ่มข้อความง่าย ๆ เช่น 'สวัสดี ซีแอตเทิล!' ในสาขาซีแอตเทิล และ 'สวัสดี เบลวิว!' ในสาขาเบลวิว</li>
+        <div id="imgg">
+            <img src="../img/11.png" class="img7" height="100%" loading="lazy">
+        </div>
+            <li class="tt">เลือก บันทึก ที่ด้านบน
+
+                ตอนนี้คุณมีลำดับชั้นกล่องโต้ตอบที่แตกแขนงง่าย ๆ แล้ว ขอแสดงความยินดี! คุณสามารถเริ่มสร้างรุ่นที่ซับซ้อนมากขึ้นของทรีนี้ได้โดยการผสมผสาน ตัวแปรเอนทิตี และ โฟลว์ Power Automate</li>
+        </ol>
+
+
+        <h2>ทดสอบเนื้อหาของคุณแบบเรียลไทม์</h2>
+        <p class="tt">ตอนนี้คุณมีเนื้อหาบางส่วนที่เขียนไว้ในลำดับชั้นกล่องโต้ตอบ แล้วก็ถึงเวลาทดสอบสิ่งนี้แบบเรียลไทม์เพื่อดูว่าทำงานได้ตามที่คุณคาดไว้หรือไม่ สำหรับสิ่งนี้ คุณจะใช้บานหน้าต่างบอททดสอบ</p>
+        <div id="imgg">
+            <img src="../img/12.png" class="img8" height="100%" loading="lazy">
+        </div>
+
+        <ol>
+            <li class="tt">หากบานหน้าต่างบอททดสอบไม่แสดงบนหน้าจอของคุณ ในเมนูนำทาง ให้เลือก ทดสอบบอทของคุณ</li>
+        <div id="imgg">
+            <img src="../img/13.png" class="img9" height="100%" loading="lazy">
+        </div>
+            <li class="tt">ลองใช้แผนผังกล่องโต้ตอบที่สร้างขึ้นใหม่โดยพิมพ์ลงในบานหน้าต่างบอททดสอบ</li>
+            <li class="tt">เปิด ติดตามระหว่างหัวข้อ ที่ด้านบน ซึ่งช่วยให้คุณสามารถติดตามบอทได้ในขณะที่รันกล่องโต้ตอบของคุณ คุณจะเริ่มเห็นบางส่วนของลำดับชั้นกล่องโต้ตอบของคุณที่ไฮไลต์เมื่อบอทไปที่ส่วนนั้นของกล่องโต้ตอบ                    </li>
+        <div id="imgg">
+            <img src="../img/14.png" class="img10" height="100%" loading="lazy">
+        </div>    
+            <li class="tt">พิมพ์ “hello world" ในหน้าต่างแชท แล้วส่งข้อความไปที่บอท คุณจะเห็นส่วนบนสุดของลำดับชั้นกล่องโต้ตอบของคุณไฮไลต์เป็นสีเขียว และคุณจะเห็น ซีแอตเทิล และ เบลวิว แสดงเป็นตัวเลือกของผู้ใช้ในบานหน้าต่างบอททดสอบ
+
+                ขณะนี้บอทกำลังรอให้คุณตอบกลับและให้คำแนะนำเกี่ยวกับวิธีตอบกลับ ปุ่มคำแนะนำเหล่านี้แสดงถึงสิ่งที่คุณเขียนไว้ในลำดับชั้นกล่องโต้ตอบของคุณในโหนด "ถามคำถาม"
+                
+                ในบอททดสอบ คุณสามารถเลือกปุ่มคำแนะนำเหล่านี้เพื่อดำเนินการต่อ หรือจะป้อนคำตอบลงในหน้าต่างแชทก็ได้</li>   
+    
+        <div id="imgg">
+            <img src="../img/15.png" class="img11" height="100%" loading="lazy">
+        </div>
+            <li class="tt">ดำเนินการต่อกล่องโต้ตอบโดยเลือกสาขาซีแอตเทิล
+
+                คุณจะเห็นแชทหยุดเมื่อคุณมาถึงด้านล่างสุดของสาขานี้ หากคุณเขียนเนื้อหาเพิ่มเติม กล่องโต้ตอบจะดำเนินต่อไป แต่เนื่องจากเราได้สร้างลำดับชั้นกล่องโต้ตอบที่เรียบง่ายและมีขนาดเล็กเท่านั้น เราจึงไปถึงตอนท้ายของเนื้อหาได้อย่างรวดเร็ว</li>
+        <p class="tt">ประสบการณ์การทดสอบนี้ช่วยให้คุณสร้างและทดสอบการสนทนาได้อย่างรวดเร็ว เพื่อให้แน่ใจว่าการสนทนาจะลื่นไหลตามที่คาดการณ์ไว้ หากกล่องโต้ตอบไม่ตรงกับความตั้งใจของคุณ คุณสามารถเปลี่ยนกล่องโต้ตอบและบันทึกได้ เนื้อหาล่าสุดจะถูกผลักเข้าไปในบอททดสอบ และคุณสามารถลองอีกครั้งได้ สิ่งนี้ไม่มีการเปลี่ยนแปลงรุ่นบอทที่เผยแพร่ ดังนั้นอย่าลังเลที่จะเล่นกับเนื้อหาของคุณจนกว่าคุณจะพอใจกับมัน</p>
+    </ol>
+
+
+    <h2>เผยแพร่บอทของคุณ</h2>
+        <p class="tt">เมื่อคุณพอใจกับเนื้อหาที่เขียนในบอทของคุณแล้ว คุณสามารถเผยแพร่บอทของคุณไปยังเว็บไซต์ได้</p>
+
+        <ol>
+            <li class="tt">ในเมนูนำทาง ให้เลือก เผยแพร่</li>
+            <li class="tt">เลือก เผยแพร่ เพื่อเปิดใช้งานบอทของคุณด้วยการคลิกเพียงครั้งเดียว หากเผยแพร่สำเร็จ คุณจะเห็นแบนเนอร์สีเขียวที่ด้านบนของหน้า</li>
+        <div id="imgg">
+            <img src="../img/16.png" class="img12" height="100%" loading="lazy">
+        </div>
+            <li class="tt">เลือกลิงค์เว็บไซต์สาธิตภายใต้ แบ่งปันบอทของคุณ เพื่อดูการใช้งานจริงบนเว็บไซต์สาธิต
+
+                ซึ่งจะเปิดหน้าต่างใหม่ในเบราว์เซอร์ของคุณ หากไม่เกิดขึ้นโดยอัตโนมัติ ให้ตรวจสอบว่าได้เปิดใช้งานตัวบล็อกป็อปอัปหรือไม่ และหากเป็นเช่นนั้น ให้อนุญาตให้เปิดหน้าต่างดังกล่าว โดยปกติ คุณสามารถอนุญาตป๊อปอัปจากช่อง URL โดยตรง
+                
+                หน้าเว็บแสดงให้เห็นว่าบอทของคุณมีลักษณะอย่างไรต่อผู้ใช้ปลายทางที่มาที่หน้าเว็บของคุณ พิ้นที่ทำงานของบอทอยู่ที่ด้านล่าง คุณสามารถโต้ตอบได้โดยพิมพ์ลงในหน้าต่างหรือเลือกวลีเริ่มต้นจากตัวเลือกที่มีให้</li>
+        <div id="imgg">
+            <img src="../img/17.png" class="img2" height="100%" loading="lazy">
+        </div>    
+            </ol>
+
+    </div>
+
+    <!--tap3-->
+    <div id="Tokyo" class="tabcontent">
+      <h2>วิธีการโต้ตอบกับลูกค้า</h2>
+      
+    </div>
+      
+      <!-- JavaScript-->
+      <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+        crossorigin="anonymous">
+      </script>
+
+    <script 
+      src="/js/script.js" 
+      charset="utf-8">
+    </script> 
+
+<script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+
+</body>
+</html>

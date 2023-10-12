@@ -28,7 +28,7 @@
 
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
-      <div class="fontlogo logomore">Beauty Salon .</div>
+      <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -51,7 +51,8 @@
         <div style="text-align: center; margin-bottom: 40px; ">
           <i class="fa-solid fa-registered fa-4x" style="color: #f19b9d;"></i>
         </div>
-      <form action="/user/register" method="POST">
+
+      <form action="/register" method="POST">
       
         <div class="conto">
             <div class="form-row">
@@ -61,6 +62,7 @@
                     class="form-control" 
                     name="firstname"
                     placeholder="ชื่อ"
+                    value="<%= formData.firstname || '' %>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกชื่อ')" 
                       oninput="this.setCustomValidity('')">
                 </div>
@@ -69,6 +71,7 @@
                     class="form-control" 
                     name="lastname"
                     placeholder="นามสกุล"
+                    value="<%= formData.lastname || ''%>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกนามสกุล')"
                       oninput="this.setCustomValidity('')">
                 </div>
@@ -80,16 +83,36 @@
                     class="form-control" 
                     name="nickname"
                     placeholder="ชื่อเล่น"
+                    value="<%= formData.nickname || ''%>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกชื่อเล่น')"
                       oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" 
+                    <input type="text"
+                    maxlength="10"
                     class="form-control" 
                     name="phonenum"
+                    id="phonenum"
                     placeholder="เบอร์โทรศัพท์"
+                    value="<%= formData.phonenum || ''%>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกเบอร์โทรศัพท์')"
-                      oninput="this.setCustomValidity('')">
+                    oninput="this.setCustomValidity('')">
+                    <p id="error-message3" style="color: red;"></p>
+
+                    <script>
+                        const phoneInput = document.getElementById('phonenum');
+                        const errorMessage = document.getElementById('error-message3');
+                
+                        phoneInput.addEventListener('input', () => {
+                            const phoneValue = phoneInput.value.replace(/\D/g, ''); // ลบทุกตัวอักษรที่ไม่ใช่ตัวเลข
+                            if (phoneValue.length !== 10) {
+                                errorMessage.textContent = 'โปรดป้อนเบอร์โทรศัพท์ 10 ตัวเลข';
+                            }else {
+                                errorMessage.textContent = '';
+                            }
+                        });
+                    </script>
+                      
                 </div>
             </div>
 
@@ -99,22 +122,32 @@
                     class="form-control" 
                     name="username"
                     placeholder="ชื่อผู้ใช้"
+                    value="<%=''%>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกชื่อผู้ใช้')"
                       oninput="this.setCustomValidity('')">
+                  
+                      <% if (error && error.length > 0) { %>
+                        <div class="error-message2">
+                          <i class="fa-solid fa-circle-exclamation" style="color: #ff0000;"></i> <%= error %>
+                        </div>
+                      <% } %>
+
                 </div>
+                
                 <div class="form-group col-md-6">
                     <input type="password" 
                     class="form-control"
                     name= "password" 
                     id= "password" 
                     placeholder="รหัสผ่าน"
+                    value="<%= formData.password || ''%>"
                     required oninvalid="this.setCustomValidity('กรุณากรอกรหัสผ่าน')"
                       oninput="this.setCustomValidity('')">
                 </div>
             </div>
 
-              <button type="submit"class="buttonre">สมัครสมาชิก</button>
-            
+              <button type="submit"class="buttonre"  >สมัครสมาชิก</button>
+              
           </form>
         </div>
 

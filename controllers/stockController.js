@@ -15,8 +15,11 @@ exports.showStock = async (req,res) =>{
 //add stock 
 exports.addStock = async (req,res) =>{ 
     try{
+        const existingProducts = await Stock.find({});
+        const code = `P${(existingProducts.length + 1).toString().padStart(3, '0')}`;
+
        const stocks = await new Stock({
-        idproduct     : req.body.idproduct,
+        code,
         name_product  : req.body.name_product,
         price_product : req.body.price_product,
         unit_product  : req.body.unit_product,

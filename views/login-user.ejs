@@ -26,7 +26,7 @@
 
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
-      <div class="fontlogo logomore">Beauty Salon .</b></div>
+      <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -68,6 +68,13 @@
                 required oninvalid="this.setCustomValidity('กรุณากรอกรหัสผ่าน')"
                   oninput="this.setCustomValidity('')">
             </div>
+
+            <% if (error && error.length > 0) { %>
+              <div class="error-message">
+                <i class="fa-solid fa-circle-exclamation" style="color: #ff0000;"></i> <%= error %>
+              </div>
+            <% } %>
+
         </div>
         <div class="conto">
           <div class="forrgetpass"> <u>ลืมรหัสผ่าน?</u> </div>
