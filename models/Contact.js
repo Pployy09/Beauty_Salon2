@@ -6,10 +6,10 @@ const ContactSchema = new Schema({
         type: String,
     },
     lat: {
-        type: String,
+        type: Number,
     },
     lng: {
-        type: String,
+        type: Number,
     },
     phoneaddress: {
         type: String,

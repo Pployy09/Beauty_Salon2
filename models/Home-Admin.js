@@ -7,34 +7,17 @@ const HomeSchema = new Schema ({
         type : String,
         required: [true, 'Please provide inputLogo '],
     },
-    img_booking : {
-        type : String,
-        required: [true, 'Please provide img_booking'],
-    },
-    promotion : {
-        type : String,
-        required: [true, 'Please provide promotion'],
-    },
-    img_services1 : {
-        type : String,
-        required: [true, 'Please provide img_services1'],
-    },
+    
     description1 : {
         type : String,
         required: [true, 'Please provide description1'],
     },
-    img_services2 : {
-        type : String,
-        required: [true, 'Please provide img_services2'],
-    },
+    
     description2 : {
         type : String,
         required: [true, 'Please provide description2'],
     },
-    img_services3 : {
-        type : String,
-        required: [true, 'Please provide img_services3'],
-    },
+    
     description3 : {
         type : String,
         required: [true, 'Please provide description3'],

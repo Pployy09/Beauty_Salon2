@@ -54,6 +54,67 @@ body{
     
 }
 
+.img1{
+    position: absolute;
+    z-index: 1;
+    top:740px;
+    left:50%;
+}
+
+.img2{
+    position: absolute;
+    z-index:1;
+    top:1290px;
+    left:33%;
+}
+.img3{
+    position: absolute;
+    z-index:4;
+    top:1920px;
+    left:8%;
+}
+.img4{
+    position: absolute;
+    z-index:1;
+    top:1920px;
+    left:34%;
+}
+.img5{
+    position: absolute;
+    z-index:3;
+    top:1920px;
+    left:60%;
+}
+
+.upload{
+    margin-left: 90px;
+}
+
+.upload2{
+    margin-left: 80px;
+}
+
+.form-in{
+    background-color: white;
+}
+
+.group{
+    background-color: white;
+    border-radius: 5px;
+    width: 355px;
+    height: 50px;
+    padding: 2px 2px 2px 4px;
+    margin-top: 20px;
+}
+
+.group2{
+    background-color: white;
+    border-radius: 5px;
+    width: 326px;
+    height: 50px;
+    padding: 2px 2px 2px 4px;
+}
+
 #part-emp-cus #frame-in-customer .imgBooking .container{
     background-color: #FBE1C5;
 }
@@ -64,6 +125,12 @@ body{
 
 #img-booking{
     padding-left: 100px;
+    margin-bottom: 100px;
+}
+
+.img-booking{
+    padding-left: 100px;
+    margin-bottom: 10px;
     
 }
 
@@ -93,9 +160,22 @@ body{
   padding-left: 100px;
 }
 
-.chang-services-emp-cus .input-descri{
+.chang-services-emp-cus {
    margin-left: 100px;
 }
+.input-descri {
+    margin-left: 100px;
+    margin-top: 20px;
+ }
+.input-descri2{
+    margin-left: 180px;
+    margin-top: 20px;
+ }
+
+ .input-descri3{
+    margin-left:185px;
+    margin-top: 20px;
+ }
 
 #change-description-footer{
     display: flex;
@@ -304,6 +384,7 @@ body{
 
 .imgBooking{
     background-color: #FBE1C5;
+    height: 520px;
 }
 
 .fontlogo{
@@ -386,6 +467,7 @@ b{
 .imgPro {
     display: flex;
     margin-top: 20px;
+    margin-bottom: 30px;
     justify-content: center;
     align-items: center;
 }
@@ -400,7 +482,7 @@ b{
 }
 
 .services .container{
-    height: 550px;
+    height: 650px;
     
 }
 .services .container .img-services{
@@ -421,6 +503,7 @@ b{
     margin-top: 5px;
     margin-left: 10px;
     margin-right: 10px;
+    
 }
 
 .services .container .img-services .hair .Hair:hover{
