@@ -8,11 +8,11 @@ const QueueBookingCustomerSchema = new Schema({
     },
     customerName :{
         type: String,
-        required: [true, 'Please provide customer name'],
+       
     },
     phonenum : {
         type: String,
-        required: [true, 'Please provide customer telephone number'],
+        
     },
     booking_date_user : {
         type : String,
@@ -29,7 +29,7 @@ const QueueBookingCustomerSchema = new Schema({
     },
     employeeName : {
         type: String,
-        required: [true, 'Please provide employee name'],
+        
     }
 });
 

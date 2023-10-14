@@ -31,7 +31,7 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
           <li><a href="/home-admin" id="homeHeaderEmployee" class=" nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
-          <li><a href="#" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
+          <li><a href="/service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
           <li><a href="#" id="userHeaderEmployee" class="active     nav-link px-3 text-header fontAll ">ลูกค้า</a> 
             <ul class="sub">
               <li><a href="/queuebooking-admin" style="text-decoration:none ">ตารางการจองคิว</a></li>
@@ -140,42 +140,133 @@
                             <label class="textque">เวลา</label>
                             <% var timeOpenArray = [] %>
                             <% var bookingTime = [] %>
+                            <% var bookingTArray=[] %>
                             
-                            <% bookingTime.push(QueueBookingCustomerData.booking_time_user); %>
+                           
                             <select name="booking_time_user[]"  class="select-time "  id="select-time"  multiple="multiple" required >
-                                <%  HomeData.forEach(homeData => { %>
+                            
+                              <%  HomeData.forEach(homeData => { %>
                                 
                                  <%  let timeOpen = parseInt(homeData.time_open); %>
-                                 <%  let timeForService1  = timeOpen+1;  %>
                                  <%  let timeClose = parseInt(homeData.time_close); %>
+                                 <%  let timeCloseQ  = timeClose-1;  %>
 
+                                 
+                                
                                  <% let timeOpen1 = timeOpen; %>
-                                 <% let timeForService2 = timeForService1 ;%>
+                                 <% let timeCloseQ1 = timeCloseQ ;%>
                                  <% let timeClose1 = timeClose;%>
                                  
-                                 <% for(; timeOpen1 < timeClose1  ; timeOpen1++ ){ %>
-                                  <% var shopTime = timeOpen1+".00"+"-"+timeForService2+".00" %>
-                                  <% timeForService2++ %>
-                                  <% timeOpenArray.push(shopTime); %>
+                                 <% for(; timeOpen1 < timeClose1  ; timeClose1-- ){ %>
+                                  <% if(timeCloseQ1 <= 9 ){%>
+                                    <% var shopTime = timeClose1+".00"+"-"+"0"+timeCloseQ1+".00" %>
+                                    <% bookingTArray.push(shopTime); %>
+                                    <% timeCloseQ1-- %>
+        
+                                  <% }else{ %>
+                                    <% var shopTime = timeClose1+".00"+"-"+timeCloseQ1+".00" %>
+                                    <% bookingTArray.push(shopTime); %>
+                                    <% timeCloseQ1-- %>
+                                    <% } %>
                                  
-                                 <% } %>
-                                     <% for(; timeOpen < timeClose  ; timeOpen++ ) { %> 
-                                         <% if(timeOpen<=9) { %>
-                                           <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll"> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
-                                           <% timeForService1++ %> 
-                                         <% }else{ %>   
-                                           <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
-                                           <% timeForService1++ %> 
-                                         <% } %>
+                                 <% } %> 
+                                    <% //console.log(bookingTArray) %>
+                                  
+                                 <% for(let t=0 ; t < QueueBookingCustomerData.booking_time_user.length ;t++) {%>
+                                  <% let bookingT = parseInt(QueueBookingCustomerData.booking_time_user[t]); %>
+                                  <% bookingTime.push(bookingT); %>
+                              <% } %>
+                                  
+                                 
+                                  <% let a = QueueBookingCustomerData.booking_time_user.length-1  %>
+                                  
+                                     <% for( a   ;  timeOpen < timeClose      ; timeClose--  ) { %> 
+                                    
+                                      <% if(timeCloseQ > 9 ) { %>
+                                        <option  value= "<%= timeClose %>.00 - <%= timeCloseQ %>.00"  class="fontAll "> <%= timeClose %>.00 - <%= timeCloseQ %>.00 </option> 
+                                         <% console.log(a) %>
+                                           
+                                        <% if( a >= 0) {%>
+                                             <% if( timeCloseQ == bookingTime[a] ){ %>
+                                              <% var shopT = (bookingTime[a]+1)+".00"+"-"+bookingTime[a]+".00" %>
+                                              <% timeOpenArray.push(shopT) %>
+                                            
+                                            <% }else{ %>
+                                              <% timeOpenArray.push("nah") %>
+                                              <% }  %>
+                                              
+                                       <% }else if(a === -1 ) {%>
+                                        <% a= QueueBookingCustomerData.booking_time_user.length-1; %>
+
+                                        <% if(bookingTime[a] == timeCloseQ ){ %>
+                                          <% var shopT =(bookingTime[a]+1)+".00"+"-"+bookingTime[a]+".00"%>
+                                          <% timeOpenArray.push(shopT) %>
+                                          
+                                        <% }else{ %>
+                                          <% timeOpenArray.push("nah") %>
+                                          <% }  %>
+                                             
+                                       <% } %>
+                                         
+
+
+                                           
+                                      
+                                            
+                                         <% }else{ %>
+                                          <option  value= "<%= timeClose %>.00 - 0<%= timeCloseQ %>.00"  class="fontAll"> <%= timeClose %>.00 - 0<%= timeCloseQ %>.00 </option> 
+                                           <% console.log(a) %>
+                                          <% if(a === -1) { %>
+                                              <% a= 0; %>
+                                              <% if(bookingTime[a] == timeCloseQ ){ %>
+                                                <% var shopT =(bookingTime[a]+1)+".00"+"-"+"0"+bookingTime[a]+".00"%>
+                                                <% timeOpenArray.push(shopT) %>
+                                                
+                                              <% }else{ %>
+                                                <% timeOpenArray.push("nah") %>
+                                                <% }  %>
+                                               
+                                          <% }else if(a >=0 ) {%>
+                                              <% if(bookingTime[a] == timeCloseQ ){ %>
+                                                <% var shopT =(bookingTime[a]+1)+".00"+"-"+"0"+bookingTime[a]+".00"%>
+                                                <% timeOpenArray.push(shopT) %>
+                                                
+                                              <% }else{ %>
+                                                <% timeOpenArray.push("nah") %>
+                                                <% }  %>
+                                              
+                                            <% } %>
+
+                                            
+                                          
+                                            
+                                            
+                                          
+                                         <% } %> 
+                                         <% a--; %>
+                                         <% timeCloseQ-- %> 
+                                       
+                                         
                                          
                                      <% } %>
-                                    
+                                     <% console.log(timeOpenArray); %>
                                   
                                 <% })  %> 
                                 </select>
                                 
                                
                                 
+                        </div>
+
+                        <div class='editSe'>
+                          <label class="textque">พนักงาน</label>
+                          
+                          <select name="booking_service_user" class="form-control">
+                            <option value="" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %></option> 
+                            
+                        </select>
+                        
+                        
                         </div>
                     
                       </div>
@@ -238,46 +329,50 @@
         charset="utf-8">
     </script>
 
+    <script 
+      src="../js/editService-admin.js" 
+      charset="utf-8">
+    </script>
+
     <script>
-      var timeOpen = ' <%= timeOpenArray %>'.split(',');
+      var timeOpen = '<%= bookingTArray%>'.split(',');
+      
       console.log(timeOpen);
-      
+
       var itemB =  [];
+      var reArray =[];
       var time_booking= [];
-      var time_booking1= [];
-      var timeBooking = '<%= bookingTime%>'.split(',');
+      var timeBooking = '<%= timeOpenArray%>'.split(',');
+
+      console.log(timeBooking);
       
-      for(let y = 0 ; y < timeBooking.length   ; y++) { 
-        time_booking1.push(parseInt(timeBooking[y])) ;
-      }
-     // console.log(timeBooking);
-      var timeString = JSON.stringify(time_booking1);
+      
       for(let u = 0 ;u < timeOpen.length   ; u++){
-        if([u] == time_booking1[u]){
-          console.log(time_booking1[u]);
-        }
-      //time_booking.push("nah");
-      //console.log();
+        const re = JSON.stringify(timeBooking[u]) === JSON.stringify(timeOpen[u]) ;
+        reArray.push(re); 
+      };
       
-      const re =JSON.stringify(timeBooking[u]) === JSON.stringify(timeOpen[u]) ;
-      console.log(re);
+      for(let i = 0 ;i < reArray.length ; i++){
+        
+        if(reArray[i] === true){
+          itemB.push('itemTime'+[i]);
+          var itemTimeNum = itemB;
+          var itemTime = document.querySelectorAll('.item-time')[i];
+          
+          
+          itemTime.classList.add("item--selected");
+         
+         
+        };
+        
+        
+       
+      };
      
-      } 
+      
 
        
-      var item = document.getElementsByClassName("item-time");
-      for(let i = 0; i < item.length ; i++){
-      itemB.push('itemTime'+[i]);
       
-      var itemTimeNum = itemB[i];
-      var itemTime = document.getElementById(itemTimeNum);
-      
-      timeBooking.onclick = (event) =>{
-           alert("เลือกเวลาได้ " + itemTime[i] + " ชั่วโมง ")
-        
-        };
-     
-     }
 
      
     </script>

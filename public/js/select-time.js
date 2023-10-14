@@ -17,8 +17,8 @@ class CustomSelectTime{
           
           itemElement.classList.add("item-time");
           
-             
-          itemElement.id = 'itemTime'+id();
+          itemElement.classList.add('itemTime'+id());
+          
               itemElement.textContent = optionElement.textContent;
              this.customSelect.appendChild(itemElement);
  
