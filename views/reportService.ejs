@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report</title>
+    
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/report.css">
+        <link rel="stylesheet" href="./css/chat.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" crossorigin="anonymous"></script>
+    
+         <!-- font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+    </head>
+
+    <body>
+        <div id="reportService" class="cota">
+          <h1><%=home.inputLogo%></h1>
+          <h1>รายงานการใช้บริการของร้าน</h1>
+          <p id="currentDate" class="p1"></p>
+          <hr>
+          <table class="tabless">
+              <tr>
+                <th >ลำดับ</th>
+                <th >วันที่</th>
+                <th >บริการ</th>
+                <th >จำนวนครั้งที่ใช้บริการ</th>
+                
+              </tr>
+              <% let totalSum = 0; %>
+              <% let bookingServiceCount = {}; %>
+              
+              <% QueueBookingCustomerData.sort((a, b) => new Date(a.booking_date_user) - new Date(b.booking_date_user)).forEach((bookingCu,element)=>{ %>
+                  <tr >
+                    <td ><%= element+1 %></td>
+                    <td ><%= bookingCu.booking_date_user %></td>
+                    <td ><%= bookingCu.booking_service_user %></td>
+                    <% const serviceCount = bookingServiceCount[bookingCu.booking_service_user] || 1; %>
+                    <td><%= serviceCount %></td>
+                  </tr>
+                  <% if (bookingServiceCount[bookingCu.booking_service_user]) { %>
+                    <% bookingServiceCount[bookingCu.booking_service_user] += 1; %>
+                <% } else { %>
+                    <% bookingServiceCount[bookingCu.booking_service_user] = 1; %>
+                <% } %>
+                <% totalSum += 1; %>
+            <% }) %>
+
+            </table>
+          <hr>
+      
+          <b>รวมทั้งสิ้น <%= QueueBookingCustomerData.length %>  รายการ</b> 
+          <b class="total2"> <%= totalSum.toLocaleString('th-TH') %> </b>
+          <hr>
+          <hr>
+        </div>
+
+        <script>
+            // เลือกข้อมูลที่จะแสดงวันที่
+          const currentDateElement = document.getElementById("currentDate");
+          // สร้างวัตถุ Date สำหรับวันที่ปัจจุบัน
+          const today = new Date();
+          // สร้างรูปแบบของวันที่ (เช่น "วันที่ เดือน ปี")
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };     
+          // แปลงวันที่เป็นข้อความโดยใช้รูปแบบ
+          const formattedDate = today.toLocaleDateString('th-TH', options);
+          // แสดงวันที่ในองค์ประกอบ HTML
+          currentDateElement.innerHTML = 'ณ   ' + formattedDate;
+        </script>
+      
+    </body>
+    </html>

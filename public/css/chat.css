@@ -202,6 +202,25 @@
     margin: 30px;
   }
 
+  .img13 {
+    width: 720px;
+    height: 350px;
+    margin: 30px;
+  }
+
+  .img14 {
+    width: 400px;
+    height: 450px;
+    margin: 30px;
+  }
+
+  .img15 {
+    width: 350px;
+    height: 520px;
+    margin: 30px;
+  }
+
+
   .item1 { 
     grid-area: col1; 
     background-color: #F19B9D;
@@ -381,8 +400,10 @@
   font-size: 28px;
   margin-left: 20px;
   letter-spacing: 1.5px;
+  
 }
 
-svg {
-  color: #5f3122;
+.iicon {
+  color: #5F3122;
+  margin-left: 20px;
 }

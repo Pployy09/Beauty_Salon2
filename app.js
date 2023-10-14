@@ -168,7 +168,9 @@ app.get('/editStock-admin/:id',stockController.editStock);
 app.get('/service-admin',adminMiddleware,authMiddleware,serviceController.showService);
 app.get('/editService-admin/:id',serviceController.editService);
 
-app.get('/report',authMiddleware,reportController.showStocks)
+app.get('/report-admin',authMiddleware,reportController.showReport)
+app.get('/reportProduct',reportController.showReproduct)
+app.get('/reportService',reportController.showReservice)
 
 app.get('/homeContact-admin',authMiddleware,contactController.showContact)
 app.get('/homeContact-admin/:id',contactController.editContact);
