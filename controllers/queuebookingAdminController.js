@@ -43,12 +43,14 @@ exports.editQueuebooking = async (req, res) =>{
         const UserData = await User.findById(req.session.userId);
         const HomeData = await Home.find();
         const ServiceData = await Service.find();
+        
         const QueueBookingCustomerData = await QueueBookingCustomer.findOne({ _id : req.params.id});
         res.render('edit-queuebooking',{
             UserData : UserData,
             QueueBookingCustomerData : QueueBookingCustomerData,
             HomeData : HomeData,
             ServiceDataList : ServiceData,
+            
         })
     }catch(error){
         console.log("Error")
