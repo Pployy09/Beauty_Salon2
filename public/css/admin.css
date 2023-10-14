@@ -910,7 +910,7 @@ ul.primary li a {
    flex-direction: column;
    justify-content: flex-start;
    margin-top: 30px;
-   height: 400px;
+   
    width: 800px;
    border-radius: 1rem;
 }
@@ -928,17 +928,26 @@ ul.primary li a {
     display: flex;
     flex-direction: column;
     padding-top: 50px;
+    gap: 20px;
 }
 
 .editSe{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr .5fr;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows: 1fr ;
     padding-left: 50px;
+    padding-bottom: 10px;
+   
 }
 
 .editSe label{
     font-size: 20px;
+}
+
+.editSe  .select{
+   
+    padding-top:20px;
+    padding-bottom: 20px;
 }
 
 
