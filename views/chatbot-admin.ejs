@@ -30,7 +30,7 @@
   <!-- Header หลัก-->
   <section id="header-employee">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
-        <div class="col-md-3 mb-2 mb-md-0 ">
+        <div class="col-md-1 mb-2 mb-md-0 ">
         </div>
   
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
@@ -48,8 +48,9 @@
               <li><a href="./employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
             </ul>
           </li>
-          <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">stock</a></li>
+          <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">Stock</a></li>
           <li><a href="./chatbot-admin" id="chatbot" class="active nav-link px-3 text-header fontAll ">Chat Bot</a></li>
+          <li><a href="./report-admin" id="report" class="nav-link px-3 text-header fontAll ">Report</a></li>
         </ul>
 
         <% if (loggedIn) { %>
@@ -227,9 +228,34 @@
     </div>
 
     <!--tap3-->
-    <div id="Tokyo" class="tabcontent">
+    <div id="Tokyo" class="tabcontent scrollmenu">
       <h2>วิธีการโต้ตอบกับลูกค้า</h2>
-      
+        <ol>
+            <div id="imgg">
+                <img src="../img/20.png" class="img13" height="100%" loading="lazy">
+            </div>  
+                <li class="tt">ไปที่หน้า Agent transfers แล้วเลือก Omnichannel</li>
+            <div id="imgg">
+                <img src="../img/21.png" class="img14" height="100%" loading="lazy">
+            </div> 
+                <li class="tt">ไปที่ View in Omnichannel เพื่อทำการไปหน้าที่จะสามารถโต้ตอบลูกค้าได้</li>   
+            <div id="imgg">
+                <img src="../img/23.png" class="img13" height="100%" loading="lazy">
+            </div> 
+                <li class="tt">เมื่อมาที่หน้า Dynamics 365 ให้เลือกหน้า Home จากเมนูแถบซ้ายและไปที่ Open chat demo ทำการ Open agent app ขึ้นมา</li>             
+            <div id="imgg">
+                <img src="../img/25.png" class="img13" height="100%" loading="lazy">
+            </div>  
+                <li class="tt">เลือก Empower agents และไปที่ Relaunch tour เพื่อไปที่หน้ารับข้อความจากลูกค้า</li>
+            <div id="imgg">
+                <img src="../img/26.png" class="img13" height="100%" loading="lazy">
+            </div>  
+                <li class="tt">เมื่อลูกค้าต้องการคุยกับฝ่ายบริการลูกค้าหรือต้องการแชทกับคน ระบบจะมีการส่งรีเควสมาให้ในทางแถบขวาด้านบน</li>
+            <div id="imgg">
+                <img src="../img/27.png" class="img15" height="100%" loading="lazy">
+            </div>
+                <li class="tt">เมื่อกด Accept ระบบจะขึ้นหน้าแชทและแสดงข้อความก่อนหน้าของลูกค้าที่สนทนากับบอท คุณสามารถโต้ตอบกับลูกค้าได้ เมื่อสนทนาเสร็จให้กดปุ่ม End เพื่อจบบทสนทนา</li>
+        </ol>  
     </div>
       
       <!-- JavaScript-->
