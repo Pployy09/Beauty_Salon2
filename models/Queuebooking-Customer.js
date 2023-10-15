@@ -6,6 +6,16 @@ const QueueBookingCustomerSchema = new Schema({
         type: mongoose.Schema.Types.String, 
         ref: 'users' ,
     },
+    customerFirstname :{
+        type: mongoose.Schema.Types.String, 
+        ref: 'users' ,
+       
+    },
+    customerLastname :{
+        type: mongoose.Schema.Types.String, 
+        ref: 'users' ,
+       
+    },
     customerName :{
         type: String,
        

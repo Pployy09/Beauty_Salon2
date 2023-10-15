@@ -191,6 +191,7 @@ app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
 app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 
+app.put('/edit-queuebooking/:id',QueuebookingAdminController.editPutQueuebooking);
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
 app.put('/editInformation-admin/:id',editinformationController.editPutAdmin);
