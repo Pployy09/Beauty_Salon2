@@ -107,6 +107,7 @@
               <th>บริการ</th>
               <th>จำนวนครั้งที่ใช้บริการ</th>
             </tr>
+            
             <% let totalSum1 = 0; %>
             <%
               uniqueBookings.forEach((bookingCu, index) => {
@@ -132,10 +133,17 @@
           <div class="but">
             <button id="printButton" onclick="printConto()">Print</button>
             <button id="downloadPdfButton" onclick="downloadPdf()">Download PDF</button>
-          </div>  
+          </div>
+          
           <%
       // Create an object to store service counts per month
       let monthlyServiceCounts = {};
+
+      // Thai month names
+      const thaiMonthNames = [
+        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+      ];
 
       // Iterate through the unique bookings and calculate counts per month and service
       uniqueBookings.forEach((bookingCu) => {
@@ -145,7 +153,7 @@
         // Get the month and year from the booking date
         const bookingDate = new Date(bookingCu.booking_date_user);
         const monthYearKey = `${bookingDate.getMonth() + 1}-${bookingDate.getFullYear()}`;
-
+        
         // Initialize the count for the month if it doesn't exist
         if (!monthlyServiceCounts[monthYearKey]) {
           monthlyServiceCounts[monthYearKey] = {};
@@ -161,12 +169,16 @@
       });
 
       %>
-      
+        <h1 class="h1"><%=home.inputLogo%></h1>
+        <h1 class="h1">รายงานการใช้บริการของร้านประจำเดือน</h1>
       <% // Display the monthly summary
       for (const monthYearKey in monthlyServiceCounts) {
         const [month, year] = monthYearKey.split('-');
+        const thaiMonth = thaiMonthNames[parseInt(month) - 1]; 
+        const buddhistYear = parseInt(year) + 543;
       %>
-        <b><%= `${month}/${year}` %></b> 
+        
+        <b><%= `เดือน ${thaiMonth} ${buddhistYear}` %></b> 
         <ul>
           <% // Display service counts for the month
           for (const service in monthlyServiceCounts[monthYearKey]) { %>
@@ -176,7 +188,7 @@
       <% } %>
 
     </div>
-    
+
     <!--tap2-->
     <div id="Paris" class="tabcontent scrollmenu">
       <div class="Paris">
@@ -222,6 +234,8 @@
           <button id="printButton" onclick="printConto1()">Print</button>
           <button id="downloadPdfButton" onclick="downloadPdf1()">Download PDF</button>
         </div> 
+
+
     </div>
 
     <!--tap3-->
