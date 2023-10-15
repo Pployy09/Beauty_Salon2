@@ -68,7 +68,8 @@ exports.editPutQueuebooking = async (req,res) =>{
     try{
         await QueueBookingCustomer.findByIdAndUpdate(req.params.id,{
             customerUsername:req.body.customerUsername,
-            customerName: req.body.customerName,
+            customerFirstname : req.body.firstname,
+            customerLastname:req.body.lastname,
             phonenum : req.body.phonenum,
             booking_date_user : req.body.booking_date_user,
             booking_service_user :  req.body.booking_service_user,

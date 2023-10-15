@@ -29,7 +29,8 @@ const QueueBookingCustomerSchema = new Schema({
         required: [true, 'Please provide booking date'],
     },
     booking_service_user :{
-        type : String,
+        type : Array,
+        dataArray: String,
         required: [true, 'Please provide booking service'],
     },
     booking_time_user : {
@@ -38,7 +39,8 @@ const QueueBookingCustomerSchema = new Schema({
         required: [true, 'Please provide booking time'],
     },
     employeeName : {
-        type: String,
+        type : Array,
+        dataArray: String,
         
     }
 });

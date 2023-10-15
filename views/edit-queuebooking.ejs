@@ -78,20 +78,30 @@
                     แก้ไขการจองคิว</h2>
                 </div>
 
-                <form action="/edit-queuebooking/<%= QueueBookingCustomerData._id %>?_method=PUT" method="POST" ></form>
+                <form action="/edit-queuebooking/<%= QueueBookingCustomerData._id %>?_method=PUT" method="POST" >
                       <div class="editS">
-                       
-                        
+ 
                         <div class='editSe'>
                             <label class="textque">ชื่อลูกค้า</label>
                             <input 
                                 type="text" 
-                                placeholder="<%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%>" 
+                                placeholder="<%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> " 
                                 class="form-control" 
-                                name="phonenum" 
-                                value="<%= QueueBookingCustomerData.customerName  %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%>" 
+                                name="customerFirstname,customerName"
+                                value="<%= QueueBookingCustomerData.customerName  %> <%= QueueBookingCustomerData.customerFirstname%> " 
                                 required>
-                            
+
+                          </div> 
+                          <div class='editSe'>
+                            <label class="textque"></label>
+                            <input 
+                                type="text" 
+                                placeholder=" <%= QueueBookingCustomerData.customerLastname%>" 
+                                class="form-control" 
+                                name="customerLastname" 
+                                value=" <%= QueueBookingCustomerData.customerLastname%>" 
+                                >
+
                           </div> 
       
                         <div class='editSe'>
@@ -119,7 +129,7 @@
                         <div class='editSe'>
                           <label class="textque">บริการ</label>
                           
-                          <select name="booking_service_user" class="form-control">
+                          <select name="booking_service_user[]" class="form-control">
                             <option value="" selected disabled hidden ><%= QueueBookingCustomerData.booking_service_user %></option> 
                             <% ServiceDataList.forEach(serviceData =>{ %> 
                             
@@ -174,14 +184,14 @@
                                       <% let bookingT = parseInt(QueueBookingCustomerData.booking_time_user[t]); %>
                                       <% bookingTime.push(bookingT); %>
                                   <% } %>
-                                  
-                                  <% let a = QueueBookingCustomerData.booking_time_user.length-1  %>
+                                  <% console.log(bookingTime) %>
+                                  <%let  a= QueueBookingCustomerData.booking_time_user.length-1; %>
                                  
                                   
                                   <% for( a   ;  timeOpen < timeClose      ; timeClose--  ) { %> 
                                     
                                     <% if(timeCloseQ > 9 ) { %>
-                                      <option  value= "<%= timeCloseQ %>.00 - <%= timeClose %>.00"  class="fontAll "> <%= timeClose %>.00 - <%= timeCloseQ %>.00 </option> 
+                                      <option  value= "<%= timeClose %>.00 - <%= timeCloseQ %>.00"  class="fontAll "> <%= timeClose %>.00 - <%= timeCloseQ %>.00 </option> 
                                        <% console.log(a) %>
                                          
                                       <% if( a >= 0) {%>
@@ -195,7 +205,7 @@
                                             
                                      <% }else if(a === -1 ) {%>
                                       <% a= QueueBookingCustomerData.booking_time_user.length-1; %>
-
+                                      
                                       <% if(bookingTime[a] == timeCloseQ ){ %>
                                         <% var shopT =(bookingTime[a]+1)+".00"+"-"+bookingTime[a]+".00"%>
                                         <% timeOpenArray.push(shopT) %>
@@ -212,10 +222,10 @@
                                     
                                           
                                        <% }else{ %>
-                                        <option  value= "0<%= timeCloseQ %>.00 - <%= timeClose %>.00"  class="fontAll"> <%= timeClose %>.00 - 0<%= timeCloseQ %>.00 </option> 
+                                        <option  value= "<%= timeClose %>.00 - 0<%= timeCloseQ %>.00"  class="fontAll"> <%= timeClose %>.00 - 0<%= timeCloseQ %>.00 </option> 
                                          <% console.log(a) %>
                                         <% if(a === -1) { %>
-                                            <% a= 0; %>
+                                          <% a= 0; %>
                                             <% if(bookingTime[a] == timeCloseQ ){ %>
                                               <% var shopT =(bookingTime[a]+1)+".00"+"-"+"0"+bookingTime[a]+".00"%>
                                               <% timeOpenArray.push(shopT) %>
@@ -247,7 +257,7 @@
                                        
                                        
                                    <% } %>
-                                   <% console.log(timeOpenArray); %>
+                                   <% //console.log(timeOpenArray); %>
                                 
                                   
                                 <% })  %> 
@@ -260,7 +270,7 @@
                         <div class='editSe'>
                           <label class="textque">พนักงาน</label>
                           
-                          <select name="booking_service_user" class="form-control">
+                          <select name="employeeName[]" class="form-control">
                             <option value="" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %></option> 
                             <% empList.forEach(emp =>{ %> 
                               <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>
