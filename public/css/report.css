@@ -131,10 +131,38 @@ ul.primary li:hover > a{
     padding-left: 10px;
   }
 
-  .h1 {
+ .h1 {
     font-size: 20px;
     text-align: center;
     margin-top: 20px;
+  } 
+
+  .h2 {
+    font-weight:bold;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .h3 {
+    font-size: 18px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+  }
+
+  .h4 {
+    font-size: 18px;
+    padding-top: 15px;
+  }
+
+  .h5 {
+    font-size: 20px;
+    text-align: left;
+    margin-top: 50px;
+  }
+
+  .month {
+    margin-top: 15%;
+
   }
 
   b {
@@ -169,7 +197,7 @@ ul.primary li:hover > a{
 
   .total3 {
     float: right;
-    margin-right: 135px;
+    margin-right: 170px;
   }
 
   .cota {

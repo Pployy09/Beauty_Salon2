@@ -135,6 +135,7 @@
             <button id="downloadPdfButton" onclick="downloadPdf()">Download PDF</button>
           </div>
           
+          <div class="month">
           <%
       // Create an object to store service counts per month
       let monthlyServiceCounts = {};
@@ -177,16 +178,36 @@
         const thaiMonth = thaiMonthNames[parseInt(month) - 1]; 
         const buddhistYear = parseInt(year) + 543;
       %>
-        
-        <b><%= `เดือน ${thaiMonth} ${buddhistYear}` %></b> 
-        <ul>
+      
+      <table class="tabless ">
+       
+            <tr>
+              <th class="h5"><%= `เดือน ${thaiMonth} ${buddhistYear}` %></th> 
+            </tr>
+        <hr>
+            <tr>
+              <th class="h2">บริการ</th>
+              <th class="h2">จำนวนครั้งที่ใช้บริการ</th>
+            </tr>
+      <tr>
           <% // Display service counts for the month
           for (const service in monthlyServiceCounts[monthYearKey]) { %>
-            <li><%= service %> : <%= monthlyServiceCounts[monthYearKey][service] %> ครั้ง</li>
+            <td class="h3"><%= service %> </td>  
+            <td class="h4"><%= monthlyServiceCounts[monthYearKey][service] %></td>
+          
           <% } %>
-        </ul>
+        </tr>  
+        
+        </table>
       <% } %>
-
+      <hr>
+      <hr>
+    </div>
+    <div class="but">
+        <button id="printButton" onclick="printConto2()">Print</button>
+        <button id="downloadPdfButton" onclick="downloadPdf2()">Download PDF</button>
+    </div>
+      
     </div>
 
     <!--tap2-->

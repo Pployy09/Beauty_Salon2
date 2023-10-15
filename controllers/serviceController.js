@@ -16,9 +16,9 @@ exports.showService = async (req,res) =>{
 exports.addService = async (req,res) =>{ 
     try{
        const services = await new Service({
-        service_name : req.body.service_name,
+        service_name  : req.body.service_name,
         service_price : req.body.service_price,
-        service_time :  req.body.service_time,
+        service_time  : req.body.service_time,
         }); 
 
        services.save();

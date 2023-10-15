@@ -108,3 +108,84 @@ function printConto1() {
 
 // เพิ่มการดักจับคลิกปุ่ม "Print"
 printButton.addEventListener('click', printConto);
+
+
+
+
+
+
+// ฟังก์ชันสำหรับดาวน์โหลด PDF โดยใช้ html2pdf
+function downloadPdf2() {
+    const content = document.querySelector('.month'); // เลือกเนื้อหาที่ต้องการสร้างเป็น PDF
+    html2pdf()
+        .from(content)
+        .save("reportServiceMonth.pdf"); // กำหนดชื่อไฟล์ PDF
+}
+
+// สร้างฟังก์ชันสำหรับการพิมตในหน้าใหม่
+function printConto2() {
+    // สร้างหน้าใหม่เพื่อพิมพ์เฉพาะส่วนนี้
+    const printWindow = window.open('', '', 'width=10000,height=1000');
+    // กำหนดเนื้อหาของหน้าใหม่เป็นส่วน <div class="tabcontent">
+    printWindow.document.write(`
+        <html>
+        <head>
+            <style>
+                .tabless {
+                    text-align: center;
+                    border-collapse: collapse;
+                    width: 100%;
+                    font-size: 16px;
+                    margin-left: 15px;
+                }
+                .h1 {
+                    font-size: 20px;
+                    text-align: center;
+                    margin-top: 20px;
+                } 
+                .h2 {
+                    font-weight:bold;
+                    font-size: 18px;
+                    text-align: center;
+                    padding-top: 20px;
+                  }
+                  
+                  .h3 {
+                    font-size: 18px;
+                    margin-bottom: 30px;
+                    padding-top: 15px;
+                  }
+                
+                  .h4 {
+                    font-size: 18px;
+                    padding-top: 15px;
+                  }
+                
+                  .h5 {
+                    font-size: 20px;
+                    text-align: left;
+                    padding-top: 15px;
+                  }
+                
+                .total {
+                    float: right;
+                    margin-right: 30px;
+                  }
+                 
+            </style>
+        </head>
+        <body>
+            ${document.querySelector('.month').innerHTML}
+        </body>
+        </html>
+    `);
+
+    // ทำการพิมตให้หน้าใหม่
+    printWindow.print();
+
+    // ปิดหน้าใหม่หลังการพิมพ์
+    printWindow.close();
+}
+
+// เพิ่มการดักจับคลิกปุ่ม "Print"
+printButton.addEventListener('click', printConto);
