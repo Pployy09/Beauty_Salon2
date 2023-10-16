@@ -82,3 +82,16 @@ exports.editPutQueuebooking = async (req,res) =>{
         console.log(error);
     }
 };
+
+//delete booking
+exports.deleteQueuebooking = async (req,res) =>{
+    try{
+        await QueueBookingCustomer.deleteOne({ _id:req.params.id});
+       
+        res.redirect('/queuebooking-admin');
+        
+
+    }catch(error){
+        console.log(error);
+    }
+};

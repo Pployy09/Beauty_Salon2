@@ -199,6 +199,7 @@ app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 app.put('/home-admin/:id',HomeAdminController.editPutData);
 app.put('/homeContact-admin/:id',contactController.editPutContact);
 
+app.delete('/edit-queuebooking/:id',QueuebookingAdminController.deleteQueuebooking);
 app.delete('/editService-admin/:id',serviceController.deleteService);
 app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);
 app.delete('/editStock-admin/:id',stockController.deleteStock);

@@ -5,6 +5,7 @@ function makeServiceId(){
    };
 };
 var id = makeServiceId();
+
 class CustomSelectTime{
     constructor(originalSelect){
        this.originalSelect = originalSelect;
