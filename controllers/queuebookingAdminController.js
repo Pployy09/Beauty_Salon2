@@ -31,7 +31,6 @@ exports.addQueuebooking = async (req, res) =>{
             booking_service_user :  req.body.booking_service_user,
             booking_time_user :  req.body.booking_time_user,
             employeeName : req.body.employeeName,
-            slip : req.file.filename,
             });
         bookingCustomer.save();
         console.log("Create service successfully!")

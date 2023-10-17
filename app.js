@@ -170,7 +170,6 @@ app.get('/home-admin/:id',HomeAdminController.editData);
 app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebooking);
 app.get('/edit-queuebooking/:id',authMiddleware,QueuebookingAdminController.editQueuebooking);
 
-
 app.get('/pay-admin',payController.showPay);
 app.get('/pay-admin/:id',payController.editQueuebooking);
 app.get('/employeetable-admin',authMiddleware,employeeTableController.showEmpTable);
@@ -205,7 +204,7 @@ app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
-app.post('/queuebooking-admin',upload7,QueuebookingAdminController.addQueuebooking);
+app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 
 app.put('/pay-admin/:id',payController.editPutQueuebooking);
 app.put('/edit-queuebooking/:id',QueuebookingAdminController.editPutQueuebooking);

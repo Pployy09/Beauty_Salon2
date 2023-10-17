@@ -101,7 +101,7 @@
         <% QueueBookingCustomerData.forEach(function(booking,element) { %>
           <table class="tabless">
             <tr>
-              <td class="f1"><%= element+1 %>.</td>
+              <td class="f1"><i class="fa-solid fa-bookmark fa-2x" style="color: #f19b9d;"></i></td>
               <td class="f2"><%= booking.booking_date_user %></td>
               <td class="f3"><%= booking.booking_time_user %></td>
               <td class="f4"><%= booking.booking_service_user.join(', ') %></td>
@@ -111,11 +111,7 @@
                   <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>
                 </a>
               </td>
-              <td class="f7">
-                <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">
-                  <i class="fa-solid fa-trash-can fa-2x" style="color: #f19b9d;"></i>
-                </a>
-              </td>
+              <td class="f7"><%= booking.status%></td>
             </tr>
           </table>
         <% }); %>
@@ -165,21 +161,18 @@
  
                  <img id="images1" src="<%=qr.qrcode%>" class=" imgpay2"  loading="lazy">
                  
-                 <div class="payy"><p class="pp">อัพโหลดหลักฐานการชำระเงิน</p></div>
+                  <div class="payy"><p class="pp">อัพโหลดหลักฐานการชำระเงิน</p></div>
                  <div class="pay">
-                  <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST">
-                    <div class="row g-2 groupp">
-                       <div class="col-6">
-                         <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
-                       </div>
-                     </div>
-                      
+                    <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                      <div class="row g-2 groupp">
+                        <div class="col-6">
+                          <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
+                        </div>
+                      </div>
                  </div>
-                 <img id="images1" src="<%=booking.slip%>" class=" imgpay2"  loading="lazy">
+
+                  <img id="images1" src="<%=booking.slip%>" class=" imgpay3"  loading="lazy">
                  
-                   <div class="stt">
-                     <span><%= booking.status%></span>
-                   </div>
                </div>
              </div>
  
@@ -195,10 +188,8 @@
      <% }); %>
    
    </div>
-      </div>
 
       <div id="News" class="tabcontents">
-        
       </div>
 
     </div>
@@ -210,6 +201,21 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
     crossorigin="anonymous">
+  </script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      var table = document.querySelectorAll(".f7");
+
+      for (var i = 0; i < table.length; i++) {
+        if (table[i].textContent.trim() === "ชำระแล้ว") {
+          var row = table[i].closest("tr");
+          
+          var newsDiv = document.getElementById("News");
+          newsDiv.appendChild(row);
+        }
+      }
+    });
   </script>
 
   <script>
