@@ -85,7 +85,7 @@
               <tr class="infoTable">
                 <td class="fontAll "><%= element+1 %></td>
                 <td class="fontAll "><%= bookingCu.customerName %> <%=bookingCu.customerFirstname%> <%=bookingCu.customerLastname  %> </td>  <!--ชื่อลูกค้า -->
-                <td class="fontAll "><%= bookingCu.phonenum%> </td> <!--เบอร์โทรศัพท์ -->
+                <td class="fontAll "><%= bookingCu.phonenum%> <%= bookingCu.phonenumOfUsername%> </td> <!--เบอร์โทรศัพท์ -->
                 <td class="fontAll "><%= bookingCu.booking_date_user %></td>
                 <td class="fontAll  "><%= bookingCu.booking_time_user %></td>
                 <td class="fontAll "><%= bookingCu.booking_service_user %></td>
@@ -195,13 +195,12 @@
                       <% }) %> 
                   </select>
                   </div>
-
+                   
                 </div>
               </div>
 
               <div class="modal-footer">
                 <button type="submit" class="buttonbt">บันทึก</button>
-                
               </div>
             </form>
           </div>

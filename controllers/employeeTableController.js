@@ -1,20 +1,20 @@
 const User = require('../models/User');
-const Service = require('../models/Service');
+const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 
 //show info emp all
-exports.showInfoEmpTable = async (req,res) =>{
+exports.showEmpTable = async (req,res) => {
 
-    
     const UserData = await User.findById(req.session.userId);
-    const ServiceData = await Service.find();
-    await  User.find({ role : "emp"}).then(function(emps){
-        res.render("employeetable-admin",{
-            empList : emps,
-            UserData:UserData,
-            ServiceDataList : ServiceData
-            
-        });
+    const QueueBookingCustomerData = await QueueBookingCustomer.find({ 
+        employeeName : { $nin : [0]}
     });
+ 
+         res.render("employeetable-admin",{
+            QueueBookingCustomerData : QueueBookingCustomerData,
+            UserData: UserData,
+            
+      
+        
+        });
     
-   
 }

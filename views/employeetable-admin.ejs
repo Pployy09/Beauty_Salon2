@@ -29,23 +29,23 @@
         </div>
   
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 primary">
-          <li><a href="./home-admin" id="homeHeaderEmployee" class=" nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
-          <li><a href="./service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
+          <li><a href="/home-admin" id="homeHeaderEmployee" class=" nav-link px-3 text-header fontAll ">แก้ไขหน้าเว็บ</a></li>
+          <li><a href="/service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
           <li><a href="#" id="userHeaderEmployee" class="nav-link px-3 text-header fontAll ">ลูกค้า</a> 
             <ul class="sub">
-              <li><a href="./queuebooking-admin" style="text-decoration:none" >ตารางการจองคิว</a></li>
-              <li><a href="./pay-admin" style="text-decoration:none ">การชำระเงิน</a></li>
+              <li><a href="/queuebooking-admin" style="text-decoration:none" >ตารางการจองคิว</a></li>
+              <li><a href="/pay-admin" style="text-decoration:none ">การชำระเงิน</a></li>
             </ul>
           </li>
           <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll active ">พนักงาน</a>
             <ul class="sub">
-              <li><a href="./employeetable-admin" style="text-decoration:none active">ตารางพนักงาน</a></li>
-              <li><a href="./employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
+              <li><a href="/employeetable-admin" style="text-decoration:none active">ตารางพนักงาน</a></li>
+              <li><a href="/employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
             </ul>
           </li>
-          <li><a href="./stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">Stock</a></li>
-          <li><a href="./chatbot-admin" id="chatbot" class="nav-link px-3 text-header fontAll ">Chat Bot</a></li>
-          <li><a href="./report-admin" id="report" class="nav-link px-3 text-header fontAll ">Report</a></li>
+          <li><a href="/stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">Stock</a></li>
+          <li><a href="/chatbot-admin" id="chatbot" class="nav-link px-3 text-header fontAll ">Chat Bot</a></li>
+          <li><a href="/report-admin" id="report" class="nav-link px-3 text-header fontAll ">Report</a></li>
         </ul>
   
         <% if (loggedIn) { %>
@@ -60,7 +60,7 @@
     
         <!-- Button trigger modal -->
         <div id="create-service">
-          <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">xxxx</a>
+         
         </div>
 
         <div><h1 class="headtext">ตารางการของพนักงาน</h1></div>
@@ -76,107 +76,23 @@
                 <td class="fontAll ">เวลา</td>
                 <td class="fontAll ">บริการ</td>
                 <td class="fontAll ">ลูกค้า</td>
-                <td></td>
               </tr> 
+              <% QueueBookingCustomerData.forEach((bookingCus,element)=>{ %>
               <tr class="infoTable">
-                <td class="fontAll ">1</td>
-                <td class="fontAll ">พนักงาน A</td>
-                <td class="fontAll ">10/07/65</td>
-                <td class="fontAll ">13.00-14.00</td>
-                <td class="fontAll ">ย้อมผม</td>
-                <td class="fontAll ">yamada</td>
-                <td>
-                    <a href="#" class="nav-link button" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                    </svg>
-                    </a>
-                </td>
+                <td class="fontAll "><%= element+1 %></td>
+                <td class="fontAll "><%= bookingCus.employeeName %></td>
+                <td class="fontAll "><%= bookingCus.booking_date_user %></td>
+                <td class="fontAll "><%= bookingCus.booking_time_user %></td>
+                <td class="fontAll "><%= bookingCus.booking_service_user %></td>
+                <td class="fontAll "><%= bookingCus.customerName %> <%= bookingCus.customerFirstname %> <%= bookingCus.customerLastname %></td>
               </tr>
-              <tr class="infoTable">
-                <td class="fontAll ">2</td>
-                <td class="fontAll ">พนักงาน B</td>
-                <td class="fontAll ">10/07/65</td>
-                <td class="fontAll ">15.00-16.00</td>
-                <td class="fontAll ">สระ-ไดร์-เซต</td>
-                <td class="fontAll ">Taara</td>
-                <td>
-                  <a href="#" class="nav-link button" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                  </svg>
-                  </a>
-                </td>
-              </tr>
+              <% }) %>
+             
             </table>
           </div>
       </div>
     
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">xxxxx</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <form action="" method="POST">
-              <div class="modal-body">
-                <div class="inbody">
-                  <div class='row'>
-                    <label class="textque">ชื่อพนักงาน</label>
-
-                      <select name="edu" id="">
-                          <% empList.forEach(emp =>{ %> 
-                            <option value= "<%= emp.firstname %>" <%= emp.lastname %>> <%= emp.firstname %>  <%= emp.lastname %></option>
-                          <% }) %> 
-                      </select>
-                   
-                  </div>
-                  <div class='row'>
-                    <label class="textque">เลือกวันที่</label>
-                    <input id="dateEmpTable"
-                    type="date" min="0000-00-00" max="0000-00-00"
-                    placeholder="วว/ดด/ปปปป" 
-                    class="form-control" 
-                    name="date_service" 
-                    required >
-                  </div>
-
-                  <div class='row'>
-                    <label class="textque">เลือกบริการ</label>
-
-                    <select name="edu" id="">
-                      <% ServiceDataList.forEach(serviceData =>{ %> 
-                        <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> </option>
-                      <% }) %> 
-                  </select>
-                  </div>
-
-                  <div class='row'>
-                    <label class="textque">เลือกเวลา</label>
-                    <input 
-                    type="time" min="10:00" max="22:00"
-                    placeholder="เวลา" 
-                    class="form-control" 
-                    name="time_service" 
-                    required>
-                  </div>
-
-                </div>
-              </div>
-
-                  <div class="modal-footer">
-                    <button type="submit" class="buttonbt">บันทึก</button>
-                    <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
-                  </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    
       
       <!-- JavaScript-->
       <script 

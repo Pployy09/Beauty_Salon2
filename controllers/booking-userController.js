@@ -35,6 +35,7 @@ exports.addBookingUser = async (req,res) =>{
         customerUsername: user.username,
         customerFirstname : user.firstname,
         customerLastname:user.lastname,
+        phonenumOfUsername : user.phonenum,
         booking_date_user : req.body.booking_date_user,
         booking_service_user :  req.body.booking_service_user,
         booking_time_user :  req.body.booking_time_user,

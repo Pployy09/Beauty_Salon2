@@ -92,13 +92,7 @@
       
                         <div class='editSe'>
                           <label class="textque">เบอร์โทรศัพท์</label>
-                          <input 
-                            type="tel" 
-                            placeholder="<%= QueueBookingCustomerData.phonenum  %> " 
-                            class="form-control" 
-                            name="phonenum" 
-                            value="<%= QueueBookingCustomerData.phonenum  %>" 
-                            >
+                          <div  class="form-control" ><%= QueueBookingCustomerData.phonenum %> <%= QueueBookingCustomerData.phonenumOfUsername %></div>
                         </div> 
       
                         <div class='editSe'>
@@ -171,10 +165,7 @@
                                       <% bookingTime.push(bookingT); %>
                                   <% } %>
                                   <% console.log(bookingTime) %>
-                                  <% //console.log(QueueBookingCustomerData.booking_time_user) %>
                                   
-                                  <%// let  a= QueueBookingCustomerData.booking_time_user.length-1; %>
-                                  <%//let  a= 0; %>
                                   
                                   
                                    
@@ -206,8 +197,8 @@
                         <div class='editSe'>
                           <label class="textque">พนักงาน</label>
                           
-                          <select name="employeeName[]" class="form-control">
-                            <option value="" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %> </option> 
+                          <select name="employeeName[]" class="form-control" required>
+                            <option value="<%= QueueBookingCustomerData.employeeName %>" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %> </option> 
                             <% empList.forEach(emp =>{ %> 
                               <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>
                             <% }) %> 
@@ -286,6 +277,7 @@
     <script>
       var timeOpen = '<%= bookingTArray%>'.split(',');
       var timeOpenInt =[];
+      
       // timeOpen--> int
       for(let t = 0 ; t<timeOpen.length ; t++){
         var timeOpenint = parseInt(timeOpen[t]);
@@ -313,7 +305,7 @@
         return true;
       }
       //เปรียบเทียบค่าข้างในอาเรย์
-      function isArraySubset(array1, array2) {
+      function valuesInArray(array1, array2) {
   
         for (let r = 0; r < array1.length; r++) {
           if (array2.indexOf(array1[r]) === -1) {
@@ -335,7 +327,7 @@
       const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
       console.log(resultEqualValues);
 
-      const resultSubset = isArraySubset(timeBookingInt, timeOpenInt);
+      const resultSubset = valuesInArray(timeBookingInt, timeOpenInt);
       console.log(resultSubset);
 
       console.log(timeBookingInt);

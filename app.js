@@ -155,7 +155,7 @@ app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQue
 app.get('/edit-queuebooking/:id',authMiddleware,QueuebookingAdminController.editQueuebooking);
 
 app.get('/pay-admin',showUserController.showPay);
-app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
+app.get('/employeetable-admin',authMiddleware,employeeTableController.showEmpTable);
 
 
 app.get('/employeeEdit-admin',authMiddleware,showUserController.showEmpEdit);

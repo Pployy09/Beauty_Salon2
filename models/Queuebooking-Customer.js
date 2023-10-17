@@ -20,6 +20,11 @@ const QueueBookingCustomerSchema = new Schema({
         type: String,
        
     },
+    phonenumOfUsername : {
+        type: mongoose.Schema.Types.String, 
+        ref: 'users' 
+        
+    },
     phonenum : {
         type: String,
         
