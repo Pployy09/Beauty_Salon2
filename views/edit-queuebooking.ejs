@@ -197,7 +197,7 @@
                         <div class='editSe'>
                           <label class="textque">พนักงาน</label>
                           
-                          <select name="employeeName[]" class="form-control" required>
+                          <select name="employeeName" class="form-control" required>
                             <option value="<%= QueueBookingCustomerData.employeeName %>" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %> </option> 
                             <% empList.forEach(emp =>{ %> 
                               <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>
