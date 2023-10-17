@@ -5,8 +5,7 @@ const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 exports.showEmpTable = async (req,res) => {
 
     const UserData = await User.findById(req.session.userId);
-    const QueueBookingCustomerData = await QueueBookingCustomer.find({ employeeName : { $nin : [0]}});
-   console.log(QueueBookingCustomerData);
+    const QueueBookingCustomerData = await QueueBookingCustomer.find({emp_selection_status:"เลือกพนักงานแล้ว"});
          res.render("employeetable-admin",{
             QueueBookingCustomerData : QueueBookingCustomerData,
             UserData: UserData,

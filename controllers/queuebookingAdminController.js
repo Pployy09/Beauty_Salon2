@@ -31,6 +31,7 @@ exports.addQueuebooking = async (req, res) =>{
             booking_service_user :  req.body.booking_service_user,
             booking_time_user :  req.body.booking_time_user,
             employeeName : req.body.employeeName,
+            emp_selection_status : "เลือกพนักงานแล้ว" ,
             });
         bookingCustomer.save();
         console.log("Create service successfully!")
@@ -75,6 +76,7 @@ exports.editPutQueuebooking = async (req,res) =>{
             booking_service_user :  req.body.booking_service_user,
             booking_time_user :  req.body.booking_time_user,
             employeeName : req.body.employeeName,
+            emp_selection_status : "เลือกพนักงานแล้ว" ,
             price : req.body.price,
         })
         res.redirect('/queuebooking-admin');
