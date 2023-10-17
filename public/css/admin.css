@@ -57,14 +57,14 @@ body{
 .img1{
     position: absolute;
     z-index: 1;
-    top:740px;
+    top:690px;
     left:50%;
 }
 
 .img2{
     position: absolute;
     z-index:1;
-    top:1290px;
+    top:1240px;
     left:33%;
 }
 .img3{

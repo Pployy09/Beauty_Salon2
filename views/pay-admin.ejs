@@ -95,7 +95,8 @@
               <tr class="sectionTable">
                 <td >ลำดับ</td>
                 <td >ชื่อลูกค้า</td>
-                <td >บริการ</td>
+                <td >บริการ</td> 
+                <td ></td>
                 <td >ราคา</td>
                 <td >ส่ง</td>
                 <td ></td>
@@ -107,6 +108,11 @@
                 <td class="fontAll "><%= element+1 %></td>
                 <td class="fontAll "><div class="inpay" ><%= popay.customerName %> <%=popay.customerFirstname%> </div></td>
                 <td class="fontAll "><div class="inpay2" ><%= popay.booking_service_user%></div></td>
+                <td><% if (popay.status === 'ชำระแล้ว') { %>
+                  <p ><%= popay.status %></p>
+                <% } else { %>
+                  <%= popay.status %>
+                <% } %></td>
                 <td class="fontAll "><input type="text" class="inpay" name="price" placeholder="<%=popay.price%>" ></td>
                 <!--<td class="fontAll "><select name="status" id="status">
                   <option>สถานะการชำระเงิน</option>
@@ -129,7 +135,9 @@
             
               <% }); %>
             </table>
+            
 
+        
      <!-- Modal -->
      <% QueueBookingCustomerData.forEach((popay,element)=>{ %>
 
@@ -204,7 +212,7 @@
       </div>
     </div>
     <% }); %>
-  
+
   </div>
 
       <!-- JavaScript-->

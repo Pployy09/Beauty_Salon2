@@ -1,10 +1,14 @@
 const User = require('../models/User')
 const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 const Pay = require('../models/Pay')
+const Service = require('../models/Service');
+const Home = require('../models/Home-Admin');
 
 
 exports.showEdits = async (req, res) => {
     try {
+        const ServiceData = await Service.find();
+        const HomeData = await Home.find();
         const {id} = req.params;
         const qr = await Pay.findOne({id})
         // Get the user data
@@ -24,6 +28,8 @@ exports.showEdits = async (req, res) => {
             UserData, 
             QueueBookingCustomerData,
             qr,
+            ServiceDataList : ServiceData,
+            HomeData : HomeData,
      });
     } catch (error) {
         console.error(error);

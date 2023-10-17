@@ -107,7 +107,7 @@
               <td class="f4"><%= booking.booking_service_user.join(', ') %></td>
               <td class="f5"><a href="/#exampleModal1<%=booking._id %>" class="nav-link fontAll butt" data-bs-toggle="modal">ชำระเงิน</a></td>
               <td class="f6"> 
-                <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">
+                <a href="/#exampleModal2<%=booking._id %>" class="nav-link fontAll" data-bs-toggle="modal">
                   <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>
                 </a>
               </td>
@@ -116,7 +116,7 @@
           </table>
         <% }); %>
 
-      <!-- Modal -->
+      <!-- Modal ส่งสลิปชำระเงิน-->
       <% QueueBookingCustomerData.forEach(function(booking,element) { %>
       <div class="modal fade" id="exampleModal1<%= booking._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
        <div class="modal-dialog">
@@ -194,6 +194,136 @@
 
     </div>
 
+     <!-- Modal แก้ไขข้อมูลการจอง-->
+     <% QueueBookingCustomerData.forEach(function(booking,element) { %>
+      <div class="modal fade" id="exampleModal2<%= booking._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">แก้ไขข้อมูลการจองคิว</h1>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           
+             <div class="modal-body">
+               <div class="inbody">
+                <div class="editS">
+
+                  <div class='editSe'>
+                        <label class="textque">ชื่อลูกค้า</label>
+                        <div  class="form-control" ><%= booking.customerName %> <%=booking.customerFirstname%></div>
+                  </div> 
+                      
+                    
+  
+                    <div class='editSe'>
+                        <label class="textque">เลือกวันที่</label>
+                        <input id="dateBooking"
+                        type="date" min="0000-00-00" max="0000-00-00"
+                        placeholder="<%= booking.booking_date_user  %>" 
+                        class="form-control" 
+                        name="booking_date_user" 
+                        value="<%= booking.booking_date_user  %>"
+                        >
+                    </div>
+
+                    <div class='editSe'>
+                      <label class="textque">บริการ</label>
+                      
+                      <select name="booking_service_user[]" class="form-control">
+                        <option value="" selected disabled hidden ><%= booking.booking_service_user %></option> 
+                        <% ServiceDataList.forEach(serviceData =>{ %> 
+                        
+                            <option value= "<%= serviceData.service_name  %>"  > <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
+                        
+                          <% }) %> 
+                    </select>
+                    </div>
+                      
+                    </div> 
+
+                    <div class='editSe'>
+                        <label class="textque">เวลา</label>
+                        <% var timeOpenArray = [] %>
+                        <% var bookingTime = [] %>
+                        <% var bookingTArray=[] %>
+                        
+                       
+                        <select name="booking_time_user[]"  class="select-time "  id="select-time"  multiple="multiple"  >
+                        
+                          <%  HomeData.forEach(homeData => { %>
+                            
+                            <%  let timeOpen = parseInt(homeData.time_open); %>
+                            <%  let timeClose = parseInt(homeData.time_close); %>
+                           
+                            <%  let timeForService1  = timeOpen+1;  %>
+
+                             
+                            
+                            <% let timeOpen1 = timeOpen; %>
+                            <% let timeForService2  = timeForService1; ;%>
+                            <% let timeClose1 = timeClose;%>
+                             
+                            <% for(; timeOpen1 < timeClose1  ; timeOpen1++ ){ %>
+                              <% if(timeOpen1 <= 9 ){%>
+                                <% var shopTime = "0"+timeOpen1+".00"+"-"+timeForService2+".00" %>
+                                <% bookingTArray.push(shopTime); %>
+                                <% timeForService2++ %>
+    
+                              <% }else{ %>
+                                <% var shopTime = timeOpen1+".00"+"-"+timeForService2+".00" %>
+                                <% bookingTArray.push(shopTime); %>
+                                <% timeForService2++ %>
+                                <% } %>
+                             
+                             <% } %> 
+                                
+                              
+                                <% for(let t=0 ; t < booking.booking_time_user.length ;t++) {%>
+                                  <% let bookingT = parseInt(booking.booking_time_user[t]); %>
+                                  <% bookingTime.push(bookingT); %>
+                              <% } %>
+                              <% console.log(bookingTime) %>
+                              
+                              
+                              
+                               
+                                 <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
+                                <% if(timeOpen<=9) {%> 
+                                  
+                                  <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option>
+                                  
+                                <% timeForService1++ %> 
+                                <% }else{ %>   
+                                  <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                                  <% timeForService1++ %> 
+                                <% } %>
+                            
+                            <% } %>
+                              
+                            <% })  %> 
+                            </select>
+                    </div>
+
+                  </div>
+                
+              </div>
+        
+                    <div class="modal-footer">
+                        <div class="container">
+                            <button type="submit"  class="buttonbt">บันทึก</button>
+                            <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
+                        </div>
+                    </div>
+                 
+ 
+                  
+               </div>
+             </div>
+
+         </div>
+       </div>
+     </div>
+     <% }); %>
     
 
   <!-- JavaScript-->
@@ -202,6 +332,23 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
     crossorigin="anonymous">
   </script>
+
+  <script 
+    src="../js/dateBooking.js" 
+    charset="utf-8">
+  </script>
+
+  <script 
+    src="../js/select-time.js" 
+    charset="utf-8">
+  </script>
+
+<script 
+src="../js/editService-admin.js" 
+charset="utf-8">
+</script>
+
+
 
   <script>
       document.addEventListener("DOMContentLoaded", function() {
