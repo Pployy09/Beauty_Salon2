@@ -42,8 +42,7 @@ const QueueBookingCustomerSchema = new Schema({
         
     },
     employeeName : {
-        type : Array,
-        dataArray: String,
+        type : String,
     },
     price : {
         type : String
