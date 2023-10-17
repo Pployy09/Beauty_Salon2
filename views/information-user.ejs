@@ -245,7 +245,8 @@
                         <label class="textque">เวลา</label>
                         <% var timeOpenArray = [] %>
                         <% var bookingTime = [] %>
-                        <% var bookingTArray=[] %>
+                        <% var bookingTArray = []; %>
+                        <% var bookingTArray2 = bookingTArray; %>
                         
                        
                         <select name="booking_time_user[]"  class="select-time "  id="select-time"  multiple="multiple"  >
@@ -283,6 +284,7 @@
                                   <% bookingTime.push(bookingT); %>
                               <% } %>
                               <% console.log(bookingTime) %>
+                              <% console.log(bookingTArray) %>
                               
                               
                               
@@ -343,10 +345,7 @@
     charset="utf-8">
   </script>
 
-<script 
-src="../js/editService-admin.js" 
-charset="utf-8">
-</script>
+
 
 
 
@@ -363,6 +362,7 @@ charset="utf-8">
         }
       }
     });
+
   </script>
 
   <script>
@@ -383,6 +383,10 @@ charset="utf-8">
     // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
   </script>
+
+  
+
+  
 
 </body>
 </html>
