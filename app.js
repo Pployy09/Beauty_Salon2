@@ -170,10 +170,11 @@ app.get('/home-admin/:id',HomeAdminController.editData);
 app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebooking);
 app.get('/edit-queuebooking/:id',authMiddleware,QueuebookingAdminController.editQueuebooking);
 
+
 app.get('/pay-admin',payController.showPay);
 app.get('/pay-admin/:id',payController.editQueuebooking);
-
-app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
+app.get('/employeetable-admin',authMiddleware,employeeTableController.showEmpTable);
+//app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
 
 app.get('/employeeEdit-admin',authMiddleware,showUserController.showEmpEdit);
 app.get('/editInformation-admin',authMiddleware,showUserController.showEdit);
@@ -215,6 +216,7 @@ app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);
 app.put('/home-admin/:id',HomeAdminController.editPutData);
 app.put('/homeContact-admin/:id',contactController.editPutContact);
 
+app.delete('/edit-queuebooking/:id',QueuebookingAdminController.deleteQueuebooking);
 app.delete('/editService-admin/:id',serviceController.deleteService);
 app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);
 app.delete('/editStock-admin/:id',stockController.deleteStock);
