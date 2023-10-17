@@ -62,7 +62,7 @@ exports.editData = async (req,res) =>{
 //update data 
 exports.editPutData = async (req,res) =>{
     let id = req.params.id;
-    let new_img = " "; // แก้จาก const เป็น let
+    let new_img = " "; 
     if (req.file) {
         new_img = req.file.filename;
         try {

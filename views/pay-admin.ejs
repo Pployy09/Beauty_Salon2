@@ -9,9 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/pay.css">
+    <link rel="stylesheet" href="./css/stock.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body class="b1">
     
@@ -58,11 +64,28 @@
       </header>
     </section>
     
-        <!-- Button trigger modal -->
-        <div id="create-service">
-          <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">เพิ่มการชำระเงิน</a>
-        </div>
+    <div class="grid-container">
 
+      <div class="item1">
+        <div class="payy"><p class="pp">อัพโหลด QR Code สำหรับการชำระเงิน</p></div>
+        <div class="pay">
+          <div>
+          <form method="POST" action="/upload-qr/<%= qr._id %>?_method=PUT" enctype="multipart/form-data"> 
+            <div class="row g-2 groupp">
+              <div class="col-6">
+                <input type="file" name="qrcode" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
+              </div>
+              <div class="col-6">
+                <button type="submit" class="upload" for="inputGroupFile02"> Upload </button>
+              </div>
+            </div>
+            </form>
+            <img id="images1" src="<%=qr.qrcode%>" class=" imgpay"  loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="item2">
         <div><h1 class="headtext">การชำระเงิน</h1></div>
         <div class="line-4"></div>
 
@@ -70,67 +93,115 @@
           <div class="container">
             <table >
               <tr class="sectionTable">
-                <td class="fontAll ">ลำดับ</td>
-                <td class="fontAll ">ชื่อลูกค้า</td>
-                <td class="fontAll ">บริการ</td>
-                <td class="fontAll ">ราคา</td>
-                <td class="fontAll ">สถานะการชำระเงิน</td>
+                <td >ลำดับ</td>
+                <td >ชื่อลูกค้า</td>
+                <td >บริการ</td>
+                <td >ราคา</td>
+                <td >ส่ง</td>
+                <td ></td>
 
               </tr> 
-              
+              <% QueueBookingCustomerData.forEach((popay,element)=>{ %>
+              <form action="/pay-admin/<%= popay._id %>?_method=PUT" method="POST">
+              <tr class="infoTable">
+                <td class="fontAll "><%= element+1 %></td>
+                <td class="fontAll "><div class="inpay" ><%= popay.customerName %> <%=popay.customerFirstname%> </div></td>
+                <td class="fontAll "><div class="inpay2" ><%= popay.booking_service_user%></div></td>
+                <td class="fontAll "><input type="text" class="inpay" name="price" placeholder="<%=popay.price%>" ></td>
+                <!--<td class="fontAll "><select name="status" id="status">
+                  <option>สถานะการชำระเงิน</option>
+                  <option value="paid">ชำระแล้ว</option>
+                  <option value="nopaid">ยังไม่ชำระ</option>
+                 </select></td>-->
+                 <td>
+                  <button type="submit" class="btn ">
+                    <i class="fa-regular fa-circle-up fa-2x" style="color: #394d6f;"></i>
+                  </button>
+                </td>
+              </form>
+                
+                <td class="fontAll ">
+                      <a href="/#exampleModal<%= popay._id %>" class="nav-link fontAll" data-bs-toggle="modal">
+                        <i class="fa-solid fa-qrcode fa-2x" style="color: #394d6f;"></i>
+                      </a>
+                </td>
+              </tr> 
+            
+              <% }); %>
             </table>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มการชำระเงินลูกค้า</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="POST">
-              <div class="modal-body">
-                <div class="inbody">
-                  <div class='row'>
-                    <label class="textque">ชื่อผู้ใช้ลูกค้า</label>
-                    <input 
-                    type="text" 
-                    placeholder="ชื่อลูกค้า" 
-                    class="form-control" 
-                    name="username" 
-                    required>
-                  </div>
 
-                  <div class='row'>
-                    <label class="textque">บริการ</label>
-                    <input 
-                    type="text" 
-                    placeholder="บริการ" 
-                    class="form-control" 
-                    name="name_service" 
-                    required>
-                  </div>
+     <!-- Modal -->
+     <% QueueBookingCustomerData.forEach((popay,element)=>{ %>
 
-                  <div class='row'>
-                    <label class="textque">ราคา</label>
-                    <input 
-                    type="number" 
-                    placeholder="ราคา" 
-                    class="form-control" 
-                    name="price_service" 
-                    required>
-                  </div>
-
-                </div>
-              </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="buttonbt">บันทึก</button>
-                    <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
-                  </div>
-            </form>
+     <div class="modal fade" id="exampleModal<%= popay._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">การชำระเงินลูกค้า</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <form action="/pay-admin/<%= popay._id %>?_method=PUT" method="POST">
+            <div class="modal-body">
+              <div class="inbody">
+
+                <div class='form-row texla'>
+                  <div class="form-group col-md-6">
+                    <label>ชื่อลูกค้า</label>
+                    <h class="d"> : </h>
+                  </div>
+                  <div class=" form-group col-md-6 ">
+                    <%= popay.customerName %> <%=popay.customerFirstname%> <%=popay.customerLastname  %>
+                  </div>
+                </div>
+
+                <div class='form-row texla'>
+                  <div class="form-group col-md-6">
+                    <label>บริการ</label>
+                    <h class="dd"> : </h>
+                  </div>
+                    <div class="form-group col-md-6 ">
+                      <%= popay.booking_service_user%>
+                    </div>
+                </div>
+
+                <div class='form-row texla'>
+                  <div class="form-group col-md-6">
+                    <label>ราคา</label>
+                    <h class="ddd"> : </h>
+                  </div>
+                    <div class="form-group col-md-6">
+                      <%= popay.price%>
+                    </div>
+                </div>
+
+                  <img id="images1" src="<%=qr.qrcode%>" class=" imgpay2"  loading="lazy">
+                  
+                  <div class="st">
+                  <select name="status" id="status">
+                    <option>สถานะการชำระเงิน</option>
+                    <option value="ชำระแล้ว">ชำระแล้ว</option>
+                    <option value="ยังไม่ชำระ">ยังไม่ชำระ</option>
+                   </select>
+                   
+                  </div>
+                  <div class="stt">
+                    <span><%= popay.status%></span>
+                  </div>
+              </div>
+            </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="buttonbt">บันทึก</button>
+                  <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
+                </div>
+
+          </form>
         </div>
       </div>
+    </div>
+    <% }); %>
+  
+  </div>
 
       <!-- JavaScript-->
       <script 
@@ -138,6 +209,17 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
         crossorigin="anonymous">
       </script>
+      <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+      crossorigin="anonymous">
+    </script>
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
+      crossorigin="anonymous">
+    </script>
+
       <script 
         src="./js/service-emp.js" 
         charset="utf-8">

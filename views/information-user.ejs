@@ -93,17 +93,112 @@
 
     <div class="container">
 
-      <button class="tablink" onclick="openPage('Home', this, '#FBF2E9')"id="defaultOpen">ตารางการจองคิวของฉัน</button>
-      <button class="tablink" onclick="openPage('News', this, '#FBF2E9')" >ประวัติการจองคิวของฉัน</button>
+      <button class="tablinks" onclick="openPage('Home', this, '#FBF2E9')"id="defaultOpen">ตารางการจองคิวของฉัน</button>
+      <button class="tablinks" onclick="openPage('News', this, '#FBF2E9')" >ประวัติการจองคิวของฉัน</button>
 
-      <div id="Home" class="tabcontent">
-        <h3>ตารางการจองคิวของฉัน</h3>
-        <p>Home is where the heart is..</p>
+      <div id="Home" class="tabcontents">
+
+        <% QueueBookingCustomerData.forEach(function(booking,element) { %>
+          <table class="tabless">
+            <tr>
+              <td class="f1"><%= element+1 %>.</td>
+              <td class="f2"><%= booking.booking_date_user %></td>
+              <td class="f3"><%= booking.booking_time_user %></td>
+              <td class="f4"><%= booking.booking_service_user.join(', ') %></td>
+              <td class="f5"><a href="/#exampleModal1<%=booking._id %>" class="nav-link fontAll butt" data-bs-toggle="modal">ชำระเงิน</a></td>
+              <td class="f6"> 
+                <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">
+                  <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>
+                </a>
+              </td>
+              <td class="f7">
+                <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">
+                  <i class="fa-solid fa-trash-can fa-2x" style="color: #f19b9d;"></i>
+                </a>
+              </td>
+            </tr>
+          </table>
+        <% }); %>
+
+      <!-- Modal -->
+      <% QueueBookingCustomerData.forEach(function(booking,element) { %>
+      <div class="modal fade" id="exampleModal1<%= booking._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">ชำระเงิน</h1>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           
+             <div class="modal-body">
+               <div class="inbody">
+ 
+                 <div class='form-row texla'>
+                   <div class="form-group col-md-6">
+                     <label>ชื่อลูกค้า</label>
+                     <h class="d"> : </h>
+                   </div>
+                   <div class=" form-group col-md-6 ">
+                     <%= booking.customerName %> <%=booking.customerFirstname%> <%=booking.customerLastname  %>
+                   </div>
+                 </div>
+ 
+                 <div class='form-row texla'>
+                   <div class="form-group col-md-6">
+                     <label>บริการ</label>
+                     <h class="dd"> : </h>
+                   </div>
+                     <div class="form-group col-md-6 ">
+                       <%= booking.booking_service_user%>
+                     </div>
+                 </div>
+ 
+                 <div class='form-row texla'>
+                   <div class="form-group col-md-6">
+                     <label>ราคา</label>
+                     <h class="ddd"> : </h>
+                   </div>
+                     <div class="form-group col-md-6">
+                       <%= booking.price%>
+                     </div>
+                 </div>
+ 
+                 <img id="images1" src="<%=qr.qrcode%>" class=" imgpay2"  loading="lazy">
+                 
+                 <div class="payy"><p class="pp">อัพโหลดหลักฐานการชำระเงิน</p></div>
+                 <div class="pay">
+                  <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST">
+                    <div class="row g-2 groupp">
+                       <div class="col-6">
+                         <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
+                       </div>
+                     </div>
+                      
+                 </div>
+                 <img id="images1" src="<%=booking.slip%>" class=" imgpay2"  loading="lazy">
+                 
+                   <div class="stt">
+                     <span><%= booking.status%></span>
+                   </div>
+               </div>
+             </div>
+ 
+                 <div class="modal-footer">
+                   <button type="submit" class="buttonbt">บันทึก</button>
+                   <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
+                 </div>
+ 
+           </form>
+         </div>
+       </div>
+     </div>
+     <% }); %>
+   
+   </div>
       </div>
 
-      <div id="News" class="tabcontent">
-        <h3>ประวัติการจองคิวของฉัน</h3>
-        <p>Some news this fine day!</p> 
+      <div id="News" class="tabcontents">
+        
       </div>
 
     </div>
@@ -120,11 +215,11 @@
   <script>
     function openPage(pageName,elmnt,color) {
       var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
+      tabcontent = document.getElementsByClassName("tabcontents");
         for (i = 0; i < tabcontent.length; i++) {
           tabcontent[i].style.display = "none";
         }
-        tablinks = document.getElementsByClassName("tablink");
+        tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].style.backgroundColor = "";
         }

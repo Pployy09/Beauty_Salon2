@@ -1,0 +1,107 @@
+ .inpay {
+    width: 120px ;
+ }
+
+ .inpay2 {
+    width: 140px ;
+    margin-right: 15px;
+ }
+
+ .butpay {
+    background-color: aliceblue;
+ }
+
+ .pay {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+ }
+
+ .payy {
+    display: flex;
+    justify-content: center;
+    margin-top: 52px;
+ }
+
+ .imgpay {
+    margin-top: 20px;
+    width: 300px;
+    height: 400px;
+ }
+
+ .pp {
+    font-size: 24px;
+ }
+
+ .form-inn{
+    background-color: rgb(178, 64, 64);
+    width: 100px;
+    height: 40px;
+}
+
+.groupp{
+    background-color: white;
+    border-radius: 5px;
+    width: 435px;
+    height: 65px;
+    padding: 2px 2px 2px 2px;
+}
+
+.butsum {
+    border-color: white;
+    background-color: white;
+}
+
+.btnn {
+   background-color: DodgerBlue;
+   border: none;
+   color: white;
+   padding: 12px 16px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ 
+ /* Darker background on mouse-over */
+ .btnn:hover {
+   background-color: RoyalBlue;
+ }
+
+ .imgpay2 {
+   margin-left: 20px;
+   margin-top: 20px;
+   width: 300px;
+   height: 400px;
+}
+
+.form-control1 {
+   width: 200px;
+   height: 50px;
+   font-size: 16px;
+}
+
+.texla {
+   font-size: 20px;
+   color: #5F3122;
+   margin: 2px 2px 2px 2px;
+}
+
+.d {
+   margin-left: 30px;
+}
+
+.dd {
+   margin-left: 45px;
+}
+
+.ddd {
+   margin-left: 58px;
+}
+
+.st {
+   margin: 20px 0px 20px 65px;
+}
+
+.stt {
+   margin: 20px 0px 20px 120px;
+}

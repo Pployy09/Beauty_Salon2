@@ -9,12 +9,10 @@ const QueueBookingCustomerSchema = new Schema({
     customerFirstname :{
         type: mongoose.Schema.Types.String, 
         ref: 'users' ,
-       
     },
     customerLastname :{
-        type: mongoose.Schema.Types.String, 
+        type: mongoose.Schema.Types.String,
         ref: 'users' ,
-       
     },
     customerName :{
         type: String,
@@ -26,22 +24,31 @@ const QueueBookingCustomerSchema = new Schema({
     },
     booking_date_user : {
         type : String,
-        required: [true, 'Please provide booking date'],
+        
     },
     booking_service_user :{
         type : Array,
-        dataArray: String,
-        required: [true, 'Please provide booking service'],
+        dataArray : String,
+        
     },
     booking_time_user : {
         type : Array,
         dataArray: String,
-        required: [true, 'Please provide booking time'],
+        
     },
     employeeName : {
         type : Array,
         dataArray: String,
-        
+    },
+    price : {
+        type : String
+    },
+    status : {
+        type : Array,
+        dataArray: String,
+    },
+    slip : {
+        type : String
     }
 });
 

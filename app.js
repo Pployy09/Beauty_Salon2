@@ -6,12 +6,15 @@ const expressSession = require('express-session')
 const flash = require('connect-flash')
 const methodOverride  = require('method-override')
 const multer = require('multer')
+
 const Upload1image = require('./models/uploadimg')
 const Upload2image = require('./models/uploadimg2')
 const Upload3image = require('./models/uploadimg3')
 const Upload4image = require('./models/uploadimg4')
 const Upload5image = require('./models/uploadimg5')
+const Pay = require('./models/Pay')
 const Home = require('./models/Home-Admin');
+const QueueBookingCustomer = require('./models/Queuebooking-Customer');
 
 //controller
 const indexController = require('./controllers/indexController')
@@ -29,6 +32,7 @@ const contactController = require('./controllers/contactController')
 const serviceUserController = require('./controllers/serviceUserController')
 const contactUserController = require('./controllers/contactUserController')
 const chatController = require('./controllers/chatController')
+const payController = require('./controllers/payController')
 
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
@@ -47,7 +51,6 @@ mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?re
 })
 
 app.set('view engine','ejs')
-
 app.use(express.static('public'))
 app.use(express.static('uploads'))
 app.use(express.json())
@@ -132,19 +135,32 @@ app.get('/no-access',(req,res) => {
         res.render('no-access')
 })
 
+//add image
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() +  "_" + file.originalname)
+    }
+});
+
 //user
 app.get('/',indexController.showDatas);
 app.get('/home-user',authMiddleware,homeUserController.showDatass);
-app.get('/information-user',authMiddleware,showUserController.showEdits);
+app.get('/information-user',authMiddleware,editinformationUserController.showEdits);
 app.get('/booking-user',BookingUserController.showBookingUser);
 
 app.get('/service-user',serviceUserController.showServiceUser);
 app.get('/contact-user',contactUserController.showContacts);
 
 app.get('/editInformation-user',authMiddleware,showUserController.showEditUser);
+const upload7 = multer({ storage: storage }).single('slip');
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
-
 app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
+
+app.get('/information-user/:id',editinformationUserController.editQueuebooking);
+app.put('/information-user/:id',upload7,editinformationUserController.editPutQueuebooking);
 
 //admin
 app.get('/chatbot-admin',authMiddleware,chatController.showChat)
@@ -154,9 +170,10 @@ app.get('/home-admin/:id',HomeAdminController.editData);
 app.get('/queuebooking-admin',authMiddleware,QueuebookingAdminController.showQueuebooking);
 app.get('/edit-queuebooking/:id',authMiddleware,QueuebookingAdminController.editQueuebooking);
 
-app.get('/pay-admin',showUserController.showPay);
-app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
+app.get('/pay-admin',payController.showPay);
+app.get('/pay-admin/:id',payController.editQueuebooking);
 
+app.get('/employeetable-admin',authMiddleware,employeeTableController.showInfoEmpTable);
 
 app.get('/employeeEdit-admin',authMiddleware,showUserController.showEmpEdit);
 app.get('/editInformation-admin',authMiddleware,showUserController.showEdit);
@@ -169,8 +186,6 @@ app.get('/service-admin',adminMiddleware,authMiddleware,serviceController.showSe
 app.get('/editService-admin/:id',serviceController.editService);
 
 app.get('/report-admin',authMiddleware,reportController.showReport)
-app.get('/reportProduct',reportController.showReproduct)
-app.get('/reportService',reportController.showReservice)
 
 app.get('/homeContact-admin',authMiddleware,contactController.showContact)
 app.get('/homeContact-admin/:id',contactController.editContact);
@@ -189,8 +204,9 @@ app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
 app.post('/service-admin',serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
-app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
+app.post('/queuebooking-admin',upload7,QueuebookingAdminController.addQueuebooking);
 
+app.put('/pay-admin/:id',payController.editPutQueuebooking);
 app.put('/edit-queuebooking/:id',QueuebookingAdminController.editPutQueuebooking);
 app.put('/editService-admin/:id',serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
@@ -202,16 +218,6 @@ app.put('/homeContact-admin/:id',contactController.editPutContact);
 app.delete('/editService-admin/:id',serviceController.deleteService);
 app.delete('/view-employeeinfo-admin/:id',employeeinformationAdmin.deleteInfoEmpOne);
 app.delete('/editStock-admin/:id',stockController.deleteStock);
-
-//add image
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + "_" + Date.now() +  "_" + file.originalname)
-    }
-});
 
 const upload1 = multer({ storage: storage }).single('image1');
 app.get('/upload-image1/:id',HomeAdminController.editData);
@@ -273,6 +279,17 @@ app.post('/upload-image5',upload5,(req,res) => {
     res.redirect('/home-admin');
 });
 
+const upload6 = multer({ storage: storage }).single('qrcode');
+app.get('/upload-qr/:id',payController.editPay);
+app.put('/upload-qr/:id',upload6,payController.editPutPay);
+app.post('/upload-qr',upload6,(req,res) => {
+    const pays = new Pay ({
+        qrcode : req.file.filename,
+    })
+    pays.save();
+    console.log("Save qr code successfully!")
+    res.redirect('/pay-admin');
+});
 
 app.listen(4000, () => {
     console.log("App listening on port 4000")

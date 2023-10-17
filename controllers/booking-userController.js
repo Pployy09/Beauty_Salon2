@@ -29,8 +29,6 @@ exports.addBookingUser = async (req,res) =>{
             res.send("กรุณาเข้าสู่ระบบเพื่อจองคิว");
           
         }
-        
-        
         const bookingCustomer =  new QueueBookingCustomer({
         customerUsername: user.username,
         customerFirstname : user.firstname,
@@ -38,6 +36,7 @@ exports.addBookingUser = async (req,res) =>{
         booking_date_user : req.body.booking_date_user,
         booking_service_user :  req.body.booking_service_user,
         booking_time_user :  req.body.booking_time_user,
+        slip : req.file.filename,
         }); 
         
        

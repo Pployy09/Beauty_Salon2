@@ -157,7 +157,8 @@ ul.primary li:hover > a{
   .h5 {
     font-size: 20px;
     text-align: left;
-    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .month {
@@ -197,7 +198,7 @@ ul.primary li:hover > a{
 
   .total3 {
     float: right;
-    margin-right: 170px;
+    margin-right: 135px;
   }
 
   .cota {

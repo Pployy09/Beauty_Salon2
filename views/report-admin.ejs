@@ -139,7 +139,6 @@
           <%
       // Create an object to store service counts per month
       let monthlyServiceCounts = {};
-
       // Thai month names
       const thaiMonthNames = [
         'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
@@ -190,16 +189,26 @@
               <th class="h2">จำนวนครั้งที่ใช้บริการ</th>
             </tr>
       <tr>
-          <% // Display service counts for the month
-          for (const service in monthlyServiceCounts[monthYearKey]) { %>
-            <td class="h3"><%= service %> </td>  
-            <td class="h4"><%= monthlyServiceCounts[monthYearKey][service] %></td>
-          
-          <% } %>
-        </tr>  
         
-        </table>
+          <% // Display service counts for the month
+           let totalServiceCount = 0; // เพิ่มตัวแปรเพื่อเก็บจำนวนบริการทั้งหมดในเดือนนี้
+          for (const service in monthlyServiceCounts[monthYearKey]) { %>
+            <tr>
+              <td class="h3"><%= service %> </td>
+              <td class="h4"><%= monthlyServiceCounts[monthYearKey][service] %></td>
+            </tr>
+            <%totalServiceCount += monthlyServiceCounts[monthYearKey][service];%>
+          <% } %>
+        </tr> 
+      
+        <tr>
+            <td class="h5">รวมทั้งหมด</td>
+            <td class="h4"><%= totalServiceCount %></td>
+        </tr> 
+       
+      </table>
       <% } %>
+      
       <hr>
       <hr>
     </div>
@@ -207,7 +216,6 @@
         <button id="printButton" onclick="printConto2()">Print</button>
         <button id="downloadPdfButton" onclick="downloadPdf2()">Download PDF</button>
     </div>
-      
     </div>
 
     <!--tap2-->

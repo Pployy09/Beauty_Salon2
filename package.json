@@ -126,6 +126,7 @@
     "proxy-addr": "^2.0.7",
     "pstree.remy": "^1.1.8",
     "punycode": "^2.3.0",
+    "qrcode": "^1.5.3",
     "qs": "^6.11.0",
     "random-bytes": "^1.0.0",
     "range-parser": "^1.2.1",
