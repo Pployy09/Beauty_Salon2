@@ -26,15 +26,25 @@
 </head>
 
 <body>
-    <div class="icon">
-        <i class="fa-solid fa-circle-xmark fa-fade fa-6x"></i>   
-    </div>
-    <div class="container"> 
+    <div class="popup"> 
+        
+            <i class="fa-solid fa-circle-exclamation fa-3x valid" style="color: white;"></i>
+        
+        <h1>คำเตือน!</h1>
         <p>คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้</p>
-    </div>
-    <div class="conbut">
-        <button type="button" class="button " onclick="window.history.go(-1); return false;">ย้อนกลับ</button> 
+        <div class="bottom-popup" onclick="window.history.go(-1); return false;">
+            <a class="start" >ย้อนกลับ</a>
+        </div>
+
     </div>
 
+    <script>
+        $(document).ready(function () {
+            $('a.close').click(function (event) {
+                event.preventDefault();
+                $('.popup').hide("slow");
+            });
+        });
+    </script>
 </body>
 </html>
