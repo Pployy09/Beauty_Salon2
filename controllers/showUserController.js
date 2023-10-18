@@ -1,8 +1,23 @@
 const User = require('../models/User')
+const QueueBookingCustomer = require('../models/Queuebooking-Customer');
+const Pay = require('../models/Pay')
+const Service = require('../models/Service');
+const Home = require('../models/Home-Admin');
 
 exports.showEmpEdit = async(req, res) => {
-    let UserData = await User.findById(req.session.userId)
-    res.render('employeeEdit-admin',{UserData})
+    const UserData = await User.findById(req.session.userId);
+
+    const ServiceData = await Service.find();
+    const HomeData = await Home.find();
+    const {id} = req.params;
+    const qr = await Pay.findOne({id})
+    const QueueBookingCustomerData = await QueueBookingCustomer.find({emp_selection_status:"เลือกพนักงานแล้ว"});
+    res.render('employeeEdit-admin',{
+        UserData, 
+        QueueBookingCustomerData,
+        qr,
+        ServiceDataList : ServiceData,
+        HomeData : HomeData,})
 }
 
 exports.showEditUser = async(req, res) => {

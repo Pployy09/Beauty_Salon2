@@ -68,32 +68,35 @@
 
         <div id="infoTable">
           <div class="container">
-            <table >
-              <tr class="sectionTable">
-                <td class="fontAll ">ลำดับ</td>
-                <td class="fontAll ">ชื่อพนักงาน</td>
-                <td class="fontAll ">วันที่</td>
-                <td class="fontAll ">เวลา</td>
-                <td class="fontAll ">บริการ</td>
-                <td class="fontAll ">ลูกค้า</td>
-              </tr> 
-              <% QueueBookingCustomerData.forEach((bookingCus,element)=>{ %>
-              <tr class="infoTable">
-                <td class="fontAll "><%= element+1 %></td>
-                <td class="fontAll "><%= bookingCus.employeeName %></td>
-                <td class="fontAll "><%= bookingCus.booking_date_user %></td>
-                <td class="fontAll "><%= bookingCus.booking_time_user %></td>
-                <td class="fontAll "><%= bookingCus.booking_service_user %></td>
-                <td class="fontAll "><%= bookingCus.customerName %> <%= bookingCus.customerFirstname %> <%= bookingCus.customerLastname %></td>
-              </tr>
-              <% }) %>
-             
-            </table>
+            <% const uniqueEmployeeNames = Array.from(new Set(QueueBookingCustomerData.map(item => item.employeeName))); %>
+            <% uniqueEmployeeNames.forEach(employeeName => { %>
+              <h2 class="hemp"><%= employeeName %></h2>
+              <table>
+                <tr class="sectionTable">
+                  <td class="fontAll">ลำดับ</td>
+                  <td class="fontAll">พนักงาน</td>
+                  <td class="fontAll">วันที่</td>
+                  <td class="fontAll">เวลา</td>
+                  <td class="fontAll">บริการ</td>
+                  <td class="fontAll">ลูกค้า</td>
+                </tr>
+                <% QueueBookingCustomerData.filter(bookingCus => bookingCus.employeeName === employeeName).forEach((bookingCus, element) => { %>
+                  <tr class="infoTable">
+                    <td class="fontAll"><%= element + 1 %></td>
+                    <td class="fontAll"><%= bookingCus.employeeName %></td>
+                    <td class="fontAll"><%= bookingCus.booking_date_user %></td>
+                    <td class="fontAll"><%= bookingCus.booking_time_user %></td>
+                    <td class="fontAll"><%= bookingCus.booking_service_user %></td>
+                    <td class="fontAll"><%= bookingCus.customerName %> <%= bookingCus.customerFirstname %> <%= bookingCus.customerLastname %></td>
+                  </tr>
+                <% }) %>
+              </table>
+            <% }) %>
           </div>
-      </div>
+        </div>
+        
     
     
-      
       <!-- JavaScript-->
       <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
