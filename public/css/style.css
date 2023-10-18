@@ -219,7 +219,7 @@ b{
 
 
 
- #booking .container form button{
+ #booking .container form .bookingButton{
     background-color: #E9A8A1;
     color: #5F3122;
     font-size: 20px ;
@@ -611,4 +611,24 @@ body{
 .editSe  .select{
     padding-top:20px;
     padding-bottom: 20px;
+}
+.modal-header{
+    background-color: #E9A8A1;
+    color: #5F3122;
+    height: 50px;
+}
+
+  .modal-body{
+    background-color: #fff;
+    padding: 10%;
+}
+
+.buttonbt{
+    background-color: #E9A8A1;
+    color: #5F3122;
+    font-size: 18px;
+    width: 150px;
+    border-radius: .5rem;
+    padding: 10px 10px 10px 10px;
+    border: #E9A8A1;
 }
