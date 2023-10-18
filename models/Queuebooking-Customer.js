@@ -42,8 +42,9 @@ const QueueBookingCustomerSchema = new Schema({
         
     },
     employeeName : {
-        type : String,
+        type: String,
     },
+    
     emp_selection_status :{
         type: String,
     },

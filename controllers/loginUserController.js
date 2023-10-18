@@ -73,7 +73,7 @@ exports.loginAdmin = (req, res) => {
                         res.redirect('/home-admin')
                     } else if (user.role == 'emp') {
                         req.session.userId = user._id
-                        res.redirect('/queuebooking-admin')
+                        res.redirect('/employeetable-admin')
                         
                     } else {
                         // ถ้าไม่ใช่บทบาท 'admin' หรือ 'emp'

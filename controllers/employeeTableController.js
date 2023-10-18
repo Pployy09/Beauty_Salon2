@@ -10,8 +10,6 @@ exports.showEmpTable = async (req,res) => {
             QueueBookingCustomerData : QueueBookingCustomerData,
             UserData: UserData,
             
-      
-        
         });
     
 }
