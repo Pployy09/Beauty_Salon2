@@ -65,7 +65,7 @@ exports.editQueuebooking = async (req, res) =>{
         const ServiceData = await Service.find();
         const QueueBookingCustomerData = await QueueBookingCustomer.findOne({ _id : req.params.id});
         await  User.find({ role : "emp"}).then(function(emps){
-            res.render('information-user',{
+            res.render('edit-booking-user',{
                 UserData : UserData,
                 QueueBookingCustomerData : QueueBookingCustomerData,
                 HomeData : HomeData,
@@ -79,7 +79,6 @@ exports.editQueuebooking = async (req, res) =>{
         console.log("Error")
     }
 }
-
 
 //update booking
 exports.editPutQueuebooking = async (req,res) =>{

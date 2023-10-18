@@ -556,3 +556,59 @@ body{
     margin-left: 20px;
     margin-bottom: 0px;
 }
+.editS{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.buttonClose .container{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-left: 1000px;
+}
+
+.buttonClose .container button{
+    height: 30px;
+    width: 30px;
+}
+
+.btn-close{
+    background-color: #fff;
+}
+
+.text_edit h2{
+    margin-top: 50px;
+    padding-left: 50px;
+    color: #5F3122;
+}
+.text_edit svg{
+    color: #E9A8A1;
+}
+
+.editS{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.editSe{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows: 1fr ;
+    padding-left: 50px;
+    padding-bottom: 10px;
+   
+}
+
+.editSe label{
+    font-size: 20px;
+}
+
+.editSe  .select{
+    padding-top:20px;
+    padding-bottom: 20px;
+}

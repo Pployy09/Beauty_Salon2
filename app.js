@@ -159,7 +159,7 @@ const upload7 = multer({ storage: storage }).single('slip');
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
 app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 
-app.get('/information-user/:id',editinformationUserController.editQueuebooking);
+app.get('/edit-booking-user/:id',editinformationUserController.editQueuebooking);
 app.put('/information-user/:id',upload7,editinformationUserController.editPutQueuebooking);
 
 //admin
