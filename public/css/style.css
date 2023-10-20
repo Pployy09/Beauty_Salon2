@@ -556,12 +556,6 @@ body{
     margin-left: 20px;
     margin-bottom: 0px;
 }
-.editS{
-    display: flex;
-    flex-direction: column;
-    padding-top: 50px;
-    gap: 20px;
-}
 
 .buttonClose .container{
     display: flex;
@@ -612,3 +606,4 @@ body{
     padding-top:20px;
     padding-bottom: 20px;
 }
+

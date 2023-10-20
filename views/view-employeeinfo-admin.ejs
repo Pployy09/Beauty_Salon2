@@ -12,6 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/edit.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +42,7 @@
           <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll active ">พนักงาน</a>
             <ul class="sub">
               <li><a href="/employeetable-admin" style="text-decoration:none ">ตารางพนักงาน</a></li>
-              <li><a href="/employeeinformation-admin" style="text-decoration:none ">ข้อมูลพนักงาน</a></li> 
+              <li><a href="/employeeinformation-admin" style="text-decoration:none active   ">ข้อมูลพนักงาน</a></li> 
             </ul>
           </li>
           <li><a href="/stock-admin" id="stockHeaderEmployee" class="nav-link px-3 text-header fontAll ">Stock</a></li>
@@ -81,23 +82,23 @@
                         <div class='showEmp'>
                             <table>
                                 <tr>
-                                    <td class="fontAll fontInfoEmpTitle" >ชื่อ : </td>
+                                    <td class="fontAll fontInfoEmpTitle" >ชื่อ  </td>
                                     <div class="framInfoEmp">
-                                        <td class="fontInfoEmp fontAll"><%= UserFindOne.firstname %></td>
+                                        <td class="fontInfoEmp fontAll">:  <%= UserFindOne.firstname %></td>
                                     </div>
                                 </tr>
 
                                 <tr>
-                                    <td class="fontAll fontInfoEmpTitle">นามสกุล : </td>
-                                    <td class="fontInfoEmp fontAll"><%= UserFindOne.lastname %></td>
+                                    <td class="fontAll fontInfoEmpTitle">นามสกุล  </td>
+                                    <td class="fontInfoEmp fontAll">:  <%= UserFindOne.lastname %></td>
                                 </tr>
                                 <tr>
-                                    <td  class="fontInfoEmpTitle fontAll">ชื่อเล่น : </td>
-                                    <td  class="fontInfoEmp fontAll"><%= UserFindOne.nickname %></td>
+                                    <td  class="fontInfoEmpTitle fontAll">ชื่อเล่น  </td>
+                                    <td  class="fontInfoEmp fontAll">:  <%= UserFindOne.nickname %></td>
                                 </tr>
                                 <tr>
-                                    <td  class="fontInfoEmpTitle fontAll" >เบอร์โทรศัพท์ : </td>
-                                    <td  class="fontInfoEmp fontAll"><%= UserFindOne.phonenum %></td>
+                                    <td  class="fontInfoEmpTitle fontAll" >เบอร์โทรศัพท์  </td>
+                                    <td  class="fontInfoEmp fontAll">:  <%= UserFindOne.phonenum %></td>
                                 </tr>
 
 
@@ -111,9 +112,9 @@
                  
             </div>
           </div>
+
             <div class="modal-footer">
                 <div class="container">
-                    
                     <button type="button" class="fontAll buttonbt btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
                 </div>
             </div>
@@ -128,14 +129,14 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body3">
               <h3 class="colorText">ต้องการลบ</h4> 
               <h4 class="colorText">
                 <ul>
-                  <li> ชื่อ :<b class="colorDeleteService"> <%= UserFindOne.firstname %></b> </li>
-                  <li> นามสกุล : <b class="colorDeleteService"> <%= UserFindOne.lastname %> </b> </li>
-                  <li> ชื่อเล่น : <b class="colorDeleteService">  <%= UserFindOne.nickname %></b> </li>
-                  <li> เบอร์โทรศัพท์ : <b class="colorDeleteService">  <%= UserFindOne.phonenum %></b> </li>
+                  <li> ชื่อ        <b class="b8">:</b> <b class="colorDeleteService faa"> <%= UserFindOne.firstname %></b> </li>
+                  <li> นามสกุล    <b class="b9">:</b> <b class="colorDeleteService faa"> <%= UserFindOne.lastname %> </b> </li>
+                  <li> ชื่อเล่น      <b class="b10">:</b> <b class="colorDeleteService faa">  <%= UserFindOne.nickname %></b> </li>
+                  <li> เบอร์โทรศัพท์ <b class="b11">:</b> <b class="colorDeleteService faa">  <%= UserFindOne.phonenum %></b> </li>
                 </ul>
                 แน่ใจใช่ไหมที่จะลบข้อมูลพนักงานออก
               </h4>

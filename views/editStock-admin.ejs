@@ -12,6 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/edit.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +67,7 @@
           </div>
         </div>
 
-        <div id="edit_stock">
+        <div id="edit_stock1">
             <div class="container">
                 <div class="text_edit">
                     <h2 class="fontAll">
@@ -142,17 +143,17 @@
                         </div>
                         
                       </div>
-                    
-            </div>
-        </div>
 
-            <div class="modal-footer">
-                <div class="container">
-                    <button type="submit" class="buttonbt">บันทึก</button>
-                    <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
-                </div>
+                    <div class="modal-footer">
+                      <div class="cons">
+                          <button type="submit" class="buttonbt">บันทึก</button>
+                          <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
+                      </div>
+                    </div>
+
             </div>
             
+        </div>
       </form>
 
       <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -163,12 +164,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body2">
               <h3 class="colorText">ต้องการลบ</h4> 
               <h4 class="colorText">
                 <ul>
-                  <li> รหัส :<b class="colorDeleteService">  <%= stock.idproduct %></b> </li>
-                  <li> ชื่อสินค้า : <b class="colorDeleteService">  <%= stock.name_product %> </b> </li>
+                  <li> รหัส    <b class="b12">:</b> <b class="colorDeleteService">  <%= stock.code %></b> </li>
+                  <li> ชื่อสินค้า <b class="b13">:</b> <b class="colorDeleteService">  <%= stock.name_product %> </b> </li>
                   </ul>
                 แน่ใจใช่ไหมที่จะลบข้อมูล
               </h4>

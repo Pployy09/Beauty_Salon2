@@ -12,6 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/edit.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,7 @@
           <li><a href="/service-admin" id="servicesHeaderEmployee"  class="nav-link px-3 text-header fontAll ">บริการของร้าน</a></li>
           <li><a href="#" id="userHeaderEmployee" class="active     nav-link px-3 text-header fontAll ">ลูกค้า</a> 
             <ul class="sub">
-              <li><a href="/queuebooking-admin" style="text-decoration:none ">ตารางการจองคิว</a></li>
+              <li><a href="/queuebooking-admin" style="text-decoration:none active  ">ตารางการจองคิว</a></li>
               <li><a href="/pay-admin" style="text-decoration:none ">การชำระเงิน</a></li>
             </ul>
           </li>
@@ -66,8 +67,9 @@
           </div>
         </div>
         
-        <div id="edit_service">
+        <div id="edit_service2">
             <div class="container">
+
                 <div class="text_edit">
                     <h2 class="fontAll">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
@@ -79,36 +81,35 @@
                 </div>
 
                 <form action="/edit-queuebooking/<%= QueueBookingCustomerData._id %>?_method=PUT" method="POST">     
-                  <div class="editS">
-                      <div class='editSe'>
-                            <label class="textque">ชื่อลูกค้า</label>
-                            <div  class="form-control" ><%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%></div>
-                          </div> 
-                          <div class='editSe'>
-                            <label class="textque"></label>
-                            <div class="form-control"><%= QueueBookingCustomerData.customerLastname%></div>
+                  <div class="editS1">
 
-                          </div> 
+                        <div class='editSe2'>
+                          <label class="textques2">ชื่อลูกค้า</label>
+                          <div  class="form-control" ><%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%></div>
+                        </div> 
+
+                        <div class='editSe2'>
+                          <label class="textques2"></label>
+                          <div class="form-control"><%= QueueBookingCustomerData.customerLastname%></div>
+                        </div> 
       
-                        <div class='editSe'>
-                          <label class="textque">เบอร์โทรศัพท์</label>
+                        <div class='editSe2'>
+                          <label class="textques2">เบอร์โทรศัพท์</label>
                           <div  class="form-control" ><%= QueueBookingCustomerData.phonenum %> <%= QueueBookingCustomerData.phonenumOfUsername %></div>
                         </div> 
       
-                        <div class='editSe'>
-                            <label class="textque">เลือกวันที่</label>
+                        <div class='editSe2'>
+                            <label class="textques2">เลือกวันที่</label>
                             <input id="dateBooking"
                             type="date" min="0000-00-00" max="0000-00-00"
                             placeholder="<%= QueueBookingCustomerData.booking_date_user  %>" 
                             class="form-control" 
                             name="booking_date_user" 
-                            value="<%= QueueBookingCustomerData.booking_date_user  %>"
-                            >
+                            value="<%= QueueBookingCustomerData.booking_date_user  %>">
                         </div>
 
-                        <div class='editSe'>
-                          <label class="textque">บริการ</label>
-                          
+                        <div class='editSe2'>
+                          <label class="textques2">บริการ</label>
                           <select name="booking_service_user[]" class="form-control">
                             <option value="" selected disabled hidden ><%= QueueBookingCustomerData.booking_service_user %></option> 
                             <% ServiceDataList.forEach(serviceData =>{ %> 
@@ -116,15 +117,11 @@
                                 <option value= "<%= serviceData.service_name  %>"  > <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
                             
                               <% }) %> 
-                        </select>
-                        
-                        
+                          </select>
                         </div>
-                          
-                        </div> 
 
-                        <div class='editSe'>
-                            <label class="textque">เวลา</label>
+                           <div class='editSe2'>
+                            <label class="textques2">เวลา</label>
                             <% var timeOpenArray = [] %>
                             <% var bookingTime = [] %>
                             <% var bookingTArray=[] %>
@@ -139,8 +136,6 @@
                                
                                 <%  let timeForService1  = timeOpen+1;  %>
 
-                                 
-                                
                                 <% let timeOpen1 = timeOpen; %>
                                 <% let timeForService2  = timeForService1; ;%>
                                 <% let timeClose1 = timeClose;%>
@@ -159,16 +154,12 @@
                                  
                                  <% } %> 
                                     
-                                  
                                     <% for(let t=0 ; t < QueueBookingCustomerData.booking_time_user.length ;t++) {%>
                                       <% let bookingT = parseInt(QueueBookingCustomerData.booking_time_user[t]); %>
                                       <% bookingTime.push(bookingT); %>
                                   <% } %>
                                   <% console.log(bookingTime) %>
                                   
-                                  
-                                  
-                                   
                                      <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
                                     <% if(timeOpen<=9) {%> 
                                       
@@ -182,46 +173,37 @@
                                 
                                 <% } %>
                                      
-                                       
-                                       
-                               
-                                
-                                  
-                                <% })  %> 
-                                </select>
-                                
-                               
+                              <% })  %> 
+                            </select>
                                 
                         </div>
 
-                        <div class='editSe'>
-                          <label class="textque">พนักงาน</label>
-                          
+                        <div class='editSe2'>
+                          <label class="textques2">พนักงาน</label>
                           <select name="employeeName" class="form-control" required>
                             <option value="<%= QueueBookingCustomerData.employeeName %>" selected disabled hidden ><%= QueueBookingCustomerData.employeeName %> </option> 
                             <% empList.forEach(emp =>{ %> 
                               <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>
                             <% }) %> 
                           </select>
-                        
-                        
                         </div>
-                    
+                  </div> 
+                    <div class="modal-footer">
+                      <div class="cons">
+                        <button type="submit"  class="buttonbt">บันทึก</button>
+                        <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
                       </div>
-                    
-                  </div>
+                    </div> 
+            </div>
+        </div>
             
-                        <div class="modal-footer">
-                            <div class="container">
-                                <button type="submit"  class="buttonbt">บันทึก</button>
-                                <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
-                            </div>
-                        </div> 
-                  </form>       
+                </form>       
 
+      <!--แยกก-->
       <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
+
             <div class="modal-header">
               <h1 class="modal-title fs-5 fontAll">ลบข้อมูลการจองคิว</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -231,15 +213,14 @@
               <h3 class="colorText">ต้องการลบ</h4> 
               <h4 class="colorText">
                 <ul>
-                  <li> ชื่อลูกค้า :<b class="colorDeleteService"> <%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%></b> </li>
-                  <li> บริการ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_service_user %></b> </li>
-                  <li> วันที่ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_date_user  %></b> </li>
-                  <li> เวลา : <b class="colorDeleteService"> <%= QueueBookingCustomerData.booking_time_user  %></b> </li>
+                  <li class="pad"> ชื่อลูกค้า <b class="b0">:</b> <b class="colorDeleteService"> <%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%></b> </li>
+                  <li class="pad"> บริการ  <b class="b2">:</b> <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_service_user %></b> </li>
+                  <li class="pad"> วันที่    <b class="b3">:</b> <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_date_user  %></b> </li>
+                  <li class="pad1"> เวลา   <b class="b4">:</b> <b class="colorDeleteService"> <%= QueueBookingCustomerData.booking_time_user  %></b> </li>
                   
                 </ul>
                 แน่ใจใช่ไหมที่จะลบข้อมูล
               </h4>
-
             </div>
             
             <div class="modal-footer">

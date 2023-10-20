@@ -15,7 +15,6 @@ exports.showBookingUser = async(req, res) => {
             HomeData : HomeData,
             home
           
-            
         });
        
     });

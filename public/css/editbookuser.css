@@ -1,0 +1,89 @@
+
+  /* สมัคร */
+  .edit22{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    border-radius: 70px;
+    width: 1000px;
+    height: 720px;
+    background-color: #FBF2E9;
+  }
+
+  .form-control2 {
+    border-radius: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: auto;
+    border-style: none;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 350px;
+    height: 50px;
+}
+
+.editS2{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.editSe2{
+    display: grid;
+    grid-template-columns:150px 600px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+   
+}
+
+.editSe2 label{
+    font-size: 20px;
+}
+
+.editSe2  .select{
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+.a1 {
+   margin-right: 50px;
+}
+
+.buttonbt {
+    background-color: #f19b9d;
+    border: none; 
+    border-radius: 15px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 7px 5px;
+    margin-bottom: 50px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .buttonbt:hover {opacity: 1}
+
+  .buttonDelete{
+    font-size: 16px;
+    background-color: white;
+    border: #F19B9D 5px solid; 
+    border-radius: 15px;
+    color: #F19B9D;
+    width: 110px;
+    height: 57px;
+    margin-top: 7px;
+}
+.buttonDelete:hover{
+    color: #F19B9D;
+}
+
+.cons {
+    margin-right: 50px;
+}
