@@ -63,7 +63,7 @@
               <div class=" table-booking"></div>
         
               
-            <form action="/booking-user/" method="POST" >
+            <form action="/booking-user" method="POST" >
               
               <div class="mt-5 date-booking ">
                 <label for="dateBooking" 
@@ -149,8 +149,32 @@
               </div>
 
               <div class="bookingNow2">
-                <button type="bookingNow" class="btn fontAll">จองคิว</button>
+                <button type="button" class="btn fontAll bookingButton" data-bs-toggle="modal" data-bs-target="#confirmModel">จองคิว</button>
               </div>
+
+              <div class="modal fade" id="confirmModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+        
+                    <div class="modal-body">
+                      <h4 class="colorText">ต้องการจองคิวใช่ไหม</h4> 
+                     
+        
+                    </div>
+                    
+                    <div class="modal-footer">
+                     
+                        <button type="submit" class="fontAll buttonbt">ยืนยันการจองคิว</button>
+                      
+                    </div>
+        
+                  </div>
+                </div>
+              </div>
+
             </form>
          
        </div>
