@@ -8,10 +8,14 @@ exports.showBookingUser = async(req, res) => {
     const home = await Home.findOne({id})
     const HomeData = await Home.find()
     const UserData = await User.findById(req.session.userId);
+    const EmpData = await User.find({ role : "emp"});
+    const QueueBookingCustomerData = await QueueBookingCustomer.find();
     await Service.find().then(function(ServiceData){
         res.render("booking-user",{
             UserData:UserData,
+            empList:EmpData,
             ServiceDataList : ServiceData,
+            QueueBookingCustomerData : QueueBookingCustomerData,
             HomeData : HomeData,
             home
           
