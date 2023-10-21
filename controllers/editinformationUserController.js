@@ -4,7 +4,6 @@ const Pay = require('../models/Pay')
 const Service = require('../models/Service');
 const Home = require('../models/Home-Admin');
 
-
 exports.showEdits = async (req, res) => {
     try {
         const ServiceData = await Service.find();
@@ -25,7 +24,7 @@ exports.showEdits = async (req, res) => {
 
         // Render the template with user and booking data
         res.render('information-user', { 
-            UserData, 
+            UserData:UserData, 
             QueueBookingCustomerData,
             qr,
             ServiceDataList : ServiceData,
@@ -57,6 +56,39 @@ exports.editPutUser = async (req,res) =>{
 }
 
 
+
+
+exports.showEdits2 = async (req, res) => {
+    try {
+        const ServiceData = await Service.find();
+        const HomeData = await Home.find();
+        const {id} = req.params;
+        const qr = await Pay.findOne({id})
+        // Get the user data
+        const UserData = await User.findById(req.session.userId);
+
+        if (!UserData) {
+            return res.status(404).send('User not found');
+        }
+
+        // Get the booking data for this user
+        const QueueBookingCustomerData = await QueueBookingCustomer.find({
+            customerUsername: UserData.username
+        });
+
+        // Render the template with user and booking data
+        res.render('edit-booking-user', { 
+            UserData:UserData, 
+            QueueBookingCustomerData,
+            qr,
+            ServiceDataList : ServiceData,
+            HomeData : HomeData,
+     });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 //edit booking
 exports.editQueuebooking = async (req, res) =>{
     try{
@@ -111,6 +143,19 @@ exports.editPutQueuebooking = async (req,res) =>{
             slip: new_img
         })
         res.redirect('/information-user');
+
+    }catch(error){
+        console.log(error);
+    }
+};
+
+//delete booking
+exports.deleteQueuebooking = async (req,res) =>{
+    try{
+        await QueueBookingCustomer.deleteOne({ _id:req.params.id});
+       
+        res.redirect('/information-user');
+        
 
     }catch(error){
         console.log(error);

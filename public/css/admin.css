@@ -309,8 +309,7 @@ body{
         cursor: pointer;
       }
       
-      .buttonre:hover {opacity: 1}
-
+      .buttonbt:hover {opacity: 1}
 
 
 /*table*/
@@ -588,12 +587,6 @@ b{
    
  }
 
- #booking .container form .bookingNow2{
-    display: flex;
-    justify-content: center;
-   
- }
-
  #booking .container form button{
     background-color: #E9A8A1;
     color: #5F3122;
@@ -858,7 +851,7 @@ ul.primary li a {
 
 #infoTable .container .infoTable{
     background-color: #fff;
-    height:10vh;   
+    height:10vh; 
     
 }
 #infoTable .container .infoTable td{
@@ -911,7 +904,6 @@ ul.primary li a {
    flex-direction: column;
    justify-content: flex-start;
    margin-top: 30px;
-   
    width: 800px;
    border-radius: 1rem;
 }
@@ -991,14 +983,17 @@ ul.primary li a {
 }
  .colorText{
     color: #5F3122;
+    margin-bottom: 20px;
 }
 .colorDeleteService{
     color: #F19B9D;
+    font-size: 20px;
 }
 /*หน้า view-employeeinfo-adim ejs */
 .showInfoEmp{
     display: flex;
     justify-content:center;
+    margin-bottom: 25px;
 }
 
 .showInfoEmp .showEmp .fontInfoEmpTitle{

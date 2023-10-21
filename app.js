@@ -159,9 +159,13 @@ const upload7 = multer({ storage: storage }).single('slip');
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
 app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 
+app.get('/edit-booking-user',editinformationUserController.showEdits2);
 app.get('/edit-booking-user/:id',editinformationUserController.editQueuebooking);
+
+app.put('/edit-booking-user/:id',editinformationUserController.editPutQueuebooking);
 app.put('/information-user/:id',upload7,editinformationUserController.editPutQueuebooking);
 
+app.delete('/edit-booking-user/:id',editinformationUserController.deleteQueuebooking);
 //admin
 app.get('/chatbot-admin',authMiddleware,chatController.showChat)
 app.get('/home-admin',adminMiddleware,authMiddleware,HomeAdminController.showData);

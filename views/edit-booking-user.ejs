@@ -12,9 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
    
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/info.css">
-   
+    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/editbookuser.css">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,29 +34,30 @@
      </div>
  
      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
-       <li><a href="./home-user" id="homeHeader" class=" nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
-       <li><a href="./booking-user" id="bookingHeader"  class="nav-link px-3 heaDer fontAll ">การจองคิว</a></li>
-       <li><a href="./service-user" id="servicesHeader" class="nav-link px-3 heaDer fontAll ">บริการของร้าน</a></li>
-       <li><a href="./contact-user" id="contactHeader" class="nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
+       <li><a href="/home-user" id="homeHeader" class=" nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
+       <li><a href="/booking-user" id="bookingHeader"  class="nav-link px-3 heaDer fontAll ">การจองคิว</a></li>
+       <li><a href="/service-user" id="servicesHeader" class="nav-link px-3 heaDer fontAll ">บริการของร้าน</a></li>
+       <li><a href="/contact-user" id="contactHeader" class="nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
      </ul>
  
      <% if (loggedIn) { %>
        <div class=" nav me-3 text-end">
-         <div> <a href="./information-user" class=" active nav-link px-3 heaDer fontAll">Hi, <%=UserData.username%></a></div>
-         <div><a href="./logout" class="btn btn-danger">ออกจากระบบ</a></div>
+         <div> <a href="/information-user" class=" active nav-link px-3 heaDer fontAll">Hi, <%=UserData.username%></a></div>
+         <div><a href="/logout" class="btn btn-danger">ออกจากระบบ</a></div>
        </div>
        <% } %>
      
      </header>
    
-   </section>
-   <div class="buttonClose">
-    <div class="container">
-      <button id="button_close" type="button" class="btn-close" ></button>
-    </div>
-  </div>
+  </section>
 
-   <div class="edit container">
+    <div class="buttonClose">
+      <div class="container">
+        <button id="button_close" type="button" class="btn-close" ></button>
+      </div>
+    </div>
+
+   <div class="edit22 container">
     <div class="conto">
       <div class="text_edit">
         <h2 class="fontAll">
@@ -67,53 +67,137 @@
             <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z"/>
         </svg> 
         แก้ไขการจองคิวของคุณ <%=UserData.firstname %></h2>
-    </div>
-    <div class="form-row">
-      <div class="editS">
-        <div class='editSe '>
-          <label class="textque">บริการ</label>
-          <select name="booking_service_user[]" class="form-control">
-            <option value="" selected disabled hidden  ><%= QueueBookingCustomerData.booking_service_user %></option> 
-            <% ServiceDataList.forEach(serviceData =>{ %> 
-            
-                <option value= "<%= serviceData.service_name  %>"  > <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
-            
-              <% }) %> 
-        </select>
-        
-        
-        </div> 
-
-        <div class='editSe'>
-          <label class="textque">เลือกวันที่</label>
-          <input id="dateBooking"
-          type="date" min="0000-00-00" max="0000-00-00"
-          placeholder="<%= QueueBookingCustomerData.booking_date_user  %>" 
-          class="form-control" 
-          name="booking_date_user" 
-          value="<%= QueueBookingCustomerData.booking_date_user  %>"
-          >
-      </div> 
-
-        <div class='editSe'>
-          <label class="textque">เวลา</label>
-          <input 
-          type="number" 
-          placeholder="<%  %>" 
-          class="form-control" 
-          name="service_time" 
-          value="<%  %>"
-          required>
-        </div>
-    
       </div>
-  </div>
+
+      
+        <form action="/edit-booking-user/<%= QueueBookingCustomerData._id %>?_method=PUT" method="POST">   
+        <div class="editS2">
+
+          <div class='editSe2 '>
+            <label >บริการ</label>
+            <select name="booking_service_user[]" class="form-control2">
+              <option value="" selected disabled hidden  ><%= QueueBookingCustomerData.booking_service_user %></option> 
+              <% ServiceDataList.forEach(serviceData =>{ %> 
+              
+                  <option value= "<%= serviceData.service_name  %>"  > <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
+              
+                <% }) %> 
+            </select>
+          </div> 
+
+          <div class='editSe2'>
+            <label>เลือกวันที่</label>
+            <input id="dateBooking"
+            type="date" min="0000-00-00" max="0000-00-00"
+            placeholder="<%= QueueBookingCustomerData.booking_date_user  %>" 
+            class="form-control" 
+            name="booking_date_user" 
+            value="<%= QueueBookingCustomerData.booking_date_user  %>">
+          </div> 
+
+          <div class='editSe2'>
+            <label>เวลา</label>
+            <% var timeOpenArray = [] %>
+            <% var bookingTime = [] %>
+            <% var bookingTArray=[] %>
+            
+           
+            <select name="booking_time_user[]"  class="select-time "  id="select-time"  multiple="multiple"  >
+            
+              <%  HomeData.forEach(homeData => { %>
+                
+                <%  let timeOpen = parseInt(homeData.time_open); %>
+                <%  let timeClose = parseInt(homeData.time_close); %>
+               
+                <%  let timeForService1  = timeOpen+1;  %>
+
+                <% let timeOpen1 = timeOpen; %>
+                <% let timeForService2  = timeForService1; ;%>
+                <% let timeClose1 = timeClose;%>
+                 
+                <% for(; timeOpen1 < timeClose1  ; timeOpen1++ ){ %>
+                  <% if(timeOpen1 <= 9 ){%>
+                    <% var shopTime = "0"+timeOpen1+".00"+"-"+timeForService2+".00" %>
+                    <% bookingTArray.push(shopTime); %>
+                    <% timeForService2++ %>
+
+                  <% }else{ %>
+                    <% var shopTime = timeOpen1+".00"+"-"+timeForService2+".00" %>
+                    <% bookingTArray.push(shopTime); %>
+                    <% timeForService2++ %>
+                    <% } %>
+                 
+                 <% } %> 
+                    
+                    <% for(let t=0 ; t < QueueBookingCustomerData.booking_time_user.length ;t++) {%>
+                      <% let bookingT = parseInt(QueueBookingCustomerData.booking_time_user[t]); %>
+                      <% bookingTime.push(bookingT); %>
+                  <% } %>
+                  <% console.log(bookingTime) %>
+                  
+                     <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
+                    <% if(timeOpen<=9) {%> 
+                      
+                      <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option>
+                      
+                    <% timeForService1++ %> 
+                    <% }else{ %>   
+                      <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                      <% timeForService1++ %> 
+                    <% } %>
+                
+                <% } %>
+                     
+              <% })  %> 
+            </select>
+          </div>
+          
+          <div class="modal-footer">
+            <div class="cons">
+              <button type="submit"  class="buttonbt">บันทึก</button>
+              <button type="button" class="fontAll buttonDelete" data-bs-toggle="modal" data-bs-target="#deleteModel1" >ลบข้อมูล</button>  
+            </div>
+          </div> 
+
+        </div>
+        </form>
+    
+           <!--แยกก-->
+      <div class="modal fade" id="deleteModel1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 fontAll">ลบข้อมูลการจองคิว</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <h3 class="colorText">ต้องการลบ</h4> 
+              <h4 class="colorText">
+                <ul>
+                  <li> ชื่อลูกค้า :<b class="colorDeleteService"> <%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%></b> </li>
+                  <li> บริการ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_service_user %></b> </li>
+                  <li> วันที่ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_date_user  %></b> </li>
+                  <li> เวลา : <b class="colorDeleteService"> <%= QueueBookingCustomerData.booking_time_user  %></b> </li>
+                  
+                </ul>
+                แน่ใจใช่ไหมที่จะลบข้อมูล
+              </h4>
+            </div>
+            
+            <div class="modal-footer">
+              <form action="/edit-booking-user/<%= QueueBookingCustomerData._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="buttonbt">แน่ใจ ลบข้อมูล</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
     </div>
-
- 
-
-  
-</div>
+  </div>
   
     <!-- JavaScript-->
     <script 
@@ -137,8 +221,65 @@
     charset="utf-8">
   </script>
 
- 
-     
+  <script>
+    var timeOpen = '<%= bookingTArray %>'.split(',');
+    var timeOpenInt =[];
+    
+    // timeOpen--> int
+    for(let t = 0 ; t<timeOpen.length ; t++){
+      var timeOpenint = parseInt(timeOpen[t]);
+      timeOpenInt.push(timeOpenint);
+    }
+
+    
+    console.log(timeOpenInt);
+
+    var itemB =  [];
+    var timeBooking = '<%= bookingTime %>'.split(',');
+    var timeBookingInt =[];
+    
+    for(let w = 0  ; w < timeBooking.length  ; w++){
+      var  timeBookingint =  parseInt(timeBooking[w])
+      timeBookingInt.push(timeBookingint);
+    }
+    //ขนาดอาเรย์เท่ากันหรือไม่
+    function arraysHaveEqualValues(array1,array2){
+      for(let r = 0;r < Math.min(array1.length, array2.length); r++){
+        if (array1[r] !== array2[r]) {
+            return false;
+        }
+      }
+      return true;
+    }
+    //เปรียบเทียบค่าข้างในอาเรย์
+    function valuesInArray(array1, array2) {
+
+      for (let r = 0; r < array1.length; r++) {
+        if (array2.indexOf(array1[r]) === -1) {
+          return false;
+        }
+      const sameIndex = (array2).indexOf(array1[r]);
+      itemB.push('itemTime'+[r]);
+        var itemTimeNum = itemB;
+        var itemTime = document.querySelectorAll('.item-time')[sameIndex];
+        
+        
+        itemTime.classList.add("item--selected");
+    }
+    return true;
+      }
+  
+    
+
+    const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
+    console.log(resultEqualValues);
+
+    const resultSubset = valuesInArray(timeBookingInt, timeOpenInt);
+    console.log(resultSubset);
+
+    console.log(timeBookingInt);
+  
+  </script>
 
 </body>
 </html>

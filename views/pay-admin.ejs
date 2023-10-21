@@ -40,7 +40,7 @@
           <li><a href="#" id="userHeaderEmployee" class="active nav-link px-3 text-header fontAll ">ลูกค้า</a> 
             <ul class="sub">
               <li><a href="./queuebooking-admin" style="text-decoration:none" >ตารางการจองคิว</a></li>
-              <li><a href="./pay-admin" style="text-decoration:none active">การชำระเงิน</a></li>
+              <li><a href="./pay-admin" style="text-decoration:none active  ">การชำระเงิน</a></li>
             </ul>
           </li>
           <li><a href="#" id="employeeHeaderEmployee" class="nav-link px-3 text-header fontAll ">พนักงาน</a>
@@ -72,7 +72,7 @@
           <div>
           <form method="POST" action="/upload-qr/<%= qr._id %>?_method=PUT" enctype="multipart/form-data"> 
             <div class="row g-2 groupp">
-              <div class="col-6">
+              <div class="col-6 ">
                 <input type="file" name="qrcode" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
               </div>
               <div class="col-6">
@@ -197,15 +197,18 @@
                     <span><%= popay.status%></span>
                   </div>
                   
-                    <img id="images1" src="<%=popay.slip%>" class=" imgpay2"  loading="lazy">
-                 
+                  <% if (popay.slip) { %>
+                    <img id="images1" src="<%= popay.slip %>" class="imgpay2" loading="lazy">
+                  <% } else { %>
+                    <p class="up">ลูกค้ายังไม่ได้ชำระเงิน</p>
+                  <% } %>
+
               </div>
             </div>
 
                 <div class="modal-footer">
                   <button type="submit" class="buttonbt">บันทึก</button>
-                  <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
-                </div>
+                  </div>
 
           </form>
         </div>

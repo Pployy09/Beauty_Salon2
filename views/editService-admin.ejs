@@ -12,6 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/edit.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,8 +52,8 @@
          
           <% if (loggedIn) { %>
             <div class="nav me-3 text-end">
-              <div><a href="./employeeEdit-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
-              <div><a href="./logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
+              <div><a href="/employeeEdit-admin" class="nav-link fontAll text-header">Admin, <%=UserData.username%></a></div>
+              <div><a href="/logout" class=" btn btn-danger ">ออกจากระบบ</a></div>
             </div>
             <% } %>
 
@@ -65,8 +66,10 @@
             <button id="button_close" type="button" class="btn-close" ></button>
           </div>
         </div>
-        <div id="edit_service">
+
+        <div id="edit_service1">
             <div class="container">
+              
                 <div class="text_edit">
                     <h2 class="fontAll">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
@@ -78,9 +81,9 @@
                 </div>
 
                 <form action="/editService-admin/<%= service._id %>?_method=PUT" method="POST" >
-                      <div class="editS">
-                        <div class='editSe'>
-                          <label class="textque">ชื่อบริการ</label>
+                      <div class="editS1">
+                        <div class='editSe1'>
+                          <label class="textques">ชื่อบริการ</label>
                           <input 
                           type="text" 
                           placeholder="<%= service.service_name %>" 
@@ -90,8 +93,8 @@
                           required>
                         </div> 
       
-                        <div class='editSe'>
-                          <label class="textque">ราคา</label>
+                        <div class='editSe1'>
+                          <label class="textques">ราคา</label>
                           <input 
                           type="number" 
                           placeholder="<%= service.service_price %>" 
@@ -101,8 +104,8 @@
                           required>
                         </div> 
       
-                        <div class='editSe'>
-                          <label class="textque">เวลา</label>
+                        <div class='editSe1'>
+                          <label class="textques">เวลา</label>
                           <input 
                           type="number" 
                           placeholder="<%= service.service_time %>" 
@@ -113,18 +116,18 @@
                         </div>
                     
                       </div>
-                    
+                    <div class="modal-footer">
+                      <div class="cons">
+                        <button type="submit"  class="buttonbt">บันทึก</button>
+                        <button type="button" class="fontAll buttonDelete" data-bs-toggle="modal" data-bs-target="#deleteModel1" >ลบข้อมูล</button>  
+                      </div>
+                    </div> 
             </div>
         </div>
-                        <div class="modal-footer">
-                            <div class="container">
-                                <button type="submit" class="buttonbt">บันทึก</button>
-                                <button type="button" class="fontAll buttonDelete btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" >ลบข้อมูล</button>  
-                            </div>
-                        </div>
-                    </form>
+                    
+                </form>
 
-      <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="deleteModel1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -132,13 +135,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body2">
               <h3 class="colorText">ต้องการลบ</h4> 
               <h4 class="colorText">
                 <ul>
-                  <li> ชื่อบริการ :<b class="colorDeleteService">  <%= service.service_name %></b> </li>
-                  <li> ราคา : <b class="colorDeleteService">  <%= service.service_price %> </b> </li>
-                  <li>เวลา : <b class="colorDeleteService">  <%= service.service_time %></b> </li>
+                  <li> ชื่อบริการ <b class="b5">:</b> <b class="colorDeleteService">  <%= service.service_name %></b> </li>
+                  <li> ราคา    <b class="b6">:</b> <b class="colorDeleteService">  <%= service.service_price %> </b> </li>
+                  <li> เวลา    <b class="b7">:</b> <b class="colorDeleteService">  <%= service.service_time %></b> </li>
                 </ul>
                 แน่ใจใช่ไหมที่จะลบข้อมูล
               </h4>

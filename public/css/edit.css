@@ -1,0 +1,201 @@
+.editS1{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.editSe1{
+    display: grid;
+    grid-template-columns:300px 100px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+   
+}
+
+.editSe2{
+    display: grid;
+    grid-template-columns:200px 300px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+   
+}
+
+#edit_service1 .container {
+    background-color: #FBF2E9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    height: 500px;
+    width: 800px;
+    border-radius: 1rem;
+ }
+
+ #edit_service2 .container {
+    background-color: #FBF2E9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    height: 1100px;
+    width: 800px;
+    border-radius: 1rem;
+ }
+
+ .cons {
+    margin-top: 30px;
+    margin-right: 50px;
+}
+
+.buttonDelete{
+    font-size: 16px;
+    background-color: white;
+    border: #F19B9D 5px solid; 
+    border-radius: 15px;
+    color: #F19B9D;
+    width: 110px;
+    height: 57px;
+    margin-top: 7px;
+}
+.buttonDelete:hover{
+    color: #F19B9D;
+}
+
+.textques {
+    margin-left: 70px;
+    color: #5F3122;
+    font-size: 24px;
+}
+
+.textques2 {
+    margin-left: 20px;
+    color: #5F3122;
+    font-size: 24px;
+}
+
+.b0{
+    color: black;
+    margin-left: 10px;
+}
+.b2{
+    color: black;
+    margin-left: 24px;
+}
+.b3{
+    color: black;
+    margin-left: 42px;
+}
+.b4{
+    color: black;
+    margin-left: 42px;
+}
+.b5{
+    color: black;
+    margin-left: 40px;
+}
+.b6{
+    color: black;
+    margin-left: 83px;
+}
+.b7{
+    color: black;
+    margin-left: 87px;
+}
+
+.b8{
+    color: black;
+    margin-left: 142px;
+}
+.b9{
+    color: black;
+    margin-left: 87px;
+}
+.b10{
+    color: black;
+    margin-left: 105px;
+}
+.b11{
+    color: black;
+    margin-left: 40px;
+}
+.b12{
+    color: black;
+    margin-left: 82px;
+}
+.b13{
+    color: black;
+    margin-left: 40px;
+}
+
+.pad {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.pad1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-footer {
+    height: 100px;
+}
+
+.modal-body {
+    padding-right: 30px;
+    padding-left: 40px;
+    height:390px ;
+}
+
+.modal-body1 {
+    padding-right: 30px;
+    padding-left: 40px;
+    height:1000px ;
+}
+
+.modal-body2 {
+    padding-right: 30px;
+    padding-left: 40px;
+    margin-top: 50px;
+    height:235px ;
+}
+
+.modal-body3 {
+    padding-right: 30px;
+    padding-left: 40px;
+    margin-top: 50px;
+    height:255px ;
+}
+
+.fontAll.infoBookingtime {
+    width: 450px; 
+  }
+
+  .fontAll.infoBookingtimes {
+    width: 550px; 
+  }
+
+
+  .fontAll.infoBooking.time {
+    padding: 5px; 
+  }
+
+  .fontAll.infoBooking.emp {
+    padding: 7px; 
+  }
+
+  .faa {
+    margin-left: 10px;
+  }
+
+  #edit_stock1 .container {
+    background-color: #FBF2E9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    height: 750px;
+    width: 800px;
+    border-radius: 1rem;
+ }
