@@ -103,8 +103,8 @@ function max(){
      }  
      document.getElementById("dateBooking").setAttribute("max",t11);
 
-  }else if(dayNow === 7){
-   dateNow = dateNow + 0;
+  }else if(dayNow === 0){
+   
      if(monthNow <= 9 && dateNow <= 9){
         t12 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -112,7 +112,7 @@ function max(){
      }else if(dateNow <= 9 && monthNow > 9 ){
         t12 = yearNow + '-' + monthNow +'-0'+ dateNow ;
      }else if(monthNow > 9 && dateNow > 9){
-        t12 = yearNow + '-' + monthNow +'-'+ dateNow ;
+        t12 = yearNow + '-' + monthNow+'-'+ dateNow ;
      }  
      document.getElementById("dateBooking").setAttribute("max",t12);
   }
@@ -122,4 +122,5 @@ function max(){
 
 min();
 max();
+console.log(t12)
 
