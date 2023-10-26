@@ -160,11 +160,19 @@
                    </div>
                   -->
               </div>
+                <% var numBooking = [];  %>
+                <% QueueBookingCustomerData.forEach(booking =>{%>
+                  <% const bookingTimeInt = parseInt(booking.booking_time_user) %>
+                   <% numBooking.push(bookingTimeInt); %> 
+                  <% })  %>
+                  <%  console.log(numBooking) %>
 
           
               <div class="mt-3 choose-time">
                 <label for="timeBooking" 
                 class="form-label fontAll textBooking">เลือกเวลา</label>
+                     
+                  <% var bookingTArray=[] %>
                
                      <select name="booking_time_user[]"  class="select-time"  id="select-time"  multiple="multiple" required > 
                             
@@ -173,6 +181,24 @@
                             <%  let timeOpen = parseInt(homeData.time_open); %>
                             <%  let timeForService1  = timeOpen+1;  %>
                             <%  let timeClose = parseInt(homeData.time_close); %>
+
+                            <% let timeOpen1 = timeOpen; %>
+                            <% let timeForService2  = timeForService1; ;%>
+                            <% let timeClose1 = timeClose;%>
+
+                            <% for(; timeOpen1 < timeClose1  ; timeOpen1++ ){ %>
+                              <% if(timeOpen1 <= 9 ){%>
+                                <% var shopTime = "0"+timeOpen1+".00"+"-"+timeForService2+".00" %>
+                                <% bookingTArray.push(shopTime); %>
+                                <% timeForService2++ %>
+    
+                              <% }else{ %>
+                                <% var shopTime = timeOpen1+".00"+"-"+timeForService2+".00" %>
+                                <% bookingTArray.push(shopTime); %>
+                                <% timeForService2++ %>
+                                <% } %>
+                             
+                             <% } %>
                            
                                 <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
                                     <% if(timeOpen<=9) {%> 
@@ -185,7 +211,9 @@
                                 <% } %>
                                
                           <% })  %> 
-                          
+                        
+                      <% //console.log(bookingTArray) %>
+                        
                     </select> 
 
               </div>
@@ -302,6 +330,73 @@
      }
   </script>
 
+  <script>
+    //ในแต่ละ 1 ชั่วโมง จะกดได้กี่ครั้ง
+    var numEmp = parseInt('<%= empList.length %>');
+    
+    //console.log( numEmp);
+    var timeOpen = '<%= bookingTArray %>'.split(',');
+      var timeOpenInt =[];
+      
+      // timeOpen--> int
+      for(let t = 0 ; t<timeOpen.length ; t++){
+        var timeOpenint = parseInt(timeOpen[t]);
+        timeOpenInt.push(timeOpenint);
+      }
+    
+      
+      console.log(timeOpenInt);
+
+      var itemB =  [];
+      var timeBooking = '<%= numBooking %>'.split(',');
+      var timeBookingInt =[];
+      
+      for(let w = 0  ; w < timeBooking.length  ; w++){
+        var  timeBookingint =  parseInt(timeBooking[w])
+        timeBookingInt.push(timeBookingint);
+      }
+      //ขนาดอาเรย์เท่ากันหรือไม่
+      function arraysHaveEqualValues(array1,array2){
+        for(let r = 0;r < Math.min(array1.length, array2.length); r++){
+          if (array1[r] !== array2[r]) {
+               return false;
+          }
+        }
+        return true;
+      }
+      //เปรียบเทียบค่าข้างในอาเรย์
+      var indexx= [];
+      function valuesInArray(array1, array2) {
+  
+        for (let r = 0; r < array1.length; r++) {
+          if (array2.indexOf(array1[r]) === -1) {
+            return false;
+          }
+        
+       const cc    = array2.indexOf(array1[r]);
+       indexx.push(cc);
+       
+       
+
+      }
+       
+       return true;
+        }
+     
+      
+
+      const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
+      console.log(resultEqualValues);
+
+      const resultSubset = valuesInArray(timeBookingInt, timeOpenInt);
+      console.log(resultSubset);
+
+      const sortedNumbers = indexx.sort((a, b) => a - b);
+      
+      console.log(sortedNumbers);
+      console.log(timeBookingInt);
+  </script>
+  
 
 </body>
 </html>

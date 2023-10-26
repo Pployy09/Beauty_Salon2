@@ -13,16 +13,18 @@ exports.showBookingUser = async(req, res) => {
     const home = await Home.findOne({id})
     const HomeData = await Home.find()
     const UserData = await User.findById(req.session.userId);
-    const QueueBookingCustomerData = await QueueBookingCustomer.find();
     const empUsers = await User.count({ role: "emp" });
     const img1 = await Upload1image.findOne({id})
     const img2 = await Upload2image.findOne({id})
     const img3 = await Upload3image.findOne({id})
     const img4 = await Upload4image.findOne({id})
     const img5 = await Upload5image.findOne({id})
+    const EmpData = await User.find({ role : "emp"});
+    const QueueBookingCustomerData = await QueueBookingCustomer.find();
     await Service.find().then(function(ServiceData){
         res.render("booking-user",{
             UserData:UserData,
+            empList:EmpData,
             ServiceDataList : ServiceData,
             HomeData : HomeData,
             QueueBookingCustomerData:QueueBookingCustomerData,

@@ -25,7 +25,7 @@ var t6,t7,t8,t9,t10,t11,t12;
 
 function max(){
   if(dayNow === 1){
-     dateNow = dateNow+6
+     dateNow = dateNow+6;
      if(monthNow <= 9 && dateNow <= 9){
         t6 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -39,7 +39,7 @@ function max(){
 
 
   }else if(dayNow === 2){
-     dateNow = dateNow + 5
+     dateNow = dateNow + 5;
      if(monthNow <= 9 && dateNow <= 9){
         t7 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -52,7 +52,7 @@ function max(){
      document.getElementById("dateBooking").setAttribute("max",t7);
 
   }else if(dayNow === 3){
-   dateNow = dateNow + 4 //วันอาทิตย์
+   dateNow = dateNow + 4 ;//วันอาทิตย์
      if(monthNow <= 9 && dateNow <= 9   ){
         t8 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9 ){
@@ -65,7 +65,7 @@ function max(){
      document.getElementById("dateBooking").setAttribute("max",t8);
 
   }else if(dayNow === 4){
-     dateNow = dateNow + 3
+     dateNow = dateNow + 3;
      if(monthNow <= 9 && dateNow <= 9){
         t9 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -78,7 +78,7 @@ function max(){
      document.getElementById("dateBooking").setAttribute("max",t9);
 
   }else if(dayNow === 5){
-     dateNow = dateNow + 2
+     dateNow = dateNow + 2;
      if(monthNow <= 9 && dateNow <= 9){
         t10 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -91,7 +91,7 @@ function max(){
      document.getElementById("dateBooking").setAttribute("max",t10);
 
   }else if(dayNow === 6){
-     dateNow = dateNow + 1
+     dateNow = dateNow + 1;
      if(monthNow <= 9 && dateNow <= 9){
         t11 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -103,8 +103,8 @@ function max(){
      }  
      document.getElementById("dateBooking").setAttribute("max",t11);
 
-  }else if(dayNow === 7){
-     
+  }else if(dayNow === 0){
+   
      if(monthNow <= 9 && dateNow <= 9){
         t12 = yearNow + '-0' + monthNow +'-0'+ dateNow ;
      }else if (monthNow <= 9 && dateNow > 9){
@@ -112,7 +112,7 @@ function max(){
      }else if(dateNow <= 9 && monthNow > 9 ){
         t12 = yearNow + '-' + monthNow +'-0'+ dateNow ;
      }else if(monthNow > 9 && dateNow > 9){
-        t12 = yearNow + '-' + monthNow +'-'+ dateNow ;
+        t12 = yearNow + '-' + monthNow+'-'+ dateNow ;
      }  
      document.getElementById("dateBooking").setAttribute("max",t12);
   }
@@ -122,4 +122,5 @@ function max(){
 
 min();
 max();
+console.log(t12)
 
