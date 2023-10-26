@@ -1,0 +1,121 @@
+.table-bookings {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  width: 1310px;
+  min-height:600px;
+  height: auto;
+  border-radius: 20px;
+  padding-left: 50px;
+  font-size: 20px;
+  color: #5F3122;
+}
+
+.bookingNow1{
+  display: flex;
+  justify-content: center;
+}
+
+.Booking1 {
+  color: #5F3122;
+  font-size: 50px;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookingButton1{
+  background-color: #E9A8A1;
+  color: #5F3122;
+  font-size: 20px ;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 150px;
+  border-radius: .5rem;
+}
+
+.ww {
+    height: 50px;
+}
+
+.full-booked {
+  color: red; /* สีแดง */
+}
+
+  .monday .fa-circle { color:yellow; } /* จันทร์ */
+  .tuesday .fa-circle { color:violet ; } /* อังคาร */
+  .wednesday .fa-circle { color:green ; } /* พุธ */
+  .Thursday .fa-circle { color:orange ; } /* พฤหัสบดี */
+  .Friday .fa-circle { color:blue; } /* ศุกร์ */
+  .saturday .fa-circle { color:indigo ; } /* เสาร์ */
+  .sunday .fa-circle { color:red ; } /* อาทิตย์ */
+
+.ic {
+  margin-right: 20px;
+}
+
+.container22 {
+  display: flex;
+  flex-direction:column;
+  margin-left: 80px;
+}
+
+
+
+.image-wrapper {
+    width: 600px;
+  height: 400px;
+  position: relative;
+  margin: 30vh auto;
+  position: absolute;
+  z-index: 1;
+  top:250px;
+  left:55%;
+}
+
+.image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+
+.image-1 {
+  clip-path: polygon(0 0, 0 32%, 28% 0);
+  transform: translate(-10px, -10px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-2 {
+  clip-path: polygon(28% 0, 0 32%, 0 100%, 17% 100%, 90% 0);
+  transform: translate(-30px, 5px);
+  transition: transform 300ms ease;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-3 {
+  clip-path: polygon(100% 0, 100% 65%, 74% 100%, 17% 100%, 90% 0);
+  transform: translate(-15px, -10px);
+  transition: transform 300ms ease;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-4 {
+  clip-path: polygon(100% 65%, 74% 100%, 100% 100%);
+  transform: translate(-32px, 5px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}

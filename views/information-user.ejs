@@ -31,7 +31,7 @@
    <!-- Header -->
    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
-      <div class="fontlogo logomore">Beauty Salon .</b></div>
+      <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -106,8 +106,8 @@
               <td class="f3"><%= booking.booking_time_user %></td>
               <td class="f4"><%= booking.booking_service_user.join(', ') %></td>
               <td class="f5"><a href="/#exampleModal1<%=booking._id %>" class="nav-link fontAll butt" data-bs-toggle="modal">ชำระเงิน</a></td>
-              <td class="f6"> 
-                <a href="./edit-booking-user/<%=booking._id %>" class="nav-link fontAll" data-bs-toggle="modal">
+              <td class="f6">
+                <a href="./edit-booking-user/<%=booking._id %>" class="nav-link fontAll edit-link" data-bs-toggle="modal" data-booking-date="<%= booking.booking_date_user %>">
                   <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>
                 </a>
               </td>
@@ -166,20 +166,23 @@
                     <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                       <div class="row g-2 groupp">
                         <div class="col-6">
-                          <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile(event)" required>
+                          <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile6(event)" required>
                         </div>
                       </div>
                  </div>
-
-                  <img id="images1" src="<%=booking.slip%>" class=" imgpay3"  loading="lazy">
+                 
+                 <% if (booking.slip) { %>
+                  <img id="slip" src="<%= booking.slip %>" class="imgpay3" loading="lazy">
+                <% } else { %>
+                  <p> </p>
+                <% } %>
                  
                </div>
              </div>
  
                  <div class="modal-footer">
                    <button type="submit" class="buttonbt">บันทึก</button>
-                   <button type="button" class="buttoncan" data-bs-dismiss="modal">ยกเลิก</button>
-                 </div>
+                  </div>
  
            </form>
          </div>
@@ -197,6 +200,7 @@
     <% var timeOpenArray = [] %>
     <% var bookingTime = [] %>
     <% var bookingTArray=[] %>
+
      <!-- Modal แก้ไขข้อมูลการจอง-->
      <% QueueBookingCustomerData.forEach(function(booking,element) { %>
       <div class="modal fade" id="exampleModal2<%= booking._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -276,8 +280,6 @@
                                         <% bookingTime.push(bookingT); %>
                                     <% } %>
                                     <% console.log(bookingTime) %>
-                                    
-                                    
                                     
                                      
                                        <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
@@ -378,7 +380,6 @@
         timeOpenInt.push(timeOpenint);
       }
     
-      
       console.log(timeOpenInt);
 
       var itemB =  [];
@@ -410,14 +411,11 @@
           var itemTimeNum = itemB;
           var itemTime = document.querySelectorAll('.item-time')[sameIndex];
           
-          
           itemTime.classList.add("item--selected");
       }
        return true;
         }
      
-      
-
       const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
       console.log(resultEqualValues);
 
@@ -427,9 +425,63 @@
       console.log(timeBookingInt);
   </script>
 
-   
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var editLinks = document.querySelectorAll(".edit-link");
+    
+      editLinks.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault();
+          var bookingDate = new Date(link.getAttribute("data-booking-date"));
+          var currentDate = new Date();
+    
+          // คำนวณว่าจองคิวอยู่ห่างจากวันปัจจุบันกี่วัน
+          var timeDiff = bookingDate - currentDate;
+          var daysDiff = timeDiff / (1000 * 3600 * 24);
+    
+          if (daysDiff >= 1) {
+      // ลูกค้าสามารถแก้ไขการจองคิว
+      window.location.href = link.getAttribute("href");
+    } else {
+      // ไม่สามารถแก้ไขการจองคิว
+      var alertDiv = document.createElement("div");
+      alertDiv.className = "custom-alert";
+      alertDiv.innerHTML = "ไม่สามารถแก้ไขการจองคิวได้";
 
-   
+      document.body.appendChild(alertDiv);
 
+      setTimeout(function() {
+        document.body.removeChild(alertDiv);
+      }, 2000); // แสดงเป็นเวลา 2 วินาที
+
+      // เพิ่ม CSS สำหรับ alert ให้สวยงาม
+      var style = document.createElement("style");
+      style.innerHTML = `
+        .custom-alert {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 450px;
+          height: 60px;
+          transform: translate(-50%, -50%);
+          background-color: #f19b9d;
+          color: #fff;
+          font-size: 24px;
+          text-align: center;
+          padding: 10px 20px;
+          border-radius: 5px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+      `;
+
+  document.head.appendChild(style);
+}
+
+        });
+      });
+    });
+  </script>
+  
+  
 </body>
 </html>

@@ -49,7 +49,7 @@ mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?re
     useNewUrlParser:true,
     useUnifiedTopology:true,
 })
-
+const pug = require('pug');
 app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(express.static('uploads'))
@@ -166,6 +166,7 @@ app.put('/edit-booking-user/:id',editinformationUserController.editPutQueuebooki
 app.put('/information-user/:id',upload7,editinformationUserController.editPutQueuebooking);
 
 app.delete('/edit-booking-user/:id',editinformationUserController.deleteQueuebooking);
+
 //admin
 app.get('/chatbot-admin',authMiddleware,chatController.showChat)
 app.get('/home-admin',adminMiddleware,authMiddleware,HomeAdminController.showData);

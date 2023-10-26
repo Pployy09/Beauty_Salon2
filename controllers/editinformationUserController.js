@@ -6,18 +6,16 @@ const Home = require('../models/Home-Admin');
 
 exports.showEdits = async (req, res) => {
     try {
+        const UserData = await User.findById(req.session.userId);
         const ServiceData = await Service.find();
         const HomeData = await Home.find();
         const {id} = req.params;
+        const home = await Home.findOne({id})
         const qr = await Pay.findOne({id})
-        // Get the user data
-        const UserData = await User.findById(req.session.userId);
 
         if (!UserData) {
             return res.status(404).send('User not found');
         }
-
-        // Get the booking data for this user
         const QueueBookingCustomerData = await QueueBookingCustomer.find({
             customerUsername: UserData.username
         });
@@ -28,7 +26,7 @@ exports.showEdits = async (req, res) => {
             QueueBookingCustomerData,
             qr,
             ServiceDataList : ServiceData,
-            HomeData : HomeData,
+            HomeData : HomeData,home
      });
     } catch (error) {
         console.error(error);
@@ -55,17 +53,14 @@ exports.editPutUser = async (req,res) =>{
     res.redirect('/information-user');
 }
 
-
-
-
 exports.showEdits2 = async (req, res) => {
     try {
+        const UserData = await User.findById(req.session.userId);
         const ServiceData = await Service.find();
         const HomeData = await Home.find();
         const {id} = req.params;
+        const home = await Home.findOne({id})
         const qr = await Pay.findOne({id})
-        // Get the user data
-        const UserData = await User.findById(req.session.userId);
 
         if (!UserData) {
             return res.status(404).send('User not found');
@@ -82,7 +77,7 @@ exports.showEdits2 = async (req, res) => {
             QueueBookingCustomerData,
             qr,
             ServiceDataList : ServiceData,
-            HomeData : HomeData,
+            HomeData : HomeData,home
      });
     } catch (error) {
         console.error(error);
@@ -96,13 +91,15 @@ exports.editQueuebooking = async (req, res) =>{
         const HomeData = await Home.find();
         const ServiceData = await Service.find();
         const QueueBookingCustomerData = await QueueBookingCustomer.findOne({ _id : req.params.id});
+        const {id} = req.params;
+        const home = await Home.findOne({id})
         await  User.find({ role : "emp"}).then(function(emps){
             res.render('edit-booking-user',{
                 UserData : UserData,
                 QueueBookingCustomerData : QueueBookingCustomerData,
                 HomeData : HomeData,
                 ServiceDataList : ServiceData,
-                empList : emps,
+                empList : emps,home
                 
             })
         });
@@ -129,6 +126,7 @@ exports.editPutQueuebooking = async (req,res) =>{
     } else {
         new_img = req.body.slip;
     }
+        await Home.findByIdAndUpdate(id,req.body,{runValidators:true});
         await QueueBookingCustomer.findByIdAndUpdate(id,{
             customerUsername:req.body.customerUsername,
             customerFirstname : req.body.firstname,

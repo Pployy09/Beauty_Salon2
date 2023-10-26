@@ -1,0 +1,45 @@
+/* CSS */
+.fontOption {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .fontOption.option1 {
+    font-family: 'Noto Sans Thai', sans-serif;
+  }
+  
+  .fontOption.option2 {
+    font-family: 'Verdana', sans-serif;
+  }
+  
+  .fontOption.option3 {
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .fontOption.option4 {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .fontOption.option5 {
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  .fontOption.option6 {
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+  .fontOption.option7 {
+    font-family: "Sofia", sans-serif;
+  }
+
+  .fontOption.option8 {
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .fontOption.option9 {
+    font-family: 'Caveat', sans-serif;
+  }
+
+  .fontOption.option10 {
+    font-family: 'Oswald', sans-serif;
+  }
+  

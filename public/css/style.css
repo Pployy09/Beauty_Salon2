@@ -612,9 +612,10 @@ body{
     height: 50px;
 }
 
-  .modal-body{
+  .modal-body3{
     background-color: #fff;
     padding: 10%;
+    text-align: center;
 }
 
 .buttonbt{
@@ -625,4 +626,23 @@ body{
     border-radius: .5rem;
     padding: 10px 10px 10px 10px;
     border: #E9A8A1;
+}
+
+.colorText {
+    color: #5F3122;
+    margin-bottom: 15px;
+}
+.colorDeleteService {
+    color: #F19B9D;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.ii {
+    margin-right: 20px;
+    color: #E9A8A1;
+}
+
+.bbg {
+    color: white;
 }

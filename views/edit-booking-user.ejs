@@ -30,7 +30,7 @@
     <!-- Header -->
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
      <div class="col-md-3 mb-2 mb-md-0 ">
-       <div class="fontlogo logomore">Beauty Salon .</b></div>
+       <div class="fontlogo logomore"></div>
      </div>
  
      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
@@ -66,7 +66,7 @@
             <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
             <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z"/>
         </svg> 
-        แก้ไขการจองคิวของคุณ <%=UserData.firstname %></h2>
+        แก้ไขการจองคิวของคุณ</h2>
       </div>
 
       
@@ -154,7 +154,7 @@
           
           <div class="modal-footer">
             <div class="cons">
-              <button type="submit"  class="buttonbt">บันทึก</button>
+              <button type="submit"  class="buttonbt4">บันทึก</button>
               <button type="button" class="fontAll buttonDelete" data-bs-toggle="modal" data-bs-target="#deleteModel1" >ลบข้อมูล</button>  
             </div>
           </div> 
@@ -172,14 +172,14 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body5">
               <h3 class="colorText">ต้องการลบ</h4> 
               <h4 class="colorText">
                 <ul>
-                  <li> ชื่อลูกค้า :<b class="colorDeleteService"> <%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%></b> </li>
-                  <li> บริการ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_service_user %></b> </li>
-                  <li> วันที่ : <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_date_user  %></b> </li>
-                  <li> เวลา : <b class="colorDeleteService"> <%= QueueBookingCustomerData.booking_time_user  %></b> </li>
+                  <li> ชื่อลูกค้า <b class="b13">:</b><b class="colorDeleteService"> <%= QueueBookingCustomerData.customerName %> <%= QueueBookingCustomerData.customerFirstname%> <%= QueueBookingCustomerData.customerLastname%></b> </li>
+                  <li> บริการ  <b class="b14">:</b> <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_service_user %></b> </li>
+                  <li> วันที่   <b class="b15">:</b> <b class="colorDeleteService"><%= QueueBookingCustomerData.booking_date_user  %></b> </li>
+                  <li> เวลา   <b class="b16">:</b> <b class="colorDeleteService"> <%= QueueBookingCustomerData.booking_time_user  %></b> </li>
                   
                 </ul>
                 แน่ใจใช่ไหมที่จะลบข้อมูล
@@ -188,7 +188,7 @@
             
             <div class="modal-footer">
               <form action="/edit-booking-user/<%= QueueBookingCustomerData._id %>?_method=DELETE" method="POST">
-                <button type="submit" class="buttonbt">แน่ใจ ลบข้อมูล</button>
+                <button type="submit" class="buttonbt5">แน่ใจ ลบข้อมูล</button>
               </form>
             </div>
 

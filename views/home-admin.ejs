@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+    
   </head>
 <body>
     
@@ -160,7 +160,21 @@
                   <div class="col-md-3 mb-2 mb-md-0 ">
                     <div id="logo-header" class="fontlogo logomore "><%=home.inputLogo%></div> 
                     <div class="change-logo">
-                      <input  id="input-logo" type="text" placeholder="<%=home.inputLogo%>" class="input-logo fontAll" name="inputLogo">
+                      <input  id="input-logo" type="text" placeholder="<%=home.inputLogo%>" class="input-logo fontAll" name="inputLogo" contenteditable="true">
+                      <!--
+                      <select id="fontSelector">
+                        <option value="default" selected>Default Font</option>
+                        <option value="option1">Noto Sans Thai</option>
+                        <option value="option2">Verdana</option>
+                        <option value="option3">Libre Baskerville</option>
+                        <option value="option4">Raleway</option>
+                        <option value="option5">Times New Roman</option>
+                        <option value="option6">Lucida Console</option>
+                        <option value="option7">Sofia</option>
+                        <option value="option8">Nunito</option>
+                        <option value="option9">Caveat</option>
+                        <option value="option10">Oswald</option>
+                      </select>-->
                       
                     </div>
                   </div>
@@ -283,6 +297,22 @@
       src="/js/home-admin.js" 
       charset="utf-8">
     </script> 
+
+    <script>
+      // JavaScript
+      document.getElementById('fontSelector').addEventListener('change', function () {
+        const selectedFont = this.value;
+        const editableElements = document.querySelectorAll('[contenteditable="true"]');
+        
+        editableElements.forEach(function (element) {
+          if (selectedFont === 'default') {
+            element.style.fontFamily = 'inherit';
+          } else {
+            element.style.fontFamily = selectedFont;
+          }
+        });
+      });
+    </script>
 
 </body>
 </html>

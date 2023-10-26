@@ -11,6 +11,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/calendar.css">
     
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +20,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Raleway:wght@200&display=swap" rel="stylesheet">
       
-    <!--
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    -->
+    
     
 </head>
 <body>
@@ -52,17 +54,76 @@
               <div><a href="./register" class="nav-link fontAll heaDer login">สมัครสมาชิก</a></div>
             </div>
             <% } %>
-
         </header>
 
     <!--การจองคิว-->    
     <section  id="booking">
-      
-        <div class="container">
-              <h3 class="Bookingg fontAll">จองคิว</h3>
-              <div class=" table-booking"></div>
-        
+      <h3 class="Booking1 fontAll">จองคิว</h3>
+        <div class="container22">
+              <div class="table-bookings">
+                <table>
+                  <tbody>
+                    <% const daysOfWeek = ["จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส.", "อา."]; %>
+                    <% const currentDate = new Date(); %>
+                    <% const startDate = new Date(currentDate); %>
+                    <% startDate.setDate(startDate.getDate() - startDate.getDay() + 1); %>
+                    <% daysOfWeek.forEach((day, index) => { %>
+                      <!--<tr class="<%= index === 0 ? 'monday' : index === 1 ? 'tuesday' :index === 2 ? 'wednesday' :index === 3 ?'Thursday':index === 4 ?'Friday':index === 5 ?'saturday':'sunday' %>"></tr>-->
+                      <tr class="infoTable ww <%= index === 0 ? 'monday' : index === 1 ? 'tuesday' :index === 2 ? 'wednesday' :index === 3 ?'Thursday':index === 4 ?'Friday':index === 5 ?'saturday':'sunday' %>">
+                        <td class="fontAll ">
+                          <i class="fa-solid fa-circle ic"></i><%= startDate.toLocaleDateString() %>
+                        </td>
+                        <td class="fontAll"><%= day %></td>
+                        <td class="fontAll" colspan="2"></td>
+                      </tr>
+                      <% const timeCountMap = new Map(); %>
+                      <% QueueBookingCustomerData.forEach((bookingCu) => { %>
+                        <% if (bookingCu.booking_date_user === startDate.toISOString().slice(0, 10)) { %>
+                          <% const bookingTime = bookingCu.booking_time_user; %>
+                          <% bookingTime.forEach(timeSlot => { %>
+                            <% const trimmedTimeSlot = timeSlot.trim(); %>
+                            <% if (timeCountMap.has(trimmedTimeSlot)) { %>
+                              <% timeCountMap.set(trimmedTimeSlot, timeCountMap.get(trimmedTimeSlot) + 1); %>
+                            <% } else { %>
+                              <% timeCountMap.set(trimmedTimeSlot, 1); %>
+                            <% } %>
+                          <% }); %>
+                        <% } %>
+                      <% }); %>
+                      <tr class="infoTable">
+                        <td></td>
+                        <td class="fontAll">
+                          <% let isFullyBooked = false; %>
+                          <% Array.from(timeCountMap.entries()).sort().forEach(([timeSlot, count]) => { %>
+                            <%= `${timeSlot}: มีการจอง ${count} ครั้ง` %>
+                            <% if (count === empUsers) { %>
+                              <span class="full-booked">( จองเต็มแล้ว )</span>
+                            <% } %><br/>
+                          <% }); %>
+                        </td>
+                        <td class="fontAll" colspan="2"></td>
+                      </tr>
+                      <% startDate.setDate(startDate.getDate() + 1); %>
+                    <% }); %>
+                    <tr class="infoTable">
+                      <td class="fontAll"></td>
+                      <td class="fontAll">
+                        จำนวนผู้ใช้ที่มีบทบาท "emp": <%= empUsers %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <div class="image-wrapper img-booking d-block mx-lg-auto img-fluid mt-5">
+                  <img class="image-1 " src="<%=img1.image1%>" />
+                  <img class="image-2 " src="<%=img1.image1%>" />
+                  <img class="image-3 " src="<%=img1.image1%>" />
+                  <img class="image-4 " src="<%=img1.image1%>" />
+                </div>
+
+              </div>
               
+              <div class="container">
             <form action="/booking-user" method="POST" >
               
               <div class="mt-5 date-booking ">
@@ -91,7 +152,6 @@
                     
                     <% }); %> 
                 </select>
-               
                  
                    <!--   <div class="select">
                     <% ServiceDataList.forEach(serviceData =>{ %> 
@@ -105,12 +165,6 @@
               <div class="mt-3 choose-time">
                 <label for="timeBooking" 
                 class="form-label fontAll textBooking">เลือกเวลา</label>
-
-                
-                    
-                   
-                     
-                    
                
                      <select name="booking_time_user[]"  class="select-time"  id="select-time"  multiple="multiple" required > 
                             
@@ -120,36 +174,24 @@
                             <%  let timeForService1  = timeOpen+1;  %>
                             <%  let timeClose = parseInt(homeData.time_close); %>
                            
-                            
                                 <% for( ; timeOpen < timeClose  ; timeOpen++ ) { %> 
                                     <% if(timeOpen<=9) {%> 
-                                      
-                                      <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> 0<%= timeOpen %>.00 - <%= timeForService1 %>.00 </option>
-                                      
-                                    <% timeForService1++ %> 
+                                      <option  value= "0<%= timeOpen %>.00 - <%= timeForService1 %>.00" class="fontAll"> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option>
+                                      <% timeForService1++ %> 
                                     <% }else{ %>   
-                                      <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll "> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
+                                      <option  value= "<%= timeOpen %>.00 - <%= timeForService1 %>.00"  class="fontAll"> <%= timeOpen %>.00 - <%= timeForService1 %>.00 </option> 
                                       <% timeForService1++ %> 
                                     <% } %>
-                                
                                 <% } %>
                                
-                             
-                        <% })  %> 
+                          <% })  %> 
                           
-                        
-                      
-                        
                     </select> 
 
-                    
-                  
-                
-                  
               </div>
 
               <div class="bookingNow2">
-                <button type="button" class="btn fontAll bookingButton" data-bs-toggle="modal" data-bs-target="#confirmModel">จองคิว</button>
+                <button type="button" id="bookingButton" class="btn fontAll bookingButton" data-bs-toggle="modal" data-bs-target="#confirmModel">จองคิว</button>
               </div>
 
               <div class="modal fade" id="confirmModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,16 +201,14 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
         
-                    <div class="modal-body">
-                      <h4 class="colorText">ต้องการจองคิวใช่ไหม</h4> 
-                     
-        
+                    <div class="modal-body3">
+                      <h4 class="colorText">
+                        <i class="fa-solid fa-circle-check fa-2x ii"></i>ต้องการจองคิวใช่ไหม
+                      </h4> 
                     </div>
                     
                     <div class="modal-footer">
-                     
-                        <button type="submit" class="fontAll buttonbt">ยืนยันการจองคิว</button>
-                      
+                      <button type="submit" class="fontAll buttonbt bbg">ยืนยันการจองคิว</button>
                     </div>
         
                   </div>
@@ -176,7 +216,7 @@
               </div>
 
             </form>
-         
+          </div>
        </div>
        
     </section>
@@ -198,13 +238,20 @@
   src="/js/dateBooking.js" 
   charset="utf-8">
   </script>
+
   <script 
   src="/js/booking-user.js" 
   charset="utf-8">
   </script>
+  
   <script  
   src="/js/select-time.js" 
   charset="utf-8">
+  </script>
+
+  <script  
+    src="/js/calendar.js" 
+    charset="utf-8">
   </script>
 
   <script>
@@ -219,14 +266,42 @@
       var itemService = document.getElementById(itemServiceNum);
       
       itemService.onclick = (event) =>{
-           alert("เลือกเวลาได้ " + timeService[i] + " ชั่วโมง ")
+        var alertDiv = document.createElement("div");
+      alertDiv.className = "custom-alert";
+      alertDiv.innerHTML = "เลือกเวลาได้ " + timeService[i] + " ชั่วโมง ";
+
+      document.body.appendChild(alertDiv);
+
+      setTimeout(function() {
+        document.body.removeChild(alertDiv);
+      }, 2000); // แสดงเป็นเวลา 2 วินาที
+
+      // เพิ่ม CSS สำหรับ alert ให้สวยงาม
+      var style = document.createElement("style");
+      style.innerHTML = `
+        .custom-alert {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 400px;
+          height: 60px;
+          transform: translate(-50%, -50%);
+          background-color: #f19b9d;
+          color: #fff;
+          font-size: 24px;
+          text-align: center;
+          padding: 10px 20px;
+          border-radius: 5px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+      `;
+
+      document.head.appendChild(style);
         
         };
-     
      }
-     
   </script>
-  
+
 
 </body>
 </html>

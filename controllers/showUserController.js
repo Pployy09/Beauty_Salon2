@@ -22,7 +22,9 @@ exports.showEmpEdit = async(req, res) => {
 
 exports.showEditUser = async(req, res) => {
     let UserData = await User.findById(req.session.userId)
-    res.render('editInformation-user',{UserData})
+    const {id} = req.params;
+    const home = await Home.findOne({id})
+    res.render('editInformation-user',{UserData,home})
 }
 
 exports.showEdit = async(req, res) => {

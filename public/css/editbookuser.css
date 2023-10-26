@@ -51,7 +51,7 @@
    margin-right: 50px;
 }
 
-.buttonbt {
+.buttonbt4 {
     background-color: #f19b9d;
     border: none; 
     border-radius: 15px;
@@ -61,6 +61,7 @@
     font-size: 16px;
     margin: 7px 5px;
     margin-bottom: 50px;
+    width: 115px;
     opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
@@ -68,7 +69,7 @@
     cursor: pointer;
   }
   
-  .buttonbt:hover {opacity: 1}
+  .buttonbt4:hover {opacity: 1}
 
   .buttonDelete{
     font-size: 16px;
@@ -87,3 +88,48 @@
 .cons {
     margin-right: 50px;
 }
+
+.modal-body5 {
+    height: 300px;
+    padding: 50px;
+}
+
+.b13 {
+    color: black;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.b14 {
+    color: black;
+    margin-left: 38px;
+    margin-right: 10px;
+}
+.b15 {
+    color: black;
+    margin-left: 60px;
+    margin-right: 10px;
+}
+.b16 {
+    color: black;
+    margin-left: 60px;
+    margin-right: 10px;
+}
+
+.buttonbt5 {
+    background-color: #f19b9d;
+    border: none; 
+    border-radius: 15px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 7px 5px;
+    width: 200px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .buttonbt5:hover {opacity: 1}
