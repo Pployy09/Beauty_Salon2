@@ -63,17 +63,16 @@
               <div class="table-bookings">
                 <table>
                   <tbody>
-                    <% const daysOfWeek = ["จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส.", "อา."]; %>
+                    <% const daysOfWeek = ["จ.","อ.", "พ.", "พฤ.", "ศ.", "ส.","อา."]; %>
                     <% const currentDate = new Date(); %>
                     <% const startDate = new Date(currentDate); %>
-                    <% startDate.setDate(startDate.getDate() - startDate.getDay() + 1); %>
+                    <% startDate.setDate(startDate.getDate() - startDate.getDay() + 1); %>  
                     <% daysOfWeek.forEach((day, index) => { %>
-                      <!--<tr class="<%= index === 0 ? 'monday' : index === 1 ? 'tuesday' :index === 2 ? 'wednesday' :index === 3 ?'Thursday':index === 4 ?'Friday':index === 5 ?'saturday':'sunday' %>"></tr>-->
                       <tr class="infoTable ww <%= index === 0 ? 'monday' : index === 1 ? 'tuesday' :index === 2 ? 'wednesday' :index === 3 ?'Thursday':index === 4 ?'Friday':index === 5 ?'saturday':'sunday' %>">
-                        <td class="fontAll ">
-                          <i class="fa-solid fa-circle ic"></i><%= startDate.toLocaleDateString() %>
+                        <td class="fontAll">
+                          <i class="fa-solid fa-circle ic"></i><%= startDate.toISOString().slice(0, 10) %>
                         </td>
-                        <td class="fontAll"><%= day %></td>
+                        <td class="fontAll dd"><%= day %></td>
                         <td class="fontAll" colspan="2"></td>
                       </tr>
                       <% const timeCountMap = new Map(); %>
@@ -93,7 +92,6 @@
                       <tr class="infoTable">
                         <td></td>
                         <td class="fontAll">
-                          <% let isFullyBooked = false; %>
                           <% Array.from(timeCountMap.entries()).sort().forEach(([timeSlot, count]) => { %>
                             <%= `${timeSlot}: มีการจอง ${count} ครั้ง` %>
                             <% if (count === empUsers) { %>
@@ -107,9 +105,7 @@
                     <% }); %>
                     <tr class="infoTable">
                       <td class="fontAll"></td>
-                      <td class="fontAll">
-                        จำนวนผู้ใช้ที่มีบทบาท "emp": <%= empUsers %>
-                      </td>
+                      <!--<td class="fontAll">จำนวนผู้ใช้ที่มีบทบาท "emp": <%= empUsers %></td>-->
                     </tr>
                   </tbody>
                 </table>
@@ -236,9 +232,9 @@
                     </div>
                     
                     <div class="modal-footer">
-                      <button type="submit" class="fontAll buttonbt bbg">ยืนยันการจองคิว</button>
+                        <button type="submit" class="fontAll buttonbt bbg">ยืนยันการจองคิว</button>
                     </div>
-        
+
                   </div>
                 </div>
               </div>
@@ -344,7 +340,6 @@
         timeOpenInt.push(timeOpenint);
       }
     
-      
       console.log(timeOpenInt);
 
       var itemB =  [];
@@ -375,15 +370,10 @@
         
        const cc    = array2.indexOf(array1[r]);
        indexx.push(cc);
-       
-       
-
       }
        
        return true;
         }
-     
-      
 
       const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
       console.log(resultEqualValues);

@@ -1,5 +1,5 @@
 .table-bookings {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 20px;
   margin-top: 25px;
   margin-bottom: 50px;
@@ -54,6 +54,10 @@
 
 .ic {
   margin-right: 20px;
+}
+
+.dd{
+padding-left: 12px;
 }
 
 .container22 {

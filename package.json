@@ -86,6 +86,7 @@
     "jquery": "^3.7.1",
     "kareem": "^2.5.1",
     "lru-cache": "^6.0.0",
+    "luxon": "^3.4.3",
     "make-dir": "^3.1.0",
     "media-typer": "^0.3.0",
     "memory-pager": "^1.5.0",
