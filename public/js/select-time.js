@@ -10,7 +10,7 @@ class CustomSelectTime{
     constructor(originalSelect){
        this.originalSelect = originalSelect;
        this.customSelect = document.createElement("div");
-       this.customSelect.classList.add("select");
+       this.customSelect.classList.add("selectss");
  
        this.originalSelect.querySelectorAll("option").forEach(optionElement =>{
           const itemElement = document.createElement("div");

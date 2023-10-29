@@ -14,6 +14,11 @@ const ServiceSchema = new Schema ({
         type : String,
         required: [true, 'Please provide service time'],
     },
+    imageservice : {
+        type : String,
+        required: [true, 'Please provide img'],
+        
+    },
 
 });
 

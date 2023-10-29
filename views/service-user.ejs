@@ -56,7 +56,34 @@
 
         </header>
 
-    <!--การจองคิว-->    
+        <section  id="booking">
+          <h3 class="textservice">บริการของร้าน</h3>
+          <div class="bgco">
+          <% serviceList.forEach(service =>{ %>
+            <div class="ol">
+              <div class="li" >
+                <i class="fa-solid fa-hand-holding-heart icon" style="color: #f19b9d;"></i>
+                  
+                  <div class="title">
+                    <%= service.service_name %>
+                  </div>
+
+                  <div class="descr"><i class="fa-solid fa-stopwatch" style="color: #f19b9d;">&nbsp; &nbsp;</i>
+                    <%= service.service_time %> ชั่วโมง
+                  </div>
+
+                  <div class="descr"><i class="fa-solid fa-sack-dollar" style="color: #f19b9d;">&nbsp; &nbsp;</i>
+                    เริ่มต้น <%= service.service_price %> ฿
+                  </div>
+
+              </div>
+            </div>
+          <%}) %>
+          </div> 
+        </section>
+
+
+    <!--การจองคิว  
     <section  id="booking">
       
         <div class="containers"> 
@@ -77,7 +104,7 @@
             </div>
         </div>
         
-    </section>
+    </section>-->  
 
   <%- include ('./footer') %>
 

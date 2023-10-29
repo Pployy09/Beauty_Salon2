@@ -47,13 +47,13 @@ exports.addData = async (req,res) =>{
 exports.editData = async (req,res) =>{
     try{
         const {id} = req.params;
-        const HomeAdmin = await Home.findById({id})
+        const home = await Home.findById({id})
         const img1 = await Upload1image.findById({id})
         const img2 = await Upload2image.findById({id})
         const img3 = await Upload3image.findById({id})
         const img4 = await Upload4image.findById({id})
         const img5 = await Upload5image.findById({id})
-        res.render('home-admin',{HomeAdmin,img1,img2,img3,img4,img5})
+        res.render('home-admin',{home,img1,img2,img3,img4,img5})
     }catch(error){
         console.log(error);
     }

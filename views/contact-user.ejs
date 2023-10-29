@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 </head>
-<body>
+<body style="background-color: #fcf2f1;">
   <!-- Header -->
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
         <div class="col-md-3 mb-2 mb-md-0 ">
@@ -55,110 +55,52 @@
 
         </header>
 
-    <!--การจองคิว-->    
-    <section  id="bookings">
-      <div class="containers">
-        <div class="bgg ">
-            <h3 class="textservice">ติดต่อ</h3>
-          <div id="maps" > </div>
-          <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE8IdT5ZCJ2gwwVUP-SSE-_X8_aR_h5LY&libraries=places&callback=initMap">
-          </script>
 
-          <script>
-            /***** function ในการประกาศค่าเริ่มต้นให้กับแผนที่*****/
-            function initMap() {
-              // ดึงค่าละติจูดและลองจิจูดจากข้อมูล contact แล้วแปลงเป็นตัวแปร JavaScript
-              const lat = <%= (contact.lat) %>;
-              const lng = <%= (contact.lng) %>;
+        <div class="container">
+          <div class="innerwrap"> 
+            <h3 class="textservice fontAll">ติดต่อ</h3>
+            <section class="section2 clearfix">
+              <div class="col2 column1 first">
+              <div id="maps"></div>
+              <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE8IdT5ZCJ2gwwVUP-SSE-_X8_aR_h5LY&libraries=places&callback=initMap">
+              </script>
+              </div>
+              <div class="col2 column2 last">
 
-            const map = new google.maps.Map(document.getElementById('maps'), 
-            {
-              center: {lat: lat, lng: lng},
-              zoom: 20
-            });
+                <div class="sec2innercont fontAll">
+                  <div class="sec2addr">
+                    <p><%=contact.address%></p>
+                    <p><span class="collig fontAll">เบอร์ติดต่อ : </span><%=contact.phoneaddress%></p>
+                    <p><span class="collig fontAll">เวลาเปิด - ปิดร้าน : </span><%=home.time_open%> - <%=home.time_close%> น.</p>
+                  </div>
+                </div>
 
-            /***** กำหนดตำแหน่งที่ตั้งของ control ที่จะวางในแผนที่*****/
-              var input = document.getElementById('maps');
-              
-            /*****  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);*****/
-
-            /***** เพิ่ม Feature ให้กับ textbox ให้สามารถพิมพ์ค้นหาสถานที่ได้*****/
-              var autocomplete = new google.maps.places.Autocomplete(input);
-              autocomplete.bindTo('bounds', map);
-
-              var infowindow = new google.maps.InfoWindow();
-
-            /***** กำหนดคุณสมบัติให้กับตัวพิกัดจุดหรือ marker *****/
-              const marker = new google.maps.Marker({
-                  position: { lat, lng },
-                  map: map,
-              });
-
-            /***** ทำงานกับ event place_changed หรือเมื่อมีการเปลี่ยนแปลงค่าสถานที่ที่ค้นหา*****/
-              autocomplete.addListener('place_changed', function() {
-              infowindow.close();
-              marker.setVisible(false);
-              var place = autocomplete.getPlace();
-                if (!place.geometry) 
-              {
-                window.alert("ไม่ค้นพบพิกัดจากสถานที่ดังกล่าว");
-                return;
-              }
-
-            /***** แสดงผลบนแผนที่เมื่อพบข้อมูลที่ต้องการค้นหา *****/
-                if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-              } else {
-              map.setCenter(place.geometry.location);
-              map.setZoom(17);
-              }
-              marker.setIcon
-              (({
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(35, 35)
-              }));
-              marker.setPosition(place.geometry.location);
-              marker.setVisible(true);
-
-            /***** แสดงรายละเอียดผลลัพธ์การค้นหา *****/
-            
-            /***** แสดงรายละเอียดผลลัพธ์การค้นหาเป็น popup โดยมีชื่อและสถานที่ดังกล่าว *****/
-              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-              infowindow.open(map, marker);
-            
-
-            /***** แสดงรายละเอียดผลลัพธ์การค้นหา ซึ่งประกอบด้วย ที่อยู่ รหัสไปรษณีย์ ประเทศ ละติจูดและลองจิจูด *****/
-                document.getElementById('location').innerHTML = place.formatted_address;
-                document.getElementById('lat').innerHTML = place.geometry.location.lat();
-                document.getElementById('lng').innerHTML = place.geometry.location.lng();
-                });
-            }
-            </script>
-
-    
-      <div class="div2">
-            <div class="textad">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-            <div class="inputres">
-              <div class="form-controls"> <i class="fa-solid fa-map-pin fa-bounce" style="color: #f19b9d;"> &nbsp; &nbsp; </i> <%=contact.address%> </div>
-            </div>
-        
-            <div class="textad"> เบอร์โทรติดต่อ </div>
-            <div class="inputres">
-              <div class="form-controls"> <i class="fa-solid fa-phone fa-bounce" style="color: #f19b9d;">&nbsp; &nbsp;</i> <%=contact.phoneaddress%> </div> 
-            </div>
-            
-      </div>
-    <div class="div1"></div>
+                <div class="sec2contactform fontAll">
+                  <form method="POST">
+                    <div class="clearfix fontAll">
+                      <input class="col2 first fontAll" type="text" name="name" placeholder="ชื่อ">
+                      <input class="col2 last fontAll" type="text" name="lastname" placeholder="นามสกุล">
+                    </div>
+                    <div class="clearfix fontAll">
+                      <input  class="col2 first fontAll" type="Email" name="email" placeholder="อีเมล">
+                      <input class="col2 last fontAll" type="text" name="phone" placeholder="เบอร์โทรศัพท์">
+                    </div>
+                    <div class="clearfix fontAll">
+                      <textarea name="textarea" cols="30" rows="6" placeholder="พิมพ์ข้อความที่นี่..."></textarea>
+                    </div>
+                    <div class="clearfix fontAll">
+                      <button type="submit"class="buttoncon">ส่ง</button>
+                    </div>
+                  </form>
+                </div>
       
-        
-      </div>
-    </div>
-       
-    </section>
+              </div>
+            </section>
+          
+          </div>
+        </div>
+
 
   <%- include ('./footer') %>
 
@@ -170,6 +112,138 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
     crossorigin="anonymous">
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // แสดง Alert แจ้งเตือนก่อนส่งฟอร์ม
+        var alertDiv = document.createElement("div");
+        alertDiv.className = "custom-alert";
+        alertDiv.innerHTML = "กำลังส่งฟอร์ม...";
+
+        document.body.appendChild(alertDiv);
+
+        setTimeout(function() {
+          // ลบข้อความแจ้งเตือน
+          document.body.removeChild(alertDiv);
+
+          // ส่งฟอร์ม
+          form.submit();
+
+          // รีเซ็ตฟอร์ม
+          form.reset();
+
+          // แสดงข้อความแจ้งเตือน "ส่งสำเร็จ"
+          var successAlert = document.createElement("div");
+          successAlert.className = "custom-alert";
+          successAlert.innerHTML = "ส่งสำเร็จ";
+          document.body.appendChild(successAlert);
+          
+          setTimeout(function() {
+            document.body.removeChild(successAlert);
+          }, 1000); // แสดงเป็นเวลา 2 วินาที
+        }, 2000); // แสดงเป็นเวลา 2 วินาที 
+      });
+
+      var style = document.createElement("style");
+      style.innerHTML = `
+        .custom-alert {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 400px;
+          height: 60px;
+          transform: translate(-50%, -50%);
+          background-color: #f19b9d;
+          color: #fff;
+          font-size: 24px;
+          text-align: center;
+          padding: 10px 20px;
+          border-radius: 5px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+      `;
+
+      document.head.appendChild(style);
+    });
+    </script>
+  
+  
+    <script>
+      /***** function ในการประกาศค่าเริ่มต้นให้กับแผนที่*****/
+      function initMap() {
+        // ดึงค่าละติจูดและลองจิจูดจากข้อมูล contact แล้วแปลงเป็นตัวแปร JavaScript
+        const lat = <%= (contact.lat) %>;
+        const lng = <%= (contact.lng) %>;
+
+      const map = new google.maps.Map(document.getElementById('maps'), 
+      {
+        center: {lat: lat, lng: lng},
+        zoom: 20
+      });
+
+      /***** กำหนดตำแหน่งที่ตั้งของ control ที่จะวางในแผนที่*****/
+        var input = document.getElementById('maps');
+        
+      /*****  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);*****/
+
+      /***** เพิ่ม Feature ให้กับ textbox ให้สามารถพิมพ์ค้นหาสถานที่ได้*****/
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+
+      /***** กำหนดคุณสมบัติให้กับตัวพิกัดจุดหรือ marker *****/
+        const marker = new google.maps.Marker({
+            position: { lat, lng },
+            map: map,
+        });
+
+      /***** ทำงานกับ event place_changed หรือเมื่อมีการเปลี่ยนแปลงค่าสถานที่ที่ค้นหา*****/
+        autocomplete.addListener('place_changed', function() {
+        infowindow.close();
+        marker.setVisible(false);
+        var place = autocomplete.getPlace();
+          if (!place.geometry) 
+        {
+          window.alert("ไม่ค้นพบพิกัดจากสถานที่ดังกล่าว");
+          return;
+        }
+
+      /***** แสดงผลบนแผนที่เมื่อพบข้อมูลที่ต้องการค้นหา *****/
+          if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+        }
+        marker.setIcon
+        (({
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(35, 35)
+        }));
+        marker.setPosition(place.geometry.location);
+        marker.setVisible(true);
+
+      /***** แสดงรายละเอียดผลลัพธ์การค้นหา *****/
+      
+      /***** แสดงรายละเอียดผลลัพธ์การค้นหาเป็น popup โดยมีชื่อและสถานที่ดังกล่าว *****/
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+        infowindow.open(map, marker);
+      
+
+      /***** แสดงรายละเอียดผลลัพธ์การค้นหา ซึ่งประกอบด้วย ที่อยู่ รหัสไปรษณีย์ ประเทศ ละติจูดและลองจิจูด *****/
+          document.getElementById('location').innerHTML = place.formatted_address;
+          document.getElementById('lat').innerHTML = place.geometry.location.lat();
+          document.getElementById('lng').innerHTML = place.geometry.location.lng();
+          });
+      }
+      </script>
 
 </body>
 </html>

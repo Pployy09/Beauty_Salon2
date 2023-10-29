@@ -73,9 +73,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="/service-admin?_method=POST" method="POST"">
-              <div class="modal-body">
-                <div class="inbody">
+            <form action="/service-admin" method="POST" enctype="multipart/form-data">
+              <div class="modal-body4">
+                <div class="inbody1">
                   <div class='row'>
                     <label class="textque">บริการ</label>
                     <input 
@@ -103,6 +103,16 @@
                     placeholder="ระบุเป็นชั่วโมง" 
                     class="form-control" 
                     name="service_time" 
+                    required>
+                  </div>
+
+                  <div class='row'>
+                    <label class="textque">รูปภาพ</label>
+                    <input 
+                    type="file" 
+                    class="form-control" 
+                    name="imageservice"
+                    accept="image/*" 
                     required>
                   </div>
 

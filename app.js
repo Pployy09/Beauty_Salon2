@@ -34,6 +34,7 @@ const contactUserController = require('./controllers/contactUserController')
 const chatController = require('./controllers/chatController')
 const payController = require('./controllers/payController')
 
+const contactUserCon = require('./controllers/contactUserCon')
 const employeeTableController = require('./controllers/employeeTableController');
 const HomeAdminController = require('./controllers/HomeAdminController');
 const QueuebookingAdminController = require('./controllers/queuebookingAdminController');
@@ -145,6 +146,9 @@ const storage = multer.diskStorage({
     }
 });
 
+
+const uploadser = multer({ storage: storage }).single('imageservice');
+const upload7 = multer({ storage: storage }).single('slip');
 //user
 app.get('/',indexController.showDatas);
 app.get('/home-user',authMiddleware,homeUserController.showDatass);
@@ -154,8 +158,9 @@ app.get('/booking-user',BookingUserController.showBookingUser);
 app.get('/service-user',serviceUserController.showServiceUser);
 app.get('/contact-user',contactUserController.showContacts);
 
+app.post('/contact-user',contactUserCon.addContactUser);
+
 app.get('/editInformation-user',authMiddleware,showUserController.showEditUser);
-const upload7 = multer({ storage: storage }).single('slip');
 app.get('/editInformation-user/:id',editinformationUserController.editUser);
 app.put('/editInformation-user/:id',editinformationUserController.editPutUser);
 
@@ -207,13 +212,13 @@ app.post('/home-admin',HomeAdminController.addData);
 
 app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
-app.post('/service-admin',serviceController.addService);
+app.post('/service-admin',uploadser,serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
 app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 
 app.put('/pay-admin/:id',payController.editPutQueuebooking);
 app.put('/edit-queuebooking/:id',QueuebookingAdminController.editPutQueuebooking);
-app.put('/editService-admin/:id',serviceController.editPutService);
+app.put('/editService-admin/:id',uploadser,serviceController.editPutService);
 app.put('/editStock-admin/:id',stockController.editPutStock);
 app.put('/editInformation-admin/:id',editinformationController.editPutAdmin);
 app.put('/view-employeeinfo-admin/:id',employeeinformationAdmin.showInfoEmpOne);

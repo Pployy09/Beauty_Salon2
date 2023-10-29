@@ -124,7 +124,7 @@
 .textservice {
     color: #5F3122;
     font-size: 50px;
-    margin-top: 90px;
+    padding-top: 90px;
     margin-bottom: 50px;
     text-align: center;
 }
@@ -142,3 +142,68 @@ hr {
     margin: 40px 40px;
     width: 1000px;
   }
+
+.bgco {
+  --color: rgba(30, 30, 30);
+  --bgColor: #fcf2f1;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 คอลัมน์ที่มีขนาดเท่ากัน */
+  align-content: center;
+  color: var(--color);
+  background: var(--bgColor);
+}
+
+.ol {
+  width: min(60rem, 90%);
+  margin-inline: auto;
+  margin-bottom: 50px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  text-align: center;
+
+  list-style: none;
+}
+
+.ol .li {
+  width: 22rem;
+  --borderS: 2rem;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: calc(var(--borderS) + 4.5rem);
+  position: relative;
+}
+.ol .li::before,
+.ol .li::after {
+  inset: 0;
+  position: absolute;
+  border-radius: 50%;
+  border: var(--borderS) solid var(--bgColor);
+  line-height: 1.1;
+}
+.ol .li::before {
+  color: var(--accent-color);
+  font-size: 12rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.ol .li::after {
+  content: "";
+  filter: drop-shadow(-0.25rem 0.25rem 0.0675rem rgba(0, 0, 0, 0.75)) blur(5px);
+}
+
+.ol .li > * { width: 8rem }
+.ol .li .icon { font-size: 2rem; color: var(--accent-color); text-align: center }
+.ol .li .title { font-size: 1.25rem; font-weight: 300; }
+.ol .li .descr { font-size: 0.9rem; font-weight: 300 }
+
+.credits { margin-top: 2rem; text-align: center }
+.credits a { color: var(--color) }

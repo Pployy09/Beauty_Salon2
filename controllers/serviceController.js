@@ -1,5 +1,7 @@
 const Service = require('../models/Service');
 const User = require('../models/User')
+const fs = require('fs')
+const multer = require('multer')
 
 //show service
 exports.showService = async (req,res) =>{
@@ -12,6 +14,7 @@ exports.showService = async (req,res) =>{
      })
 };
 
+
 //add service 
 exports.addService = async (req,res) =>{ 
     try{
@@ -19,6 +22,7 @@ exports.addService = async (req,res) =>{
         service_name  : req.body.service_name,
         service_price : req.body.service_price,
         service_time  : req.body.service_time,
+        imageservice  : req.file.filename,
         }); 
 
        services.save();
@@ -46,10 +50,25 @@ exports.editService = async (req,res) =>{
 //update service 
 exports.editPutService = async (req,res) =>{
     try{
-        await Service.findByIdAndUpdate(req.params.id,{
-            service_name : req.body.service_name,
+        let id = req.params.id;
+        let new_img = " "; 
+        if (req.file) {
+            new_img = req.file.filename;
+            try {
+                // ลบไฟล์รูปเดิม
+                fs.unlinkSync('../uploads/' + req.body.imageservice);
+                
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            new_img = req.body.imageservice;
+        }
+        await Service.findByIdAndUpdate(id,{
+            service_name  : req.body.service_name,
             service_price : req.body.service_price,
-            service_time :  req.body.service_time,
+            service_time  : req.body.service_time,
+            imageservice  : new_img,
         })
         res.redirect('/service-admin');
 

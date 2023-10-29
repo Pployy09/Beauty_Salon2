@@ -160,7 +160,7 @@
                   <div class="col-md-3 mb-2 mb-md-0 ">
                     <div id="logo-header" class="fontlogo logomore "><%=home.inputLogo%></div> 
                     <div class="change-logo">
-                      <input  id="input-logo" type="text" placeholder="<%=home.inputLogo%>" class="input-logo fontAll" name="inputLogo" contenteditable="true">
+                      <input  id="input-logo" type="text" placeholder="<%=home.inputLogo%>" value="<%=home.inputLogo%>" class="input-logo fontAll" name="inputLogo" contenteditable="true">
                       <!--
                       <select id="fontSelector">
                         <option value="default" selected>Default Font</option>
@@ -222,31 +222,31 @@
                   <div class="img-services">
                     <div class="hair">
                       <img id="images3" class="color Hair" src="<%=img3.image3%>" >
-                       <h3 id="Description1" class="fontAll text-hair"><%=home. description1%></h3>
+                       <h3 id="Description1" class="fontAll text-hair"><%=home.description1%></h3>
                     </div>
               
                     <div class="hair">
                       <img id="images4" class="cut Hair" src="<%=img4.image4%>" >
-                      <h3 id="Description2" class="fontAll text-hair"><%=home. description2%></h3>
+                      <h3 id="Description2" class="fontAll text-hair"><%=home.description2%></h3>
                     </div>
               
                     <div class="hair">
                       <img id="images5" class="dryer Hair" src="<%=img5.image5%>" >
-                      <h3 id="Description3" class="fontAll text-hair"><%=home. description3%></h3>
+                      <h3 id="Description3" class="fontAll text-hair"><%=home.description3%></h3>
                     </div>
                   </div>
                   
                   <div class="chang-services-emp-cuss">
                     <div id="chang-services">
-                      <input  id="input-descri1" type="text" placeholder="<%=home. description1%>" class="input-descri fontAll" name="description1">
+                      <input  id="input-descri1" type="text" placeholder="<%=home.description1%>" value="<%=home.description1%>" class="input-descri fontAll" name="description1">
                     </div>
 
                     <div id="chang-services">
-                      <input  id="input-descri2" type="text" placeholder="<%=home. description2%>" class="input-descri2 fontAll" name="description2">
+                      <input  id="input-descri2" type="text" placeholder="<%=home.description2%>" value="<%=home.description2%>" class="input-descri2 fontAll" name="description2">
                     </div>
 
                     <div id="chang-services">
-                      <input  id="input-descri3" type="text" placeholder="<%=home. description3%>" class="input-descri3 fontAll" name="description3">
+                      <input  id="input-descri3" type="text" placeholder="<%=home. description3%>" value="<%=home.description3%>" class="input-descri3 fontAll" name="description3">
                     </div>
 
                   </div>
@@ -262,13 +262,17 @@
                         <div id="logo-footer" class="fontlogo logo-footer"><%=home.inputLogo%></div>
                       </div>
                       <div class="text-footer">
-                          <p id="Description5" class="text-center  fontAll">เวลาเปิดร้าน <%=home.time_open%></p>
-                          <p id="Description6" class="text-center  fontAll">เวลาปิดร้าน <%=home.time_close%></p>
+                          <p id="Description5" class="text-center  fontAll">เวลาเปิดร้าน <%=home.time_open%> น.</p>
+                          <p id="Description6" class="text-center  fontAll">เวลาปิดร้าน <%=home.time_close%> น.</p>
                       </div>
                       <div id="change-description-footer">
-                        <input  id="input-time-open" type="time" placeholder="เวลาเปิดร้าน" class="input-descri fontAll" name="time_open">
-                        <input  id="input-time-close" type="time" placeholder="เวลาปิดร้าน" class="input-descri fontAll" name="time_close">
+                        <input  id="input-time-open" type="time" placeholder="เวลาเปิดร้าน" value="<%=home.time_open%>" class="input-descri4 fontAll" name="time_open">
+                        <input  id="input-time-close" type="time" placeholder="เวลาปิดร้าน" value="<%=home.time_close%>" class="input-descri4 fontAll" name="time_close">
                       </div>
+                      <div class="holi">
+                        <input  id="holiday" type="text" placeholder="วันหยุด : <%=home.holiday%>" value="<%=home.holiday%>" class="input-descri5 fontAll" name="holiday">
+                      </div>
+
                     </div>
                   
                   </footer>
