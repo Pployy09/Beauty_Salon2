@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="b1">
+<body style="background-color: #fcf2f1">
     
   <!-- Header หลัก-->
   <section id="header-employee">
@@ -110,7 +110,7 @@
                     <label class="textque">รูปภาพ</label>
                     <input 
                     type="file" 
-                    class="form-control" 
+                    class="form-control4" 
                     name="imageservice"
                     accept="image/*" 
                     required>
@@ -134,6 +134,7 @@
               <td class="fontAll ">ชื่อบริการ</td>
               <td class="fontAll ">ราคา</td>
               <td class="fontAll ">เวลา (ชั่วโมง)</td>
+              <td class="fontAll ">รูปภาพ</td>
               <td></td>
             </tr> 
 
@@ -142,6 +143,7 @@
               <td class="fontAll "><%= service.service_name %></td>
               <td class="fontAll "><%= service.service_price %></td>
               <td class="fontAll "><%= service.service_time %></td> 
+              <td class="fontAll "><img src="<%= service.imageservice %>" class="imgser" loading="lazy"></td> 
            
               <td>
                   <a href="./editService-admin/<%= service._id %>" class="nav-link " data-bs-toggle="modal" >

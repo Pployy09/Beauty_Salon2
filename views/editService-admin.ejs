@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="b1">
+<body style="background-color: #fcf2f1;">
     
   <!-- Header หลัก-->
   <section id="header-employee">
@@ -80,7 +80,7 @@
                     แก้ไขบริการร้าน</h2>
                 </div>
 
-                <form action="/editService-admin/<%= service._id %>?_method=PUT" method="POST" >
+                <form action="/editService-admin/<%= service._id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
                       <div class="editS1">
                         <div class='editSe1'>
                           <label class="textques">ชื่อบริการ</label>
@@ -112,6 +112,16 @@
                           class="form-control" 
                           name="service_time" 
                           value="<%= service.service_time %>"
+                          required>
+                        </div>
+
+                        <div class='editSe1'>
+                          <label class="textques">รูปภาพ</label>
+                          <input 
+                          type="file" 
+                          class="form-control" 
+                          name="imageservice"
+                          accept="image/*" 
                           required>
                         </div>
                     

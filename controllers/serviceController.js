@@ -1,7 +1,6 @@
 const Service = require('../models/Service');
 const User = require('../models/User')
 const fs = require('fs')
-const multer = require('multer')
 
 //show service
 exports.showService = async (req,res) =>{

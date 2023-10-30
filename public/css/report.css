@@ -7,7 +7,7 @@ body{
 }
 
 #header-employee{
-  background-color:white;
+  background-color:#F19B9D;
   margin: 0;
   padding: 0;
 }
@@ -23,16 +23,17 @@ body{
 #header-employee .nav a{
   font-size: 20px;
   gap: 20px;
-  color: #5F3122;
+  color: #fff;
 }
 
 #header-employee .nav .active{
-  background-color: #FBF2E9;
+  background-color: #FBE1C5;
   border-radius: .5rem;
+  color: #5F3122;
 }
 
 #header-employee .nav a:hover{
- background-color: #FBF2E9;
+ background-color: #FBE1C5;
  border-radius: .5rem;
 
 }
@@ -55,7 +56,6 @@ ul.primary li a:hover {
 ul.sub {
   position: absolute;
   z-index: 200;
-  box-shadow: 2px 2px 0 #BEBEBE;
   width: 20%;
   display:none;
 }
@@ -71,18 +71,18 @@ ul.sub li:last-child a {
 
 ul.sub li a:hover {
   color: #000;
-  background: #eeeeee;
+  background: #F19B9D;
 }
 
 /* sub display*/
 ul.primary li:hover ul {
   display: block;
-  background: #fff;
+  background: #F19B9D;
 }
 
 /* keeps the tab background white */
 ul.primary li:hover a {
-  background: #fff;
+  background: #F19B9D;
   color: #666;
   text-shadow: none;
 }
@@ -231,7 +231,7 @@ ul.primary li:hover > a{
 }
 
 #printButton:hover, #downloadPdfButton:hover {
-  background-color: #c8cfd7;
+  background-color: #eaebed;
 }
 
 .but {

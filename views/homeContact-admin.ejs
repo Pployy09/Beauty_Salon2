@@ -165,38 +165,39 @@
                 
                   <div class="textad1">ที่อยู่ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
-                      <div  id="location" class="form-controls"> <%=contact.address%> </div>
+                      <div  id="location" class="form-controlss"> <%=contact.address%> </div>
                     </div>
                   
                   <div class="textad1">ละติจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
+                     <input type="text"  class="form-controls" name="lat" placeholder="<%=contact.lat%>" required>  
                      <span id="lat" ></span>
-                     <button class="copy" onclick="copyToClipboard('#lat')">คัดลอกละติจูดใส่ช่องด้านล่าง</button>  
-                     <input type="text"  class="form-controls" name="lat" placeholder="<%=contact.lat%>" required>
-                    </div>
+                     <button  class="copy" onclick="copyToClipboard('#lat')">คลิกเพื่อคัดลอกละติจูดใส่ช่อง</button>  
+                     </div>
 
                   <div class="textad1">ลองจิจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
-                      <span id="lng" ></span>
-                      <button class="copy" onclick="copyToClipboard('#lng')">คัดลอกลองจิจูดใส่ช่องด้านล่าง</button>  
                       <input type="text"  class="form-controls" name="lng" placeholder="<%=contact.lng%>" required>
-                    </div>
+                      <span id="lng" ></span>
+                      <button  class="copy" onclick="copyToClipboard('#lng')">คลิกเพื่อคัดลอกลองจิจูดใส่ช่อง</button>  
+                       </div>
 
                   <div class="textad1">เบอร์โทรติดต่อ &nbsp;</div>
                     <div class="inputres">
                       <input type="text" class="form-controls" name="phoneaddress" placeholder="<%=contact.phoneaddress%>" required>
                     </div>
                     
-                    <!--copy-->
-                    <script>
-                      function copyToClipboard(element) {
-                        var $temp = $("<input>");
-                        $("body").append($temp);
-                        $temp.val($(element).text()).select();
-                        document.execCommand("copy");
-                        $temp.remove();
-                      }
+                  <!--copy-->
+                  <script>
+                    function copyToClipboard(element) {
+                      var $temp = $("<input>");
+                      $("body").append($temp);
+                      $temp.val($(element).text()).select();
+                      document.execCommand("copy");
+                      $temp.remove();
+                    }
                   </script>
+
               </div>
 
               </div>
@@ -209,7 +210,7 @@
               <div id="background-submit">
 
                 <div id="button-submit">
-                  <button class="fontAll " type="submit">บันทึกข้อมูล</button>
+                  <button class="fontAll buttonbt" type="submit">บันทึกข้อมูล</button>
                 </div>
                 
               </div>
@@ -224,6 +225,7 @@
     <script 
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
     </script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 </html>
