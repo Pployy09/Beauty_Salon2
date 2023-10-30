@@ -8,7 +8,7 @@ body{
 }
 
 #header-employee{
-  background-color:white;
+  background-color:#F19B9D;
   margin: 0;
   padding: 0;
 }
@@ -24,17 +24,18 @@ body{
 #header-employee .nav a{
   font-size: 20px;
   gap: 20px;
-  color: #5F3122;
+  color: #fff;
  
 }
 #header-employee .nav .active{
-  background-color: #FBF2E9;
+  background-color: #FBE1C5;
   border-radius: .5rem;
+  color: #5F3122;
 }
 
 
 #header-employee .nav a:hover{
- background-color: #FBF2E9;
+ background-color: #FBE1C5;
  border-radius: .5rem;
 
 }
@@ -62,13 +63,11 @@ body{
   background-color: #E9A8A1;
   color: #5F3122;
 }
-.inbody{
-  background-color: #FBF2E9;
-  padding:20px 30px;
-}
+
   .modal-body{
       background-color: #fff;
-      padding: 10%;
+      padding: 5%;
+      margin-left: 20px;
   }
   .btn-close{
       background-color: #fff;
@@ -114,7 +113,7 @@ body{
       cursor: pointer;
     }
     
-    .buttonre:hover {opacity: 1}
+    .buttonbt:hover {opacity: 1}
 
 
 
@@ -157,7 +156,7 @@ td {
   margin-top: 50px;
 }
 #create-service a{
- background-color: #E9A8A1;
+ background-color: #F19B9D;
  font-size: 24px;
  color: #fff;
  border-radius: .5rem;
@@ -271,6 +270,7 @@ td {
 }
 
 .nav .heaDer.active{
+  color: #5F3122;
   background-color: #FBE1C5;
 }
 
@@ -462,7 +462,6 @@ ul.primary li a:hover {
 ul.sub {
   position: absolute;
   z-index: 200;
-  box-shadow: 2px 2px 0 #BEBEBE;
   width: 20%;
   display:none;
 }
@@ -484,12 +483,12 @@ ul.sub li a:hover {
 /* sub display*/
 ul.primary li:hover ul {
   display: block;
-  background: #fff;
+  background: #F19B9D;
 }
 
 /* keeps the tab background white */
 ul.primary li:hover a {
-  background: #fff;
+  background: #F19B9D;
   color: #666;
   text-shadow: none;
 }
@@ -597,7 +596,7 @@ ul.primary li:hover > a{
 #infoTable .container .sectionTable td{
   color: #5F3122;
   font-size: 24px;
-  background-color: #FBF2E9;
+  background-color:rgb(241, 155, 157,0.3);
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -620,10 +619,10 @@ ul.primary li:hover > a{
 /* stock */
 .item1 { 
     grid-area: col1; 
-    background-color: #F19B9D;}
+    background-color:#fff;}
   .item2 { 
     grid-area: col2;
-    background-color: #FBE1C5; }
+    background-color: #fcf2f1; }
   
   .grid-container {
     display: grid;

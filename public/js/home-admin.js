@@ -58,6 +58,15 @@ var renderFile = function(event) {
     r.readAsDataURL(event.target.files[0]);
   };
 
+  var renderFile6 = function(event) {
+    var r = new FileReader();
+    r.onload = function(){
+      var preview = document.getElementById('qrcode');
+      preview.src = r.result;
+    };
+    r.readAsDataURL(event.target.files[0]);
+  };
+
 
 /*คำอธิบายบริการ*/ 
 /*ช่อง1 */ 
@@ -94,11 +103,3 @@ var inputDescri5 = document.getElementById("input-time-open");
 inputDescri5.oninput = (event) =>{
     Description5.textContent = event.target.value;
 }
-
-
-
-
-
-
-
-
