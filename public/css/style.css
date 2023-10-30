@@ -713,9 +713,15 @@ body{
         width: 340px;
         height: 700px;
     }
+    
     .eco {
         margin-left: 20%;
         margin-top: 2%;
+    }
+
+    /*register*/
+    .buttonre{
+        margin-left: 30%;
     }
     
 }
