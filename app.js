@@ -212,7 +212,7 @@ app.post('/home-admin',HomeAdminController.addData);
 
 app.post('/register',rediractifAuth,loginUserController.addUser);
 app.post('/stock-admin',stockController.addStock);
-app.post('/service-admin/:id',uploadser,serviceController.addService);
+app.post('/service-admin',uploadser,serviceController.addService);
 app.post('/booking-user',BookingUserController.addBookingUser);
 app.post('/queuebooking-admin',QueuebookingAdminController.addQueuebooking);
 

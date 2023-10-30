@@ -638,14 +638,15 @@ body{
 }
 
 .buttonbt{
-    background-color: #E9A8A1;
-    color: #5F3122;
+    background-color: #F19B9D;
+    color: #fff;
     font-size: 18px;
     width: 150px;
     border-radius: .5rem;
     padding: 10px 10px 10px 10px;
-    border: #E9A8A1;
+    border: none;
 }
+.buttonbt:hover {opacity: 1;background-color:#E9A8A1;}
 
 .colorText {
     color: #5F3122;
@@ -664,4 +665,8 @@ body{
 
 .bbg {
     color: white;
+}
+
+.t1 {
+    margin-bottom: 50px;
 }

@@ -694,3 +694,7 @@ ul.primary li:hover > a{
   border: 0;
   background: #5F3122;
 }
+
+.btn-danger {
+  border: none;
+}

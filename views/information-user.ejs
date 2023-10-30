@@ -130,8 +130,8 @@
                <div class="inbody">
  
                  <div class='form-row texla'>
-                   <div class="form-group col-md-6">
-                     <label>ชื่อลูกค้า</label>
+                   <div class="form-group col-md-4">
+                     <label class="mg">ชื่อลูกค้า</label>
                      <h class="d"> : </h>
                    </div>
                    <div class=" form-group col-md-6 ">
@@ -140,8 +140,8 @@
                  </div>
  
                  <div class='form-row texla'>
-                   <div class="form-group col-md-6">
-                     <label>บริการ</label>
+                   <div class="form-group col-md-4">
+                     <label class="mg">บริการ</label>
                      <h class="dd"> : </h>
                    </div>
                      <div class="form-group col-md-6 ">
@@ -150,12 +150,16 @@
                  </div>
  
                  <div class='form-row texla'>
-                   <div class="form-group col-md-6">
-                     <label>ราคา</label>
+                   <div class="form-group col-md-4">
+                     <label class="mg">ราคา</label>
                      <h class="ddd"> : </h>
                    </div>
-                     <div class="form-group col-md-6">
-                       <%= booking.price%>
+                     <div class="form-group col-md-6" >
+                      <% if (booking.price) { %>
+                        <%= booking.price %>
+                      <% } else { %>
+                        <p class="ree">กรุณารอแอดมินกรอกราคา</p>
+                      <% } %>
                      </div>
                  </div>
  
@@ -193,6 +197,7 @@
    </div>
 
       <div id="News" class="tabcontents">
+        
       </div>
 
     </div>

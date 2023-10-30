@@ -37,8 +37,8 @@ body{
 #header-employee .nav a:hover{
    background-color: #FBE1C5;
    border-radius: .5rem;
-
 }
+
 
 .text-header{
     color: #5F3122;
@@ -1147,4 +1147,8 @@ ul.primary li a {
  .input-logo {
     padding: 5px;
     outline: none;
+ }
+
+ .btn-danger {
+     border: none;
  }
