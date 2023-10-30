@@ -51,7 +51,7 @@
     </header>
   
   </section>
-    <div class="edit container">
+    <div class="edit container edit_info">
         <div style="text-align: center;">
           <i class="fa-solid fa-user-astronaut fa-4x" style="color: #f19b9d;"></i>
         </div>
@@ -65,7 +65,7 @@
       <div class="conto">
 
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 ">
               <label class="textque"> ชื่อ </label>
               <div class="form-control"> <%=UserData.firstname%> </div>
             </div>
@@ -99,13 +99,14 @@
       <div id="Home" class="tabcontents">
 
         <% QueueBookingCustomerData.forEach(function(booking,element) { %>
-          <table class="tabless">
+          <table class="tabless ">
             <tr>
+             
               <td class="f1"><i class="fa-solid fa-bookmark fa-2x" style="color: #f19b9d;"></i></td>
               <td class="f2"><%= booking.booking_date_user %></td>
               <td class="f3"><%= booking.booking_time_user %></td>
               <td class="f4"><%= booking.booking_service_user.join(', ') %></td>
-              <td class="f5"><a href="/#exampleModal1<%=booking._id %>" class="nav-link fontAll butt" data-bs-toggle="modal">ชำระเงิน</a></td>
+              <td class="f5 "><a href="/#exampleModal1<%=booking._id %>" class="nav-link fontAll butt" data-bs-toggle="modal">ชำระเงิน</a></td>
               <td class="f6">
                 <a href="./edit-booking-user/<%=booking._id %>" class="nav-link fontAll edit-link" data-bs-toggle="modal" data-booking-date="<%= booking.booking_date_user %>">
                   <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>

@@ -665,3 +665,57 @@ body{
 .bbg {
     color: white;
 }
+
+@media (max-width: 947px){
+    /*home-user */
+    
+    .logomore{
+        display: flex;
+        align-self: center;
+    }
+    .nav .heaDer{
+        color: white;
+        font-size: 15px;
+        padding: .5rem 1.5rem;
+        border-radius: .5rem;
+        margin-top: 5px;
+        
+        
+    }
+
+    /*login-user*/
+    .edit{
+        width: 340px;
+       
+      }
+
+    .inputlog .form-control{
+        width: 90%; 
+    }
+
+    .conto{
+        margin-left: -20px;
+    }
+
+    /*info*/
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+      }
+      .form-group .form-control{
+          width: 95%;
+      }
+    
+
+    /* edit info*/
+    .edit_info{
+        width: 340px;
+        height: 700px;
+    }
+    .eco {
+        margin-left: 20%;
+        margin-top: 2%;
+    }
+    
+}

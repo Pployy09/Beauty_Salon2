@@ -164,3 +164,55 @@ body, html {
   margin-top: 20px;
   font-size: 20px;
 }
+
+@media (max-width: 947px){
+      /*info */
+    
+    
+    .container .tablinks{
+        font-size: 18px;
+    }
+
+    .tabcontents tr{
+        /*display: grid;
+        grid-template-columns: repeat(2, 150px);*/
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       width: 350px;
+    }
+
+    .f1{
+     padding: 20px 20px 20px 20px;
+    }
+    .f2{
+      width: 200px;
+     
+    }
+    .f3{
+      width: 170px;
+    }
+
+    .f4{
+      width: 170px;
+    }
+
+    .f5{
+      padding: 20px 20px 20px 30px;
+    }
+
+    .f6{
+      padding: 40px;
+    }
+    
+    .tabcontents td{
+      font-size: 18px;
+        
+    }
+
+    .imgpay2{
+      margin-left: 25px;
+    }
+
+}
