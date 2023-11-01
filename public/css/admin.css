@@ -897,6 +897,13 @@ ul.primary li a {
     height:10vh; 
     
 }
+
+#infoTable .container .infoTables{
+    background-color: #fcf2f1;
+    height:10vh; 
+    
+}
+
 #infoTable .container .infoTable td{
     color: #5F3122;
     font-size: 18px;
@@ -1131,11 +1138,11 @@ ul.primary li a {
 
  .hemp {
     color: #5F3122;
-    background-color: #ffffff;
+    background-color: #fff;
     text-align: center;
     width: 350px;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 45px;
     border-radius: 10px;
  }
@@ -1152,3 +1159,5 @@ ul.primary li a {
  .btn-danger {
      border: none;
  }
+
+ 

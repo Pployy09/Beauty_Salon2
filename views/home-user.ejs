@@ -27,32 +27,33 @@
 <body>
   
    <!-- Header -->
-   <header class="d-flex flex-wrap align-items-center justify-content-center  py-4 ">
+   <header class="navbar d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
-      <div class="fontlogo logomore "><%=home.inputLogo%></div>
+      <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0  ">
-      <li><a href="./home-user" id="homeHeader" class="active nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ">
+      <li><a href="./home" id="homeHeader" class="active nav-link px-3 heaDer fontAll ">หน้าแรก</a></li>
       <li><a href="./booking-user" id="bookingHeader"  class="nav-link px-3 heaDer fontAll ">การจองคิว</a></li>
       <li><a href="./service-user" id="servicesHeader" class="nav-link px-3 heaDer fontAll ">บริการของร้าน</a></li>
       <li><a href="./contact-user" id="contactHeader" class="nav-link px-3 heaDer fontAll ">ติดต่อ</a></li>
       
     </ul>
+    
     <% if (loggedIn) { %>
-    <div class=" nav me-3 text-end">
-      <div><a href="./information-user" class=" nav-link px-3 heaDer fontAll">Hi, <%=UserData.username%></a></div>
-      <div><a href="./logout" class="btn btn-danger">ออกจากระบบ</a></div>
-    </div>
-    <% } %>
-
-    <% if (!loggedIn) { %>
       <div class=" nav me-3 text-end">
-        <div><a href="./login-user" class="nav-link fontAll heaDer login">เข้าสู่ระบบ</a></div>
-        <div><a href="./register" class="nav-link fontAll heaDer login">สมัครสมาชิก</a></div>
+        <div><a href="./information-user" class=" nav-link px-3 heaDer fontAll">Hi, <%=UserData.username%></a></div>
+        <div><a href="./logout" class="btn btn-danger">ออกจากระบบ</a></div>
       </div>
       <% } %>
-    
+  
+      <% if (!loggedIn) { %>
+        <div class=" nav me-3 text-end">
+          <div><a href="./login-user" class="nav-link fontAll heaDer login">เข้าสู่ระบบ</a></div>
+          <div><a href="./register" class="nav-link fontAll heaDer login">สมัครสมาชิก</a></div>
+        </div>
+        <% } %>
+
     </header>
   <!--ภาพจอง-->
   <div class="imgBooking">
@@ -78,7 +79,7 @@
 
   <!-- โปรโมชั่น -->
   <div class="promotion py-5 " >
-    <div class="imgPro">
+    <div class="imgPro1">
       <img class="pro1" src="<%=img2.image2%>" alt="promotion1" height="400px" >
     </div>
     

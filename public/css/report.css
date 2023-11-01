@@ -127,6 +127,23 @@ ul.primary li:hover > a{
     margin-left: 15px;
   }
 
+  .tables3 {
+    border-collapse: collapse;
+    border: 1px solid #000;
+    width: 100%;
+    font-size: 16px;
+    margin-left: 15px;
+  }
+   .th {  
+    border: 1px solid #000;
+    text-align: center;
+  }
+   .td {  
+    border: 1px solid #000;
+    text-align: left;
+  }
+
+
   td {
     padding-left: 10px;
   }
@@ -246,4 +263,49 @@ ul.primary li:hover > a{
 
 .btn-danger {
   border: none;
+}
+
+
+/*-------- Style the tab------- */
+.tabs {
+  float: left;
+  background-color: #F19B9D;
+  width: 30%;
+  height: 644.5px;
+}
+
+/* Style the buttons inside the tab */
+.tabs button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  height: 50%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+  background-color: #fde9e5;
+}
+
+/* Create an active/current "tab button" class */
+.tabs button.active {
+  background-color: #fcf2f1;
+}
+
+/* Style the tab content */
+.tabcontents {
+  background-color: #fcf2f1;
+  float: left;
+  padding: 70px;
+  width: 70%;
+  border-left: none;
+  height: 644px;
 }

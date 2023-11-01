@@ -94,13 +94,13 @@ b{
     justify-content: center;
 }
 
-.imgPro {
+.imgPro1 {
     display: flex;
     margin-top: 20px;
     justify-content: center;
 }
 
-.imgPro .pro1{
+.imgPro1 .pro1{
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -667,9 +667,14 @@ body{
     color: white;
 }
 
-
 .t1 {
     margin-bottom: 50px;
+}
+
+.navbar {
+    z-index: 5;
+    position: sticky;
+    top: 0;
 }
 
 @media (max-width: 947px){

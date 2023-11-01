@@ -27,7 +27,7 @@
 </head>
 <body>
   <!-- Header -->
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
+    <header class="navbar d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
         <div class="col-md-3 mb-2 mb-md-0 ">
           <div class="fontlogo logomore"><%=home.inputLogo%></div>
         </div>
@@ -57,7 +57,9 @@
 
 
         <section class="forms-section" id="bookings">
-          <h3 class="Booking1 fontAll"></h3>
+          <h3 class="Booking1 fontAll"> การจองคิว</h3>
+          <img src="<%=img1.image1%>" class="d-block mx-lg-auto img-fluid mt-5 ima" alt="woman"  height="100%" loading="lazy">
+       
           <div class="forms">
               
               <div class="form-wrapper is-active ">
@@ -69,54 +71,58 @@
 
                 <div class="form form-login">
                   <fieldset>
-                      <table>
-                        <tbody>
-                          <% const daysOfWeek = ["จ.","อ.", "พ.", "พฤ.", "ศ.", "ส.","อา."]; %>
-                          <% const currentDate = new Date(); %>
-                          <% const startDate = new Date(currentDate); %>
-                          <% startDate.setDate(startDate.getDate() - startDate.getDay() + 1); %>  
-                          <% daysOfWeek.forEach((day, index) => { %>
-                            <tr class="infoTable ww <%= index === 0 ? 'monday' : index === 1 ? 'tuesday' :index === 2 ? 'wednesday' :index === 3 ?'Thursday':index === 4 ?'Friday':index === 5 ?'saturday':'sunday' %>">
-                              <td class="fontAll">
-                                <i class="fa-solid fa-circle ic"></i><%= startDate.toISOString().slice(0, 10) %>
-                              </td>
-                              <td class="fontAll dd"><%= day %></td>
-                              <td class="fontAll" colspan="2"></td>
-                            </tr>
-                            <% const timeCountMap = new Map(); %>
-                            <% QueueBookingCustomerData.forEach((bookingCu) => { %>
-                              <% if (bookingCu.booking_date_user === startDate.toISOString().slice(0, 10)) { %>
-                                <% const bookingTime = bookingCu.booking_time_user; %>
-                                <% bookingTime.forEach(timeSlot => { %>
-                                  <% const trimmedTimeSlot = timeSlot.trim(); %>
-                                  <% if (timeCountMap.has(trimmedTimeSlot)) { %>
-                                    <% timeCountMap.set(trimmedTimeSlot, timeCountMap.get(trimmedTimeSlot) + 1); %>
-                                  <% } else { %>
-                                    <% timeCountMap.set(trimmedTimeSlot, 1); %>
-                                  <% } %>
-                                <% }); %>
-                              <% } %>
-                            <% }); %>
-                            <tr class="infoTable">
-                              <td></td>
-                              <td class="fontAll">
+                    <table>
+                      <tbody>
+                        <% const daysOfWeek = ["จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส.", "อา."]; %>
+                        <% const currentDate = new Date(); %>
+                        <% const startDate = new Date(currentDate); %>
+                        <% startDate.setDate(startDate.getDate() - startDate.getDay() + 1); %>
+                        <% daysOfWeek.forEach((day, index) => { %>
+                          <% const timeCountMap = new Map(); %>
+                          <% QueueBookingCustomerData.forEach((bookingCu) => { %>
+                            <% if (bookingCu.booking_date_user === startDate.toISOString().slice(0, 10)) { %>
+                              <% const bookingTime = bookingCu.booking_time_user; %>
+                              <% bookingTime.forEach(timeSlot => { %>
+                                <% const trimmedTimeSlot = timeSlot.trim(); %>
+                                <% if (timeCountMap.has(trimmedTimeSlot)) { %>
+                                  <% timeCountMap.set(trimmedTimeSlot, timeCountMap.get(trimmedTimeSlot) + 1); %>
+                                <% } else { %>
+                                  <% timeCountMap.set(trimmedTimeSlot, 1); %>
+                                <% } %>
+                              <% }); %>
+                            <% } %>
+                          <% }); %>
+                          <tr class="infoTable ww <%= index === 0 ? 'monday' : index === 1 ? 'tuesday' : index === 2 ? 'wednesday' : index === 3 ? 'Thursday' : index === 4 ? 'Friday' : index === 5 ? 'saturday' : 'sunday' %>">
+                            <td class="fontAll">
+                              <i class="fa-solid fa-circle ic"></i><%= startDate.toISOString().slice(0, 10) %>
+                            </td>
+                            <td class="fontAll dd"><%= day %></td>
+                            <td class="fontAll" colspan="2"></td>
+                          </tr>
+                          <tr class="infoTable">
+                            <td></td>
+                            <td class="fontAll">
+                              <% if (timeCountMap.size > 0) { %>
                                 <% Array.from(timeCountMap.entries()).sort().forEach(([timeSlot, count]) => { %>
                                   <%= `${timeSlot}: มีการจอง ${count} ครั้ง` %>
                                   <% if (count === empUsers) { %>
                                     <span class="full-booked">( จองเต็มแล้ว )</span>
                                   <% } %><br/>
                                 <% }); %>
-                              </td>
-                              <td class="fontAll" colspan="2"></td>
-                            </tr>
-                            <% startDate.setDate(startDate.getDate() + 1); %>
-                          <% }); %>
-                          <tr class="infoTable">
-                            <td class="fontAll"></td>
-                            <!--<td class="fontAll">จำนวนผู้ใช้ที่มีบทบาท "emp": <%= empUsers %></td>-->
+                              <% } else { %>
+                                <p class="full-booked">ยังไม่มีการจองคิว</p>
+                              <% } %>
+                            </td>
+                            <td class="fontAll" colspan="2"></td>
                           </tr>
-                        </tbody>
-                      </table>
+                          <% startDate.setDate(startDate.getDate() + 1); %>
+                        <% }); %>
+                        <tr class="infoTable">
+                          <td class="fontAll"></td>
+                          <!--<td class="fontAll">จำนวนผู้ใช้ที่มีบทบาท "emp": <%= empUsers %></td>-->
+                        </tr>
+                      </tbody>
+                    </table>
                   </fieldset>
                 </div>
               </div>

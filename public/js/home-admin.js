@@ -67,6 +67,15 @@ var renderFile = function(event) {
     r.readAsDataURL(event.target.files[0]);
   };
 
+  var renderFile7 = function(event) {
+    var r = new FileReader();
+    r.onload = function(){
+      var preview = document.getElementById('slip');
+      preview.src = r.result;
+    };
+    r.readAsDataURL(event.target.files[0]);
+  };
+
 
 /*คำอธิบายบริการ*/ 
 /*ช่อง1 */ 

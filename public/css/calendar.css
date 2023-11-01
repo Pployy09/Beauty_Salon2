@@ -463,5 +463,14 @@ padding-left: 12px;
 
   .foo {
 	background-color: white;
-	
+  }
+
+  .ima {
+	width: 400px;
+	height: 400px;
+	margin-bottom: 26px;
+  }
+
+  .ttext {
+	color: red;
   }

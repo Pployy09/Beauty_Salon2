@@ -22,7 +22,7 @@
 
 </head>
 <body style="background-color: #fcf2f1;">
-    
+
   <!-- Header หลัก-->
   <section id="header-employee">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
@@ -72,31 +72,28 @@
             <% const uniqueEmployeeNames = Array.from(new Set(QueueBookingCustomerData.map(item => item.employeeName))); %>
             <% uniqueEmployeeNames.forEach(employeeName => { %>
               <h2 class="hemp"><%= employeeName %></h2>
-              <table>
+              <table id="employeeTable">
                 <tr class="sectionTable">
-                  <td class="fontAll">ลำดับ</td>
-                  <td class="fontAll">พนักงาน</td>
                   <td class="fontAll">วันที่</td>
                   <td class="fontAll infoBookingtimes">เวลา</td>
                   <td class="fontAll">บริการ</td>
                   <td class="fontAll">ลูกค้า</td>
+                  <td> สถานะ </td>
                 </tr>
                 <% QueueBookingCustomerData.filter(bookingCus => bookingCus.employeeName === employeeName).forEach((bookingCus, element) => { %>
                   <tr class="infoTable">
-                    <td class="fontAll"><%= element + 1 %></td>
-                    <td class="fontAll"><%= bookingCus.employeeName %></td>
                     <td class="fontAll"><%= bookingCus.booking_date_user %></td>
                     <td class="fontAll infoBooking time"><%= bookingCus.booking_time_user %></td>
                     <td class="fontAll"><%= bookingCus.booking_service_user %></td>
                     <td class="fontAll"><%= bookingCus.customerName %> <%= bookingCus.customerFirstname %> <%= bookingCus.customerLastname %></td>
+                    <td class="fontAll"><%= bookingCus.status %></td>
                   </tr>
                 <% }) %>
               </table>
             <% }) %>
           </div>
         </div>
-        
-    
+      
     
       <!-- JavaScript-->
       <script 
@@ -115,6 +112,27 @@
         charset="utf-8">
       </script> 
 
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    
+    <script>
+      $(document).ready(function () {
+
+        var paidRows = $(".infoTable:contains('ชำระแล้ว')");
+    
+        paidRows.each(function () {
+            var statusCell = $(this).find(".fontAll:contains('ชำระแล้ว')");
+            statusCell.text("เสร็จสิ้น");
+        });
+
+        paidRows.css("background-color", "rgb(204, 204, 204, 0.1)");
+
+        paidRows.each(function () {
+            $(this).appendTo($(this).closest("table"));
+        });
+    });
+
+    </script>
 
 </body>
 </html>

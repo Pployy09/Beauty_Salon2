@@ -122,8 +122,8 @@
                 <td >บริการ</td> 
                 <td >ราคา</td>
                 <td >ส่ง</td>
-                <td ></td>
-                <td > สถานะการชำระเงิน </td>
+                <td >ข้อมูลการชำระเงิน</td>
+                <td >สถานะการชำระเงิน</td>
 
               </tr> 
               <% QueueBookingCustomerData.forEach((popay,element)=>{ %>
@@ -153,7 +153,8 @@
                       </a>
                 </td>
                 
-                <td><% if (popay.status === 'ชำระแล้ว') { %>
+                <td>
+                  <% if (popay.status === 'ชำระแล้ว') { %>
                   <p><%= popay.status %></p>
                 <% } else { %>
                   <%= popay.status %>

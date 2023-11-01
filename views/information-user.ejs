@@ -26,10 +26,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body class="imgBooking">
-<section>
+<body style="background-color: #fcf2f1;">
    <!-- Header -->
-   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
+   <header class="navbar d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4 ">
     <div class="col-md-3 mb-2 mb-md-0 ">
       <div class="fontlogo logomore"><%=home.inputLogo%></div>
     </div>
@@ -50,7 +49,7 @@
     
     </header>
   
-  </section>
+  
     <div class="edit container edit_info">
         <div style="text-align: center;">
           <i class="fa-solid fa-user-astronaut fa-4x" style="color: #f19b9d;"></i>
@@ -93,8 +92,8 @@
 
     <div class="container">
 
-      <button class="tablinks" onclick="openPage('Home', this, '#FBF2E9')"id="defaultOpen">ตารางการจองคิวของฉัน</button>
-      <button class="tablinks" onclick="openPage('News', this, '#FBF2E9')" >ประวัติการจองคิวของฉัน</button>
+      <button class="tablinks" onclick="openPage('Home', this, '#fff')"id="defaultOpen">ตารางการจองคิวของฉัน</button>
+      <button class="tablinks" onclick="openPage('News', this, '#fff')" >ประวัติการจองคิวของฉัน</button>
 
       <div id="Home" class="tabcontents">
 
@@ -171,7 +170,7 @@
                     <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                       <div class="row g-2 groupp">
                         <div class="col-6">
-                          <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile6(event)" required>
+                          <input type="file" name="slip" id="inputGroupFile02" accept="image/*" onchange="renderFile7(event)" required>
                         </div>
                       </div>
                  </div>
@@ -374,6 +373,11 @@
   <script 
       src="../js/select-time.js" 
       charset="utf-8">
+  </script>
+
+  <script 
+    src="../js/home-admin.js" 
+    charset="utf-8">
   </script>
 
   <script>
