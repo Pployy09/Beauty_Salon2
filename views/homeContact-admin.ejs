@@ -170,21 +170,37 @@
                   
                   <div class="textad1">ละติจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
-                     <input type="text"  class="form-controls" name="lat" placeholder="<%=contact.lat%>" required>  
+                     <input type="text" 
+                     class="form-controls" 
+                     name="lat" 
+                     placeholder="<%=contact.lat%>"
+                     required oninvalid="this.setCustomValidity('กรุณาใส่ค่าลองจิจูด')"
+                      oninput="this.setCustomValidity('')">  
                      <span id="lat" ></span>
                      <button  class="copy" onclick="copyToClipboard('#lat')">คลิกเพื่อคัดลอกละติจูดใส่ช่อง</button>  
                      </div>
 
                   <div class="textad1">ลองจิจูด &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
                     <div class="inputres"> 
-                      <input type="text"  class="form-controls" name="lng" placeholder="<%=contact.lng%>" required>
+                      <input type="text" 
+                      class="form-controls" 
+                      name="lng" 
+                      placeholder="<%=contact.lng%>" 
+                      required oninvalid="this.setCustomValidity('กรุณากรอกนามสกุล')"
+                      oninput="this.setCustomValidity('')"
+                      >
                       <span id="lng" ></span>
                       <button  class="copy" onclick="copyToClipboard('#lng')">คลิกเพื่อคัดลอกลองจิจูดใส่ช่อง</button>  
                        </div>
 
                   <div class="textad1">เบอร์โทรติดต่อ &nbsp;</div>
                     <div class="inputres">
-                      <input type="text" class="form-controls" name="phoneaddress" placeholder="<%=contact.phoneaddress%>" required>
+                      <input type="text" 
+                      class="form-controls" 
+                      name="phoneaddress" 
+                      placeholder="<%=contact.phoneaddress%>" 
+                      required oninvalid="this.setCustomValidity('กรุณากรอกเบอร์โทรศัพท์')"
+                      oninput="this.setCustomValidity('')">
                     </div>
                     
                   <!--copy-->

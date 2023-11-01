@@ -125,17 +125,22 @@
                     placeholder="ชื่อลูกค้า" 
                     class="form-control" 
                     name="customerName" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อลูกค้า')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
                     <label class="textque">เบอร์โทรศัพท์ลูกค้า</label>
                     <input 
                     type="tel" 
+                    maxlength="10"
                     placeholder="0xx-xxx-xxxx" 
                     class="form-control" 
                     name="phonenum" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกเบอร์โทรศัพท์ลูกค้า')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
@@ -145,12 +150,17 @@
                     placeholder="วว/ดด/ปปปป" 
                     class="form-control" 
                     name="booking_date_user" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกเลือกวันที่')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
                     <label class="textque">เลือกบริการ</label>
-                    <select name="booking_service_user" class="form-control">
+                    <select name="booking_service_user" class="form-control"
+                    required oninvalid="this.setCustomValidity('กรุณาเลือกบริการ')"
+                    oninput="this.setCustomValidity('')"
+                  >
                       <option value="" selected disabled hidden></option>
                       <% ServiceDataList.forEach(serviceData =>{ %> 
                         <option value= "<%= serviceData.service_name  %>"> <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
@@ -187,7 +197,10 @@
 
                   <div class='row'>
                     <label class="textque"">เลือกพนักงาน</label>
-                    <select name="employeeName" class="form-control">
+                    <select name="employeeName" class="form-control"
+                    required oninvalid="this.setCustomValidity('กรุณาเลือกพนักงาน')"
+                      oninput="this.setCustomValidity('')"
+                    >
                       <option value="" selected disabled hidden></option>
                       <% empList.forEach(emp =>{ %> 
                         <option value= "<%= emp.firstname %> <%= emp.lastname %> " > <%= emp.firstname %>  <%= emp.lastname %></option>

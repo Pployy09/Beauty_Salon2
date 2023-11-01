@@ -84,7 +84,10 @@
               <form method="POST" action="/upload-qr/<%= qr._id %>?_method=PUT" enctype="multipart/form-data">   
                 <div class="row g-2 groupp">
                   <div class=" ">
-                    <input type="file" name="qrcode" id="inputGroupFile02" accept="image/*" onchange="renderFile6(event)" required>
+                    <input type="file" name="qrcode" id="inputGroupFile02" accept="image/*" onchange="renderFile6(event)" 
+                    required oninvalid="this.setCustomValidity('กรุณาเลือกรูปภาพ')"
+                    oninput="this.setCustomValidity('')"
+                  >
                   </div>
                 </div>
                
@@ -141,15 +144,15 @@
                  </select></td>-->
                  <td>
                   <button type="submit" class="btn ">
-                    <i class="fa-regular fa-circle-up fa-2x" style="color: #394d6f;"></i>
+                    <i class="fa-regular fa-circle-up fa-2x" style="color: #f19b9d;"></i>
                   </button>
                 </td>
                 
               </form>
                 
                 <td class="fontAll ">
-                      <a href="/#exampleModal<%= popay._id %>" class="nav-link fontAll" data-bs-toggle="modal">
-                        <i class="fa-solid fa-qrcode fa-2x" style="color: #394d6f;"></i>
+                      <a href="/#exampleModal<%= popay._id %>" class="nav-link fontAll " data-bs-toggle="modal">
+                       <button class="bbbt"><p class="fonnall">ข้อมูลการชำระเงิน</p></button>
                       </a>
                 </td>
                 

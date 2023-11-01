@@ -793,14 +793,8 @@ body{
   .foon {
     font-size: 30px;
     color: #5F3122;
+    padding-top: 60px;
     margin-bottom: 40px;
   }
 
-  .tabcontents {
-    background-color: #fcf2f1;
-    float: left;
-    padding: 70px;
-    width: 70%;
-    border-left: none;
-    height: 644px;
-  }
+ 

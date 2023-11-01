@@ -83,7 +83,9 @@
                     placeholder="ชื่อบริการ" 
                     class="form-control" 
                     name="service_name" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกชื่อบริการ')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
@@ -93,7 +95,9 @@
                     placeholder="ราคา" 
                     class="form-control" 
                     name="service_price" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกราคา')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
@@ -103,7 +107,9 @@
                     placeholder="ระบุเป็นชั่วโมง" 
                     class="form-control" 
                     name="service_time" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณากรอกเวลา')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                   <div class='row'>
@@ -113,7 +119,9 @@
                     class="form-control4" 
                     name="imageservice"
                     accept="image/*" 
-                    required>
+                    required oninvalid="this.setCustomValidity('กรุณาเลือกรูปภาพ')"
+                      oninput="this.setCustomValidity('')"
+                    >
                   </div>
 
                 </div>

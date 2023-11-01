@@ -90,7 +90,9 @@
                           class="form-control" 
                           name="service_name"
                           value="<%= service.service_name %>" 
-                          required>
+                          required oninvalid="this.setCustomValidity('กรุณากรอกชื่อบริการ')"
+                            oninput="this.setCustomValidity('')"
+                          >
                         </div> 
       
                         <div class='editSe1'>
@@ -101,7 +103,9 @@
                           class="form-control" 
                           name="service_price" 
                           value="<%= service.service_price %>" 
-                          required>
+                          required oninvalid="this.setCustomValidity('กรุณากรอกราคา')"
+                            oninput="this.setCustomValidity('')"
+                          >
                         </div> 
       
                         <div class='editSe1'>
@@ -112,7 +116,9 @@
                           class="form-control" 
                           name="service_time" 
                           value="<%= service.service_time %>"
-                          required>
+                          required oninvalid="this.setCustomValidity('กรุณากรอกเวลา')"
+                            oninput="this.setCustomValidity('')"
+                          >
                         </div>
 
                         <div class='editSe1'>

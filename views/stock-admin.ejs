@@ -91,7 +91,9 @@
                       class="form-control" 
                       name="name_product" 
                       id="name_product"
-                      required>
+                      required oninvalid="this.setCustomValidity('กรุณากรอกชื่อสินค้า')"
+                      oninput="this.setCustomValidity('')"
+                    >
                     </div>
 
                     <div class='row'>
@@ -102,7 +104,9 @@
                       class="form-control" 
                       name="brand_product" 
                       id="brand_product"
-                      required>
+                      required oninvalid="this.setCustomValidity('กรุณากรอกยี่ห้อสินค้า')"
+                      oninput="this.setCustomValidity('')"
+                    >
                     </div>
 
                     <div class='row'>
@@ -113,7 +117,9 @@
                       class="form-control" 
                       name="detail_product" 
                       id="detail_product"
-                      required>
+                      required oninvalid="this.setCustomValidity('กรุณากรอกรายละเอียดเพิ่มเติม หากไม่มีใส่ -')"
+                      oninput="this.setCustomValidity('')"
+                     >
                     </div>
 
                     <div class='row'>
@@ -124,7 +130,9 @@
                       class="form-control" 
                       name="price_product"
                       id="price_product" 
-                      required>
+                      required oninvalid="this.setCustomValidity('กรุณากรอกราคาซื้อ')"
+                      oninput="this.setCustomValidity('')"
+                    >
                     </div>
 
                     <div class='row'>
@@ -135,7 +143,9 @@
                       class="form-control" 
                       name="unit_product" 
                       id="unit_product"
-                      required>
+                      required oninvalid="this.setCustomValidity('กรุณากรอกจำนวน')"
+                      oninput="this.setCustomValidity('')"
+                    >
                     </div>
 
                   </div>
