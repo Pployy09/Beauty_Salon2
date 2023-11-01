@@ -447,3 +447,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+.eo {
+    font-size: 24px;
+}

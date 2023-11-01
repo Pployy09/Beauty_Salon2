@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const contactUserSchema = new mongoose.Schema({
   name: String,
@@ -6,6 +7,12 @@ const contactUserSchema = new mongoose.Schema({
   email: String,
   phone: String,
   textarea: String,
+  createdAt: String
+});
+
+contactUserSchema.pre('save', function(next) {
+  this.createdAt = moment().format('DD-MM-YYYY');
+  next();
 });
 
 module.exports = mongoose.model('ContactUser', contactUserSchema);

@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Raleway:wght@200&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 
 <body>
@@ -105,7 +107,26 @@
     </div>
   
   </div>
- </section> 
+ </section>  
+
+
+ <section class="services" id="comm">
+  <div class="container tabcontents">
+      <h1 class="foon">ความคิดเห็นของลูกค้า</h1>
+      <% contact.forEach(co => { %>
+        <div class="comment1">
+          <span class="date"><%= co.createdAt %></span>
+          <br>
+          <i class="fa-solid fa-face-smile fa-3x" style="color: #F19B9D;"></i>
+          <div class="ff">
+            <div class="in"><%= co.name %> <%= co.lastname %></div>
+          </div>
+          <p class="inli"><%= co.textarea %></p>
+        </div>
+      <% }) %>
+  </div>
+</section>
+ 
 
  <%- include ('./footer') %>
 

@@ -355,6 +355,7 @@
   background-color: #F19B9D;
   width: 30%;
   height: 644px;
+  font-family: 'Noto Sans Thai', sans-serif;
 }
 
 /* Style the buttons inside the tab */
@@ -397,11 +398,13 @@
   font-size: 22px;
 }
 
-.far {
-  font-size: 28px;
-  margin-left: 20px;
-  letter-spacing: 1.5px;
-  
+.farr {
+  color: #5F3122;
+    font-size: 25px;
+    margin-left: 20px;
+    letter-spacing: 1.5px;
+    font-weight: normal;
+    font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .iicon {

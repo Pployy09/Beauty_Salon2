@@ -271,7 +271,7 @@ ul.primary li:hover > a{
   float: left;
   background-color: #F19B9D;
   width: 30%;
-  height: 644.5px;
+  height: 644px;
 }
 
 /* Style the buttons inside the tab */
@@ -281,7 +281,7 @@ ul.primary li:hover > a{
   color: black;
   padding: 22px 16px;
   width: 100%;
-  height: 50%;
+  height: 214.5px;
   border: none;
   outline: none;
   text-align: left;
@@ -308,4 +308,46 @@ ul.primary li:hover > a{
   width: 70%;
   border-left: none;
   height: 644px;
+}
+
+.hh {
+  font-size: 26px;
+  text-align: center;
+}
+
+.comment{
+  background-color: #fff;
+  float: left;
+  width: 900px;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 6px 6px 6px #cbced1, 6px 6px 6px white;
+  
+}
+.comment h4,.comment span,.darker h4,.darker span{
+  display: inline;
+}
+
+.comment p,.comment span,.darker p,.darker span{
+  color: #5F3122;
+}
+
+.date {
+  float: inline-end;
+  font-size: 24px;
+  margin-top: 17px;
+}
+ .icon {
+  z-index: 2;
+  position: absolute;
+ }
+
+ .in {
+  margin-top: 5px;
+  font-size: 16px;
+ }
+
+.ff {
+  margin-left: 85px;
 }

@@ -30,7 +30,7 @@
     
 </head>
 
-<body class="b1"></body>
+<body>
   <!-- Header หลัก-->
   <section id="header-employee">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-4 ">
@@ -72,6 +72,8 @@
         <i class="fa-solid fa-person-chalkboard fa-2x iicon"><span class="farr">รายงานการใช้บริการของร้าน</span></i></button>
       <button class="tablinks" onclick="openCity(event, 'Paris')">
         <i class="fa-solid fa-truck-ramp-box fa-2x iicon"><span class="farr">รายงานสถานะสินค้าคงเหลือ</span></i></button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+          <i class="fa-solid fa-comments fa-2x" style="color: #5f3122; margin-left: 35px;" ><span class="farr">ความคิดเห็นของลูกค้า</span></i></button>
       </div>
 
     <!--tap1-->
@@ -261,10 +263,27 @@
           <button id="downloadPdfButton" onclick="downloadPdf1()">Download PDF</button>
         </div> 
 
-
     </div>
 
-    
+
+    <!--tap3-->
+    <div id="Tokyo" class="tabcontent scrollmenu">
+      <div class="Tokyo">
+        <h1 class="hh"> ความคิดเห็นของลูกค้า </h1>
+        <% contact.forEach(co =>{ %>
+        <div class="comment mt-4 text-justify float-left">
+            <span class="date"><%=co.createdAt%></span>
+            <br> 
+            <i class="fa-solid fa-face-smile fa-4x icon" style="color: #F19B9D;"></i>
+            <div class="ff">
+              <div class="in"><%=co.name%> <%=co.lastname%> ( <%=co.email%> )</div>
+              <div class="in"> โทร.<%=co.phone%></div>
+            </div>
+            <p>&nbsp; &nbsp; &nbsp;<%=co.textarea%></p>
+        </div>
+        <%}) %>
+      </div>
+    </div>
       
     <!-- JavaScript-->
 
