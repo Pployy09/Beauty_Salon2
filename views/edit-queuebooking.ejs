@@ -108,12 +108,13 @@
                             value="<%= QueueBookingCustomerData.booking_date_user  %>">
                         </div>
 
+                        <% var ServiceArray = [] %>
                         <div class='editSe2'>
                           <label class="textques2">บริการ</label>
-                          <select name="booking_service_user[]" class="form-control">
-                            <option value="" selected disabled hidden ><%= QueueBookingCustomerData.booking_service_user %></option> 
+                          <select name="booking_service_user[]" class="form-control" id="booking_service">
+                            <option value=" " selected disabled hidden ><%= QueueBookingCustomerData.booking_service_user %></option> 
                             <% ServiceDataList.forEach(serviceData =>{ %> 
-                            
+                              <% ServiceArray.push(serviceData.service_name); %>
                                 <option value= "<%= serviceData.service_name  %>"  > <%= serviceData.service_name  %> ( <%= serviceData.service_time %> ชั่วโมง ) </option>
                             
                               <% }) %> 
@@ -255,6 +256,11 @@
       charset="utf-8">
     </script>
 
+    <script 
+      src="../js/editService-admin.js" 
+      charset="utf-8">
+    </script>
+
     <script>
       var timeOpen = '<%= bookingTArray %>'.split(',');
       var timeOpenInt =[];
@@ -313,6 +319,54 @@
 
       console.log(timeBookingInt);
      
+    </script>
+
+    <script>
+      function makeServiceId(){ 
+        var i = 0;
+        return function(){
+          return i++;
+        };
+      };
+
+      var id = makeServiceId();
+      const bookingSe = document.getElementById("booking_service");
+      
+      bookingSe.querySelectorAll("option").forEach(bo =>{
+          bo.classList.add('itemService'+id());
+      })
+      var itemS =  [];
+     const bookingCuDa ='<%= QueueBookingCustomerData.booking_service_user %>'.split(',');
+     const serviceArray ='<%= ServiceArray %>'.split(',');
+
+     
+      for(let s = 0 ; s < serviceArray.length ; s++){
+        const indexSe = (serviceArray[s]).indexOf(bookingCuDa);
+       
+        bookingCuDa.forEach(value =>{
+          const optionToDisable = bookingSe.querySelector(`option[value="${value}"]`);
+          if (optionToDisable) {
+            optionToDisable.disabled = true;
+          }
+        })
+        
+        
+         /*itemS.push('itemService'+[s]);
+          var itemTimeNumS = itemS;
+         
+          window.addEventListener('load', () =>{
+            bookingSe.querySelectorAll('itemService')[indexSe].disabled = true;
+          });*/
+         
+        
+      
+      console.log(indexSe);
+      
+     }
+     
+
+     console.log( bookingCuDa);
+     console.log( serviceArray);
     </script>
        
 

@@ -157,7 +157,7 @@
                       <select name="booking_service_user" id="customSelect" class="custom-select-service " required>
                          <% var serT = [] ; %>
                         <% ServiceDataList.forEach(serviceData =>{ %> 
-                          <option  value= " <%= serviceData.service_name  %> " class="fontAll" > 
+                          <option  value="<%= serviceData.service_name %>" class="fontAll" > 
                             <% const se = serviceData.service_time %>  <%= serviceData.service_name %> ( <%= serviceData.service_price  %> บาท )  
                           </option>
                           <% serT.push(se); %>
