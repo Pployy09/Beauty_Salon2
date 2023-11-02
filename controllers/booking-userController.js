@@ -37,29 +37,42 @@ exports.showBookingUser = async(req, res) => {
     });
 };
 
-exports.addBookingUser = async (req,res) =>{ 
-    try{
+exports.addBookingUser = async (req, res) => {
+    try {
         const user = await User.findById(req.session.userId);
-        if(!user){
+        if (!user) {
             res.send("<script>alert('กรุณาเข้าสู่ระบบเพื่อจองคิว'); window.location = '/login-user';</script>");
             return;
-          
         }
-        const bookingCustomer =  new QueueBookingCustomer({
-        customerUsername: user.username,
-        customerFirstname : user.firstname,
-        customerLastname:user.lastname,
-        phonenumOfUsername : user.phonenum,
-        booking_date_user : req.body.booking_date_user,
-        booking_service_user :  req.body.booking_service_user,
-        booking_time_user :  req.body.booking_time_user,
-        }); 
-        
-       
-       bookingCustomer.save();
-       console.log("Create service successfully!")
-       res.redirect('/booking-user');
-    } catch(error){
-        console.log("Error")
+
+        // ตรวจสอบว่ามีการจองซ้ำหรือไม่
+        const existingBooking = await QueueBookingCustomer.findOne({
+            customerUsername: user.username,
+            booking_date_user: req.body.booking_date_user,
+            booking_service_user: req.body.booking_service_user,
+            booking_time_user: { $in: req.body.booking_time_user }
+        });
+
+        if (existingBooking) {
+            res.send("<script>alert('ไม่สามารถจองได้ เนื่องจากมีการจองซ้ำ'); window.location = '/booking-user';</script>");
+            return;
+        }
+
+        const bookingCustomer = new QueueBookingCustomer({
+            customerUsername: user.username,
+            customerFirstname: user.firstname,
+            customerLastname: user.lastname,
+            phonenumOfUsername: user.phonenum,
+            booking_date_user: req.body.booking_date_user,
+            booking_service_user: req.body.booking_service_user,
+            booking_time_user: req.body.booking_time_user,
+        });
+
+        bookingCustomer.save();
+        console.log("Create service successfully!");
+        res.redirect('/booking-user');
+    } catch (error) {
+        console.log("Error");
     }
 };
+
