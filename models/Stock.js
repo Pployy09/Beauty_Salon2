@@ -14,13 +14,8 @@ const StockSchema = new Schema({
     unit_product: {
         type: String,
     },
-    brand_product: {
-        type: String,
-    },
-    detail_product: {
-        type: String,
-    }
 })
+
 
 const Stock = mongoose.model('Stock', StockSchema);
 module.exports = Stock;

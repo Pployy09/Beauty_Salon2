@@ -58,6 +58,18 @@ exports.addBookingUser = async (req, res) => {
             return;
         }
 
+        const empUsers = await User.count({ role: "emp" }); 
+
+        const existingBookings = await QueueBookingCustomer.find({
+            booking_date_user: req.body.booking_date_user,
+            booking_time_user: { $in: req.body.booking_time_user }
+        });
+
+        if (existingBookings.length >= empUsers) {
+            res.send("<script>alert('การจองเวลานี้เต็มแล้ว กรุณาจองเวลาอื่น'); window.location = '/booking-user';</script>");
+            return;
+        }        
+
         const bookingCustomer = new QueueBookingCustomer({
             customerUsername: user.username,
             customerFirstname: user.firstname,
@@ -75,4 +87,3 @@ exports.addBookingUser = async (req, res) => {
         console.log("Error");
     }
 };
-

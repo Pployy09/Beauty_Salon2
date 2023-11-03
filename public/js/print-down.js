@@ -6,7 +6,7 @@ function downloadPdf() {
         .save("reportService.pdf"); // กำหนดชื่อไฟล์ PDF
 }
 
-// สร้างฟังก์ชันสำหรับการพิมตในหน้าใหม่
+// สร้างฟังก์ชันสำหรับการพิมในหน้าใหม่
 function printConto() {
     // สร้างหน้าใหม่เพื่อพิมพ์เฉพาะส่วนนี้
     const printWindow = window.open('', '', 'width=10000,height=1000');
@@ -88,7 +88,7 @@ function printConto1() {
                 }
                 .total {
                     float: right;
-                    margin-right: 30px;
+                    margin-right: 9%;;
                   }
                  
             </style>

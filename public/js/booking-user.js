@@ -74,24 +74,3 @@ document.querySelectorAll(".custom-select-service").forEach(selectElement => {
    new CustomSelectService(selectElement);
   
 });
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-

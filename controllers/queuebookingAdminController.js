@@ -3,6 +3,7 @@ const Service = require('../models/Service');
 const Home = require('../models/Home-Admin');
 const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 
+
 //show booking
 exports.showQueuebooking = async(req, res) => {
     const UserData = await User.findById(req.session.userId);
