@@ -256,10 +256,7 @@
       charset="utf-8">
     </script>
 
-    <script 
-      src="../js/editService-admin.js" 
-      charset="utf-8">
-    </script>
+    
 
     <script>
       var timeOpen = '<%= bookingTArray %>'.split(',');
@@ -335,7 +332,7 @@
       bookingSe.querySelectorAll("option").forEach(bo =>{
           bo.classList.add('itemService'+id());
       })
-      var itemS =  [];
+      
      const bookingCuDa ='<%= QueueBookingCustomerData.booking_service_user %>'.split(',');
      const serviceArray ='<%= ServiceArray %>'.split(',');
 
@@ -350,14 +347,6 @@
           }
         })
         
-        
-         /*itemS.push('itemService'+[s]);
-          var itemTimeNumS = itemS;
-         
-          window.addEventListener('load', () =>{
-            bookingSe.querySelectorAll('itemService')[indexSe].disabled = true;
-          });*/
-         
         
       
       console.log(indexSe);

@@ -156,7 +156,7 @@
       
                       <select name="booking_service_user" id="customSelect" class="custom-select-service " required>
                          <% var serT = [] ; %>
-                        <% ServiceDataList.forEach(serviceData =>{ %> 
+                        <% ServiceDataList.forEach(serviceData =>{ %>
                           <option  value="<%= serviceData.service_name %>" class="fontAll" > 
                             <% const se = serviceData.service_time %>  <%= serviceData.service_name %> ( <%= serviceData.service_price  %> บาท )  
                           </option>
@@ -298,19 +298,67 @@
   <script>
     
     var itemS =  [];
+    
     var timeService = '<%= serT %>'.split(',');
     var item = document.getElementsByClassName("item-service");
+
+    
     for(let i = 0; i < item.length ; i++){
       itemS.push('itemService'+[i]);
-      
       var itemServiceNum = itemS[i];
       var itemService = document.getElementById(itemServiceNum);
+    
       
       itemService.onclick = (event) =>{
         var alertDiv = document.createElement("div");
       alertDiv.className = "custom-alert";
       alertDiv.innerHTML = "เลือกเวลาได้ " + timeService[i] + " ชั่วโมง ";
 
+      const eleWithClassTime = Array.from(document.getElementsByClassName("item-time"));
+
+      eleWithClassTime.forEach((iT,po) =>{
+        iT.addEventListener("click",()=>{
+          iT.classList.toggle("checked");
+
+          const checked = document.querySelectorAll(".checked");
+          const select_Time = document.getElementById("select-time");
+        
+
+            if(checked && checked.length > 0){
+              console.log(`${checked.length} กด`);
+            
+             
+            
+              if( checked && checked.length > parseInt(timeService[i])){
+
+                const selectedOptions = Array.from(select_Time.selectedOptions);
+
+                if (selectedOptions.length > parseInt(timeService[i])) {
+                    selectedOptions.slice(parseInt(timeService[i])).forEach(function (option) {
+                        option.selected = false;
+                        
+                    });
+                    iT.classList.remove("item--selected");
+                    iT.classList.remove("checked");
+                }
+                
+                
+                ;
+              }
+              
+              
+              
+          
+            }
+
+
+          
+          
+          
+        })
+
+      });
+      
       document.body.appendChild(alertDiv);
 
       setTimeout(function() {
@@ -341,69 +389,11 @@
       document.head.appendChild(style);
         
         };
-     }
-  </script>
-
-  <script>
-    //ในแต่ละ 1 ชั่วโมง จะกดได้กี่ครั้ง
-    var numEmp = parseInt('<%= empList.length %>');
-    
-    //console.log( numEmp);
-    var timeOpen = '<%= bookingTArray %>'.split(',');
-      var timeOpenInt =[];
-      
-      // timeOpen--> int
-      for(let t = 0 ; t<timeOpen.length ; t++){
-        var timeOpenint = parseInt(timeOpen[t]);
-        timeOpenInt.push(timeOpenint);
-      }
-    
-      console.log(timeOpenInt);
-
-      var itemB =  [];
-      var timeBooking = '<%= numBooking %>'.split(',');
-      var timeBookingInt =[];
-      
-      for(let w = 0  ; w < timeBooking.length  ; w++){
-        var  timeBookingint =  parseInt(timeBooking[w])
-        timeBookingInt.push(timeBookingint);
-      }
-      //ขนาดอาเรย์เท่ากันหรือไม่
-      function arraysHaveEqualValues(array1,array2){
-        for(let r = 0;r < Math.min(array1.length, array2.length); r++){
-          if (array1[r] !== array2[r]) {
-               return false;
-          }
-        }
-        return true;
-      }
-      //เปรียบเทียบค่าข้างในอาเรย์
-      var indexx= [];
-      function valuesInArray(array1, array2) {
   
-        for (let r = 0; r < array1.length; r++) {
-          if (array2.indexOf(array1[r]) === -1) {
-            return false;
-          }
-        
-       const cc    = array2.indexOf(array1[r]);
-       indexx.push(cc);
-      }
-       
-       return true;
-        }
-
-      const resultEqualValues  = arraysHaveEqualValues(timeOpenInt,timeBookingInt);
-      console.log(resultEqualValues);
-
-      const resultSubset = valuesInArray(timeBookingInt, timeOpenInt);
-      console.log(resultSubset);
-
-      const sortedNumbers = indexx.sort((a, b) => a - b);
-      
-      console.log(sortedNumbers);
-      console.log(timeBookingInt);
+    } 
   </script>
+    
+  
   
   <script>
     const switchers = [...document.querySelectorAll('.switcher')]

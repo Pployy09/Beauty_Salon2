@@ -11,14 +11,15 @@ class CustomSelectTime{
        this.originalSelect = originalSelect;
        this.customSelect = document.createElement("div");
        this.customSelect.classList.add("selectss");
- 
+       this.customSelect.id = 'selectssTime';
        this.originalSelect.querySelectorAll("option").forEach(optionElement =>{
           const itemElement = document.createElement("div");
  
           
           itemElement.classList.add("item-time");
           
-          itemElement.classList.add('itemTime'+id());
+          
+          itemElement.id = 'itemTime'+id();
           
               itemElement.textContent = optionElement.textContent;
              this.customSelect.appendChild(itemElement);
