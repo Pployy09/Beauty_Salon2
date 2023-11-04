@@ -97,32 +97,6 @@
                     </div>
 
                     <div class='row'>
-                      <label class="textque">ยี่ห้อสินค้า</label>
-                      <input 
-                      type="text" 
-                      placeholder="ยี่ห้อสินค้า" 
-                      class="form-control" 
-                      name="brand_product" 
-                      id="brand_product"
-                      required oninvalid="this.setCustomValidity('กรุณากรอกยี่ห้อสินค้า')"
-                      oninput="this.setCustomValidity('')"
-                    >
-                    </div>
-
-                    <div class='row'>
-                      <label class="textque">รายละเอียดเพิ่มเติม</label>
-                      <input 
-                      type="text" 
-                      placeholder="รายละเอียดเพิ่มเติม" 
-                      class="form-control" 
-                      name="detail_product" 
-                      id="detail_product"
-                      required oninvalid="this.setCustomValidity('กรุณากรอกรายละเอียดเพิ่มเติม หากไม่มีใส่ -')"
-                      oninput="this.setCustomValidity('')"
-                     >
-                    </div>
-
-                    <div class='row'>
                       <label class="textque">ราคาซื้อ</label>
                       <input 
                       type="number" 
@@ -167,8 +141,6 @@
               <td class="fontAll ">#</td>
               <td class="fontAll ">รหัส</td>
               <td class="fontAll ">ชื่อสินค้า</td>
-              <td class="fontAll ">ยี่ห้อสินค้า</td>
-              <td class="fontAll ">รายละเอียดเพิ่มเติม</td>
               <td class="fontAll ">ราคาซื้อ</td>
               <td class="fontAll ">คงเหลือ</td>
               <td></td>
@@ -176,11 +148,9 @@
 
             <% stockList.forEach((stock,element) =>{ %>
             <tr class="infoTable">
-              <td class="fontAll "><%= element+1 %></td>
+              <td class="fontAll "><%=element+1 %></td>
               <td class="fontAll "><%=stock.code%></td>
               <td class="fontAll "><%=stock.name_product%></td>
-              <td class="fontAll "><%=stock.brand_product%></td>
-              <td class="fontAll "><%=stock.detail_product%></td>
               <td class="fontAll "><%=stock.price_product%></td>
               <td class="fontAll text-center"><%=stock.unit_product%><td>
 

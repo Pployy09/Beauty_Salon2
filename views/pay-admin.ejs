@@ -214,7 +214,11 @@
                     <h class="ddd"> : </h>
                   </div>
                     <div class="form-group col-md-6">
-                      <%= popay.price%>
+                      <% if (popay.price) { %>
+                        <%= popay.price %>
+                      <% } else { %>
+                        <p class="ree">กรุณากรอกราคา</p>
+                      <% } %>
                     </div>
                 </div>
 

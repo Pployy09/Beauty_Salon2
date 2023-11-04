@@ -5,10 +5,8 @@
 
         const data = {
             name_product: document.getElementById('name_product').value,
-            brand_product: document.getElementById('brand_product').value,
             unit_product: document.getElementById('unit_product').value,
             price_product: document.getElementById('price_product').value,
-            detail_product: document.getElementById('detail_product').value,
         };
 
         fetch('/stock-admin', {

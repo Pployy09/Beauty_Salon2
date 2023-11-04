@@ -3,6 +3,7 @@ const Service = require('../models/Service');
 const Home = require('../models/Home-Admin');
 const QueueBookingCustomer = require('../models/Queuebooking-Customer');
 
+
 //show booking
 exports.showQueuebooking = async(req, res) => {
     const UserData = await User.findById(req.session.userId);
@@ -21,25 +22,51 @@ exports.showQueuebooking = async(req, res) => {
     
 }
 
+
 // add booking
-exports.addQueuebooking = async (req, res) =>{
-    try{
-        const bookingCustomer =  new QueueBookingCustomer({
-            customerName: req.body.customerName,
-            phonenum : req.body.phonenum,
-            booking_date_user : req.body.booking_date_user,
-            booking_service_user :  req.body.booking_service_user,
-            booking_time_user :  req.body.booking_time_user,
-            employeeName : req.body.employeeName,
-            emp_selection_status : "เลือกพนักงานแล้ว" ,
-            });
-        bookingCustomer.save();
-        console.log("Create service successfully!")
+exports.addQueuebooking = async (req, res) => {
+    try {
+        const {
+            customerName,
+            phonenum,
+            booking_date_user,
+            booking_service_user,
+            booking_time_user,
+            employeeName
+        } = req.body;
+
+        // ตรวจสอบว่ามีการจองเวลาและพนักงานเหมือนกันหรือไม่
+        const existingBookings = await QueueBookingCustomer.find({
+            booking_date_user,
+            booking_time_user: { $in: booking_time_user },
+            employeeName: { $in: employeeName }
+        });
+
+        if (existingBookings.length > 0) {
+            res.send("<script>alert('พนักงานคนนี้มีคิวเต็มแล้ว! กรุณาเลือกพนักงานคนอื่นหรือเปลี่ยนเวลาในการจองคิว'); window.location = '/queuebooking-admin';</script>");
+            return;
+        }
+
+        // ถ้าไม่มีการจองเวลาและพนักงานเหมือนกัน ให้เพิ่มการจองลูกค้า
+        const bookingCustomer = new QueueBookingCustomer({
+            customerName,
+            phonenum,
+            booking_date_user,
+            booking_service_user,
+            booking_time_user,
+            employeeName,
+            emp_selection_status: "เลือกพนักงานแล้ว",
+        });
+
+        await bookingCustomer.save();
+        console.log("Create service successfully!");
         res.redirect('/queuebooking-admin');
-    }catch(error){
-        console.log("Error")
+    } catch (error) {
+        console.log("Error");
     }
 }
+
+
 
 //edit booking
 exports.editQueuebooking = async (req, res) =>{

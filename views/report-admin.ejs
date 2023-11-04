@@ -228,8 +228,6 @@
             <tr >
               <th >รหัสสินค้า</th>
               <th >ชื่อสินค้า</th>
-              <th >ยี่ห้อสินค้า</th>
-              <th >รายละเอียดเพิ่มเติม</th>
               <th >ราคาซื้อ/ชิ้น</th>
               <th >คงเหลือ</th>
               <th >รวมเป็นเงิน</th>
@@ -239,8 +237,6 @@
                 <tr >
                   <td ><%=stock.code%></td>
                   <td ><%=stock.name_product%></td>
-                  <td ><%=stock.brand_product%></td>
-                  <td ><%=stock.detail_product%></td>
                   <td ><%=stock.price_product%></td>
                   <td ><%=stock.unit_product%><td>
                   <p class="trr"><%= (stock.price_product * stock.unit_product).toLocaleString('th-TH') %></p>
