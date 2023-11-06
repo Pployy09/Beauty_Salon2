@@ -92,12 +92,23 @@
 }
 
 .st {
-   margin: 20px 0px 20px 100px;
+   text-align: center;
+   margin-top: 30px;
 }
 
 .stt {
-   margin: 20px 0px 20px 140px;
+   width: 300px;
+   height: 300px;
+   object-fit: contain;
+   margin-top: 30px;
+   margin-left: 30px;
 }
+
+.ss {
+   text-align: center;
+   margin-top: 30px;
+}
+
 .sta {
    color: red; background-color: red;
 }
@@ -148,3 +159,11 @@
  .inpay{
    width: 100px;
  }
+
+.promtpay{
+   color: #5F3122;
+   font-size: 24px;
+   text-align: center;
+   margin-bottom: 40px;
+}
+ 

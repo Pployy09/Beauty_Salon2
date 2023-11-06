@@ -64,54 +64,18 @@
     </section>
     
     
-      <div id="create-service">
-        <a href="#exampleModal" class="nav-link fontAll" data-bs-toggle="modal">อัพโหลด QR Code สำหรับการชำระเงิน</a>
-      </div>
+      <div id="create-service"></div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
+      <div class="promtpay">
+        <form action="/upload-qr/<%= qr._id %>?_method=PUT" method="POST" >   
+          <p>กรุณากรอกเบอร์โทรศัพท์หรือเลขบัตรประชาชนที่ผูกกับเลขที่บัญชีธนาคารเพื่อรับโอนเงินผ่านพร้อมเพย์</p>
+          <span>รหัสพร้อมเพย์ของคุณคือ :    </span>
+          <input type="text" name="qrcode" placeholder="รหัสพร้อมเพย์" value="<%= qr.qrcode %>">
+          <button type="submit"> ส่งรหัส </button> 
+        </form>
+      </div>              
 
-            <div class="modal-header">
-             <h1 class="modal-title fs-5" id="exampleModalLabel">อัพโหลด QR Code</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="payy"><p class="pp">อัพโหลด QR Code สำหรับการชำระเงิน</p></div>
-            
-            <div class="pay">
-              <form method="POST" action="/upload-qr/<%= qr._id %>?_method=PUT" enctype="multipart/form-data">   
-                <div class="row g-2 groupp">
-                  <div class=" ">
-                    <input type="file" name="qrcode" id="inputGroupFile02" accept="image/*" onchange="renderFile6(event)" 
-                    required oninvalid="this.setCustomValidity('กรุณาเลือกรูปภาพ')"
-                    oninput="this.setCustomValidity('')"
-                  >
-                  </div>
-                </div>
-               
-                <img id="qrcode" src="<%=qr.qrcode%>" class=" imgpay"  loading="lazy">
-                <script>
-                  var renderFile6 = function(event) {
-                  var r = new FileReader();
-                  r.onload = function(){
-                    var preview = document.getElementById('qrcode');
-                    preview.src = r.result;
-                  };
-                  r.readAsDataURL(event.target.files[0]);
-                };
-                </script>
-            </div>
-                
-                  <div class="modal-footer  t0t">
-                    <button type="submit" class="upload buttonbt" for="inputGroupFile02"> Upload </button> 
-                  </div>
-
-              </form>
-          </div>
-        </div>
-      </div>
+      
       
         <div><h1 class="headtext">การชำระเงิน</h1></div>
         <div class="line-4"></div>
@@ -136,7 +100,7 @@
                 <td class="fontAll "><div ><%= popay.customerName %> <%=popay.customerFirstname%> </div></td>
                 <td class="fontAll "><div ><%= popay.booking_service_user%></div></td>
                 
-                <td class="fontAll "><input type="text" class="inpay" name="price" placeholder="<%=popay.price%>" ></td>
+                <td class="fontAll "><input type="text" class="inpay"  name="amount" placeholder="<%=popay.amount%>" ></td>
                 <!--<td class="fontAll "><select name="status" id="status">
                   <option>สถานะการชำระเงิน</option>
                   <option value="paid">ชำระแล้ว</option>
@@ -208,31 +172,53 @@
                     </div>
                 </div>
 
-                <div class='form-row texla'>
+                <div class="form-row texla">
                   <div class="form-group col-md-6">
-                    <label>ราคา</label>
-                    <h class="ddd"> : </h>
+                      <label>ราคา</label>
+                      <h class="ddd"> : </h>
                   </div>
-                    <div class="form-group col-md-6">
-                      <% if (popay.price) { %>
-                        <%= popay.price %>
-                      <% } else { %>
-                        <p class="ree">กรุณากรอกราคา</p>
-                      <% } %>
-                    </div>
-                </div>
-
-                  <img id="qrcode" src="<%=qr.qrcode%>" class=" imgpay2"  loading="lazy">
-                  
-                  <div class="st">
+                  <div class="form-group col-md-6">
+                      <input type="text" class="inpay" id="amount" name="amount" value="<%= popay.amount %>" placeholder="<%= popay.amount %>" readonly required>
+                  </div>
+              </div>
+              <div class="ss">
+                <button onclick="genQR(); return false;">Generate QR Code</button>
+              </div>
+              <img id="imgqr" src="" class="stt">
+              <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk" crossorigin="anonymous"></script>
+              <script>
+                  function genQR() {
+                      $("#loading").show(); // แสดงข้อความ "กำลังสร้าง QR Code..."
+                      $.ajax({
+                          method: 'post',
+                          url: 'http://localhost:4000/pay-admin',
+                          data: {
+                              amount: parseFloat($("#amount").val())
+                          },
+                          success: function(response) {
+                              console.log('good', response);
+                              $("#imgqr").attr('src', response.Result).show(); // แสดง QR code และซ่อนข้อความ "กำลังสร้าง QR Code..."
+                              
+                              setTimeout(function() {
+                                  $("#loading").hide(); // ซ่อนข้อความ "กำลังสร้าง QR Code..."
+                              }, 60000);
+                          }, error: function(err) {
+                              console.log('bad', err);
+                              $("#loading").hide(); // ซ่อนข้อความ "กำลังสร้าง QR Code..." ในกรณีที่เกิดข้อผิดพลาด
+                          }
+                      });
+                  }
+              </script>
+              
+              
+              <div class="st">
                     <select name="status" id="status">
-                      <option>สถานะการชำระเงิน</option> 
+                      <option>ยังไม่ชำระ</option> 
                       <option value="ชำระแล้ว" >ชำระแล้ว</option>
-                      <option value="ยังไม่ชำระ" >ยังไม่ชำระ</option>
                     </select>
                   </div>
 
-                    <div class="stt">
+                    <div class="st">
                       <span><%= popay.status%></span>
                     </div>
                   
@@ -279,6 +265,7 @@
         src="./js/service-emp.js" 
         charset="utf-8">
       </script> 
+
 
 </body>
 </html>

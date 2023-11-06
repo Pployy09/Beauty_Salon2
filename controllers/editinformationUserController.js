@@ -136,7 +136,7 @@ exports.editPutQueuebooking = async (req,res) =>{
             booking_service_user :  req.body.booking_service_user,
             booking_time_user :  req.body.booking_time_user,
             employeeName : req.body.employeeName,
-            price : req.body.price,
+            amount : req.body.amount,
             status : req.body.status,
             slip: new_img
         })
