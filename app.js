@@ -306,63 +306,84 @@ app.post('/upload-qr',(req,res) => {
     res.redirect('/pay-admin');
 });
 
-app.post('/information-user', (req, res) => {
-    const amount = parseFloat(_.get(req, ["body", "amount"]));
-    const mobileNumber = '0956975693';
-    const payload = generatePayload(mobileNumber, { amount });
-    const option = {
-        color: {
-            dark: '#000',
-            light: '#fff'
+
+app.post('/information-user', async (req, res) => {
+    try {
+        const amount = parseFloat(_.get(req, ["body", "amount"]));
+        // ดึงข้อมูล qrcode จากฐานข้อมูล Pay
+        const pay = await Pay.findOne().sort({ _id: -1 }); // ดึงข้อมูลล่าสุด
+        const mobileNumber = pay.qrcode;
+
+        const payload = generatePayload(mobileNumber, { amount });
+        const option = {
+            color: {
+                dark: '#000',
+                light: '#fff'
+            }
         }
+
+        QRCode.toDataURL(payload, option, (err, url) => {
+            if (err) {
+                console.log('generate fail');
+                return res.status(400).json({
+                    RespCode: 400,
+                    RespMessage: 'bad : ' + err
+                });
+            } else {
+                return res.status(200).json({
+                    RespCode: 200,
+                    RespMessage: 'good',
+                    Result: url
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({
+            RespCode: 500,
+            RespMessage: 'Internal Server Error'
+        });
     }
-    QRCode.toDataURL(payload, option, (err, url) => {
-        if(err) {
-            console.log('generate fail')
-            return res.status(400).json({
-                RespCode: 400,
-                RespMessage: 'bad : ' + err
-            })  
-        } 
-        else {
-            return res.status(200).json({
-                RespCode: 200,
-                RespMessage: 'good',
-                Result: url
-            })  
+});
+
+app.post('/pay-admin', async (req, res) => {
+    try {
+        const amount = parseFloat(_.get(req, ["body", "amount"]));
+        // ดึงข้อมูล qrcode จากฐานข้อมูล Pay
+        const pay = await Pay.findOne().sort({ _id: -1 }); // ดึงข้อมูลล่าสุด
+        const mobileNumber = pay.qrcode;
+
+        const payload = generatePayload(mobileNumber, { amount });
+        const option = {
+            color: {
+                dark: '#000',
+                light: '#fff'
+            }
         }
 
-    })
-})
-
-app.post('/pay-admin', (req, res) => {
-    const amount = parseFloat(_.get(req, ["body", "amount"]));
-    const mobileNumber = '0956975693';
-    const payload = generatePayload(mobileNumber, { amount });
-    const option = {
-        color: {
-            dark: '#000',
-            light: '#fff'
-        }
+        QRCode.toDataURL(payload, option, (err, url) => {
+            if (err) {
+                console.log('generate fail');
+                return res.status(400).json({
+                    RespCode: 400,
+                    RespMessage: 'bad : ' + err
+                });
+            } else {
+                return res.status(200).json({
+                    RespCode: 200,
+                    RespMessage: 'good',
+                    Result: url
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({
+            RespCode: 500,
+            RespMessage: 'Internal Server Error'
+        });
     }
-    QRCode.toDataURL(payload, option, (err, url) => {
-        if(err) {
-            console.log('generate fail')
-            return res.status(400).json({
-                RespCode: 400,
-                RespMessage: 'bad : ' + err
-            })  
-        } 
-        else {
-            return res.status(200).json({
-                RespCode: 200,
-                RespMessage: 'good',
-                Result: url
-            })  
-        }
-
-    })
-})
+});
 
 
 app.listen(4000, () => {
