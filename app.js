@@ -50,7 +50,12 @@ mongoose.connect('mongodb+srv://admin:12345@cluster0.te5pmag.mongodb.net/test?re
     useNewUrlParser:true,
     useUnifiedTopology:true,
 })
-const pug = require('pug');
+const QRCode = require('qrcode')
+const generatePayload = require('promptpay-qr')
+const _ = require('lodash')
+const cors = require('cors')
+
+app.use(cors())
 app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(express.static('uploads'))
@@ -290,18 +295,77 @@ app.post('/upload-image5',upload5,(req,res) => {
     res.redirect('/home-admin');
 });
 
-const upload6 = multer({ storage: storage }).single('qrcode');
 app.get('/upload-qr/:id',payController.editPay);
-app.put('/upload-qr/:id',upload6,payController.editPutPay);
-app.post('/upload-qr',upload6,(req,res) => {
+app.put('/upload-qr/:id',payController.editPutPay);
+app.post('/upload-qr',(req,res) => {
     const pays = new Pay ({
-        qrcode : req.file.filename,
+        qrcode : req.body.qrcode,
     })
     pays.save();
     console.log("Save qr code successfully!")
     res.redirect('/pay-admin');
 });
 
+app.post('/information-user', (req, res) => {
+    const amount = parseFloat(_.get(req, ["body", "amount"]));
+    const mobileNumber = '0956975693';
+    const payload = generatePayload(mobileNumber, { amount });
+    const option = {
+        color: {
+            dark: '#000',
+            light: '#fff'
+        }
+    }
+    QRCode.toDataURL(payload, option, (err, url) => {
+        if(err) {
+            console.log('generate fail')
+            return res.status(400).json({
+                RespCode: 400,
+                RespMessage: 'bad : ' + err
+            })  
+        } 
+        else {
+            return res.status(200).json({
+                RespCode: 200,
+                RespMessage: 'good',
+                Result: url
+            })  
+        }
+
+    })
+})
+
+app.post('/pay-admin', (req, res) => {
+    const amount = parseFloat(_.get(req, ["body", "amount"]));
+    const mobileNumber = '0956975693';
+    const payload = generatePayload(mobileNumber, { amount });
+    const option = {
+        color: {
+            dark: '#000',
+            light: '#fff'
+        }
+    }
+    QRCode.toDataURL(payload, option, (err, url) => {
+        if(err) {
+            console.log('generate fail')
+            return res.status(400).json({
+                RespCode: 400,
+                RespMessage: 'bad : ' + err
+            })  
+        } 
+        else {
+            return res.status(200).json({
+                RespCode: 200,
+                RespMessage: 'good',
+                Result: url
+            })  
+        }
+
+    })
+})
+
+
 app.listen(4000, () => {
     console.log("App listening on port 4000")
 })
+

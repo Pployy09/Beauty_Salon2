@@ -29,22 +29,9 @@ exports.editPay = async (req,res) =>{
 
 //update data 
 exports.editPutPay = async (req,res) =>{
-    let id = req.params.id;
-    let new_img = " "; 
-    if (req.file) {
-        new_img = req.file.filename;
-        try {
-            // ลบไฟล์รูปเดิม
-            fs.unlinkSync('../uploads/' + req.body.qrcode);
-            
-        } catch (err) {
-            console.log(err);
-        }
-    } else {
-        new_img = req.body.qrcode;
-    }
-    await Home.findByIdAndUpdate(id,req.body,{runValidators:true});
-    await Pay.findByIdAndUpdate(id,{ qrcode: new_img },{runValidators:true});
+
+    await Pay.findByIdAndUpdate(req.params.id,{
+        qrcode:req.body.qrcode,});
     res.redirect('/pay-admin');
 }
 
@@ -86,7 +73,7 @@ exports.editPutQueuebooking = async (req,res) =>{
             booking_service_user :  req.body.booking_service_user,
             booking_time_user :  req.body.booking_time_user,
             employeeName : req.body.employeeName,
-            price : req.body.price,
+            amount : req.body.amount,
             status : req.body.status
         })
         res.redirect('/pay-admin');

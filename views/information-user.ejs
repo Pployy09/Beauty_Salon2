@@ -111,7 +111,7 @@
                   <i class="fa-solid fa-pen-to-square fa-2x" style="color: #f19b9d;"></i>
                 </a>
               </td>
-              <td class="f7"><%= booking.status%></td>
+              <td class="f7"><%= booking.status %></td>
             </tr>
           </table>
         <% }); %>
@@ -155,16 +155,43 @@
                      <h class="ddd"> : </h>
                    </div>
                      <div class="form-group col-md-6" >
-                      <% if (booking.price) { %>
-                        <%= booking.price %>
+                      <% if (booking.amount) { %>
+                          <input type="text" class="inpay" id="amount" name="amount" value="<%= booking.amount %>" placeholder="<%= booking.amount %>" readonly required>   
                       <% } else { %>
                         <p class="ree">กรุณารอแอดมินกรอกราคา</p>
                       <% } %>
                      </div>
                  </div>
  
-                 <img id="images1" src="<%=qr.qrcode%>" class=" imgpay2"  loading="lazy">
-                 
+                 <div class="ss">
+                  <button onclick="genQR(); return false;">Generate QR Code</button>
+                </div>
+                <img id="imgqr" src="" class="stt">
+                <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk" crossorigin="anonymous"></script>
+                <script>
+                    function genQR() {
+                        $("#loading").show(); // แสดงข้อความ "กำลังสร้าง QR Code..."
+                        $.ajax({
+                            method: 'post',
+                            url: 'http://localhost:4000/information-user',
+                            data: {
+                                amount: parseFloat($("#amount").val())
+                            },
+                            success: function(response) {
+                                console.log('good', response);
+                                $("#imgqr").attr('src', response.Result).show(); // แสดง QR code และซ่อนข้อความ "กำลังสร้าง QR Code..."
+                                
+                                setTimeout(function() {
+                                    $("#loading").hide(); // ซ่อนข้อความ "กำลังสร้าง QR Code..."
+                                }, 60000);
+                            }, error: function(err) {
+                                console.log('bad', err);
+                                $("#loading").hide(); // ซ่อนข้อความ "กำลังสร้าง QR Code..." ในกรณีที่เกิดข้อผิดพลาด
+                            }
+                        });
+                    }
+                </script>
+
                   <div class="payy"><p class="pp">อัพโหลดหลักฐานการชำระเงิน</p></div>
                  <div class="pay">
                     <form action="/information-user/<%= booking._id %>?_method=PUT" method="POST" enctype="multipart/form-data">

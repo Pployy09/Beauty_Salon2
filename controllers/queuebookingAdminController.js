@@ -122,7 +122,7 @@ exports.editPutQueuebooking = async (req, res) => {
             booking_time_user: req.body.booking_time_user,
             employeeName: req.body.employeeName,
             emp_selection_status: "เลือกพนักงานแล้ว",
-            price: req.body.price,
+            amount: req.body.amount,
         });
 
         res.redirect('/queuebooking-admin');

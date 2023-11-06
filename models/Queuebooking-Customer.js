@@ -48,7 +48,7 @@ const QueueBookingCustomerSchema = new Schema({
     emp_selection_status :{
         type: String,
     },
-    price : {
+    amount : {
         type : String
     },
     status : {

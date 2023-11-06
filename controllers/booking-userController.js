@@ -49,7 +49,6 @@ exports.addBookingUser = async (req, res) => {
         const existingBooking = await QueueBookingCustomer.findOne({
             customerUsername: user.username,
             booking_date_user: req.body.booking_date_user,
-            booking_service_user: req.body.booking_service_user,
             booking_time_user: { $in: req.body.booking_time_user }
         });
 
