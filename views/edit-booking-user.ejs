@@ -216,6 +216,11 @@
       charset="utf-8">
   </script>
 
+  <script 
+    src="../js/editService-admin.js" 
+    charset="utf-8">
+  </script>
+
   
 
   <script>
@@ -259,6 +264,8 @@
       itemB.push('itemTime'+[r]);
         var itemTimeNum = itemB;
         var itemTime = document.querySelectorAll('.item-time')[sameIndex];
+
+        document.getElementById("select-time")[sameIndex].selected = true;
         
         
         itemTime.classList.add("item--selected");
