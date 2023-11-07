@@ -101,7 +101,7 @@ exports.editPutQueuebooking = async (req, res) => {
         // ตรวจสอบว่ามีการจองเวลาและพนักงานเหมือนกันหรือไม่
         const existingBookings = await QueueBookingCustomer.find({
             booking_date_user,
-            booking_time_user,
+            booking_time_user : { $in: booking_time_user },
             employeeName,
             _id: { $ne: req.params.id } 
         });

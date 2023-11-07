@@ -310,7 +310,6 @@ app.post('/upload-qr',(req,res) => {
 app.post('/information-user', async (req, res) => {
     try {
         const amount = parseFloat(_.get(req, ["body", "amount"]));
-        // ดึงข้อมูล qrcode จากฐานข้อมูล Pay
         const pay = await Pay.findOne().sort({ _id: -1 }); // ดึงข้อมูลล่าสุด
         const mobileNumber = pay.qrcode;
 
@@ -349,7 +348,6 @@ app.post('/information-user', async (req, res) => {
 app.post('/pay-admin', async (req, res) => {
     try {
         const amount = parseFloat(_.get(req, ["body", "amount"]));
-        // ดึงข้อมูล qrcode จากฐานข้อมูล Pay
         const pay = await Pay.findOne().sort({ _id: -1 }); // ดึงข้อมูลล่าสุด
         const mobileNumber = pay.qrcode;
 
